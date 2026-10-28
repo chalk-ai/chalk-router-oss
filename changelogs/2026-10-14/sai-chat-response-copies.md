@@ -1,0 +1,1 @@
+- Large Chat Completions replies use less temporary memory while keeping exact JSON, cached replies, and trace content settings.

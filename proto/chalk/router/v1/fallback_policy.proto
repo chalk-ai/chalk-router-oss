@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/field_mask.proto";
+
+message FallbackList {
+  repeated string fallbacks = 1;
+}
+
+message FallbackPolicy {
+  map<string, FallbackList> fallbacks = 1;
+}
+
+message GetFallbackPolicyRequest {}
+
+message GetFallbackPolicyResponse {
+  FallbackPolicy policy = 1;
+}
+
+message UpdateFallbackPolicyOperation {
+  map<string, FallbackList> fallbacks = 1;
+}
+
+message UpdateFallbackPolicyRequest {
+  UpdateFallbackPolicyOperation update = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message UpdateFallbackPolicyResponse {
+  FallbackPolicy policy = 1;
+}
+
+service FallbackPolicyService {
+  rpc GetFallbackPolicy(GetFallbackPolicyRequest) returns (GetFallbackPolicyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_READ;
+  }
+  rpc UpdateFallbackPolicy(UpdateFallbackPolicyRequest) returns (UpdateFallbackPolicyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_CREATE;
+  }
+}

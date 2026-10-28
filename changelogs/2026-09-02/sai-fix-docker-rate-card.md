@@ -1,0 +1,1 @@
+- Copy the pricing history into the API image build context.

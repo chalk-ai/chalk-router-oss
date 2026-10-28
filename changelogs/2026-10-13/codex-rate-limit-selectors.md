@@ -1,0 +1,1 @@
+- Rate-limit editors consistently reject wildcard model selectors; use exact model IDs or leave models empty to cover the whole connection.

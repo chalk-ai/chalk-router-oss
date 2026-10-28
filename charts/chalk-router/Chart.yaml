@@ -1,0 +1,6 @@
+apiVersion: v2
+name: chalk-router
+description: Helm release for the Chalk Router backend and admin UI
+type: application
+version: 0.1.0
+appVersion: ""

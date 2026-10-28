@@ -1,0 +1,68 @@
+{
+  "schema_version": 3,
+  "versions": [
+    {
+      "effective_from": "2026-09-01T19:12:53+00:00",
+      "last_verified_at": "2026-09-01T19:13:00+00:00",
+      "source": {
+        "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+        "sha256": "a980fa0e207d0976a3fa78c6a7c3165ec3c1cfd82b0dcfffc2a55795b9f6f451"
+      }
+    },
+    {
+      "effective_from": "2026-09-02T09:44:16+00:00",
+      "last_verified_at": "2026-09-02T09:44:16+00:00",
+      "source": {
+        "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+        "sha256": "723753fa1a11e7c2279814112ac56a1e933c6ab2507e3755340e3535ae0fd7f2"
+      }
+    },
+    {
+      "effective_from": "2026-09-09T17:40:34+00:00",
+      "last_verified_at": "2026-09-09T19:04:29+00:00",
+      "source": {
+        "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+        "sha256": "aed904030df782f3a9c9043c40d60d4eec3c99ea1dd201f5d9b5fc7eff34e1cc"
+      }
+    },
+    {
+      "effective_from": "2026-09-20T10:00:00+00:00",
+      "last_verified_at": "2026-09-22T17:14:05+00:00",
+      "source": {
+        "url": "https://docs.typesafe.ai/models.md",
+        "sha256": "9d20bb3c90a0147532d0b20ddc4c64579391be7842e965543b27bad684eeb4d6"
+      }
+    },
+    {
+      "effective_from": "2026-09-30T04:12:22+00:00",
+      "last_verified_at": "2026-09-30T04:12:22+00:00",
+      "source": {
+        "url": "https://openrouter.ai/api/v1/models/typesafe/jev-1.13/endpoints",
+        "sha256": "556fab0c5da201c07d4eeafd32b48250fb3fa297b69ed0f9e62a7225ca8511ba"
+      }
+    },
+    {
+      "effective_from": "2026-10-16T02:58:05+00:00",
+      "last_verified_at": "2026-10-16T02:58:05+00:00",
+      "source": {
+        "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+        "sha256": "ce8454c85aabc1dfd224edc65da6671c0cc6d08282ac64d9d65b6849bcd063d2"
+      }
+    }
+  ],
+  "providers": [
+    "anthropic",
+    "bedrock",
+    "cohere_chat",
+    "fireworks_ai",
+    "gemini",
+    "groq",
+    "mistral",
+    "openai",
+    "openrouter",
+    "together_ai",
+    "typesafe",
+    "vertex_ai-language-models",
+    "xai"
+  ]
+}

@@ -1,0 +1,1 @@
+- Make each sampling match rule apply to exactly one request tag, API token/caller identity, or usage pool, with a clearer target selector in the admin editor.

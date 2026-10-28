@@ -1,0 +1,18 @@
+{
+  "type": "chalk.router.v1.CreateKeyRequest",
+  "body": {
+    "description": "Example integration",
+    "permission": {
+      "routes": {
+        "refs": [
+          {
+            "publicModelId": "chalk/example-chat"
+          }
+        ]
+      }
+    },
+    "labels": {
+      "application": "example"
+    }
+  }
+}

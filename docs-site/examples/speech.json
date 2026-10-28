@@ -1,0 +1,5 @@
+{
+  "model": "example-connection/example-speech",
+  "input": "Hello from the router.",
+  "voice": "alloy"
+}

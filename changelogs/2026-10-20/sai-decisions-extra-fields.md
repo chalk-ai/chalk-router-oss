@@ -1,0 +1,1 @@
+- Router Decisions requests may include fields the router does not interpret, such as OpenRouter's `provider`, `trace`, and `user`; they are forwarded to OpenRouter and omitted for providers that would reject them.

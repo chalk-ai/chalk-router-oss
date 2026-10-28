@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package chalk.utils.v1;
+
+import "google/protobuf/descriptor.proto";
+
+message StringEncoding {
+  map<int32, string> mapping = 1;
+}
+
+extend google.protobuf.EnumOptions {
+  optional StringEncoding encoding = 80412;
+}

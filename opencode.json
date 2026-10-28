@@ -1,0 +1,50 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "chalk-router": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Chalk Router",
+      "options": {
+        "baseURL": "http://127.0.0.1:4001/v1",
+        "apiKey": "{env:ROUTER_API_KEY}"
+      },
+      "models": {
+        "openai/gpt-4o": {
+          "name": "GPT-4o (via Chalk Router)",
+          "limit": {
+            "context": 128000,
+            "output": 16384
+          }
+        },
+        "openai/gpt-4o-mini": {
+          "name": "GPT-4o Mini (via Chalk Router)",
+          "limit": {
+            "context": 128000,
+            "output": 16384
+          }
+        },
+        "anthropic/claude-sonnet-4-20250514": {
+          "name": "Claude Sonnet 4 (via Chalk Router)",
+          "limit": {
+            "context": 200000,
+            "output": 64000
+          }
+        },
+        "anthropic/claude-sonnet-4-5-20250929": {
+          "name": "Claude Sonnet 4.5 (via Chalk Router)",
+          "limit": {
+            "context": 200000,
+            "output": 64000
+          }
+        },
+        "anthropic/claude-opus-4-5-20251101": {
+          "name": "Claude Opus 4.5 (via Chalk Router)",
+          "limit": {
+            "context": 200000,
+            "output": 64000
+          }
+        }
+      }
+    }
+  }
+}

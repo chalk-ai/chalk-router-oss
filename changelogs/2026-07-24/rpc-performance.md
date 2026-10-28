@@ -1,0 +1,1 @@
+- Reduce admin gRPC hot-path work with 40-row cursor pagination, cached provider credential metadata, bounded provider probes, batched usage writes, atomic key/budget mutations, bounded policy sizes, and method-level RPC telemetry.

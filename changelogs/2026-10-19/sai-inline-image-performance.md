@@ -1,0 +1,1 @@
+- Inline image requests use less CPU and temporary memory, including when recording images in request traces.

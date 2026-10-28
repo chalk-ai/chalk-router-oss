@@ -1,0 +1,1 @@
+- Deleting a route through the models API takes effect immediately.

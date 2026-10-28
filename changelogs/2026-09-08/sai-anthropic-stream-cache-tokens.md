@@ -1,0 +1,1 @@
+- Streamed Anthropic completions now count cache-read and cache-write tokens in prompt_tokens, matching non-streaming responses.

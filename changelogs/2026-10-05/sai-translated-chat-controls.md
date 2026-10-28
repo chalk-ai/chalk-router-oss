@@ -1,0 +1,1 @@
+- Chat requests routed through Anthropic or Bedrock Converse reject controls and message content they cannot preserve, allowing configured native fallbacks to receive the original request.

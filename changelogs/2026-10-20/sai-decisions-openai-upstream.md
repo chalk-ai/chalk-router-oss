@@ -1,0 +1,1 @@
+- Router Decisions requests can be served by OpenAI's `gpt-6-luna`, with questions and answers translated to and from OpenAI's format.

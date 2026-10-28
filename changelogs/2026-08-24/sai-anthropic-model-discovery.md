@@ -1,0 +1,1 @@
+- Discover Anthropic models from the live Models API instead of a hard-coded catalog.

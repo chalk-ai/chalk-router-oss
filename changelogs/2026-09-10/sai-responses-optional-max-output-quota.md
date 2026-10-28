@@ -1,0 +1,1 @@
+- Allow Responses requests translated to Anthropic to omit `max_output_tokens` when token budgets or rate limits apply.

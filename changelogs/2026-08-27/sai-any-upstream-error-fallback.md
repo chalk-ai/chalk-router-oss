@@ -1,0 +1,1 @@
+- Model fallback now advances on any upstream dispatch error, including `400`, `413`, `414`, `415`, `422`, and `431`; router-owned validation, resolution, permission, and capability decisions made before dispatch remain terminal or skipped.

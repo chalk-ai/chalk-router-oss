@@ -1,0 +1,1 @@
+- Streaming responses deliver small updates promptly instead of waiting for TCP acknowledgements between writes.

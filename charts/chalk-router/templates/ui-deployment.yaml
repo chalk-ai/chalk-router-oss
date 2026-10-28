@@ -1,0 +1,139 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chalk-router-ui
+  labels:
+    app: chalk-router-ui
+    {{- include "chalk-router.commonLabels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.ui.replicaCount }}
+  minReadySeconds: {{ .Values.ui.rollout.minReadySeconds }}
+  progressDeadlineSeconds: {{ .Values.ui.rollout.progressDeadlineSeconds }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: {{ .Values.ui.rollout.maxSurge }}
+      maxUnavailable: {{ .Values.ui.rollout.maxUnavailable }}
+  selector:
+    matchLabels:
+      app: chalk-router-ui
+  template:
+    metadata:
+      labels:
+        app: chalk-router-ui
+        {{- /* Keep the initial Helm adoption pod-template-equivalent. */}}
+        {{- /* Resource ownership labels above are sufficient for Helm itself. */}}
+        {{- /* New image tags or an explicit rolloutNonce trigger later rollouts. */}}
+        {{- if .Values.rolloutNonce }}
+      annotations:
+        chalk.ai/rollout-nonce: {{ .Values.rolloutNonce | quote }}
+        {{- end }}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        {{- include "chalk-router.podSecurity" . | nindent 8 }}
+      terminationGracePeriodSeconds: {{ .Values.ui.rollout.terminationGracePeriodSeconds }}
+      containers:
+        - name: ui
+          securityContext:
+            {{- include "chalk-router.containerSecurity" . | nindent 12 }}
+          image: "{{ .Values.ui.image.repository }}:{{ .Values.ui.image.tag }}"
+          imagePullPolicy: {{ .Values.ui.image.pullPolicy }}
+          ports:
+            - containerPort: 3000
+          env:
+            - name: HOSTNAME
+              value: "0.0.0.0"
+            - name: CHALK_ROUTER_URL
+              value: "http://chalk-router-api:4001"
+            - name: ROUTER_UI_ORIGIN
+              value: {{ .Values.ui.auth.origin | quote }}
+            - name: ROUTER_UI_SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.ui.auth.existingSecret | quote }}
+                  key: ROUTER_UI_SESSION_SECRET
+                  optional: true
+          volumeMounts:
+            - name: ui-cache
+              mountPath: /app/.next/cache
+            - name: ui-tmp
+              mountPath: /tmp
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            periodSeconds: 1
+            failureThreshold: 60
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            failureThreshold: 3
+          resources:
+            {{- toYaml .Values.ui.resources | nindent 12 }}
+        - name: caddy
+          securityContext:
+            {{- include "chalk-router.containerSecurity" . | nindent 12 }}
+          image: {{ .Values.caddy.image }}
+          ports:
+            - containerPort: 8443
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 8443
+            periodSeconds: 1
+            failureThreshold: 60
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8443
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            tcpSocket:
+              port: 8443
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            failureThreshold: 3
+          volumeMounts:
+            - name: caddy-data
+              mountPath: /data
+            - name: caddy-runtime-config
+              mountPath: /config
+            - name: caddy-tmp
+              mountPath: /tmp
+            - name: caddy-config
+              mountPath: /etc/caddy/Caddyfile
+              subPath: Caddyfile
+          resources:
+            {{- toYaml .Values.caddy.resources | nindent 12 }}
+      volumes:
+        - name: caddy-config
+          configMap:
+            name: caddy-config
+        - name: ui-cache
+          emptyDir:
+            sizeLimit: 128Mi
+        - name: ui-tmp
+          emptyDir:
+            medium: Memory
+            sizeLimit: 32Mi
+        - name: caddy-data
+          emptyDir:
+            sizeLimit: 32Mi
+        - name: caddy-runtime-config
+          emptyDir:
+            sizeLimit: 16Mi
+        - name: caddy-tmp
+          emptyDir:
+            medium: Memory
+            sizeLimit: 16Mi

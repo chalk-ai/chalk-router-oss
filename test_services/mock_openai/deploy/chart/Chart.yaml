@@ -1,0 +1,6 @@
+apiVersion: v2
+name: mock-openai
+description: Synthetic OpenAI-compatible upstream for chalk-router benchmarks
+type: application
+version: 0.1.0
+appVersion: ""

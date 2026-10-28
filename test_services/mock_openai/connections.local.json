@@ -1,0 +1,12 @@
+{
+  "connections": [
+    {
+      "name": "mock-anthropic-dev",
+      "kind": "anthropic",
+      "base_url": "http://localhost:18000/v1",
+      "api_key": "unused",
+      "prefix": "mock-anthropic/",
+      "exposure": "unlisted"
+    }
+  ]
+}

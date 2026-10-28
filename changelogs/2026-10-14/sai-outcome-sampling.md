@@ -1,0 +1,1 @@
+- Outcome-based trace sampling keeps a consistent decision across active HTTP and LLM spans under sustained traffic, without slowing down when recent-decision history fills up.

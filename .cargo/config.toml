@@ -1,0 +1,7 @@
+[net]
+# Fetch git dependencies (e.g. the private chalk-federated-auth repo) through
+# the system git CLI instead of cargo's built-in libgit2. The Buildkite agent's
+# git is already authenticated for private chalk-ai repos, so this avoids the
+# libgit2 ssh-agent fallback that fails in CI ("no authentication methods
+# succeeded"). Mirrors chalk-sandbox-sdk's .cargo/config.toml.
+git-fetch-with-cli = true

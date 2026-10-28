@@ -1,0 +1,1 @@
+- Judge routing traces now include a stable policy revision, backend, default and proposed routing outcome, latency, cache status, and explicit selected, skipped, or failed status for evaluating shadow policies.

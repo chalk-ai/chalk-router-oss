@@ -1,0 +1,10 @@
+{
+  "type": "chalk.router.v1.UpdateKeyRequest",
+  "body": {
+    "key": "synthetic-key-hash",
+    "update": {
+      "description": "Example renamed integration"
+    },
+    "updateMask": "description"
+  }
+}

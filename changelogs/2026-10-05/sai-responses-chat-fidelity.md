@@ -1,0 +1,1 @@
+- Responses requests routed through Chat providers retain refusal messages, citations, token log probabilities, usage details, and upstream request and rate-limit headers in both JSON and streaming replies.

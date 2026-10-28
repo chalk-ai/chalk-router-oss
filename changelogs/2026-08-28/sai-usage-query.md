@@ -1,0 +1,1 @@
+- Add bounded token-usage queries with explicit global, connection, model, API-key, pool, agent, or immutable-label grouping and label post-aggregation in the usage UI.

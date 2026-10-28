@@ -1,0 +1,1 @@
+- Traces queued during a collector restart are retried for up to five minutes, with a clear dropped-span count if delivery never recovers.

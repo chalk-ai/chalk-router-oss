@@ -1,0 +1,14 @@
+{
+  "provider": "cohere_chat",
+  "models": {
+    "c4ai-aya-expanse-32b": [[5, {"input_per_mtok": 0.5, "output_per_mtok": 1.5}]],
+    "command-a-03-2025": [[0, {"input_per_mtok": 2.5, "output_per_mtok": 10.0, "cache_read_per_mtok": 2.5, "cache_write_per_mtok": 2.5}], [1, {"input_per_mtok": 2.5, "output_per_mtok": 10.0}]],
+    "command-a-plus-05-2026": [[5, {"input_per_mtok": 0.0, "output_per_mtok": 0.0}]],
+    "command-light": [[0, {"input_per_mtok": 0.3, "output_per_mtok": 0.6, "cache_read_per_mtok": 0.3, "cache_write_per_mtok": 0.3}], [1, {"input_per_mtok": 0.3, "output_per_mtok": 0.6}], [5, null]],
+    "command-r": [[0, {"input_per_mtok": 0.15, "output_per_mtok": 0.6, "cache_read_per_mtok": 0.15, "cache_write_per_mtok": 0.15}], [1, {"input_per_mtok": 0.15, "output_per_mtok": 0.6}], [5, null]],
+    "command-r-08-2024": [[0, {"input_per_mtok": 0.15, "output_per_mtok": 0.6, "cache_read_per_mtok": 0.15, "cache_write_per_mtok": 0.15}], [1, {"input_per_mtok": 0.15, "output_per_mtok": 0.6}]],
+    "command-r-plus": [[0, {"input_per_mtok": 2.5, "output_per_mtok": 10.0, "cache_read_per_mtok": 2.5, "cache_write_per_mtok": 2.5}], [1, {"input_per_mtok": 2.5, "output_per_mtok": 10.0}], [5, null]],
+    "command-r-plus-08-2024": [[0, {"input_per_mtok": 2.5, "output_per_mtok": 10.0, "cache_read_per_mtok": 2.5, "cache_write_per_mtok": 2.5}], [1, {"input_per_mtok": 2.5, "output_per_mtok": 10.0}]],
+    "command-r7b-12-2024": [[0, {"input_per_mtok": 0.0375, "output_per_mtok": 0.15, "cache_read_per_mtok": 0.0375, "cache_write_per_mtok": 0.0375}], [1, {"input_per_mtok": 0.0375, "output_per_mtok": 0.15}]]
+  }
+}

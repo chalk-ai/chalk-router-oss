@@ -1,0 +1,1 @@
+- Every decision model OpenRouter lists, not only Jev, can be routed on the Decisions endpoints and appears in model listings, with its context window and image input taken from OpenRouter's catalog.

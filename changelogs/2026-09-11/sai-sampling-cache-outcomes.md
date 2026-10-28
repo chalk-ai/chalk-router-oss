@@ -1,0 +1,2 @@
+- Sampling outcome rules now apply consistently to cached chat and Messages responses, including cached streams, while preserving cache replay behavior.
+- Sampling outcome values now preserve explicit nulls and reject unsupported structured values instead of silently changing them.

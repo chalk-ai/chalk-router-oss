@@ -1,0 +1,1 @@
+- Embed PNG/JPEG images with optional text in the playground, with local previews, model-specific limits, and a 4 MiB encoded request limit.

@@ -1,0 +1,1 @@
+- Generate and verify canonical PostgreSQL schema snapshots from the router migrations.

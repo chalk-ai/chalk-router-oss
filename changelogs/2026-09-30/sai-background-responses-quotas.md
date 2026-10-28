@@ -1,0 +1,1 @@
+- Background Responses now enforce token budgets and rate limits beyond client disconnects, with concurrency held until terminal reconciliation and restart-safe ownership when using Postgres quotas.

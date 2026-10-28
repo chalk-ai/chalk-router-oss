@@ -1,0 +1,1 @@
+- Local startup now requires authentication and binds loopback without loading company secrets; anonymous network access requires two explicit opt-ins.

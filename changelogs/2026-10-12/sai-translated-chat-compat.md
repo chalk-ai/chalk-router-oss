@@ -1,0 +1,1 @@
+- Chat requests to Claude and Bedrock Converse accept developer messages, the `user` field, and replayed tool calls with empty arguments, streamed OpenAI replies are cached again, and token-limited API keys no longer reject requests that carry fields such as `prompt_cache_key`.

@@ -1,0 +1,1 @@
+- When no configured destination can serve a request, the error now says why: 403 if the API key may not reach any of them, 503 if they are unavailable, and 400 only when the request itself cannot be represented.

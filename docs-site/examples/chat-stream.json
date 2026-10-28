@@ -1,0 +1,13 @@
+{
+  "model": "chalk/example-chat",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Count to three."
+    }
+  ],
+  "stream": true,
+  "stream_options": {
+    "include_usage": true
+  }
+}

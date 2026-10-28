@@ -1,0 +1,1 @@
+- **BREAKING:** Identify rate limits by target, type, connection, and models instead of editable names, prevent duplicate policies, and keep policy ownership immutable after creation.

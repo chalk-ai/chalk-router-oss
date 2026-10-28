@@ -1,0 +1,58 @@
+# cargo-nextest configuration — https://nexte.st/docs/configuration/
+#
+# Run locally with `cargo nextest run`; CI uses `--profile ci`
+# (see .github/workflows/ci.yml).
+
+# Postgres-gated integration tests share one throwaway database and serialize
+# on a process-wide advisory lock (or, for the fixture-seeding tests, on
+# per-row uniqueness within that shared schema); running them concurrently
+# either deadlocks on the lock or trips a unique-constraint race. Pin them all
+# to one thread. `ratelimit_conformance_test` mixes DB-gated `postgres_*`
+# tests with in-memory ones, so its filter targets only the former.
+[test-groups]
+postgres = { max-threads = 1 }
+
+[profile.default]
+# Fail a hung test instead of blocking the run: mark it slow after 60s and
+# terminate it after 3 slow periods (~180s). The networked integration tests
+# (streaming / grpc / federated proxy) are the ones that can wedge.
+slow-timeout = { period = "60s", terminate-after = 3 }
+
+# Custom profiles inherit unset settings from `default`, including this
+# overrides list, so `just test-db` (which does not pass --profile) and CI
+# (--profile ci) both pick up the postgres test-group assignment from here.
+[[profile.default.overrides]]
+filter = '''
+    test(tenancy_test::postgres)
+    | test(migrate_bookkeeping_test)
+    | test(migrate_invalid_index_test)
+    | test(rate_limit_migration_test)
+    | test(usage_pool_names_migration_test)
+    | test(usage_pool_names_test::postgres)
+    | test(streaming_fallback_test::postgres)
+    | test(gemini_embedding_quota_test::postgres)
+    | test(quota_hot_path_test::postgres)
+    | test(quota_lock_order_test::postgres)
+    | test(postgres_atomic_key_writes_test)
+    | test(postgres_pool_health_test)
+    | test(ratelimit_conformance_test::postgres)
+    | test(route_grid_conformance_test::postgres)
+    | test(usage_cost_test)
+    | test(usage_snapshot_test)
+    | test(responses_test::postgres_background)
+    | test(moderations_test::postgres)
+    | test(environment_isolation_test::postgres)
+'''
+test-group = 'postgres'
+
+[profile.ci]
+# Retry once so a flaky networked integration test doesn't red the whole PR,
+# without masking a hard failure (a test that fails twice still fails).
+retries = 1
+# Run the whole suite so one failure doesn't hide the rest.
+fail-fast = false
+slow-timeout = { period = "60s", terminate-after = 3 }
+
+# Emit a JUnit report (available in target/nextest/ci).
+[profile.ci.junit]
+path = "junit.xml"

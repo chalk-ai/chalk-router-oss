@@ -1,0 +1,1 @@
+- Add a Braintrust exporter preflight that validates unsaved endpoint, credential, and parent settings before saving.

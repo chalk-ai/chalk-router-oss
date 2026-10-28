@@ -1,0 +1,1 @@
+- Support router usage queries up to 366 days, including leap years, while retaining bucket and result limits.

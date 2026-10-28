@@ -1,0 +1,1 @@
+- Send a valid synthetic OTLP span when testing a Braintrust telemetry exporter configuration.

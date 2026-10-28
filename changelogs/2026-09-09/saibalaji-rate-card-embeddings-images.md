@@ -1,0 +1,2 @@
+- Include embedding and image models in provider-sharded, model-centric sparse rate-card histories, and price Gemini `models/...` resource names against their canonical catalog entries.
+- Limit usage-pool shared policies to edit-only controls by removing inline disable and remove actions.

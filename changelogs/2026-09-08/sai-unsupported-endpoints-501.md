@@ -1,0 +1,1 @@
+- Moderations, batches, fine-tuning, assistants, and files endpoints now return 501 Not Implemented instead of fabricated results.

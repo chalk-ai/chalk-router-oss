@@ -1,0 +1,1 @@
+- Vertex integration tests now generate disposable signing keys instead of distributing a static private key.

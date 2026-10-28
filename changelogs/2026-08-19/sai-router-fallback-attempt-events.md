@@ -1,0 +1,1 @@
+- Preserve failed provider attempts as structured events on the existing OpenInference chat span, report the winning completion's finish reason, and keep retry summary attributes constant-size without adding spans to the happy path.

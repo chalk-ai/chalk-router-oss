@@ -1,0 +1,1 @@
+- Translated Responses routes now accept empty reasoning controls and Codex client metadata and cache hints.

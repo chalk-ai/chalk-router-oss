@@ -1,0 +1,1 @@
+- Multi-turn tool calls now work on Claude models served through `/v1/chat/completions` (Anthropic directly and via Bedrock): replaying the assistant turn with `"content": null` beside `tool_calls`, as OpenAI returns it and SDK clients resend it, was refused with "cannot represent messages losslessly" and now goes through.

@@ -1,0 +1,1 @@
+- Show concise model names with conditional provider/connection context in the Token Usage filter while preserving canonical model IDs for queries and tooltips.

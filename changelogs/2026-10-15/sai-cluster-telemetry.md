@@ -1,0 +1,1 @@
+- Cluster routers attribute exported telemetry to the authenticated environment and keep Braintrust destinations isolated. Client-submitted spans keep flowing, but any `chalk.*` or `user.id` attributes they carry are dropped, so clients cannot set routing, sampling or identity controls.

@@ -1,0 +1,6 @@
+- The fallback-policy editor now presents a clearer, centered workflow for adding, reviewing, discarding, and saving fallback rules.
+- The judge-policy editor now uses the same streamlined settings, ladders, and save workflow.
+- The sampling-policy editor now uses the same focused settings, rule, and save workflow.
+- Sampling-policy controls now clearly stay unavailable until sampling rules are enabled.
+- Policy editors now use the same compact type scale as the rest of the admin UI.
+- Disabled judge and sampling controls now explain that their policy must be enabled before editing.

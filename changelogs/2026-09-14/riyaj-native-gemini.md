@@ -1,0 +1,1 @@
+- Gemini clients can now call the native Interactions API through the router, preserving signed thinking history and tool conversations in both regular and streaming responses while retaining access controls and usage accounting.

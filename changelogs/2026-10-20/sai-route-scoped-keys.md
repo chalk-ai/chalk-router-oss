@@ -1,0 +1,3 @@
+- API keys can be granted model routes directly. A granted route covers its judge, its fallbacks and every connection it uses; connection scopes now grant direct models only and no longer reach a model route.
+- Creating or editing a key with the old provider, connection or model-list restrictions is rejected; keys that already carry them keep working and appear in the admin UI as connection scopes.
+- A key restricted to nothing shows as "No access" in the admin UI, and saving it keeps it that way.

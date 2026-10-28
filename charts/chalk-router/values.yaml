@@ -1,0 +1,94 @@
+servingSecretName: router-env
+
+backend:
+  telemetry:
+    # No company collector or body capture in a default installation.
+    otlpEndpoint: ""
+    logContent: false
+  # Enable only when an integration actually consumes the Kubernetes API token.
+  automountServiceAccountToken: false
+  # `environment` serves legacyEnvironmentId only and never calls the metadata
+  # API. `cluster` confirms environments with the metadata API and loads them
+  # on first use; the serving secret must then carry ROUTER_METADATA_API_TOKEN.
+  tenancyMode: environment
+  # Metadata API gRPC endpoint (cluster mode only).
+  metadataApiEndpoint: ""
+  # When set, cluster mode serves only environments on this kube cluster.
+  kubeClusterId: ""
+  # Required in environment mode. In cluster mode, the legacy environment that
+  # keeps the static admin key and existing response locators, or use "" for
+  # a new cluster with no legacy environment.
+  legacyEnvironmentId: develop
+  auth:
+    # Federation is opt-in. Never trust a company issuer in a generic install.
+    jwtIssuers: ""
+    jwtAudience: ""
+    # Owning team of legacyEnvironmentId; required with JWTs in environment mode.
+    teamId: ""
+    # Legacy inference compatibility only; never relaxes JWT admin scope.
+    acceptCrossEnvironmentTokens: false
+  replicaCount: 2
+  rollout:
+    maxSurge: 1
+    maxUnavailable: 0
+    minReadySeconds: 10
+    progressDeadlineSeconds: 600
+    terminationGracePeriodSeconds: 120
+    preStopDelaySeconds: 5
+  image:
+    repository: chalk-router
+    tag: local
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+
+ui:
+  auth:
+    # UI fails closed until both the public HTTPS origin and secret are set.
+    origin: ""
+    existingSecret: chalk-router-ui-auth
+  replicaCount: 1
+  rollout:
+    maxSurge: 1
+    maxUnavailable: 0
+    minReadySeconds: 10
+    progressDeadlineSeconds: 600
+    terminationGracePeriodSeconds: 120
+  image:
+    repository: chalk-router-ui
+    tag: local
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+
+caddy:
+  # Build caddy/Dockerfile; stock Caddy carries a file capability incompatible with drop ALL.
+  image: chalk-router-caddy:local
+  resources:
+    requests:
+      cpu: 25m
+      memory: 32Mi
+    limits:
+      cpu: 100m
+      memory: 64Mi
+
+# Changes this pod-template annotation for an explicit manual Helm rollout when
+# image tags remain constant (for example, a local :latest deployment).
+rolloutNonce: ""
+
+# No ingress is created by default. Opt into tailnet ingress separately from
+# public Funnel exposure; UI ingress always remains private to the tailnet.
+ingress:
+  uiEnabled: false
+  apiEnabled: false
+  apiFunnelEnabled: false

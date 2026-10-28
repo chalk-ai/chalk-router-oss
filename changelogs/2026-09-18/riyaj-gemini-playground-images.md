@@ -1,0 +1,1 @@
+- The Images playground now uses native Gemini image generation when available, including with token quotas, and displays returned images, accompanying text, and generation errors.

@@ -1,0 +1,166 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+enum ExposurePolicy {
+  EXPOSURE_POLICY_UNSPECIFIED = 0;
+  EXPOSURE_POLICY_DYNAMIC = 1;
+  EXPOSURE_POLICY_UNLISTED = 2;
+  EXPOSURE_POLICY_EXPLICIT = 3;
+}
+
+message ConnectionState {
+  bool configured = 1;
+  bool unreadable = 2;
+  optional bool healthy = 3;
+}
+
+message ProviderConnection {
+  string id = 1;
+  string name = 2;
+  string provider_kind = 3;
+  optional string base_url = 4;
+  optional string prefix = 5;
+  ExposurePolicy exposure = 6;
+  bool routing_enabled = 7;
+  ConnectionState state = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  google.protobuf.Struct declared_capabilities = 11;
+}
+
+message ProviderConnectionDraft {
+  string provider_kind = 1;
+  optional string base_url = 2;
+  optional string prefix = 3;
+  ExposurePolicy exposure = 4;
+  string api_key = 5;
+}
+
+message ListProviderConnectionsRequest {
+  optional int32 limit = 1;
+  optional string cursor = 2;
+}
+
+message ListProviderConnectionsResponse {
+  repeated ProviderConnection connections = 1;
+  optional string next_cursor = 2;
+}
+
+// One model reachable through a saved provider connection. The public id is
+// what callers send to the router; the upstream id is what usage records use.
+message ProviderConnectionModel {
+  string public_model_id = 1;
+  string upstream_model_id = 2;
+  string connection_id = 3;
+  google.protobuf.Struct capabilities = 4;
+}
+
+message ListProviderConnectionModelsFilters {
+  repeated string connection_ids = 1;
+}
+
+message ListProviderConnectionModelsRequest {
+  ListProviderConnectionModelsFilters filters = 1;
+}
+
+message ListProviderConnectionModelsResponse {
+  repeated ProviderConnectionModel models = 1;
+}
+
+message CreateProviderConnectionRequest {
+  string name = 1;
+  string provider_kind = 2;
+  optional string base_url = 3;
+  optional string prefix = 4;
+  ExposurePolicy exposure = 5;
+  bool routing_enabled = 6;
+  string api_key = 7;
+  google.protobuf.Struct declared_capabilities = 8;
+}
+
+message CreateProviderConnectionResponse {
+  ProviderConnection connection = 1;
+}
+
+message UpdateProviderConnectionOperation {
+  optional string name = 1;
+  optional string base_url = 2;
+  optional string prefix = 3;
+  optional ExposurePolicy exposure = 4;
+  optional bool routing_enabled = 5;
+  optional string api_key = 6;
+  google.protobuf.Struct declared_capabilities = 7;
+}
+
+message UpdateProviderConnectionRequest {
+  string id = 1;
+  UpdateProviderConnectionOperation update = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateProviderConnectionResponse {
+  ProviderConnection connection = 1;
+}
+
+message DeleteProviderConnectionRequest {
+  string id = 1;
+}
+
+message DeleteProviderConnectionResponse {
+  string id = 1;
+  repeated string warnings = 2;
+}
+
+// Tests a complete draft using a saved connection's credential when api_key is
+// blank. The provider kind must match the saved connection. Other draft fields
+// override the saved test settings. Nothing is persisted.
+message SavedProviderConnectionDraft {
+  string connection_id = 1;
+  ProviderConnectionDraft draft = 2;
+}
+
+message TestProviderConnectionRequest {
+  oneof target {
+    string connection_id = 1;
+    ProviderConnectionDraft draft = 2;
+    SavedProviderConnectionDraft saved_draft = 3;
+  }
+}
+
+message TestProviderConnectionResponse {
+  bool ok = 1;
+  optional string error = 2;
+  optional uint32 discovered_models = 3;
+  optional google.protobuf.Duration latency = 4;
+}
+
+// Manages provider connections: an upstream credential + endpoint config.
+// Every provider kind may have multiple connections with distinct names and
+// non-null prefixes.
+service ProviderConnectionService {
+  rpc ListProviderConnections(ListProviderConnectionsRequest) returns (ListProviderConnectionsResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_LIST;
+  }
+  rpc ListProviderConnectionModels(ListProviderConnectionModelsRequest) returns (ListProviderConnectionModelsResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_LIST;
+  }
+  rpc CreateProviderConnection(CreateProviderConnectionRequest) returns (CreateProviderConnectionResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_WRITE;
+  }
+  rpc UpdateProviderConnection(UpdateProviderConnectionRequest) returns (UpdateProviderConnectionResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_WRITE;
+  }
+  rpc DeleteProviderConnection(DeleteProviderConnectionRequest) returns (DeleteProviderConnectionResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_WRITE;
+  }
+  rpc TestProviderConnection(TestProviderConnectionRequest) returns (TestProviderConnectionResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_WRITE;
+  }
+}

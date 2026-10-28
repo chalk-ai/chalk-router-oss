@@ -1,0 +1,1 @@
+- Make routed LLM spans report auditable estimated list-price cost across supported providers, while keeping router cache hits at zero and unknown provider cache prices unpriced.

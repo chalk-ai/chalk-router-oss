@@ -1,0 +1,1 @@
+- Split the router protobuf schema into service-focused files without changing its public RPC API.

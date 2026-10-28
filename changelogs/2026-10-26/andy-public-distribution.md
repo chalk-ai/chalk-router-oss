@@ -1,0 +1,1 @@
+- Self-managed setup uses operator-owned images, credentials, and destinations; company deployment pipelines, encrypted bundles, and implicit seed data are no longer included.

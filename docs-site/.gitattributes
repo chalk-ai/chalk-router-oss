@@ -1,0 +1,5 @@
+src/content/docs/reference/** linguist-generated=true
+public/api-descriptor.pb linguist-generated=true
+public/api-inventory.json linguist-generated=true
+public/examples/** linguist-generated=true
+source-manifest.json linguist-generated=true

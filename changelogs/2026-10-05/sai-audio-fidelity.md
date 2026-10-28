@@ -1,0 +1,1 @@
+- Audio requests honor API-key permissions and retain multipart options, file metadata, provider response formats, and diagnostic headers.

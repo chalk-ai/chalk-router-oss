@@ -1,0 +1,1 @@
+- Vertex AI connections serve `gemini-embedding-2`: text, images, and mixed text-and-image documents embed into one vector each, and requested dimensions are honored. Connections on a data-residency endpoint (such as `aiplatform.us.rep.googleapis.com`) report their own location instead of `us-central1`.

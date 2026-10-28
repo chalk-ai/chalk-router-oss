@@ -1,0 +1,1 @@
+- Bedrock Runtime routes return actual model output and provider errors, and honor the configured endpoint and connection credential.

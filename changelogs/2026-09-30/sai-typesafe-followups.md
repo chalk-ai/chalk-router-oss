@@ -1,0 +1,1 @@
+- TypeSafe and OpenRouter Decisions now use the versioned Alpha endpoint, report accurate model limits and Jev pricing, and can be exercised in a dedicated Decisions playground.

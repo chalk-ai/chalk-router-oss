@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "surfaces": {
+    "chat": "unsupported",
+    "decisions": "unknown",
+    "embeddings": "unknown",
+    "image_generation": "supported",
+    "rerank": "unknown",
+    "moderation": "unknown",
+    "audio_transcription": "unknown",
+    "audio_speech": "unknown",
+    "realtime": "unknown"
+  },
+  "modalities": {
+    "input": {
+      "text": "supported",
+      "image": "unknown",
+      "audio": "unknown",
+      "video": "unknown",
+      "pdf": "unknown"
+    },
+    "output": {
+      "text": "unknown",
+      "image": "supported",
+      "audio": "unknown",
+      "decisions": "unknown",
+      "video": "unknown",
+      "embeddings": "unknown"
+    }
+  },
+  "features": {
+    "tool_calling": "unknown",
+    "parallel_tool_calling": "unknown",
+    "strict_tool_schema": "unknown",
+    "structured_output": "unknown",
+    "structured_output_only": "unknown",
+    "reasoning": "unknown",
+    "prompt_caching": "unknown",
+    "computer_use": "unknown",
+    "decision_boxes": "unknown"
+  },
+  "limits": {},
+  "interfaces": {
+    "router_decisions": {
+      "operations": {
+        "create": {
+          "support": "unsupported"
+        }
+      }
+    },
+    "typesafe_system_one": {
+      "operations": {
+        "create": {
+          "support": "unsupported"
+        }
+      }
+    },
+    "openai_moderations": {
+      "operations": {
+        "create": { "support": "unknown" }
+      }
+    },
+    "openai_responses": {
+      "operations": {
+        "create": {
+          "support": "unsupported",
+          "features": {
+            "streaming": "supported",
+            "stored_continuation": "supported",
+            "background": "supported",
+            "tool_calling": "supported",
+            "image_input": "supported",
+            "server_tool_web_search": "supported",
+            "server_tool_file_search": "supported",
+            "server_tool_code_interpreter": "supported",
+            "server_tool_computer_use": "supported",
+            "server_tool_mcp": "supported"
+          }
+        },
+        "retrieve": {
+          "support": "unsupported",
+          "features": { "streaming": "supported" }
+        },
+        "delete": { "support": "unsupported" },
+        "compact": { "support": "unsupported" },
+        "cancel": { "support": "unsupported" }
+      }
+    },
+    "openai_chat_completions": {
+      "operations": {
+        "create": {
+          "support": "unsupported",
+          "features": { "streaming": "supported" }
+        }
+      }
+    },
+    "anthropic_messages": {
+      "operations": {
+        "create": {
+          "support": "unsupported",
+          "features": { "streaming": "supported" }
+        },
+        "count_tokens": { "support": "unsupported" }
+      }
+    },
+    "openai_images": {
+      "operations": {
+        "generate": {
+          "support": "supported",
+          "parameters": {
+            "size": {
+              "support": "supported",
+              "constraint": {
+                "type": "string_enum",
+                "values": ["1024x1024", "1536x1024", "1024x1536"]
+              }
+            },
+            "quality": {
+              "support": "supported",
+              "constraint": {
+                "type": "string_enum",
+                "values": ["auto", "low", "medium", "high"]
+              }
+            },
+            "n": {
+              "support": "supported",
+              "constraint": {
+                "type": "integer_range",
+                "min": 1,
+                "max": 10
+              }
+            }
+          }
+        },
+        "edit": { "support": "unsupported" },
+        "variations": { "support": "unsupported" }
+      }
+    }
+  }
+}

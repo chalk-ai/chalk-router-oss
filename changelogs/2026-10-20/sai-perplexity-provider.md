@@ -1,0 +1,1 @@
+- Perplexity is a built-in provider, serving its chat models and Perplexity Decider on the Decisions endpoints.

@@ -1,0 +1,1 @@
+- Route all content-bearing LLM span attributes through one typed count-and-byte budget, preserving newest messages first.

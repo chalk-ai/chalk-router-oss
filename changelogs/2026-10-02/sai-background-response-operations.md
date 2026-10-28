@@ -1,0 +1,1 @@
+- Administrators can inspect background response jobs; settled job metadata now expires after a configurable retention period without removing usage history or changing quotas.

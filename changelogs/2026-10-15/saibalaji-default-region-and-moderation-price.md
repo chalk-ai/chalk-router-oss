@@ -1,0 +1,2 @@
+- Price a Bedrock model that names no region from the us-east-1 rate, and leave it unpriced when that region has no card.
+- Record OpenAI moderation requests at their published $0 price.

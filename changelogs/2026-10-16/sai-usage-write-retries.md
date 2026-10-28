@@ -1,0 +1,1 @@
+- Usage records retry after any database error, such as a failover or a cancelled query, before a completed response reports a usage-write failure.

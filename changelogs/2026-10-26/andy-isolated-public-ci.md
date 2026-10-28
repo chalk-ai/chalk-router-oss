@@ -1,0 +1,1 @@
+- Contribution checks now use disposable public CI with synthetic fixtures and a temporary database, without decrypting serving credentials or authenticating to company registries.

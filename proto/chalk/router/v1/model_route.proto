@@ -1,0 +1,218 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+enum RouteDiagnostic {
+  ROUTE_DIAGNOSTIC_UNSPECIFIED = 0;
+  ROUTE_DIAGNOSTIC_READY = 1;
+  ROUTE_DIAGNOSTIC_UNCONFIGURED = 2;
+  ROUTE_DIAGNOSTIC_DISABLED = 3;
+  ROUTE_DIAGNOSTIC_UNREADABLE = 4;
+  ROUTE_DIAGNOSTIC_MISSING_CONNECTION = 5;
+}
+
+// Concrete targets are connection_id/upstream_model_id, never chalk/* aliases.
+message RouteFallbacks {
+  repeated string models = 1;
+}
+
+enum JudgeMode {
+  JUDGE_MODE_UNSPECIFIED = 0; // defaults to off
+  JUDGE_MODE_OFF = 1;
+  JUDGE_MODE_SHADOW = 2;
+  JUDGE_MODE_LIVE = 3;
+}
+
+enum Classification {
+  CLASSIFICATION_UNSPECIFIED = 0; // reject when judge is configured; force users to pick classification type
+  CLASSIFICATION_TASK = 1;
+  CLASSIFICATION_DIFFICULTY = 2;
+}
+
+// Difficulty-only classifier: any enabled hard signal selects outcome "1";
+// otherwise selects outcome "0".
+message HeuristicJudgeBackend {
+  // Defaults to true when omitted.
+  optional bool use_default_keywords = 1;
+  // Case-insensitive substring matches against user-message text.
+  // A keyword cannot appear in both the added and removed lists.
+  repeated string added_hard_keywords = 2;
+  // Removes entries from the default keyword set, case-insensitively.
+  repeated string removed_hard_keywords = 3;
+  // Treat triple-backtick code fences in any message role as hard.
+  // Defaults to true when omitted.
+  optional bool code_blocks_are_hard = 4;
+  // Total text across message roles exceeding this UTF-8 byte count is hard.
+  // Defaults to 6000 bytes when omitted; zero disables the length signal.
+  optional uint32 max_easy_input_bytes = 5;
+}
+
+message CompletionJudgeBackend {
+  // Required classifier target, with both connection_id and upstream_model_id.
+  RouteTarget target = 1;
+  // Zero means the default of 1000 milliseconds.
+  uint32 timeout_ms = 2;
+}
+
+message DecisionsJudgeBackend {
+  // Required classifier target, with both connection_id and upstream_model_id.
+  RouteTarget target = 1;
+  // Zero means the default of 1000 milliseconds.
+  uint32 timeout_ms = 2;
+}
+
+message RouteJudgeBackend {
+  // Exactly one backend configuration must be supplied.
+  oneof kind {
+    HeuristicJudgeBackend heuristic = 1;
+    CompletionJudgeBackend completion = 2;
+    DecisionsJudgeBackend decisions = 3;
+  }
+}
+
+message JudgeOutcomeConfig {
+  string model = 1;
+  // Blank uses backend defaults for standard task labels and binary difficulty.
+  // Descriptions are ignored by the local heuristic.
+  string description = 2;
+  // Absent inherits the route default; present and empty disables fallback.
+  RouteFallbacks fallbacks = 3;
+}
+
+message RouteJudge {
+  JudgeMode mode = 1;
+  Classification classification = 2;
+  RouteJudgeBackend backend = 3;
+  map<string, JudgeOutcomeConfig> outcomes = 5; // classification bucket -> configured model + fallbacks
+}
+
+// A concrete provider target, never a chalk/* route alias.
+message RouteTarget {
+  string connection_id = 1;
+  string upstream_model_id = 2;
+}
+
+message RouteGrid {
+  map<string, RouteFallbacks> fallbacks = 1;
+  RouteJudge judge = 2;
+  // Required for custom routing, with both connection_id and upstream_model_id.
+  // Selected when judging is off, in shadow mode, or produces no usable outcome.
+  // Does not inherit the simple route's top-level connection/model configuration.
+  RouteTarget default_target = 3;
+}
+
+message ModelRoute {
+  string id = 1;
+  string public_model_id = 2;
+  // Simple route destination when routing is absent.
+  string connection_id = 3;
+  string upstream_model_id = 4;
+  bool published = 5;
+  RouteDiagnostic diagnostic = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  optional RouteGrid routing = 9;
+}
+
+message ListModelRoutesFilters {
+  repeated string connection_ids = 1;
+  optional bool published = 2;
+}
+
+message ListModelRoutesRequest {
+  optional int32 limit = 1;
+  optional string cursor = 2;
+  ListModelRoutesFilters filters = 3;
+}
+
+message ListModelRoutesResponse {
+  repeated ModelRoute routes = 1;
+  optional string next_cursor = 2;
+}
+
+message CreateModelRouteRequest {
+  string public_model_id = 1;
+  // Simple route destination when routing is absent.
+  string connection_id = 2;
+  string upstream_model_id = 3;
+  bool published = 4;
+  optional RouteGrid routing = 5;
+}
+
+message CreateModelRouteResponse {
+  ModelRoute route = 1;
+}
+
+message UpdateModelRouteOperation {
+  optional string connection_id = 1;
+  optional string upstream_model_id = 2;
+  optional bool published = 3;
+  // Replaced atomically. Selecting routing in the mask with no value clears it.
+  optional RouteGrid routing = 4;
+}
+
+message UpdateModelRouteRequest {
+  string id = 1;
+  UpdateModelRouteOperation update = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateModelRouteResponse {
+  ModelRoute route = 1;
+}
+
+message DeleteModelRouteRequest {
+  string id = 1;
+}
+
+message DeleteModelRouteResponse {
+  string id = 1;
+  repeated string warnings = 2;
+}
+
+// Starter criteria only; clients assign each outcome a concrete route target.
+message JudgeOutcomeDefault {
+  string label = 1;
+  string description = 2;
+}
+
+message GetRouteJudgeDefaultsRequest {}
+
+message GetRouteJudgeDefaultsResponse {
+  repeated JudgeOutcomeDefault difficulty = 1;
+  repeated JudgeOutcomeDefault task = 2;
+}
+
+// Read-only compatibility check; does not call the upstream provider or save a route.
+message ValidateRouteJudgeBackendRequest {
+  RouteJudgeBackend backend = 1;
+}
+message ValidateRouteJudgeBackendResponse {}
+
+// Manages chalk/* aliases mapping a public model id to a connection + upstream
+// model id. connection_id is a soft reference (no FK); resolution status is
+// reported per route as a diagnostic.
+service ModelRouteService {
+  rpc ValidateRouteJudgeBackend(ValidateRouteJudgeBackendRequest) returns (ValidateRouteJudgeBackendResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_CREATE;
+  }
+  rpc GetRouteJudgeDefaults(GetRouteJudgeDefaultsRequest) returns (GetRouteJudgeDefaultsResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_READ;
+  }
+  rpc ListModelRoutes(ListModelRoutesRequest) returns (ListModelRoutesResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_READ;
+  }
+  rpc CreateModelRoute(CreateModelRouteRequest) returns (CreateModelRouteResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_CREATE;
+  }
+  rpc UpdateModelRoute(UpdateModelRouteRequest) returns (UpdateModelRouteResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_CREATE;
+  }
+  rpc DeleteModelRoute(DeleteModelRouteRequest) returns (DeleteModelRouteResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_CREATE;
+  }
+}

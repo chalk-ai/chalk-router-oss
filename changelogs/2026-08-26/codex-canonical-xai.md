@@ -1,0 +1,1 @@
+- **BREAKING:** Remove the legacy `grok` provider kind and model prefix; configure xAI connections and use `xai/` instead.

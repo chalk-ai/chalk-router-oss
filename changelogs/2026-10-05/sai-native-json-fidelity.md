@@ -1,0 +1,1 @@
+- Embeddings and image generation preserve native options, exact embedding values, response metadata, and provider headers; embeddings accept token arrays, and unsupported image streaming fails explicitly.

@@ -1,0 +1,1 @@
+- Cluster routers keep response handles and stored trace content confined to their owning environment while reusing cluster credentials.

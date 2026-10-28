@@ -1,0 +1,1 @@
+- OpenRouter connections list their models; OpenRouter's catalog omits a field the listing required, which had left it empty.

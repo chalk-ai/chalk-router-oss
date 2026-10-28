@@ -1,0 +1,1 @@
+- Usage accounting falls back promptly after permanent quota errors and limits retries across combined and separate writes.

@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: router-mock-openai
+  tag: latest
+  pullPolicy: IfNotPresent
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 256Mi
+  limits:
+    cpu: "2"
+    memory: 512Mi

@@ -1,0 +1,1 @@
+- Resolve and strip catalog-qualified model IDs for native Anthropic Messages and token-count requests.

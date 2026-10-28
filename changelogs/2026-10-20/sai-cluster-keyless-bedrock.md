@@ -1,0 +1,1 @@
+- Cluster routers reject keyless Bedrock Runtime connections in every environment except the legacy one, so a team must supply its own Bedrock API key instead of signing with the router's AWS identity.

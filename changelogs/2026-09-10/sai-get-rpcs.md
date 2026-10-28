@@ -1,0 +1,1 @@
+- The admin gRPC API can fetch a single usage pool, usage budget, or rate limit by id, and the usage-pool detail page loads its pool directly instead of paging the whole list.

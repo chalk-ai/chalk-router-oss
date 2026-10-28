@@ -1,0 +1,1 @@
+- OTLP span export failures now appear as warnings in router logs, including errors after retries are exhausted.

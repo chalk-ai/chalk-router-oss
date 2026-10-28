@@ -1,0 +1,114 @@
+name: Container hardening
+on:
+  pull_request:
+    paths:
+      - 'Dockerfile'
+      - 'ui/Dockerfile'
+      - 'caddy/**'
+      - 'ui/package*.json'
+      - 'charts/**'
+      - 'scripts/check-container-hardening.py'
+      - 'scripts/scan-release-image.py'
+      - 'scripts/reviewed-image-findings.json'
+      - 'scripts/install-release-scanner.sh'
+      - '.github/workflows/container-hardening.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Dockerfile'
+      - 'ui/Dockerfile'
+      - 'caddy/**'
+      - 'ui/package*.json'
+      - 'charts/**'
+      - 'scripts/check-container-hardening.py'
+      - 'scripts/scan-release-image.py'
+      - 'scripts/reviewed-image-findings.json'
+      - 'scripts/install-release-scanner.sh'
+      - '.github/workflows/container-hardening.yml'
+concurrency:
+  group: container-hardening-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+jobs:
+  templates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install version-pinned render tools
+        run: |
+          go install helm.sh/helm/v3/cmd/helm@v3.16.2
+          go install github.com/mikefarah/yq/v4@v4.40.4
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - run: helm lint charts/chalk-router
+      - run: python3 scripts/check-container-hardening.py
+  ui-and-sidecar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Build UI image without publishing
+        run: |
+          docker build --tag router-ui-hardening ui
+          docker build --tag router-caddy-hardening caddy
+      - name: Verify non-root read-only UI and Caddy startup
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'docker logs router-ui-hardening; docker logs router-caddy-hardening; docker rm -f router-caddy-hardening router-ui-hardening' EXIT
+          test "$(docker image inspect --format '{{.Config.User}}' router-ui-hardening)" = '10001:10001'
+          docker run -d --name router-ui-hardening --read-only --cap-drop=ALL --security-opt=no-new-privileges \
+            --tmpfs /tmp:rw,noexec,nosuid,size=32m,uid=10001,gid=10001 \
+            --tmpfs /app/.next/cache:rw,noexec,nosuid,size=128m,uid=10001,gid=10001 \
+            -p 127.0.0.1:13000:3000 -p 127.0.0.1:18443:8443 router-ui-hardening
+          for _attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:13000/healthz >/dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:13000/healthz >/dev/null
+          docker exec router-ui-hardening sh -ec 'test "$(id -u)" = 10001; test ! -w /app; touch /app/.next/cache/probe /tmp/probe'
+          python3 - <<'PYCODE'
+          from pathlib import Path
+          source = Path('charts/chalk-router/templates/configmap.yaml').read_text().split('  Caddyfile: |\n', 1)[1]
+          assert '{{' not in source, 'Render templated Caddyfile before smoke testing'
+          Path('/tmp/hardening-Caddyfile').write_text('\n'.join(line[4:] for line in source.splitlines()) + '\n')
+          PYCODE
+          test "$(docker image inspect --format '{{.Config.User}}' router-caddy-hardening)" = '10001:10001'
+          docker run -d --name router-caddy-hardening \
+            --network container:router-ui-hardening --read-only --cap-drop=ALL --security-opt=no-new-privileges \
+            --tmpfs /data:rw,noexec,nosuid,size=32m,uid=10001,gid=10001 \
+            --tmpfs /config:rw,noexec,nosuid,size=16m,uid=10001,gid=10001 \
+            --tmpfs /tmp:rw,noexec,nosuid,size=16m,uid=10001,gid=10001 \
+            -v /tmp/hardening-Caddyfile:/etc/caddy/Caddyfile:ro router-caddy-hardening
+          for _attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:18443/healthz >/dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:18443/healthz >/dev/null
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:13000/api/admin/keys)" = 503
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:18443/api/admin/keys)" = 503
+          docker exec router-caddy-hardening sh -ec 'test "$(id -u)" = 10001; test ! -w /etc; touch /data/probe /config/probe /tmp/probe'
+      - name: Install checksum-pinned TruffleHog
+        run: bash scripts/install-release-scanner.sh "$RUNNER_TEMP/router-scanner"
+      - name: Scan built image layers without credential verification
+        shell: bash
+        run: |
+          set -uo pipefail
+          failed=0
+          python3 scripts/scan-release-image.py --scanner "$RUNNER_TEMP/router-scanner/trufflehog" --image router-ui-hardening --report "image-scan-router-ui-hardening.json" || failed=1
+          python3 scripts/scan-release-image.py --scanner "$RUNNER_TEMP/router-scanner/trufflehog" --image router-caddy-hardening --report "image-scan-router-caddy-hardening.json" || failed=1
+          exit "$failed"
+      - name: Retain redacted image scan evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: image-scan-router-ui-hardening
+          path: image-scan-*.json
+          if-no-files-found: ignore
+          retention-days: 7

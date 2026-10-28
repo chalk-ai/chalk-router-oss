@@ -1,0 +1,1 @@
+- Make router PostgreSQL migrations safe through transaction-pooling proxies while preserving existing SQLx migration history.

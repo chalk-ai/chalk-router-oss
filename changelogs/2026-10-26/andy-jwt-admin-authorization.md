@@ -1,0 +1,1 @@
+- Require scoped JWT authorization for router administration, explicit trusted audiences and environment ownership, and opt-in JWT federation in Helm deployments.

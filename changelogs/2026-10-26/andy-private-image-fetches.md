@@ -1,0 +1,1 @@
+- Caller-supplied images can no longer make the router fetch private-network URLs, even with a trusted model connection; image downloads require an image MIME type, and private images can be supplied inline as base64 data URIs.

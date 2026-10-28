@@ -1,0 +1,1 @@
+- Local migration commands now reject non-local database destinations, including when invoked through `just run migrate`.

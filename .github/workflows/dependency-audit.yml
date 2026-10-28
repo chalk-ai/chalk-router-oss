@@ -1,0 +1,166 @@
+name: Dependency security
+
+on:
+  pull_request:
+    paths:
+      - 'Dockerfile'
+      - 'scripts/scan-release-image.py'
+      - 'scripts/reviewed-image-findings.json'
+      - 'scripts/install-release-scanner.sh'
+      - '.dockerignore'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - 'vendor/**'
+      - 'ui/package*.json'
+      - '.github/workflows/dependency-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Dockerfile'
+      - 'scripts/scan-release-image.py'
+      - 'scripts/reviewed-image-findings.json'
+      - 'scripts/install-release-scanner.sh'
+      - '.dockerignore'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - 'vendor/**'
+      - 'ui/package*.json'
+      - '.github/workflows/dependency-audit.yml'
+
+concurrency:
+  group: dependency-audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install pinned audit tool
+        run: cargo install cargo-audit --version '=0.22.2' --locked
+      - name: Audit all locked Rust dependencies
+        run: cargo audit --deny unsound --deny yanked
+      - name: Reject reintroduction of RustCrypto RSA in the Linux runtime
+        run: |
+          cargo tree --locked --target x86_64-unknown-linux-gnu --edges normal --prefix none --format '{p}' > /tmp/router-runtime-dependencies.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          deps = Path('/tmp/router-runtime-dependencies.txt').read_text().splitlines()
+          if any(line.startswith('rsa v') for line in deps):
+              raise SystemExit('RustCrypto RSA returned to the runtime graph; review META-855 before release.')
+          PY
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.23.4'
+      - name: Audit UI production and development dependencies
+        working-directory: ui
+        run: npm audit --audit-level=low
+
+  linux-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      CARGO_INCREMENTAL: '0'
+      CARGO_PROFILE_DEV_DEBUG: '0'
+      CARGO_PROFILE_TEST_DEBUG: '0'
+      TEST_DATABASE_URL: postgres://test:test@127.0.0.1:5432/chalk_router_test
+    services:
+      postgres:
+        image: postgres:16.14-alpine3.24@sha256:57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: chalk_router_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U test -d chalk_router_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install Rust toolchain
+        run: rustup toolchain install 1.98.0 --profile minimal --component rustfmt,clippy
+      - name: Install test runner
+        run: cargo +1.98.0 install cargo-nextest --version '=0.9.148' --locked
+      - name: Verify patched Google signer
+        run: cargo +1.98.0 test --manifest-path vendor/reqsign-google/Cargo.toml --lib -- --test-threads=1
+      - name: Check formatting
+        run: cargo +1.98.0 fmt -p openai-server -- --check
+      - name: Lint router
+        run: cargo +1.98.0 clippy --locked -p openai-server -- -D warnings
+      - name: Migrate disposable test database
+        env:
+          ROUTER_DATABASE_URL: postgres://test:test@127.0.0.1:5432/chalk_router_test
+          CHALK_ENVIRONMENT_ID: test-db
+        run: cargo +1.98.0 run --locked --quiet --bin openai-server -- migrate
+      - name: Test router on Linux
+        run: cargo +1.98.0 nextest run -p openai-server --profile ci
+
+  release-image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    services:
+      postgres:
+        image: postgres:16.14-alpine3.24@sha256:57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: chalk_router_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U test -d chalk_router_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Build release image without publishing
+        run: docker build --tag router-dependency-test .
+      - name: Verify image startup and authentication
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'docker logs router-dependency-test; docker rm -f router-dependency-test' EXIT
+          test "$(docker image inspect --format '{{.Config.User}}' router-dependency-test)" = '10001:10001'
+          docker run --rm --read-only --cap-drop=ALL --security-opt=no-new-privileges \
+            --tmpfs /tmp:rw,noexec,nosuid,size=64m,uid=10001,gid=10001 --network=host \
+            -e ROUTER_DATABASE_URL=postgres://test:test@127.0.0.1:5432/chalk_router_test \
+            -e CHALK_ENVIRONMENT_ID=test-db router-dependency-test /app/openai-server migrate
+          docker run -d --read-only --cap-drop=ALL --security-opt=no-new-privileges \
+            --tmpfs /tmp:rw,noexec,nosuid,size=64m,uid=10001,gid=10001 --name router-dependency-test -p 127.0.0.1:14001:4001 \
+            -e PORT=4001 -e ROUTER_BIND_ADDRESS=0.0.0.0 \
+            -e ROUTER_ADMIN_KEY=ci-only-ephemeral-admin \
+            -e OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:9 router-dependency-test
+          for _attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:14001/health >/dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:14001/health >/dev/null
+          docker exec router-dependency-test sh -ec 'test "$(id -u)" = 10001; test ! -w /app; touch /tmp/probe'
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:14001/v1/models)" = 401
+          curl --fail --silent -H 'Authorization: Bearer ci-only-ephemeral-admin' \
+            http://127.0.0.1:14001/v1/models >/dev/null
+      - name: Install checksum-pinned TruffleHog
+        run: bash scripts/install-release-scanner.sh "$RUNNER_TEMP/router-scanner"
+      - name: Scan built image layers without credential verification
+        shell: bash
+        run: |
+          set -uo pipefail
+          failed=0
+          python3 scripts/scan-release-image.py --scanner "$RUNNER_TEMP/router-scanner/trufflehog" --image router-dependency-test --report "image-scan-router-dependency-test.json" || failed=1
+          exit "$failed"
+      - name: Retain redacted image scan evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: image-scan-router-dependency-test
+          path: image-scan-*.json
+          if-no-files-found: ignore
+          retention-days: 7

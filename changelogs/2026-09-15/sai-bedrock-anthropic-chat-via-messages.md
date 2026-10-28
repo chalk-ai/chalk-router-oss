@@ -1,0 +1,1 @@
+- Route Bedrock Anthropic models through their compatible Messages API when called with Chat Completions.

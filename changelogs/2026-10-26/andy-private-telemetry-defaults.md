@@ -1,0 +1,1 @@
+- Default to metadata-only tracing and require explicit configuration for content capture and external telemetry destinations.

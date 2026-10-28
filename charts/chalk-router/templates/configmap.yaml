@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: caddy-config
+  labels:
+    {{- include "chalk-router.commonLabels" . | nindent 4 }}
+data:
+  Caddyfile: |
+    :8443 {
+      header Content-Security-Policy "frame-ancestors 'self'"
+      header -X-Frame-Options
+      header Cross-Origin-Resource-Policy "cross-origin"
+
+      handle {
+        reverse_proxy localhost:3000
+      }
+    }

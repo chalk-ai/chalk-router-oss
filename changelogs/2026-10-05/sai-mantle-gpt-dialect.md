@@ -1,0 +1,1 @@
+- Bedrock Mantle routes documented OpenAI GPT models through their supported endpoint while keeping GPT OSS, other providers, model discovery, and custom proxy URLs working as before.

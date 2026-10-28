@@ -1,0 +1,1 @@
+- Require sign-in and same-origin requests in the Router UI, use each user’s authorization for administration, and require a separate router API key for playground requests.

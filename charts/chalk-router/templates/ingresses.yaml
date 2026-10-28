@@ -1,0 +1,56 @@
+{{- if and .Values.ingress.apiFunnelEnabled (not .Values.ingress.apiEnabled) -}}
+{{- fail "ingress.apiFunnelEnabled requires ingress.apiEnabled=true" -}}
+{{- end -}}
+{{- if .Values.ingress.uiEnabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chalk-router-ui
+  annotations:
+    tailscale.com/funnel: "false"
+  labels:
+    {{- include "chalk-router.commonLabels" . | nindent 4 }}
+spec:
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - chalk-router-ui
+  rules:
+    - host: chalk-router-ui
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chalk-router-ui
+                port:
+                  number: 8443
+{{- end }}
+{{- if .Values.ingress.apiEnabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chalk-router
+  annotations:
+    tailscale.com/funnel: {{ .Values.ingress.apiFunnelEnabled | quote }}
+  labels:
+    {{- include "chalk-router.commonLabels" . | nindent 4 }}
+spec:
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - chalk-router
+  rules:
+    - host: chalk-router
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chalk-router-api
+                port:
+                  number: 4001
+{{- end }}

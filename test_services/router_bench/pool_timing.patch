@@ -1,0 +1,10 @@
+diff --git a/src/main.rs b/src/main.rs
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -174,5 +174,6 @@ async fn main() {
+             Some(
+                 sqlx::postgres::PgPoolOptions::new()
++                    .acquire_time_level("debug".parse().expect("diagnostic log level"))
+                     .max_connections(config.database_max_connections)
+                     .acquire_timeout(config.database_acquire_timeout)
+                     .connect_with(connect_options)

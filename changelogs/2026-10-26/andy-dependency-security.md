@@ -1,0 +1,1 @@
+- Updated vulnerable server and UI dependencies and replaced Google service-account signing with the existing ring-backed implementation; dependency audits now reject newly reported vulnerabilities in CI.

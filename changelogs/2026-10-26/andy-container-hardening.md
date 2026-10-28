@@ -1,0 +1,1 @@
+- Runtime containers use an unprivileged identity with restricted pod permissions and bounded writable paths; ingress and public API exposure now require explicit opt-ins.

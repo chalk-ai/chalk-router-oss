@@ -1,0 +1,1 @@
+- Replace the custom Chalk health RPC with standard unauthenticated gRPC startup and readiness probes on the router's h2c port.

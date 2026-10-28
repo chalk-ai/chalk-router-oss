@@ -1,0 +1,117 @@
+[package]
+license = "Apache-2.0"
+name = "openai-server"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[[bin]]
+name = "openai-server"
+path = "src/main.rs"
+
+[dependencies]
+axum = { version = "0.7", features = ["multipart"] }
+tokio = { version = "1", features = ["full"] }
+tokio-stream = "0.1"
+futures = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["raw_value"] }
+tower = { version = "0.4", features = ["util"] }
+tower-http = { version = "0.5", features = ["trace", "cors"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+chrono = { version = "0.4", features = ["serde"] }
+chrono-tz = "0.10"
+uuid = { version = "1.0", features = ["serde", "v4"] }
+async-trait = "0.1"
+bytes = "1"
+# default-features disabled to drop reqwest's `system-proxy` feature: on macOS it
+# pulls in hyper-util's `client-proxy-system`, whose `SCDynamicStore` call aborts
+# under a restricted sandbox (breaks `reqwest::Client::new()` in tests, e.g. the
+# one inside `OidcRegistry`). The router runs on Linux and reads HTTP_PROXY /
+# HTTPS_PROXY / NO_PROXY from the environment regardless, so nothing is lost. The
+# other three (`default-tls`, `charset`, `http2`) are reqwest's remaining defaults.
+reqwest = { version = "0.12", default-features = false, features = ["default-tls", "charset", "http2", "json", "stream", "multipart"] }
+dotenvy = "0.15"
+dashmap = "6"
+# Cluster-mode environment directory cache (TTL per entry, single-flight misses).
+moka = { version = "0.12", features = ["future"] }
+# Valkey/Redis client for the shared prompt cache (`prompt_cache::valkey`).
+# `connection-manager` supplies the reconnecting, multiplexed connection the
+# cache holds; TLS is not enabled because the cache is reached over the
+# cluster-internal network, like the Postgres pool.
+redis = { version = "0.27", default-features = false, features = ["tokio-comp", "connection-manager"] }
+sqlx = { version = "0.9.0", features = ["runtime-tokio", "tls-rustls-ring-webpki", "postgres", "chrono", "uuid", "json", "migrate"] }
+opentelemetry = { version = "0.27", features = ["trace"] }
+opentelemetry_sdk = { version = "0.27", features = ["rt-tokio"] }
+opentelemetry-otlp = { version = "0.27", features = ["default", "grpc-tonic", "http-proto", "reqwest-client", "trace", "tls", "tls-roots"] }
+# OTLP protobuf encoding for the Braintrust span exporter, which posts the body
+# itself (see `telemetry::braintrust` for why it can't use opentelemetry-otlp's
+# HTTP builder). Messages only — no tonic transport, that's the gRPC path above.
+opentelemetry-proto = { version = "0.27", default-features = false, features = ["gen-tonic-messages", "trace"] }
+tonic = { version = "0.12", features = ["tls", "tls-native-roots"] }
+tonic-web = "0.12"
+prost = "0.13"
+prost-types = "0.13"
+http = "1"
+http-body = "1"
+hyper = "1"
+pin-project-lite = "0.2"
+tracing-opentelemetry = "0.28"
+opendal = { version = "0.59.5", features = ["services-s3", "services-gcs"] }
+reqsign = { version = "0.20.7", features = ["aws"] }
+aws-smithy-eventstream = "0.61.1"
+aws-smithy-types = "1.6.2"
+sha2 = "0.10"
+hmac = "0.12"
+base64 = "0.22.1"
+# RS256 signing for the GCP service-account JWT-bearer grant (backend::gcp_auth).
+jsonwebtoken = "9"
+aes-gcm = "0.10"
+rand = "0.8"
+chalk-federated-auth = { git = "https://github.com/chalk-ai/chalk-federated-auth", branch = "main" }
+fieldmask = { version = "0.2", features = ["prost"] }
+
+[build-dependencies]
+tonic-build = "0.12"
+protoc-bin-vendored = "3"
+# Reads the `(chalk.auth.v1.permission)` method options that prost drops.
+prost-reflect = "0.14"
+
+# Debuginfo is the bulk of what gets linked into a test binary, and this repo
+# builds several of them. Keep file:line info for our own code (backtraces
+# stay useful) but drop it entirely for dependencies. `profile.test` inherits
+# `profile.dev`, so this covers `cargo nextest` too. Bump dependency `debug`
+# to 2 locally if you need to step into a dependency with a debugger.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = 0
+
+# The integration tests in `tests/integration_test.rs` make real network
+# calls to OpenAI / Anthropic / Voyage with paid API keys. They are opt-in
+# via `cargo test --test integration_test` so the default `cargo test`
+# (and CI) stays green even when an upstream account hits quota or rate
+# limits.
+[[test]]
+name = "integration_test"
+test = false
+
+[dev-dependencies]
+opentelemetry-proto = { version = "0.27", default-features = false, features = ["gen-tonic", "trace"] }
+jsonwebtoken = "9"
+tokio = { version = "1", features = ["test-util"] }
+tokio-test = "0.4"
+http-body-util = "0.1"
+opentelemetry_sdk = { version = "0.27", features = ["testing", "trace", "rt-tokio"] }
+opentelemetry = { version = "0.27", features = ["trace"] }
+tracing-opentelemetry = "0.28"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing = "0.1"
+futures = "0.3"
+
+# Temporary security patch: use ring for Google OAuth and URL signatures.
+# Provenance and removal criteria: vendor/reqsign-google/SECURITY-PATCH.md.
+[patch.crates-io]
+reqsign-google = { path = "vendor/reqsign-google" }

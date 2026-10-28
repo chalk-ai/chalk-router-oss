@@ -1,0 +1,1 @@
+- Cluster routers resume background jobs for idle environments without delaying startup, and an unresponsive environment lookup no longer holds up recovery of the others or routine maintenance.

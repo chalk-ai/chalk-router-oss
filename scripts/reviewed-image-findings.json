@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "scanner": "trufflehog 3.99.7",
+  "findings": [
+    {
+      "detector": "Circle",
+      "file": "/opt/yarn-v1.22.22/README.md",
+      "candidate_sha256": "22dbbe13778b40f1e0e42870d034071107e4efbefa8a115c754e4014e2ead6c4",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact public Yarn v1.22.22 README build-status badge token, intentionally embedded in upstream documentation; not a Chalk credential. No verification or revocation claim.",
+      "evidence": "https://github.com/yarnpkg/yarn/blob/v1.22.22/README.md"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.7",
+      "candidate_sha256": "d39b542adba392b0815a312917f9e288e2126c09bca49e430773b7fe94082fce",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact HTML entity-table byte sequence; fingerprint matches reviewed libvips data, not authentication material.",
+      "evidence": "https://github.com/libvips/build-sharp-libvips"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.7",
+      "candidate_sha256": "ed801e1650d676ad3e8b7b6363be9f30bacebf7c9d78d627607d0693dac3f6ee",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact HTML entity-table byte sequence; fingerprint matches reviewed libvips data, not authentication material.",
+      "evidence": "https://github.com/libvips/build-sharp-libvips"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.7",
+      "candidate_sha256": "a40d862bca5d9d87e579b75b598c3db391b5a32e4b3e2585f4abfbdb3ccb9e6b",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact HTML entity-table byte sequence; fingerprint matches reviewed libvips data, not authentication material.",
+      "evidence": "https://github.com/libvips/build-sharp-libvips"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.7",
+      "candidate_sha256": "f4617647c8f3cde9573006dfefdec20a74b0b75f75014987f6da144418f9c582",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact HTML entity-table byte sequence; fingerprint matches reviewed libvips data, not authentication material.",
+      "evidence": "https://github.com/libvips/build-sharp-libvips"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/node_modules/@img/sharp-libvips-linuxmusl-x64/lib/libvips-cpp.so.8.18.7",
+      "candidate_sha256": "d39b542adba392b0815a312917f9e288e2126c09bca49e430773b7fe94082fce",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact HTML entity-table byte sequence; fingerprint matches reviewed libvips data, not authentication material.",
+      "evidence": "https://github.com/libvips/build-sharp-libvips"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/node_modules/@img/sharp-libvips-linuxmusl-x64/lib/libvips-cpp.so.8.18.7",
+      "candidate_sha256": "a40d862bca5d9d87e579b75b598c3db391b5a32e4b3e2585f4abfbdb3ccb9e6b",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact HTML entity-table byte sequence; fingerprint matches reviewed libvips data, not authentication material.",
+      "evidence": "https://github.com/libvips/build-sharp-libvips"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/node_modules/@img/sharp-libvips-linuxmusl-x64/lib/libvips-cpp.so.8.18.7",
+      "candidate_sha256": "ed801e1650d676ad3e8b7b6363be9f30bacebf7c9d78d627607d0693dac3f6ee",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact HTML entity-table byte sequence; fingerprint matches reviewed libvips data, not authentication material.",
+      "evidence": "https://github.com/libvips/build-sharp-libvips"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/node_modules/@img/sharp-libvips-linuxmusl-x64/lib/libvips-cpp.so.8.18.7",
+      "candidate_sha256": "f4617647c8f3cde9573006dfefdec20a74b0b75f75014987f6da144418f9c582",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact HTML entity-table byte sequence; fingerprint matches reviewed libvips data, not authentication material.",
+      "evidence": "https://github.com/libvips/build-sharp-libvips"
+    },
+    {
+      "detector": "PrivateKey",
+      "file": "/usr/lib/x86_64-linux-gnu/libgnutls.so.30.34.3",
+      "candidate_sha256": "e67bee82029843d32150647dc8cb2520b36c3526c3b72965588f1306628498c3",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact GnuTLS cryptographic self-test constant rsa_2048_privkey; matched against the Debian base library and decoded upstream C string constants. Not application identity or signing material.",
+      "evidence": "https://github.com/gnutls/gnutls/blob/ca61668d7764fc29fb4cc2aa396cb035e176636d/lib/crypto-selftests-pk.c"
+    },
+    {
+      "detector": "Box",
+      "file": "/usr/lib/x86_64-linux-gnu/libgnutls.so.30.34.3",
+      "candidate_sha256": "796dbaad1df41b53f58155494c210945b363f4f835eb4716b86329fdf8c2d58d",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact GnuTLS cryptographic self-test constant ecdsa_secp384r1_privkey; matched against the Debian base library and decoded upstream C string constants. Not application identity or signing material.",
+      "evidence": "https://github.com/gnutls/gnutls/blob/ca61668d7764fc29fb4cc2aa396cb035e176636d/lib/crypto-selftests-pk.c"
+    },
+    {
+      "detector": "PrivateKey",
+      "file": "/usr/lib/x86_64-linux-gnu/libgnutls.so.30.34.3",
+      "candidate_sha256": "8e78f9986b7d9d91ec2b61318ed7f127aa63be6342e7ca75e1d6429facda3f71",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Exact GnuTLS cryptographic self-test constant ecdsa_secp256r1_privkey; matched against the Debian base library and decoded upstream C string constants. Not application identity or signing material.",
+      "evidence": "https://github.com/gnutls/gnutls/blob/ca61668d7764fc29fb4cc2aa396cb035e176636d/lib/crypto-selftests-pk.c"
+    },
+    {
+      "detector": "RedHatPyxis",
+      "file": "/var/lib/dpkg/available",
+      "candidate_sha256": "53f8cedb7b03ec36698b95934f0c1aececd5db22a711354d4520cece55ec22a7",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Debian package Description-md5 value, matched byte-for-byte in the pinned base image package metadata; a checksum, not an API credential.",
+      "evidence": "docker.io/library/debian@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8"
+    },
+    {
+      "detector": "RedHatPyxis",
+      "file": "/var/lib/dpkg/available",
+      "candidate_sha256": "e5e948816a9605ead84eff7a5f60c609496f852601ccb4cd95897a78c751deab",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Debian package Description-md5 value, matched byte-for-byte in the pinned base image package metadata; a checksum, not an API credential.",
+      "evidence": "docker.io/library/debian@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8"
+    },
+    {
+      "detector": "RedHatPyxis",
+      "file": "/var/lib/dpkg/available",
+      "candidate_sha256": "5071e66f37a50b54eff167847950477ae67c143d7a8a4d5675f39ff8030c67a9",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Debian package Description-md5 value, matched byte-for-byte in the pinned base image package metadata; a checksum, not an API credential.",
+      "evidence": "docker.io/library/debian@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8"
+    },
+    {
+      "detector": "Box",
+      "file": "/var/lib/dpkg/info/libc6:amd64.md5sums",
+      "candidate_sha256": "6f52b313a84f8966e14492b0417c833942ccd90b14fb211528e55a61e75c90f5",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Debian libc package file checksum preceding the gconv/ISO_11548-1.so filename; matched byte-for-byte in the pinned base image, not a Box credential.",
+      "evidence": "docker.io/library/debian@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "64380c98b61938ea65efce7b543bdc668273d8536221560508f4982d51cac7d6",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 44956805; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "f5371a3a00b55e880ea5cf90b7b86273079986b61e44ac0adb24f7e70b7a8348",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 45079381; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "c4f09d9ef6a2818a4baa62127af64a7d662cc632ba776f863f7925905a2f7498",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 46005977; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "e970e71063c6ceed08dc9a61250ee6829de3310eb3610af084031c6dce8bebe8",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 46142603; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "516d94acde25ebf07a9732d72387be4e12e120480eb4baf4d1633225bae38a3d",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 46184142; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "46f540bc72f742c9a7057c12418aa696c2c94e5be8641d54a9b9ee73699ec6ed",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 46292325; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "c242e656283bfef1b9176c6ef7ff75d7237d0c04e789826a15e2ac37df74bb6e",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 49048329; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "f82f6b0688f32d3cb38257212540562a0354e94b568559e0d42dceffe459e0cb",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 49286043; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "c8cf3729c0461b91b4bd4d89e93e7f594944b4260663595dfb73571b3e800dbc",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 49298356; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "100c35687917e3a1082c72699477812e1b5124d57b5cb919a7c441acb4bb6aa8",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 49872266; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "23cfa65927ec96ea0f56908b1c1e3df29a057fcbefbae293fcf40df7c8b0db8b",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 51083841; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    },
+    {
+      "detector": "Box",
+      "file": "/app/openai-server",
+      "candidate_sha256": "91cabb977afcc8b4bdff94936795538373e6ab13516b906106df98a4eee033a6",
+      "reviewed_on": "2026-10-26",
+      "review_by": "2027-01-26",
+      "reason": "Compiler-generated anon.<hash> symbol in the ELF .strtab section at byte 51099946; exact binary SHA256 9a78c68bd88132e66df0d2706d60b324420f8c36614616e3595e0903525787e9. Hash matched locally against the encrypted CI binary, not credential material.",
+      "evidence": "https://github.com/chalk-ai/chalk-router/actions/runs/40431268951"
+    }
+  ]
+}

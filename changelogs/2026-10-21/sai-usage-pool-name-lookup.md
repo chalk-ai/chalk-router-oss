@@ -1,0 +1,1 @@
+- Look up a usage pool by ID or its exact, case-sensitive name within the current environment.

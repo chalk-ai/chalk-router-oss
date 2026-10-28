@@ -1,0 +1,14 @@
+[project]
+name = "chalk-router-chat-bench"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi==0.115.14",
+    "uvicorn[standard]==0.32.1",
+    "httpx==0.28.1",
+    "aiohttp==3.13.1",
+    "grpcio==1.76.0",
+    "grpcio-tools==1.76.0",
+    "opentelemetry-proto==1.38.0",
+    "psycopg[binary]==3.2.12",
+]

@@ -1,0 +1,1 @@
+- Structured-output and tool schemas keep their declared property order when sent to providers.

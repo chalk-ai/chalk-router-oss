@@ -1,0 +1,1 @@
+- Background Responses can now be cancelled and resumed from an event cursor through the OpenAI-compatible API; requests are rejected when a matching Chalk rate limit or token budget would require deferred accounting.

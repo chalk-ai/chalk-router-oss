@@ -1,0 +1,18 @@
+export const examples = [
+  ['chat', 'POST /v1/chat/completions', 'Minimal chat request'],
+  ['chat-stream', 'POST /v1/chat/completions', 'Streaming chat with usage'],
+  ['responses', 'POST /v1/responses', 'Stateless Responses request'],
+  ['embeddings', 'POST /v1/embeddings', 'Text embeddings'],
+  ['images', 'POST /v1/images/generations', 'Image generation'],
+  ['speech', 'POST /v1/audio/speech', 'Speech generation'],
+  ['moderations', 'POST /v1/moderations', 'Text moderation'],
+  ['decisions', 'POST /v1/alpha/decisions', 'Router decision questions'],
+  ['openai-decisions', 'POST /v1/decisions', 'OpenAI-shaped decisions'],
+  ['systemone', 'POST /v1/systemone', 'TypeSafe-shaped decisions'],
+  ['chat-response', null, 'Illustrative chat response'],
+  ['embeddings-response', null, 'Illustrative embedding response (vector shortened)'],
+  ['error-response', null, 'Illustrative router error envelope'],
+  ['list-keys.grpc', null, 'List keys with gRPC'],
+  ['create-key.grpc', null, 'Create a restricted key with gRPC'],
+  ['update-key.grpc', null, 'Update a key description with gRPC'],
+];

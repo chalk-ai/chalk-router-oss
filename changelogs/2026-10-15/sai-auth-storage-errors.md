@@ -1,0 +1,1 @@
+- API requests return a temporary-unavailability error when authentication storage is unavailable, instead of reporting valid credentials as invalid.

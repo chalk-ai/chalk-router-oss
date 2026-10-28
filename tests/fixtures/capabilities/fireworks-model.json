@@ -1,0 +1,7 @@
+{
+  "id": "accounts/fireworks/models/example",
+  "kind": "conversation",
+  "context_length": 131072,
+  "supports_image_input": true,
+  "supports_tools": true
+}

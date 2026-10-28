@@ -1,0 +1,1 @@
+- Gemini Pro image requests from the playground now use the supported size parameter instead of sending an invalid resolution-tier field.

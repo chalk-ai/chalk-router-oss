@@ -1,0 +1,1 @@
+- Split the multi-provider database upgrade into short schema, backfill, and constraint-removal transactions to avoid holding the usage-table schema lock through the backfill.

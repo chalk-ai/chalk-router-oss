@@ -1,0 +1,1 @@
+- Drop API-key `connection_ids`; multi-connection grants use `connection_scopes` (proto field 6).

@@ -1,0 +1,1 @@
+- Gemini Embedding 2 image requests now work with token budgets and token rate limits by reserving 8,192 tokens per document and settling to the reported usage. Requests need that much available capacity before running, even when an image uses fewer tokens; denied requests no longer fetch images for tracing.

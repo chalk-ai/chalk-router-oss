@@ -1,0 +1,2 @@
+- Native Gemini conversations with supplied or referenced history now use the same best-effort token reservation approach as native OpenAI Responses
+- Gemini agent-only requests return the documented 501 response.

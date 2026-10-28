@@ -1,0 +1,1 @@
+- Align the standalone router admin interface with Chalk's tabbed lists, detail sidebars, usage explorer, and split playground layouts.

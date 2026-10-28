@@ -1,0 +1,1 @@
+- Keep Router and admin UI traffic available while Kubernetes rolls new Pods.

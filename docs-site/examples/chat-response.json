@@ -1,0 +1,21 @@
+{
+  "id": "chatcmpl-example",
+  "object": "chat.completion",
+  "created": 1793059200,
+  "model": "chalk/example-chat",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "A cache stores reusable results to avoid repeating work."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 12,
+    "completion_tokens": 14,
+    "total_tokens": 26
+  }
+}

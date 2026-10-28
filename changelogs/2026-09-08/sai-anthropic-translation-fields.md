@@ -1,0 +1,1 @@
+- Anthropic-compatible requests translated to OpenAI-style backends now honor tool_choice.disable_parallel_tool_use, and /v1/chat/completions passes parallel_tool_calls through to OpenAI-compatible providers.

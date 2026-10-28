@@ -1,0 +1,1 @@
+- Persist one idempotent PostgreSQL row per completed inference call with protobuf-numbered token provenance, and hold successful terminal responses until accounting is durable.

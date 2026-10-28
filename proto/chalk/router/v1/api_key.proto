@@ -1,0 +1,223 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import public "chalk/router/v1/rate_limit.proto";
+import "chalk/router/v1/usage_budget.proto";
+
+// How widely one cached completion may be reused. Every scope is already
+// partitioned by model and by Chalk environment; this chooses the tenancy
+// partition on top of that. UNSPECIFIED is treated as TOKEN — the narrowest
+// scope — so a client that omits the field never widens disclosure by accident.
+enum CacheScope {
+  CACHE_SCOPE_UNSPECIFIED = 0;
+  CACHE_SCOPE_MODEL = 1;
+  CACHE_SCOPE_TEAM = 2;
+  CACHE_SCOPE_TOKEN = 3;
+}
+
+// Exact-prefix completion caching for one API token. Absent on the permission
+// means the token is never served from cache and never populates one.
+message CachePolicy {
+  bool enabled = 1;
+  CacheScope scope = 2;
+  optional uint64 ttl_secs = 3;
+  optional uint64 max_entry_bytes = 4;
+}
+
+// Direct model ids a key may call on one connection. Never grants a chalk/*
+// model route; those are granted by ApiKeyRouteScope.
+message ApiKeyConnectionScope {
+  string connection_id = 1;
+  // Public model ids. Empty means any direct model on this connection.
+  repeated string models = 2;
+}
+
+// Select one model route by its immutable id or its public model id (for
+// example, chalk/assistant-pro). Public ids are resolved in the key's environment
+// when the permission is written; stored grants and responses use route_id.
+// Deleting and recreating a public id never carries an existing grant over.
+message ApiKeyRouteRef {
+  oneof identifier {
+    string route_id = 1;
+    string public_model_id = 2;
+  }
+}
+
+// A grant covers everything the route dispatches to: its default target, judge
+// classifier and outcomes, and its own fallbacks, on any connection.
+message ApiKeyRouteScope {
+  repeated ApiKeyRouteRef refs = 1;
+}
+
+// What a key may call. With neither routes nor connection_scopes set, any
+// model. Otherwise the union of the granted routes and the direct models the
+// connection scopes allow; present but empty routes with no connection scopes
+// allow nothing. Responses always set routes on a restricted key.
+message ApiKeyPermission {
+  // Legacy fields. Requests that set them are rejected rather than ignored, so
+  // an older client cannot create an unrestricted key by accident. Responses
+  // never set them; a stored key that carries them is returned with them
+  // folded into connection_scopes.
+  optional string provider = 1 [deprecated = true];
+  repeated string models = 2 [deprecated = true];
+  optional string connection_id = 3 [deprecated = true];
+  optional bool downgradable = 4;
+  optional string model_floor = 5;
+  repeated ApiKeyConnectionScope connection_scopes = 6;
+  optional CachePolicy cache = 7;
+  optional ApiKeyRouteScope routes = 8;
+}
+
+message UsageSnapshot {
+  uint64 prompt_tokens = 1;
+  uint64 completion_tokens = 2;
+  uint64 total_tokens = 3;
+  uint64 request_count = 4;
+}
+
+// Provenance of the token counts persisted for one usage event. Database
+// SMALLINT values use these exact enum numbers; UNSPECIFIED is never stored.
+enum UsageSource {
+  USAGE_SOURCE_UNSPECIFIED = 0;
+  USAGE_SOURCE_REPORTED = 1;
+  USAGE_SOURCE_ESTIMATED = 2;
+  USAGE_SOURCE_LEGACY_UNKNOWN = 3;
+}
+
+message ApiKey {
+  string key_hash = 1;
+  string description = 2;
+  google.protobuf.Timestamp created_at = 3;
+  ApiKeyPermission permission = 4;
+  map<string, string> labels = 5;
+  UsageSnapshot usage = 6;
+  optional uint64 daily_token_budget = 7 [deprecated = true];
+  map<string, string> cost_tags = 8 [deprecated = true];
+  optional string usage_pool_id = 9;
+  string key_prefix = 10;
+  repeated ApiKeyRateLimit rate_limits = 11;
+  repeated UsageBudget usage_budgets = 12;
+}
+
+message CreateKeyRequest {
+  string description = 1;
+  ApiKeyPermission permission = 2;
+  map<string, string> labels = 3;
+  optional uint64 daily_token_budget = 4 [deprecated = true];
+  map<string, string> cost_tags = 5 [deprecated = true];
+  optional string usage_pool_id = 6;
+  repeated ApiKeyRateLimit rate_limits = 7;
+  repeated UsageBudgetSpec usage_budgets = 8;
+}
+
+message CreateKeyResponse {
+  ApiKey key = 1;
+  string raw_key = 2;
+}
+
+message ListKeysRequest {
+  optional int32 limit = 1;
+  optional string cursor = 2;
+}
+
+message ListKeysResponse {
+  repeated ApiKey keys = 1;
+  optional string next_cursor = 2;
+}
+
+message UpdateKeyOperation {
+  optional string description = 1;
+  optional uint64 daily_token_budget = 2 [deprecated = true];
+  optional string usage_pool_id = 3;
+  map<string, string> cost_tags = 4 [deprecated = true];
+  optional ApiKeyPermission permission = 5;
+  repeated ApiKeyRateLimit rate_limits = 6;
+  repeated UsageBudgetSpec usage_budgets = 7;
+}
+
+message UpdateKeyRequest {
+  string key = 1;
+  UpdateKeyOperation update = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateKeyResponse {
+  ApiKey key = 1;
+}
+
+message RevokeKeyRequest {
+  string key = 1;
+}
+
+message RevokeKeyResponse {
+  string key = 1;
+}
+
+message GetKeyUsageRequest {
+  string key = 1;
+}
+
+message GetKeyUsageResponse {
+  string key = 1;
+  string description = 2;
+  optional uint64 daily_token_budget = 3;
+  UsageSnapshot usage = 4;
+}
+
+message ListAllUsageRequest {}
+
+message ListAllUsageResponse {
+  repeated GetKeyUsageResponse keys = 1;
+}
+
+message GetUsageHistogramRequest {
+  string bucket_size = 1;
+  google.protobuf.Timestamp start = 2;
+  google.protobuf.Timestamp end = 3;
+  optional string api_token = 4;
+}
+
+message UsageHistogramRow {
+  string provider = 1 [deprecated = true];
+  google.protobuf.Timestamp bucket = 2;
+  int64 total_tokens = 3;
+  string connection_id = 4;
+  int64 prompt_tokens = 5;
+  int64 completion_tokens = 6;
+  int64 cached_tokens = 7;
+  int64 cache_write_tokens = 8;
+  int64 reasoning_tokens = 9;
+  int64 request_count = 10;
+}
+
+message GetUsageHistogramResponse {
+  repeated UsageHistogramRow rows = 1;
+}
+
+service ApiKeyService {
+  rpc CreateKey(CreateKeyRequest) returns (CreateKeyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc ListKeys(ListKeysRequest) returns (ListKeysResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc UpdateKey(UpdateKeyRequest) returns (UpdateKeyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc RevokeKey(RevokeKeyRequest) returns (RevokeKeyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc GetKeyUsage(GetKeyUsageRequest) returns (GetKeyUsageResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc ListAllUsage(ListAllUsageRequest) returns (ListAllUsageResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc GetUsageHistogram(GetUsageHistogramRequest) returns (GetUsageHistogramResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+}

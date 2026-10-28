@@ -1,0 +1,1 @@
+- Attribute inference spans to verified JWT and router API-key callers with separate `chalk.auth.principal.id` and `chalk.auth.principal.type` fields, while retaining OpenInference `user.id` for verified Chalk JWT subjects.

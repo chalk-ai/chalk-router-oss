@@ -1,0 +1,1 @@
+- Release preparation can create a quarantined source snapshot without legacy Git history or metadata, with private evidence and explicit publication gates.

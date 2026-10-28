@@ -1,0 +1,1 @@
+- Model-scoped rate limits set on a `chalk/*` route now also cover requests its judge or fallbacks send to other models, including the judge's own classification call.

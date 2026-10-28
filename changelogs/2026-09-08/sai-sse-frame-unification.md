@@ -1,0 +1,1 @@
+- Streaming error events on /v1/chat/completions now carry explicit null "param" and "code" fields, matching OpenAI's error object shape.

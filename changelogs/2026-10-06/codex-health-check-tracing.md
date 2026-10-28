@@ -1,0 +1,1 @@
+- HTTP and gRPC health checks no longer produce request traces, including unhealthy probes and probes carrying trace headers.

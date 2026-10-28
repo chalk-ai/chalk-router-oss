@@ -1,0 +1,16 @@
+version: v2
+managed:
+  enabled: true
+inputs:
+  - directory: ../proto
+    # The router's metadata API client; the admin UI never calls it.
+    exclude_paths:
+      - ../proto/chalk/server
+plugins:
+  - local: ./node_modules/.bin/protoc-gen-es
+    out: src/gen
+    opt:
+      - target=ts
+      # Generated bindings are bundled directly by Next.js, which resolves
+      # extensionless TypeScript module imports but not a sibling `.js` file.
+      - import_extension=none

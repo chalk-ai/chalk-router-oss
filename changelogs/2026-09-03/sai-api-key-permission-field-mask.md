@@ -1,0 +1,4 @@
+- Support full API-key permission replacement through gRPC field masks while rejecting unsupported nested permission paths clearly.
+- Let API-key updates replace or clear their direct rate-limit definitions atomically, without affecting inherited usage-pool limits.
+- Added Usage Budget CRUD for canonical daily token budgets, plus the Usage Budgets admin page and shared API-key quota editor.
+- Usage budgets now support UTC calendar daily, weekly, and monthly token periods; the legacy API-key daily field remains a compatibility mapping.

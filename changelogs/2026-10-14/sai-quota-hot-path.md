@@ -1,0 +1,1 @@
+- Requests without matching quotas avoid repeated policy reads, while local quota edits take effect immediately and other replicas refresh within one second.

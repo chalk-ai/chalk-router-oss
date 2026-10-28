@@ -1,0 +1,10 @@
+{
+  "model": "example-decision",
+  "state": "The request asks to summarize an article.",
+  "questions": {
+    "summary": {
+      "type": "noul",
+      "instructions": "Does the request ask for a summary?"
+    }
+  }
+}

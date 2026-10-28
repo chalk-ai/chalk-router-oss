@@ -1,0 +1,6728 @@
+{
+  "routes": [
+    {
+      "handler": "health_check",
+      "line": 625,
+      "method": "GET",
+      "path": "/health",
+      "status": "Implemented",
+      "guide": "operations",
+      "summary": "Unauthenticated HTTP health; plain text OK.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::decisions::create_decision",
+      "line": 500,
+      "method": "POST",
+      "path": "/v1/alpha/decisions",
+      "status": "Implemented",
+      "guide": "decisions",
+      "summary": "Router extension; canonical decision questions.",
+      "request": [
+        "DecisionsRequest"
+      ],
+      "response": [
+        "DecisionsResponse"
+      ]
+    },
+    {
+      "handler": "handlers::assistants::list_assistants",
+      "line": 529,
+      "method": "GET",
+      "path": "/v1/assistants",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::assistants::create_assistant",
+      "line": 532,
+      "method": "POST",
+      "path": "/v1/assistants",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::assistants::delete_assistant",
+      "line": 544,
+      "method": "DELETE",
+      "path": "/v1/assistants/:assistant_id",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::assistants::get_assistant",
+      "line": 536,
+      "method": "GET",
+      "path": "/v1/assistants/:assistant_id",
+      "status": "Placeholder · 404",
+      "guide": "media",
+      "summary": "Always not found; no implemented resource lifecycle.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::assistants::modify_assistant",
+      "line": 540,
+      "method": "POST",
+      "path": "/v1/assistants/:assistant_id",
+      "status": "Placeholder · 404",
+      "guide": "media",
+      "summary": "Always not found; no implemented resource lifecycle.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::audio::create_speech",
+      "line": 576,
+      "method": "POST",
+      "path": "/v1/audio/speech",
+      "status": "Provider-dependent",
+      "guide": "media",
+      "summary": "JSON request; binary/provider response buffered.",
+      "request": [
+        "CreateSpeechRequest"
+      ],
+      "response": []
+    },
+    {
+      "handler": "handlers::audio::create_transcription",
+      "line": 579,
+      "method": "POST",
+      "path": "/v1/audio/transcriptions",
+      "status": "Provider-dependent",
+      "guide": "media",
+      "summary": "Multipart file and model; provider response buffered.",
+      "request": [],
+      "response": [
+        "TranscriptionResponse"
+      ]
+    },
+    {
+      "handler": "handlers::audio::create_translation",
+      "line": 583,
+      "method": "POST",
+      "path": "/v1/audio/translations",
+      "status": "Provider-dependent",
+      "guide": "media",
+      "summary": "Multipart file and model; provider response buffered.",
+      "request": [],
+      "response": [
+        "TranscriptionResponse"
+      ]
+    },
+    {
+      "handler": "handlers::batch::list_batches",
+      "line": 618,
+      "method": "GET",
+      "path": "/v1/batches",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::batch::create_batch",
+      "line": 617,
+      "method": "POST",
+      "path": "/v1/batches",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::batch::get_batch",
+      "line": 619,
+      "method": "GET",
+      "path": "/v1/batches/:batch_id",
+      "status": "Placeholder · 404",
+      "guide": "media",
+      "summary": "Always not found; no implemented resource lifecycle.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::batch::cancel_batch",
+      "line": 622,
+      "method": "POST",
+      "path": "/v1/batches/:batch_id/cancel",
+      "status": "Placeholder · 404",
+      "guide": "media",
+      "summary": "Always not found; no implemented resource lifecycle.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::chat::create_chat_completion",
+      "line": 494,
+      "method": "POST",
+      "path": "/v1/chat/completions",
+      "status": "Implemented",
+      "guide": "chat",
+      "summary": "Native Chat or capability-checked translation; JSON or SSE.",
+      "request": [
+        "ChatCompletionRequest"
+      ],
+      "response": [
+        "ChatCompletionResponse",
+        "ChatCompletionChunk"
+      ]
+    },
+    {
+      "handler": "handlers::decisions::create_openai_decision",
+      "line": 504,
+      "method": "POST",
+      "path": "/v1/decisions",
+      "status": "Implemented",
+      "guide": "decisions",
+      "summary": "OpenAI-shaped ingress translated to a capable decision model.",
+      "request": [
+        "OpenAiDecisionsRequest"
+      ],
+      "response": []
+    },
+    {
+      "handler": "handlers::embeddings::create_embedding",
+      "line": 560,
+      "method": "POST",
+      "path": "/v1/embeddings",
+      "status": "Provider-dependent",
+      "guide": "media",
+      "summary": "Text, token, or multimodal embeddings depending on the route.",
+      "request": [
+        "CreateEmbeddingRequest"
+      ],
+      "response": [
+        "CreateEmbeddingResponse"
+      ]
+    },
+    {
+      "handler": "handlers::files::list_files",
+      "line": 586,
+      "method": "GET",
+      "path": "/v1/files",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::files::upload_file",
+      "line": 587,
+      "method": "POST",
+      "path": "/v1/files",
+      "status": "Disabled · 501",
+      "guide": "media",
+      "summary": "Uploads disabled for all callers pending file-specific grants, resource limits, and owned lifecycle.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::files::delete_file",
+      "line": 589,
+      "method": "DELETE",
+      "path": "/v1/files/:file_id",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::files::get_file",
+      "line": 588,
+      "method": "GET",
+      "path": "/v1/files/:file_id",
+      "status": "Placeholder · 404",
+      "guide": "media",
+      "summary": "Always not found; no implemented resource lifecycle.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::files::download_file",
+      "line": 592,
+      "method": "GET",
+      "path": "/v1/files/:file_id/content",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::fine_tuning::list_fine_tuning_jobs",
+      "line": 601,
+      "method": "GET",
+      "path": "/v1/fine_tuning/jobs",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::fine_tuning::create_fine_tuning_job",
+      "line": 597,
+      "method": "POST",
+      "path": "/v1/fine_tuning/jobs",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Registered but not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::fine_tuning::get_fine_tuning_job",
+      "line": 605,
+      "method": "GET",
+      "path": "/v1/fine_tuning/jobs/:job_id",
+      "status": "Placeholder · 404",
+      "guide": "media",
+      "summary": "Always not found; no implemented resource lifecycle.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::fine_tuning::cancel_fine_tuning_job",
+      "line": 609,
+      "method": "POST",
+      "path": "/v1/fine_tuning/jobs/:job_id/cancel",
+      "status": "Placeholder · 404",
+      "guide": "media",
+      "summary": "Always not found; no implemented resource lifecycle.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "v1_healthcheck",
+      "line": 626,
+      "method": "GET",
+      "path": "/v1/healthcheck",
+      "status": "Implemented",
+      "guide": "operations",
+      "summary": "Unauthenticated HTTP health; fixed profile/status JSON.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::images::create_image_edit",
+      "line": 569,
+      "method": "POST",
+      "path": "/v1/images/edits",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Image editing not implemented; current extractor expects JSON.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::images::create_image",
+      "line": 565,
+      "method": "POST",
+      "path": "/v1/images/generations",
+      "status": "Provider-dependent",
+      "guide": "media",
+      "summary": "JSON image generation; stream:true returns 501.",
+      "request": [
+        "CreateImageRequest"
+      ],
+      "response": [
+        "ImageResponse"
+      ]
+    },
+    {
+      "handler": "handlers::images::create_image_variation",
+      "line": 573,
+      "method": "POST",
+      "path": "/v1/images/variations",
+      "status": "Placeholder · 501",
+      "guide": "media",
+      "summary": "Image variation not implemented; current extractor expects JSON.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::anthropic::proxy_messages",
+      "line": 472,
+      "method": "POST",
+      "path": "/v1/messages",
+      "status": "Implemented",
+      "guide": "provider-apis",
+      "summary": "Native Anthropic body or restricted Chat translation; JSON/SSE.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::anthropic::proxy_messages_count_tokens",
+      "line": 475,
+      "method": "POST",
+      "path": "/v1/messages/count_tokens",
+      "status": "Provider-dependent",
+      "guide": "provider-apis",
+      "summary": "Native token count, no fallback; provider-shaped JSON.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::models::list_models",
+      "line": 547,
+      "method": "GET",
+      "path": "/v1/models",
+      "status": "Implemented",
+      "guide": "models",
+      "summary": "Permission-filtered model catalog with capabilities; no pagination.",
+      "request": [],
+      "response": [
+        "ListResponse",
+        "Model"
+      ]
+    },
+    {
+      "handler": "handlers::models::delete_model",
+      "line": 555,
+      "method": "DELETE",
+      "path": "/v1/models/:model_id",
+      "status": "Disabled · 501",
+      "guide": "models",
+      "summary": "Use the authorized ModelRouteService/DeleteModelRoute admin RPC; never mutates through inference auth.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::models::get_model",
+      "line": 552,
+      "method": "GET",
+      "path": "/v1/models/:model_id",
+      "status": "Implemented",
+      "guide": "models",
+      "summary": "Resolve one visible model.",
+      "request": [],
+      "response": [
+        "Model"
+      ]
+    },
+    {
+      "handler": "handlers::models::project_models_for_vscode",
+      "line": 550,
+      "method": "GET",
+      "path": "/v1/models/projections/vscode",
+      "status": "Implemented",
+      "guide": "models",
+      "summary": "Router extension; generated VS Code configuration.",
+      "request": [
+        "VscodeProjectionQuery"
+      ],
+      "response": [
+        "VscodeModelConfigList"
+      ]
+    },
+    {
+      "handler": "handlers::moderations::create_moderation",
+      "line": 614,
+      "method": "POST",
+      "path": "/v1/moderations",
+      "status": "Provider-dependent",
+      "guide": "media",
+      "summary": "Text moderation; default model omni-moderation-latest.",
+      "request": [
+        "CreateModerationRequest"
+      ],
+      "response": [
+        "CreateModerationResponse"
+      ]
+    },
+    {
+      "handler": "handlers::responses::create_response",
+      "line": 511,
+      "method": "POST",
+      "path": "/v1/responses",
+      "status": "Implemented",
+      "guide": "responses",
+      "summary": "Native Responses or limited Chat translation; opaque lifecycle IDs.",
+      "request": [
+        "CreateResponseRequest"
+      ],
+      "response": [
+        "CreateResponseResponse"
+      ]
+    },
+    {
+      "handler": "handlers::responses::delete_response",
+      "line": 518,
+      "method": "DELETE",
+      "path": "/v1/responses/:response_id",
+      "status": "Provider-dependent",
+      "guide": "responses",
+      "summary": "Connection-affine native/adapted deletion; upstream response body.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::responses::retrieve_response",
+      "line": 518,
+      "method": "GET",
+      "path": "/v1/responses/:response_id",
+      "status": "Provider-dependent",
+      "guide": "responses",
+      "summary": "Connection-affine retrieval; stream and starting_after query fields.",
+      "request": [
+        "RetrieveResponseQuery"
+      ],
+      "response": [
+        "CreateResponseResponse"
+      ]
+    },
+    {
+      "handler": "handlers::responses::cancel_response",
+      "line": 523,
+      "method": "POST",
+      "path": "/v1/responses/:response_id/cancel",
+      "status": "Provider-dependent",
+      "guide": "responses",
+      "summary": "Connection-affine native/adapted cancellation.",
+      "request": [],
+      "response": [
+        "CreateResponseResponse"
+      ]
+    },
+    {
+      "handler": "handlers::responses::compact_response",
+      "line": 514,
+      "method": "POST",
+      "path": "/v1/responses/compact",
+      "status": "Provider-dependent",
+      "guide": "responses",
+      "summary": "Native/adapted compaction only; arbitrary retained JSON; no fallback.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::decisions::create_system_one",
+      "line": 508,
+      "method": "POST",
+      "path": "/v1/systemone",
+      "status": "Implemented",
+      "guide": "decisions",
+      "summary": "TypeSafe-shaped ingress.",
+      "request": [
+        "SystemOneRequest"
+      ],
+      "response": [
+        "SystemOneResponse"
+      ]
+    },
+    {
+      "handler": "handlers::traces::ingest_spans",
+      "line": 527,
+      "method": "POST",
+      "path": "/v1/traces/spans",
+      "status": "Implemented",
+      "guide": "operations",
+      "summary": "Router extension; client trace ingestion.",
+      "request": [
+        "IngestSpansRequest"
+      ],
+      "response": [
+        "IngestSpansResponse"
+      ]
+    },
+    {
+      "handler": "handlers::gemini::create_interaction",
+      "line": 480,
+      "method": "POST",
+      "path": "/v1beta/interactions",
+      "status": "Provider-dependent",
+      "guide": "provider-apis",
+      "summary": "Native Gemini JSON/SSE; agents and background unsupported.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::gemini::unsupported_interaction_operation",
+      "line": 484,
+      "method": "DELETE",
+      "path": "/v1beta/interactions/:interaction_id",
+      "status": "Placeholder · 501",
+      "guide": "provider-apis",
+      "summary": "Interaction lifecycle is not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::gemini::unsupported_interaction_operation",
+      "line": 484,
+      "method": "GET",
+      "path": "/v1beta/interactions/:interaction_id",
+      "status": "Placeholder · 501",
+      "guide": "provider-apis",
+      "summary": "Interaction lifecycle is not implemented.",
+      "request": [],
+      "response": []
+    },
+    {
+      "handler": "handlers::gemini::unsupported_interaction_operation",
+      "line": 489,
+      "method": "POST",
+      "path": "/v1beta/interactions/:interaction_id/cancel",
+      "status": "Placeholder · 501",
+      "guide": "provider-apis",
+      "summary": "Interaction lifecycle is not implemented.",
+      "request": [],
+      "response": []
+    }
+  ],
+  "rpcs": [
+    {
+      "path": "/chalk.router.v1.RateLimitService/CreateRateLimit",
+      "input": ".chalk.router.v1.CreateRateLimitRequest",
+      "output": ".chalk.router.v1.CreateRateLimitResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.RateLimitService/ListRateLimits",
+      "input": ".chalk.router.v1.ListRateLimitsRequest",
+      "output": ".chalk.router.v1.ListRateLimitsResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.RateLimitService/UpdateRateLimit",
+      "input": ".chalk.router.v1.UpdateRateLimitRequest",
+      "output": ".chalk.router.v1.UpdateRateLimitResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.RateLimitService/GetRateLimit",
+      "input": ".chalk.router.v1.GetRateLimitRequest",
+      "output": ".chalk.router.v1.GetRateLimitResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.RateLimitService/DeleteRateLimit",
+      "input": ".chalk.router.v1.DeleteRateLimitRequest",
+      "output": ".chalk.router.v1.DeleteRateLimitResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsageBudgetService/CreateUsageBudget",
+      "input": ".chalk.router.v1.CreateUsageBudgetRequest",
+      "output": ".chalk.router.v1.CreateUsageBudgetResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsageBudgetService/ListUsageBudgets",
+      "input": ".chalk.router.v1.ListUsageBudgetsRequest",
+      "output": ".chalk.router.v1.ListUsageBudgetsResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsageBudgetService/UpdateUsageBudget",
+      "input": ".chalk.router.v1.UpdateUsageBudgetRequest",
+      "output": ".chalk.router.v1.UpdateUsageBudgetResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsageBudgetService/GetUsageBudget",
+      "input": ".chalk.router.v1.GetUsageBudgetRequest",
+      "output": ".chalk.router.v1.GetUsageBudgetResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsageBudgetService/DeleteUsageBudget",
+      "input": ".chalk.router.v1.DeleteUsageBudgetRequest",
+      "output": ".chalk.router.v1.DeleteUsageBudgetResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ApiKeyService/CreateKey",
+      "input": ".chalk.router.v1.CreateKeyRequest",
+      "output": ".chalk.router.v1.CreateKeyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ApiKeyService/ListKeys",
+      "input": ".chalk.router.v1.ListKeysRequest",
+      "output": ".chalk.router.v1.ListKeysResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ApiKeyService/UpdateKey",
+      "input": ".chalk.router.v1.UpdateKeyRequest",
+      "output": ".chalk.router.v1.UpdateKeyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ApiKeyService/RevokeKey",
+      "input": ".chalk.router.v1.RevokeKeyRequest",
+      "output": ".chalk.router.v1.RevokeKeyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ApiKeyService/GetKeyUsage",
+      "input": ".chalk.router.v1.GetKeyUsageRequest",
+      "output": ".chalk.router.v1.GetKeyUsageResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ApiKeyService/ListAllUsage",
+      "input": ".chalk.router.v1.ListAllUsageRequest",
+      "output": ".chalk.router.v1.ListAllUsageResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ApiKeyService/GetUsageHistogram",
+      "input": ".chalk.router.v1.GetUsageHistogramRequest",
+      "output": ".chalk.router.v1.GetUsageHistogramResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.BackgroundResponseService/ListBackgroundResponses",
+      "input": ".chalk.router.v1.ListBackgroundResponsesRequest",
+      "output": ".chalk.router.v1.ListBackgroundResponsesResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_LOGS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.DebugService/RecentCompletions",
+      "input": ".chalk.router.v1.RecentCompletionsRequest",
+      "output": ".chalk.router.v1.RecentCompletionsResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_LOGS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.FallbackPolicyService/GetFallbackPolicy",
+      "input": ".chalk.router.v1.GetFallbackPolicyRequest",
+      "output": ".chalk.router.v1.GetFallbackPolicyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_READ\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.FallbackPolicyService/UpdateFallbackPolicy",
+      "input": ".chalk.router.v1.UpdateFallbackPolicyRequest",
+      "output": ".chalk.router.v1.UpdateFallbackPolicyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_CREATE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.JudgePolicyService/GetJudgePolicy",
+      "input": ".chalk.router.v1.GetJudgePolicyRequest",
+      "output": ".chalk.router.v1.GetJudgePolicyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_READ\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.JudgePolicyService/UpdateJudgePolicy",
+      "input": ".chalk.router.v1.UpdateJudgePolicyRequest",
+      "output": ".chalk.router.v1.UpdateJudgePolicyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_CREATE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ModelRouteService/ValidateRouteJudgeBackend",
+      "input": ".chalk.router.v1.ValidateRouteJudgeBackendRequest",
+      "output": ".chalk.router.v1.ValidateRouteJudgeBackendResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_CREATE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ModelRouteService/GetRouteJudgeDefaults",
+      "input": ".chalk.router.v1.GetRouteJudgeDefaultsRequest",
+      "output": ".chalk.router.v1.GetRouteJudgeDefaultsResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_READ\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ModelRouteService/ListModelRoutes",
+      "input": ".chalk.router.v1.ListModelRoutesRequest",
+      "output": ".chalk.router.v1.ListModelRoutesResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_READ\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ModelRouteService/CreateModelRoute",
+      "input": ".chalk.router.v1.CreateModelRouteRequest",
+      "output": ".chalk.router.v1.CreateModelRouteResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_CREATE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ModelRouteService/UpdateModelRoute",
+      "input": ".chalk.router.v1.UpdateModelRouteRequest",
+      "output": ".chalk.router.v1.UpdateModelRouteResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_CREATE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ModelRouteService/DeleteModelRoute",
+      "input": ".chalk.router.v1.DeleteModelRouteRequest",
+      "output": ".chalk.router.v1.DeleteModelRouteResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_DEPLOY_CREATE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ProviderConnectionService/ListProviderConnections",
+      "input": ".chalk.router.v1.ListProviderConnectionsRequest",
+      "output": ".chalk.router.v1.ListProviderConnectionsResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ProviderConnectionService/ListProviderConnectionModels",
+      "input": ".chalk.router.v1.ListProviderConnectionModelsRequest",
+      "output": ".chalk.router.v1.ListProviderConnectionModelsResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ProviderConnectionService/CreateProviderConnection",
+      "input": ".chalk.router.v1.CreateProviderConnectionRequest",
+      "output": ".chalk.router.v1.CreateProviderConnectionResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ProviderConnectionService/UpdateProviderConnection",
+      "input": ".chalk.router.v1.UpdateProviderConnectionRequest",
+      "output": ".chalk.router.v1.UpdateProviderConnectionResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ProviderConnectionService/DeleteProviderConnection",
+      "input": ".chalk.router.v1.DeleteProviderConnectionRequest",
+      "output": ".chalk.router.v1.DeleteProviderConnectionResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.ProviderConnectionService/TestProviderConnection",
+      "input": ".chalk.router.v1.TestProviderConnectionRequest",
+      "output": ".chalk.router.v1.TestProviderConnectionResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.SamplingPolicyService/GetSamplingPolicy",
+      "input": ".chalk.router.v1.GetSamplingPolicyRequest",
+      "output": ".chalk.router.v1.GetSamplingPolicyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_MONITORING_READ\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.SamplingPolicyService/UpdateSamplingPolicy",
+      "input": ".chalk.router.v1.UpdateSamplingPolicyRequest",
+      "output": ".chalk.router.v1.UpdateSamplingPolicyResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_MONITORING_CREATE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.TelemetrySettingsService/ListTelemetryExporters",
+      "input": ".chalk.router.v1.ListTelemetryExportersRequest",
+      "output": ".chalk.router.v1.ListTelemetryExportersResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.TelemetrySettingsService/UpsertTelemetryExporter",
+      "input": ".chalk.router.v1.UpsertTelemetryExporterRequest",
+      "output": ".chalk.router.v1.UpsertTelemetryExporterResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.TelemetrySettingsService/DeleteTelemetryExporter",
+      "input": ".chalk.router.v1.DeleteTelemetryExporterRequest",
+      "output": ".chalk.router.v1.DeleteTelemetryExporterResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.TelemetrySettingsService/TestTelemetryExporter",
+      "input": ".chalk.router.v1.TestTelemetryExporterRequest",
+      "output": ".chalk.router.v1.TestTelemetryExporterResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_SECRETS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsageService/QueryUsage",
+      "input": ".chalk.router.v1.QueryUsageRequest",
+      "output": ".chalk.router.v1.QueryUsageResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_MONITORING_READ\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsagePoolService/CreateUsagePool",
+      "input": ".chalk.router.v1.CreateUsagePoolRequest",
+      "output": ".chalk.router.v1.CreateUsagePoolResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsagePoolService/UpdateUsagePool",
+      "input": ".chalk.router.v1.UpdateUsagePoolRequest",
+      "output": ".chalk.router.v1.UpdateUsagePoolResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsagePoolService/ListUsagePools",
+      "input": ".chalk.router.v1.ListUsagePoolsRequest",
+      "output": ".chalk.router.v1.ListUsagePoolsResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsagePoolService/GetUsagePool",
+      "input": ".chalk.router.v1.GetUsagePoolRequest",
+      "output": ".chalk.router.v1.GetUsagePoolResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_LIST\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/chalk.router.v1.UsagePoolService/DeleteUsagePool",
+      "input": ".chalk.router.v1.DeleteUsagePoolRequest",
+      "output": ".chalk.router.v1.DeleteUsagePoolResponse",
+      "permissions": [
+        "[chalk.auth.v1.permission]: \"PERMISSION_TOKENS_WRITE\""
+      ],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/grpc.health.v1.Health/Check",
+      "input": ".grpc.health.v1.HealthCheckRequest",
+      "output": ".grpc.health.v1.HealthCheckResponse",
+      "permissions": [],
+      "cardinality": "Unary"
+    },
+    {
+      "path": "/grpc.health.v1.Health/Watch",
+      "input": ".grpc.health.v1.HealthCheckRequest",
+      "output": ".grpc.health.v1.HealthCheckResponse",
+      "permissions": [],
+      "cardinality": "Server streaming"
+    }
+  ],
+  "types": [
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [
+            "# [serde (default = \"list_object\")]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "data",
+          "serde": [],
+          "type": "Vec < T >"
+        },
+        {
+          "comment": "",
+          "name": "first_id",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "last_id",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "has_more",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "bool"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 5,
+      "name": "ListResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "error",
+          "serde": [],
+          "type": "Error"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 19,
+      "name": "ErrorResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "message",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "error_type",
+          "serde": [
+            "# [serde (rename = \"type\")]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "param",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "code",
+          "serde": [],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 49,
+      "name": "Error",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "created_at",
+          "serde": [],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "description",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "instructions",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "tools",
+          "serde": [],
+          "type": "Vec < AssistantTool >"
+        },
+        {
+          "comment": "",
+          "name": "metadata",
+          "serde": [],
+          "type": "Option < serde_json :: Value >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 59,
+      "name": "Assistant",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/types.rs",
+      "line": 72,
+      "name": "AssistantTool",
+      "serde": [
+        "# [serde (tag = \"type\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "CodeInterpreter",
+          "serde": [
+            "# [serde (rename = \"code_interpreter\")]"
+          ]
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "file_search",
+              "serde": [],
+              "type": "Option < serde_json :: Value >"
+            }
+          ],
+          "name": "FileSearch",
+          "serde": [
+            "# [serde (rename = \"file_search\")]"
+          ]
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "function",
+              "serde": [],
+              "type": "FunctionDefinition"
+            }
+          ],
+          "name": "Function",
+          "serde": [
+            "# [serde (rename = \"function\")]"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "description",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "parameters",
+          "serde": [],
+          "type": "Option < serde_json :: Value >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 85,
+      "name": "FunctionDefinition",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "description",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "instructions",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "tools",
+          "serde": [],
+          "type": "Option < Vec < AssistantTool > >"
+        },
+        {
+          "comment": "",
+          "name": "metadata",
+          "serde": [],
+          "type": "Option < serde_json :: Value >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 92,
+      "name": "CreateAssistantRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "fallbacks",
+          "serde": [
+            "# [serde (default , skip_serializing)]"
+          ],
+          "type": "crate :: route_grid :: FallbackMap"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "messages",
+          "serde": [],
+          "type": "Vec < ChatMessage >"
+        },
+        {
+          "comment": "",
+          "name": "temperature",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < f32 >"
+        },
+        {
+          "comment": "",
+          "name": "top_p",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < f32 >"
+        },
+        {
+          "comment": "",
+          "name": "n",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < i32 >"
+        },
+        {
+          "comment": "",
+          "name": "stream",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "stop",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < String > >"
+        },
+        {
+          "comment": "",
+          "name": "max_tokens",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < i32 >"
+        },
+        {
+          "comment": "",
+          "name": "max_completion_tokens",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < i32 >"
+        },
+        {
+          "comment": "",
+          "name": "presence_penalty",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < f32 >"
+        },
+        {
+          "comment": "",
+          "name": "frequency_penalty",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < f32 >"
+        },
+        {
+          "comment": "",
+          "name": "logit_bias",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < serde_json :: Value >"
+        },
+        {
+          "comment": "",
+          "name": "user",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "tools",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < Tool > >"
+        },
+        {
+          "comment": "",
+          "name": "tool_choice",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < serde_json :: Value >"
+        },
+        {
+          "comment": "",
+          "name": "response_format",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < crate :: schema_json :: SchemaJson >"
+        },
+        {
+          "comment": "",
+          "name": "stream_options",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < StreamOptions >"
+        },
+        {
+          "comment": "",
+          "name": "parallel_tool_calls",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "Requested reasoning effort; interpretation depends on the upstream provider.",
+          "name": "reasoning_effort",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 103,
+      "name": "ChatCompletionRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "Options for streamed chat-completion responses.  Mirrors OpenAI's `stream_options` request field: when `include_usage` is set, the terminal streamed chunk carries a token-usage summary.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "include_usage",
+          "serde": [],
+          "type": "bool"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 146,
+      "name": "StreamOptions",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "tool_type",
+          "serde": [
+            "# [serde (rename = \"type\")]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "function",
+          "serde": [],
+          "type": "ToolFunction"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 155,
+      "name": "Tool",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "description",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "parameters",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < crate :: schema_json :: SchemaJson >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 162,
+      "name": "ToolFunction",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "role",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "content",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < serde_json :: Value >"
+        },
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "tool_calls",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < ToolCall > >"
+        },
+        {
+          "comment": "",
+          "name": "tool_call_id",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 171,
+      "name": "ChatMessage",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "tool_type",
+          "serde": [
+            "# [serde (rename = \"type\")]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "function",
+          "serde": [],
+          "type": "FunctionCall"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 184,
+      "name": "ToolCall",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "arguments",
+          "serde": [],
+          "type": "String"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 192,
+      "name": "FunctionCall",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/types.rs",
+      "line": 198,
+      "name": "ContentPart",
+      "serde": [
+        "# [serde (tag = \"type\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "text",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Text",
+          "serde": [
+            "# [serde (rename = \"text\")]"
+          ]
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "image_url",
+              "serde": [],
+              "type": "ImageUrl"
+            }
+          ],
+          "name": "ImageUrl",
+          "serde": [
+            "# [serde (rename = \"image_url\")]"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "url",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "detail",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 207,
+      "name": "ImageUrl",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "created",
+          "serde": [],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "choices",
+          "serde": [],
+          "type": "Vec < ChatChoice >"
+        },
+        {
+          "comment": "",
+          "name": "usage",
+          "serde": [],
+          "type": "Option < Usage >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 214,
+      "name": "ChatCompletionResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "index",
+          "serde": [],
+          "type": "i32"
+        },
+        {
+          "comment": "",
+          "name": "message",
+          "serde": [],
+          "type": "ChatMessage"
+        },
+        {
+          "comment": "",
+          "name": "finish_reason",
+          "serde": [],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 224,
+      "name": "ChatChoice",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "prompt_tokens",
+          "serde": [],
+          "type": "i32"
+        },
+        {
+          "comment": "",
+          "name": "completion_tokens",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < i32 >"
+        },
+        {
+          "comment": "",
+          "name": "total_tokens",
+          "serde": [],
+          "type": "i32"
+        },
+        {
+          "comment": "",
+          "name": "prompt_tokens_details",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < PromptTokenDetails >"
+        },
+        {
+          "comment": "",
+          "name": "completion_tokens_details",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < CompletionTokenDetails >"
+        },
+        {
+          "comment": "Observation-only billing metadata; never added to the provider wire format.",
+          "name": "input_token_attribution",
+          "serde": [
+            "# [serde (skip)]"
+          ],
+          "type": "crate :: pricing :: InputTokenAttribution"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 231,
+      "name": "Usage",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "cached_tokens",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i32"
+        },
+        {
+          "comment": "",
+          "name": "cache_write_tokens",
+          "serde": [
+            "# [serde (default , alias = \"cache_creation_tokens\" , alias = \"cache_write_input_tokens\")]"
+          ],
+          "type": "i32"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 246,
+      "name": "PromptTokenDetails",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "reasoning_tokens",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i32"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 258,
+      "name": "CompletionTokenDetails",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [
+            "# [serde (default = \"model_object\")]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "created",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "owned_by",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "Chalk's additive, effective capability profile. Upstream model objects omit this field; the router attaches it after resolving the public id.",
+          "name": "capabilities",
+          "serde": [
+            "# [serde (default , skip_deserializing , skip_serializing_if = \"Option::is_none\" , serialize_with = \"serialize_model_capabilities\")]"
+          ],
+          "type": "Option < crate :: capabilities :: CapabilityProfile >"
+        },
+        {
+          "comment": "Provider-native catalog fields retained only long enough to map authoritative discovery facts. They are never echoed by Chalk's model APIs and are never deserialized directly into the public schema.",
+          "name": "provider_metadata",
+          "serde": [
+            "# [serde (default , flatten , skip_serializing)]"
+          ],
+          "type": "std :: collections :: BTreeMap < String , serde_json :: Value >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 273,
+      "name": "Model",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "input",
+          "serde": [],
+          "type": "EmbeddingInput"
+        },
+        {
+          "comment": "",
+          "name": "encoding_format",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "dimensions",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < i32 >"
+        },
+        {
+          "comment": "",
+          "name": "user",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 361,
+      "name": "CreateEmbeddingRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/types.rs",
+      "line": 397,
+      "name": "EmbeddingInput",
+      "serde": [
+        "# [serde (untagged)]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Single",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "Vec < String >"
+            }
+          ],
+          "name": "Multiple",
+          "serde": []
+        },
+        {
+          "comment": "Model token IDs are already tokenized; preserve them unchanged.",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "Vec < u32 >"
+            }
+          ],
+          "name": "Tokens",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "Vec < Vec < u32 > >"
+            }
+          ],
+          "name": "TokenBatch",
+          "serde": []
+        },
+        {
+          "comment": "One document combining text and image parts into a single embedding.",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "Vec < EmbeddingInputItem >"
+            }
+          ],
+          "name": "Multimodal",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/types.rs",
+      "line": 419,
+      "name": "EmbeddingInputItem",
+      "serde": [
+        "# [serde (tag = \"type\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "text",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Text",
+          "serde": [
+            "# [serde (rename = \"text\")]"
+          ]
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "image_url",
+              "serde": [],
+              "type": "ImageUrl"
+            }
+          ],
+          "name": "ImageUrl",
+          "serde": [
+            "# [serde (rename = \"image_url\")]"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "data",
+          "serde": [
+            "# [serde (deserialize_with = \"deserialize_embeddings\")]"
+          ],
+          "type": "Vec < Embedding >"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "usage",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Usage >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 428,
+      "name": "CreateEmbeddingResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "index",
+          "serde": [],
+          "type": "i32"
+        },
+        {
+          "comment": "",
+          "name": "embedding",
+          "serde": [],
+          "type": "EmbeddingData"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 467,
+      "name": "Embedding",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/types.rs",
+      "line": 474,
+      "name": "EmbeddingData",
+      "serde": [
+        "# [serde (untagged)]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "Vec < f32 >"
+            }
+          ],
+          "name": "Float",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Base64",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "prompt",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "n",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < i32 >"
+        },
+        {
+          "comment": "",
+          "name": "quality",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "response_format",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "size",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "style",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "`background` for the OpenAI gpt-image family (\"auto\"/\"transparent\"/ \"opaque\"). Forwarded as-is to OpenAI's images endpoint; ignored by providers that don't accept it.",
+          "name": "background",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "`output_format` for the OpenAI gpt-image family (\"png\"/\"jpeg\"/\"webp\").",
+          "name": "output_format",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "Provider-specific aspect ratio, e.g. \"1:1\" or \"16:9\". Not part of the OpenAI images API; Google's compatibility endpoint uses `size` instead.",
+          "name": "aspect_ratio",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "Provider-specific resolution tier. Google's OpenAI-compatible images endpoint rejects this top-level field; use `size` instead.",
+          "name": "image_size",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "user",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 482,
+      "name": "CreateImageRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "created",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "data",
+          "serde": [],
+          "type": "Vec < Image >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 517,
+      "name": "ImageResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "url",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "b64_json",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "revised_prompt",
+          "serde": [],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 526,
+      "name": "Image",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "input",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "voice",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "response_format",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "speed",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < f32 >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 534,
+      "name": "CreateSpeechRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "text",
+          "serde": [],
+          "type": "String"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 545,
+      "name": "TranscriptionResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "bytes",
+          "serde": [],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "created_at",
+          "serde": [],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "filename",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "purpose",
+          "serde": [],
+          "type": "String"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 551,
+      "name": "File",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "created_at",
+          "serde": [],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "finished_at",
+          "serde": [],
+          "type": "Option < i64 >"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "fine_tuned_model",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "organization_id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "status",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "training_file",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "validation_file",
+          "serde": [],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 562,
+      "name": "FineTuningJob",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "training_file",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "validation_file",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "hyperparameters",
+          "serde": [],
+          "type": "Option < serde_json :: Value >"
+        },
+        {
+          "comment": "",
+          "name": "suffix",
+          "serde": [],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 576,
+      "name": "CreateFineTuningJobRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "input",
+          "serde": [],
+          "type": "ModerationInput"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 586,
+      "name": "CreateModerationRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/types.rs",
+      "line": 592,
+      "name": "ModerationInput",
+      "serde": [
+        "# [serde (untagged)]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Single",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "Vec < String >"
+            }
+          ],
+          "name": "Multiple",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "results",
+          "serde": [],
+          "type": "Vec < ModerationResult >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 599,
+      "name": "CreateModerationResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "flagged",
+          "serde": [],
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "categories",
+          "serde": [],
+          "type": "ModerationCategories"
+        },
+        {
+          "comment": "",
+          "name": "category_scores",
+          "serde": [],
+          "type": "ModerationCategoryScores"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "std :: collections :: BTreeMap < String , serde_json :: Value >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 606,
+      "name": "ModerationResult",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "sexual",
+          "serde": [],
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "hate",
+          "serde": [],
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "harassment",
+          "serde": [],
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "violence",
+          "serde": [],
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "std :: collections :: BTreeMap < String , bool >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 615,
+      "name": "ModerationCategories",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "sexual",
+          "serde": [],
+          "type": "f32"
+        },
+        {
+          "comment": "",
+          "name": "hate",
+          "serde": [],
+          "type": "f32"
+        },
+        {
+          "comment": "",
+          "name": "harassment",
+          "serde": [],
+          "type": "f32"
+        },
+        {
+          "comment": "",
+          "name": "violence",
+          "serde": [],
+          "type": "f32"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "std :: collections :: BTreeMap < String , f32 >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 625,
+      "name": "ModerationCategoryScores",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "endpoint",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "input_file_id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "completion_window",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "status",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "created_at",
+          "serde": [],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "completed_at",
+          "serde": [],
+          "type": "Option < i64 >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 636,
+      "name": "Batch",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "input_file_id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "endpoint",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "completion_window",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "metadata",
+          "serde": [],
+          "type": "Option < serde_json :: Value >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 648,
+      "name": "CreateBatchRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "created",
+          "serde": [],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "choices",
+          "serde": [],
+          "type": "Vec < ChatCompletionChunkChoice >"
+        },
+        {
+          "comment": "",
+          "name": "usage",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Usage >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 657,
+      "name": "ChatCompletionChunk",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "index",
+          "serde": [],
+          "type": "i32"
+        },
+        {
+          "comment": "",
+          "name": "delta",
+          "serde": [],
+          "type": "ChatCompletionDelta"
+        },
+        {
+          "comment": "",
+          "name": "finish_reason",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 668,
+      "name": "ChatCompletionChunkChoice",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "role",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "content",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "tool_calls",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < ToolCallDelta > >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 676,
+      "name": "ChatCompletionDelta",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "index",
+          "serde": [],
+          "type": "i32"
+        },
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "tool_type",
+          "serde": [
+            "# [serde (rename = \"type\" , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "function",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < FunctionCallDelta >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 686,
+      "name": "ToolCallDelta",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "arguments",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/types.rs",
+      "line": 697,
+      "name": "FunctionCallDelta",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "A `POST /v1/responses` request.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "input",
+          "serde": [],
+          "type": "ResponseInput"
+        },
+        {
+          "comment": "",
+          "name": "instructions",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "stream",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "max_output_tokens",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < i32 >"
+        },
+        {
+          "comment": "",
+          "name": "temperature",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < f32 >"
+        },
+        {
+          "comment": "",
+          "name": "top_p",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < f32 >"
+        },
+        {
+          "comment": "",
+          "name": "tools",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < ResponseTool > >"
+        },
+        {
+          "comment": "",
+          "name": "tool_choice",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "parallel_tool_calls",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "text",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < ResponseTextConfig >"
+        },
+        {
+          "comment": "",
+          "name": "reasoning",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "include",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < String > >"
+        },
+        {
+          "comment": "",
+          "name": "previous_response_id",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "background",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "store",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "metadata",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "service_tier",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "truncation",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "user",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "prompt_cache_key",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 19,
+      "name": "CreateResponseRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "A Responses request accepts either a shorthand user string or a list of fully-typed input items.",
+      "fields": [],
+      "file": "src/responses.rs",
+      "line": 268,
+      "name": "ResponseInput",
+      "serde": [
+        "# [serde (untagged)]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Text",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "Vec < ResponseItem >"
+            }
+          ],
+          "name": "Items",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "A forward-compatible Responses input or output item.  Keeping the discriminant optional also supports the API's \"easy input message\" shape, where `{role, content}` is accepted without `type: message`.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "item_type",
+          "serde": [
+            "# [serde (rename = \"type\" , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "status",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "role",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "content",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < ResponseContent >"
+        },
+        {
+          "comment": "",
+          "name": "call_id",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "arguments",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "output",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "summary",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < Value > >"
+        },
+        {
+          "comment": "",
+          "name": "encrypted_content",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 277,
+      "name": "ResponseItem",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/responses.rs",
+      "line": 309,
+      "name": "ResponseContent",
+      "serde": [
+        "# [serde (untagged)]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Text",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "Vec < ResponseContentPart >"
+            }
+          ],
+          "name": "Parts",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "A forward-compatible Responses message content part.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "part_type",
+          "serde": [
+            "# [serde (rename = \"type\")]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "text",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "image_url",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "file_id",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "detail",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "refusal",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "annotations",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Vec::is_empty\")]"
+          ],
+          "type": "Vec < Value >"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 316,
+      "name": "ResponseContentPart",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "Responses tools use a flat function definition rather than chat's nested `{type, function: {...}}` shape.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "tool_type",
+          "serde": [
+            "# [serde (rename = \"type\")]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "description",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "parameters",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < SchemaJson >"
+        },
+        {
+          "comment": "",
+          "name": "strict",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 337,
+      "name": "ResponseTool",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "format",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < SchemaJson >"
+        },
+        {
+          "comment": "",
+          "name": "verbosity",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 355,
+      "name": "ResponseTextConfig",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "A completed (or incomplete/failed) Responses API object.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "object",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "created_at",
+          "serde": [],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "status",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "output",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "Vec < ResponseItem >"
+        },
+        {
+          "comment": "",
+          "name": "error",
+          "serde": [],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "incomplete_details",
+          "serde": [],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "instructions",
+          "serde": [],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "max_output_tokens",
+          "serde": [],
+          "type": "Option < i32 >"
+        },
+        {
+          "comment": "",
+          "name": "parallel_tool_calls",
+          "serde": [],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "previous_response_id",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "reasoning",
+          "serde": [],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "store",
+          "serde": [],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "temperature",
+          "serde": [],
+          "type": "Option < f32 >"
+        },
+        {
+          "comment": "",
+          "name": "text",
+          "serde": [],
+          "type": "Option < ResponseTextConfig >"
+        },
+        {
+          "comment": "",
+          "name": "tool_choice",
+          "serde": [],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "tools",
+          "serde": [],
+          "type": "Option < Vec < ResponseTool > >"
+        },
+        {
+          "comment": "",
+          "name": "top_p",
+          "serde": [],
+          "type": "Option < f32 >"
+        },
+        {
+          "comment": "",
+          "name": "truncation",
+          "serde": [],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "usage",
+          "serde": [],
+          "type": "Option < ResponseUsage >"
+        },
+        {
+          "comment": "",
+          "name": "metadata",
+          "serde": [],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 365,
+      "name": "CreateResponseResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "input_tokens",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "input_tokens_details",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "ResponseInputTokenDetails"
+        },
+        {
+          "comment": "",
+          "name": "output_tokens",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "output_tokens_details",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "ResponseOutputTokenDetails"
+        },
+        {
+          "comment": "",
+          "name": "total_tokens",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 397,
+      "name": "ResponseUsage",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "cached_tokens",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "cache_write_tokens",
+          "serde": [
+            "# [serde (default , alias = \"cache_creation_tokens\" , alias = \"cache_write_input_tokens\")]"
+          ],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 413,
+      "name": "ResponseInputTokenDetails",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "reasoning_tokens",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "i64"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/responses.rs",
+      "line": 427,
+      "name": "ResponseOutputTokenDetails",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "state",
+          "serde": [],
+          "type": "Value"
+        },
+        {
+          "comment": "",
+          "name": "questions",
+          "serde": [],
+          "type": "BTreeMap < String , DecisionQuestion >"
+        },
+        {
+          "comment": "Images keyed by the placeholder that stands for them in `state`, `instructions`, or criteria (System One's `assets`).",
+          "name": "assets",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < String , DecisionAsset >"
+        },
+        {
+          "comment": "",
+          "name": "session_id",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "Ingress fields the router does not interpret (OpenRouter's `provider`, `trace` and `user`; OpenAI's prompt-cache controls). Forwarded only when the upstream speaks the ingress format; see [`Self::forwards_extra_to`].",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        },
+        {
+          "comment": "",
+          "name": "ingress",
+          "serde": [
+            "# [serde (skip)]"
+          ],
+          "type": "DecisionsIngress"
+        }
+      ],
+      "file": "src/decisions.rs",
+      "line": 119,
+      "name": "DecisionsRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "A System One asset. Only images exist today.",
+      "fields": [],
+      "file": "src/decisions.rs",
+      "line": 193,
+      "name": "DecisionAsset",
+      "serde": [
+        "# [serde (tag = \"type\" , rename_all = \"lowercase\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "ImageAsset"
+            }
+          ],
+          "name": "Image",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "`png`, `jpg`, `jpeg`, or `webp`; required with `data_base64`.",
+          "name": "format",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "data_base64",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "Router extension for OpenAI's `input_image`: a public HTTP(S) URL. Only the OpenAI adapter can deliver it; System One providers need bytes.",
+          "name": "url",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "Router extension for OpenAI's `input_image.detail`; System One has no equivalent and drops it.",
+          "name": "detail",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/decisions.rs",
+      "line": 200,
+      "name": "ImageAsset",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/decisions.rs",
+      "line": 459,
+      "name": "DecisionQuestion",
+      "serde": [
+        "# [serde (tag = \"type\" , rename_all = \"lowercase\")]"
+      ],
+      "variants": [
+        {
+          "comment": "Locate something in an image: the answer is a bounding box given as fractions of the image (`top`, `bottom`, `left`, `right`). TypeSafe Jev 1.14 and later only.",
+          "fields": [
+            {
+              "comment": "",
+              "name": "instructions",
+              "serde": [],
+              "type": "Value"
+            },
+            {
+              "comment": "",
+              "name": "extra",
+              "serde": [
+                "# [serde (flatten , skip_serializing)]"
+              ],
+              "type": "Map < String , Value >"
+            }
+          ],
+          "name": "Box",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "instructions",
+              "serde": [],
+              "type": "Value"
+            },
+            {
+              "comment": "",
+              "name": "criteria",
+              "serde": [
+                "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+              ],
+              "type": "Option < NoulCriteria >"
+            },
+            {
+              "comment": "",
+              "name": "extra",
+              "serde": [
+                "# [serde (flatten , skip_serializing)]"
+              ],
+              "type": "Map < String , Value >"
+            }
+          ],
+          "name": "Noul",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "instructions",
+              "serde": [],
+              "type": "Value"
+            },
+            {
+              "comment": "",
+              "name": "criteria",
+              "serde": [],
+              "type": "BTreeMap < String , Option < Value > >"
+            },
+            {
+              "comment": "",
+              "name": "extra",
+              "serde": [
+                "# [serde (flatten , skip_serializing)]"
+              ],
+              "type": "Map < String , Value >"
+            }
+          ],
+          "name": "Choice",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "instructions",
+              "serde": [],
+              "type": "Value"
+            },
+            {
+              "comment": "",
+              "name": "criteria",
+              "serde": [],
+              "type": "Vec < Value >"
+            },
+            {
+              "comment": "",
+              "name": "extra",
+              "serde": [
+                "# [serde (flatten , skip_serializing)]"
+              ],
+              "type": "Map < String , Value >"
+            }
+          ],
+          "name": "Score",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "yes",
+          "serde": [
+            "# [serde (rename = \"true\" , default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "no",
+          "serde": [
+            "# [serde (rename = \"false\" , default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Value >"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten , skip_serializing)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/decisions.rs",
+      "line": 555,
+      "name": "NoulCriteria",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "TypeSafe's native `POST /v1/systemone` request.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "state",
+          "serde": [],
+          "type": "Value"
+        },
+        {
+          "comment": "",
+          "name": "questions",
+          "serde": [],
+          "type": "BTreeMap < String , DecisionQuestion >"
+        },
+        {
+          "comment": "",
+          "name": "assets",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < String , DecisionAsset >"
+        }
+      ],
+      "file": "src/decisions.rs",
+      "line": 565,
+      "name": "SystemOneRequest",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "provider",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "answers",
+          "serde": [],
+          "type": "BTreeMap < String , Value >"
+        },
+        {
+          "comment": "",
+          "name": "usage",
+          "serde": [],
+          "type": "DecisionsUsage"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/decisions.rs",
+      "line": 586,
+      "name": "DecisionsResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "input_tokens",
+          "serde": [],
+          "type": "u64"
+        },
+        {
+          "comment": "",
+          "name": "output_tokens",
+          "serde": [],
+          "type": "u64"
+        },
+        {
+          "comment": "",
+          "name": "cost",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < f64 >"
+        },
+        {
+          "comment": "",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/decisions.rs",
+      "line": 599,
+      "name": "DecisionsUsage",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "answers",
+          "serde": [],
+          "type": "BTreeMap < String , Value >"
+        },
+        {
+          "comment": "",
+          "name": "usage",
+          "serde": [],
+          "type": "SystemOneUsage"
+        }
+      ],
+      "file": "src/decisions.rs",
+      "line": 609,
+      "name": "SystemOneResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "input_tokens",
+          "serde": [],
+          "type": "u64"
+        },
+        {
+          "comment": "",
+          "name": "output_tokens",
+          "serde": [],
+          "type": "u64"
+        }
+      ],
+      "file": "src/decisions.rs",
+      "line": 616,
+      "name": "SystemOneUsage",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "OpenAI's `POST /v1/decisions` request body.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "input",
+          "serde": [],
+          "type": "Value"
+        },
+        {
+          "comment": "",
+          "name": "questions",
+          "serde": [],
+          "type": "Vec < OpenAiQuestion >"
+        },
+        {
+          "comment": "`prompt_cache_key`, `prompt_cache_options`, `safety_identifier`, and future fields: forwarded only to OpenAI itself.",
+          "name": "extra",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "Map < String , Value >"
+        }
+      ],
+      "file": "src/translation/decisions_openai.rs",
+      "line": 36,
+      "name": "OpenAiDecisionsRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/translation/decisions_openai.rs",
+      "line": 48,
+      "name": "OpenAiQuestion",
+      "serde": [
+        "# [serde (tag = \"type\" , rename_all = \"lowercase\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "instructions",
+              "serde": [],
+              "type": "String"
+            },
+            {
+              "comment": "",
+              "name": "name",
+              "serde": [
+                "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+              ],
+              "type": "Option < String >"
+            }
+          ],
+          "name": "Predicate",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "instructions",
+              "serde": [],
+              "type": "String"
+            },
+            {
+              "comment": "",
+              "name": "choices",
+              "serde": [],
+              "type": "Vec < OpenAiChoice >"
+            },
+            {
+              "comment": "",
+              "name": "name",
+              "serde": [
+                "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+              ],
+              "type": "Option < String >"
+            }
+          ],
+          "name": "Choice",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "instructions",
+              "serde": [],
+              "type": "String"
+            },
+            {
+              "comment": "",
+              "name": "levels",
+              "serde": [],
+              "type": "Vec < OpenAiLevel >"
+            },
+            {
+              "comment": "",
+              "name": "name",
+              "serde": [
+                "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+              ],
+              "type": "Option < String >"
+            }
+          ],
+          "name": "Score",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "A string or a boolean.",
+          "name": "value",
+          "serde": [],
+          "type": "Value"
+        },
+        {
+          "comment": "",
+          "name": "description",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/translation/decisions_openai.rs",
+      "line": 80,
+      "name": "OpenAiChoice",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "label",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "description",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/translation/decisions_openai.rs",
+      "line": 88,
+      "name": "OpenAiLevel",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "fallbacks",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "FallbackMap"
+        },
+        {
+          "comment": "",
+          "name": "judge",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "Option < RouteJudge >"
+        },
+        {
+          "comment": "",
+          "name": "default_target",
+          "serde": [],
+          "type": "RouteTarget"
+        }
+      ],
+      "file": "src/route_grid.rs",
+      "line": 12,
+      "name": "RouteGrid",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/route_grid.rs",
+      "line": 22,
+      "name": "JudgeMode",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Off",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Shadow",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Live",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/route_grid.rs",
+      "line": 31,
+      "name": "Classification",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Task",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Difficulty",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "Explicit connection identity and upstream model, never a route alias.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "connection_id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "upstream_model_id",
+          "serde": [],
+          "type": "String"
+        }
+      ],
+      "file": "src/route_grid.rs",
+      "line": 58,
+      "name": "RouteTarget",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "use_default_keywords",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "added_hard_keywords",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Vec::is_empty\")]"
+          ],
+          "type": "Vec < String >"
+        },
+        {
+          "comment": "",
+          "name": "removed_hard_keywords",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Vec::is_empty\")]"
+          ],
+          "type": "Vec < String >"
+        },
+        {
+          "comment": "",
+          "name": "code_blocks_are_hard",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "max_easy_input_bytes",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < u32 >"
+        }
+      ],
+      "file": "src/route_grid.rs",
+      "line": 82,
+      "name": "HeuristicJudgeBackend",
+      "serde": [
+        "# [serde (default , deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "target",
+          "serde": [],
+          "type": "RouteTarget"
+        },
+        {
+          "comment": "Zero or omission uses the default of 1000 milliseconds.",
+          "name": "timeout_ms",
+          "serde": [
+            "# [serde (default = \"default_judge_timeout_ms\")]"
+          ],
+          "type": "u64"
+        }
+      ],
+      "file": "src/route_grid.rs",
+      "line": 133,
+      "name": "CompletionJudgeBackend",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "target",
+          "serde": [],
+          "type": "RouteTarget"
+        },
+        {
+          "comment": "Zero or omission uses the default of 1000 milliseconds.",
+          "name": "timeout_ms",
+          "serde": [
+            "# [serde (default = \"default_judge_timeout_ms\")]"
+          ],
+          "type": "u64"
+        }
+      ],
+      "file": "src/route_grid.rs",
+      "line": 151,
+      "name": "DecisionsJudgeBackend",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/route_grid.rs",
+      "line": 169,
+      "name": "RouteJudgeBackend",
+      "serde": [
+        "# [serde (tag = \"type\" , rename_all = \"snake_case\" , deny_unknown_fields)]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "HeuristicJudgeBackend"
+            }
+          ],
+          "name": "Heuristic",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "CompletionJudgeBackend"
+            }
+          ],
+          "name": "Completion",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "DecisionsJudgeBackend"
+            }
+          ],
+          "name": "Decisions",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "mode",
+          "serde": [],
+          "type": "JudgeMode"
+        },
+        {
+          "comment": "",
+          "name": "classification",
+          "serde": [],
+          "type": "Classification"
+        },
+        {
+          "comment": "",
+          "name": "backend",
+          "serde": [],
+          "type": "RouteJudgeBackend"
+        },
+        {
+          "comment": "",
+          "name": "outcomes",
+          "serde": [],
+          "type": "BTreeMap < String , JudgeOutcomeConfig >"
+        }
+      ],
+      "file": "src/route_grid.rs",
+      "line": 214,
+      "name": "RouteJudge",
+      "serde": [
+        "# [serde (default , deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "Configured routing action for one judge classification label.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "model",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "description",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "String"
+        },
+        {
+          "comment": "None inherits the route's model entry; Some([]) explicitly stops.",
+          "name": "fallbacks",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < String > >"
+        }
+      ],
+      "file": "src/route_grid.rs",
+      "line": 253,
+      "name": "JudgeOutcomeConfig",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 16,
+      "name": "Support",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Supported",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Unsupported",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Unknown",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 24,
+      "name": "DeliveryMode",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Native",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Adapted",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Translated",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Unsupported",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Unknown",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 35,
+      "name": "ModelSurface",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Chat",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Decisions",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Embeddings",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ImageGeneration",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Rerank",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Moderation",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "AudioTranscription",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "AudioSpeech",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Realtime",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 49,
+      "name": "InputModality",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Text",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Image",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Audio",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Video",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Pdf",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 59,
+      "name": "OutputModality",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Text",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Decisions",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Image",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Audio",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Video",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Embeddings",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 70,
+      "name": "ModelFeature",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "Text input and output without requiring audio or tools.",
+          "fields": [],
+          "name": "TextOnlyChat",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ToolCalling",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ParallelToolCalling",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "StrictToolSchema",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "StructuredOutput",
+          "serde": []
+        },
+        {
+          "comment": "Chat requests must ask for structured output; plain conversational prompting is not a valid request shape for this model.",
+          "fields": [],
+          "name": "StructuredOutputOnly",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Reasoning",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "PromptCaching",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ComputerUse",
+          "serde": []
+        },
+        {
+          "comment": "Decisions `box` questions: locating something in an image.",
+          "fields": [],
+          "name": "DecisionBoxes",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 89,
+      "name": "Protocol",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "OpenaiResponses",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "OpenaiChatCompletions",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "AnthropicMessages",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "GeminiInteractions",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "RouterDecisions",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "TypesafeSystemOne",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 100,
+      "name": "ProtocolOperation",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Create",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Retrieve",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Delete",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Compact",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Cancel",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ListInputItems",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "CountTokens",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 112,
+      "name": "EndpointFeature",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Streaming",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "StoredContinuation",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Background",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ToolCalling",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ImageInput",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ServerToolWebSearch",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ServerToolFileSearch",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ServerToolCodeInterpreter",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ServerToolComputerUse",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ServerToolMcp",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "context_window",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < u64 >"
+        },
+        {
+          "comment": "",
+          "name": "max_input_tokens",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < u64 >"
+        },
+        {
+          "comment": "",
+          "name": "max_output_tokens",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < u64 >"
+        },
+        {
+          "comment": "",
+          "name": "embedding_input",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < EmbeddingInputLimits >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 127,
+      "name": "ModelLimits",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "Published embedding constraints. Missing fields are unknown, not unlimited.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "max_images_per_document",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < u64 >"
+        },
+        {
+          "comment": "",
+          "name": "image_mime_types",
+          "serde": [
+            "# [serde (skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Vec < String > >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 157,
+      "name": "EmbeddingInputLimits",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "support",
+          "serde": [],
+          "type": "Support"
+        },
+        {
+          "comment": "",
+          "name": "mode",
+          "serde": [
+            "# [serde (skip)]"
+          ],
+          "type": "DeliveryMode"
+        },
+        {
+          "comment": "",
+          "name": "features",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < EndpointFeature , Support >"
+        },
+        {
+          "comment": "",
+          "name": "parameters",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < String , ParameterCapability >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 167,
+      "name": "OperationProfile",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "operations",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "BTreeMap < InterfaceOperation , OperationProfile >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 216,
+      "name": "InterfaceProfile",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "input",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "BTreeMap < InputModality , Support >"
+        },
+        {
+          "comment": "",
+          "name": "output",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "BTreeMap < OutputModality , Support >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 222,
+      "name": "Modalities",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "schema_version",
+          "serde": [],
+          "type": "u32"
+        },
+        {
+          "comment": "",
+          "name": "surfaces",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "BTreeMap < ModelSurface , Support >"
+        },
+        {
+          "comment": "",
+          "name": "modalities",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "Modalities"
+        },
+        {
+          "comment": "",
+          "name": "features",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "BTreeMap < ModelFeature , Support >"
+        },
+        {
+          "comment": "",
+          "name": "limits",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "ModelLimits"
+        },
+        {
+          "comment": "",
+          "name": "interfaces",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "BTreeMap < Interface , InterfaceProfile >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 230,
+      "name": "CapabilityProfile",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "context_window",
+          "serde": [
+            "# [serde (default , deserialize_with = \"deserialize_present_option\" , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Option < u64 > >"
+        },
+        {
+          "comment": "",
+          "name": "max_input_tokens",
+          "serde": [
+            "# [serde (default , deserialize_with = \"deserialize_present_option\" , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Option < u64 > >"
+        },
+        {
+          "comment": "",
+          "name": "max_output_tokens",
+          "serde": [
+            "# [serde (default , deserialize_with = \"deserialize_present_option\" , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Option < u64 > >"
+        },
+        {
+          "comment": "Omitted inherits, null clears, and an object replaces the entire record.",
+          "name": "embedding_input",
+          "serde": [
+            "# [serde (default , deserialize_with = \"deserialize_present_option\" , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Option < EmbeddingInputLimits > >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 534,
+      "name": "ModelLimitsPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "mode",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < DeliveryMode >"
+        },
+        {
+          "comment": "",
+          "name": "support",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Support >"
+        },
+        {
+          "comment": "",
+          "name": "features",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < EndpointFeature , Support >"
+        },
+        {
+          "comment": "",
+          "name": "parameters",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < String , ParameterCapability >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 572,
+      "name": "OperationPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "operations",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < InterfaceOperation , OperationPatch >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 585,
+      "name": "InterfaceFactPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "input",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < InputModality , Support >"
+        },
+        {
+          "comment": "",
+          "name": "output",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < OutputModality , Support >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 592,
+      "name": "ModalitiesPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "Internal sparse facts returned by provider discovery or connection-shape detection. This is deliberately not the persisted declaration document.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "schema_version",
+          "serde": [],
+          "type": "u32"
+        },
+        {
+          "comment": "",
+          "name": "surfaces",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < ModelSurface , Support >"
+        },
+        {
+          "comment": "",
+          "name": "modalities",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"modalities_patch_is_empty\")]"
+          ],
+          "type": "ModalitiesPatch"
+        },
+        {
+          "comment": "",
+          "name": "features",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < ModelFeature , Support >"
+        },
+        {
+          "comment": "",
+          "name": "limits",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"limits_patch_is_empty\")]"
+          ],
+          "type": "ModelLimitsPatch"
+        },
+        {
+          "comment": "",
+          "name": "interfaces",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < Interface , InterfaceFactPatch >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 605,
+      "name": "CapabilityFactPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "Sparse facts intrinsic to a model. Protocol/interface availability is not accepted here because it belongs to the configured endpoint.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "surfaces",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < ModelSurface , Support >"
+        },
+        {
+          "comment": "",
+          "name": "modalities",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"modalities_patch_is_empty\")]"
+          ],
+          "type": "ModalitiesPatch"
+        },
+        {
+          "comment": "",
+          "name": "features",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < ModelFeature , Support >"
+        },
+        {
+          "comment": "",
+          "name": "limits",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"limits_patch_is_empty\")]"
+          ],
+          "type": "ModelLimitsPatch"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 673,
+      "name": "ModelCapabilityPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 688,
+      "name": "Interface",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "OpenaiChatCompletions",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "OpenaiResponses",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "AnthropicMessages",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "GeminiInteractions",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "RouterDecisions",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "TypesafeSystemOne",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "OpenaiEmbeddings",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "OpenaiModerations",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "OpenaiImages",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "OpenaiAudio",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 703,
+      "name": "InterfaceOperation",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Create",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Retrieve",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Delete",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Compact",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Cancel",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ListInputItems",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "CountTokens",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Generate",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Edit",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Variations",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Speech",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Transcription",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Translation",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 721,
+      "name": "ParameterConstraint",
+      "serde": [
+        "# [serde (tag = \"type\" , rename_all = \"snake_case\" , deny_unknown_fields)]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Any",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "values",
+              "serde": [],
+              "type": "Vec < String >"
+            }
+          ],
+          "name": "StringEnum",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "min",
+              "serde": [],
+              "type": "i64"
+            },
+            {
+              "comment": "",
+              "name": "max",
+              "serde": [],
+              "type": "i64"
+            }
+          ],
+          "name": "IntegerRange",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "min",
+              "serde": [],
+              "type": "f64"
+            },
+            {
+              "comment": "",
+              "name": "max",
+              "serde": [],
+              "type": "f64"
+            }
+          ],
+          "name": "NumberRange",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Unknown",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "support",
+          "serde": [],
+          "type": "Support"
+        },
+        {
+          "comment": "",
+          "name": "constraint",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < ParameterConstraint >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 731,
+      "name": "ParameterCapability",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "support",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"Option::is_none\")]"
+          ],
+          "type": "Option < Support >"
+        },
+        {
+          "comment": "",
+          "name": "features",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < EndpointFeature , Support >"
+        },
+        {
+          "comment": "",
+          "name": "parameters",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < String , ParameterCapability >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 739,
+      "name": "DeclaredOperationPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "operations",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < InterfaceOperation , DeclaredOperationPatch >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 750,
+      "name": "DeclaredInterfacePatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "interfaces",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < Interface , DeclaredInterfacePatch >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 757,
+      "name": "EndpointCapabilityPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "Operator-authored connection declaration persisted in `provider_connections.declared_capabilities`.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "schema_version",
+          "serde": [],
+          "type": "u32"
+        },
+        {
+          "comment": "",
+          "name": "model_defaults",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"model_patch_is_empty\")]"
+          ],
+          "type": "ModelCapabilityPatch"
+        },
+        {
+          "comment": "",
+          "name": "models",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"BTreeMap::is_empty\")]"
+          ],
+          "type": "BTreeMap < String , ModelCapabilityPatch >"
+        },
+        {
+          "comment": "",
+          "name": "endpoint",
+          "serde": [
+            "# [serde (default , skip_serializing_if = \"endpoint_patch_is_empty\")]"
+          ],
+          "type": "EndpointCapabilityPatch"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 764,
+      "name": "CapabilityPatch",
+      "serde": [
+        "# [serde (deny_unknown_fields)]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 967,
+      "name": "CapabilitySource",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ConnectionDeclaration",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "UpstreamDiscovery",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ProviderRegistry",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ProviderEndpoint",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "ChalkAdapter",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Unknown",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/capabilities.rs",
+      "line": 978,
+      "name": "CapabilityPathSegment",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Field",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Key",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "0",
+          "serde": [],
+          "type": "Vec < CapabilityPathSegment >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 985,
+      "name": "CapabilityPath",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "path",
+          "serde": [],
+          "type": "CapabilityPath"
+        },
+        {
+          "comment": "",
+          "name": "source",
+          "serde": [],
+          "type": "CapabilitySource"
+        },
+        {
+          "comment": "",
+          "name": "rule",
+          "serde": [],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 1006,
+      "name": "CapabilityEvidence",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "path",
+          "serde": [],
+          "type": "CapabilityPath"
+        },
+        {
+          "comment": "",
+          "name": "preferred",
+          "serde": [],
+          "type": "Value"
+        },
+        {
+          "comment": "",
+          "name": "overridden",
+          "serde": [],
+          "type": "Value"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 1013,
+      "name": "CapabilityConflict",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "profile",
+          "serde": [
+            "# [serde (flatten)]"
+          ],
+          "type": "CapabilityProfile"
+        },
+        {
+          "comment": "",
+          "name": "evidence",
+          "serde": [
+            "# [serde (skip)]"
+          ],
+          "type": "Vec < CapabilityEvidence >"
+        },
+        {
+          "comment": "",
+          "name": "conflicts",
+          "serde": [
+            "# [serde (skip)]"
+          ],
+          "type": "Vec < CapabilityConflict >"
+        },
+        {
+          "comment": "",
+          "name": "delivery",
+          "serde": [
+            "# [serde (skip)]"
+          ],
+          "type": "BTreeMap < OperationKey , DeliveryMode >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 1026,
+      "name": "ResolvedCapabilityProfile",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "Conservative client-specific booleans derived from the canonical profile. Client projections are outputs only; they are never persisted as capability truth or merged back into a profile.",
+      "fields": [
+        {
+          "comment": "",
+          "name": "tool_calling",
+          "serde": [],
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "vision",
+          "serde": [],
+          "type": "bool"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 1211,
+      "name": "VscodeCapabilityProjection",
+      "serde": [
+        "# [serde (rename_all = \"camelCase\")]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "chat_support",
+          "serde": [],
+          "type": "Support"
+        },
+        {
+          "comment": "None means no confirmed streaming text-chat route.",
+          "name": "chat_protocol",
+          "serde": [],
+          "type": "Option < Protocol >"
+        }
+      ],
+      "file": "src/capabilities.rs",
+      "line": 1223,
+      "name": "PlaygroundCapabilityProjection",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/handlers/traces.rs",
+      "line": 63,
+      "name": "IngestSpanKind",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Session",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Turn",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Reasoning",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Tool",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Agent",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Chain",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Llm",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "Nanoseconds since the unix epoch. Accepts a JSON number or a decimal string (JS callers should send strings: ns values exceed 2^53).",
+      "fields": [],
+      "file": "src/handlers/traces.rs",
+      "line": 75,
+      "name": "UnixNanos",
+      "serde": [
+        "# [serde (untagged)]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "u64"
+            }
+          ],
+          "name": "Num",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [
+            {
+              "comment": "",
+              "name": "0",
+              "serde": [],
+              "type": "String"
+            }
+          ],
+          "name": "Str",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "file": "src/handlers/traces.rs",
+      "line": 97,
+      "name": "IngestStatusCode",
+      "serde": [
+        "# [serde (rename_all = \"snake_case\")]"
+      ],
+      "variants": [
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Ok",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Error",
+          "serde": []
+        },
+        {
+          "comment": "",
+          "fields": [],
+          "name": "Unset",
+          "serde": []
+        }
+      ]
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "code",
+          "serde": [],
+          "type": "IngestStatusCode"
+        },
+        {
+          "comment": "",
+          "name": "message",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "Option < String >"
+        }
+      ],
+      "file": "src/handlers/traces.rs",
+      "line": 105,
+      "name": "IngestStatus",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "Display name, e.g. \"session\", \"turn 3\", \"tool: bash\".",
+          "name": "name",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "kind",
+          "serde": [],
+          "type": "IngestSpanKind"
+        },
+        {
+          "comment": "32-char lowercase hex W3C trace id (non-zero).",
+          "name": "trace_id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "16-char lowercase hex W3C span id (non-zero).",
+          "name": "span_id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "Optional 16-char hex parent span id within the same trace.",
+          "name": "parent_span_id",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "Option < String >"
+        },
+        {
+          "comment": "",
+          "name": "start_time_unix_nano",
+          "serde": [],
+          "type": "UnixNanos"
+        },
+        {
+          "comment": "",
+          "name": "end_time_unix_nano",
+          "serde": [],
+          "type": "UnixNanos"
+        },
+        {
+          "comment": "Attribute map. Strings, bools, and numbers are recorded natively; arrays and objects are recorded as JSON strings.",
+          "name": "attributes",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "serde_json :: Map < String , serde_json :: Value >"
+        },
+        {
+          "comment": "",
+          "name": "status",
+          "serde": [
+            "# [serde (default)]"
+          ],
+          "type": "Option < IngestStatus >"
+        }
+      ],
+      "file": "src/handlers/traces.rs",
+      "line": 112,
+      "name": "IngestSpan",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "spans",
+          "serde": [],
+          "type": "Vec < IngestSpan >"
+        }
+      ],
+      "file": "src/handlers/traces.rs",
+      "line": 134,
+      "name": "IngestSpansRequest",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "accepted",
+          "serde": [],
+          "type": "usize"
+        }
+      ],
+      "file": "src/handlers/traces.rs",
+      "line": 139,
+      "name": "IngestSpansResponse",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "Public Responses ingress URL to stamp into generated client entries.",
+          "name": "url",
+          "serde": [
+            "# [serde (default = \"default_responses_url\")]"
+          ],
+          "type": "String"
+        }
+      ],
+      "file": "src/handlers/models.rs",
+      "line": 11,
+      "name": "VscodeProjectionQuery",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "id",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "name",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "tool_calling",
+          "serde": [],
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "url",
+          "serde": [],
+          "type": "String"
+        },
+        {
+          "comment": "",
+          "name": "vision",
+          "serde": [],
+          "type": "bool"
+        }
+      ],
+      "file": "src/handlers/models.rs",
+      "line": 22,
+      "name": "VscodeModelConfig",
+      "serde": [
+        "# [serde (rename_all = \"camelCase\")]"
+      ],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "models",
+          "serde": [],
+          "type": "Vec < VscodeModelConfig >"
+        }
+      ],
+      "file": "src/handlers/models.rs",
+      "line": 32,
+      "name": "VscodeModelConfigList",
+      "serde": [],
+      "variants": []
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "stream",
+          "serde": [],
+          "type": "Option < bool >"
+        },
+        {
+          "comment": "",
+          "name": "starting_after",
+          "serde": [],
+          "type": "Option < u64 >"
+        }
+      ],
+      "file": "src/handlers/responses.rs",
+      "line": 1373,
+      "name": "RetrieveResponseQuery",
+      "serde": [],
+      "variants": []
+    }
+  ]
+}

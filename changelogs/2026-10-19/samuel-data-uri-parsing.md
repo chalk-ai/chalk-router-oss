@@ -1,0 +1,1 @@
+- Image inputs sent as data URIs are accepted regardless of letter case, with media-type parameters such as charset, and with line-wrapped base64.

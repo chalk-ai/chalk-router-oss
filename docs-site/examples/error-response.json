@@ -1,0 +1,8 @@
+{
+  "error": {
+    "message": "Synthetic error example",
+    "type": "invalid_request",
+    "param": null,
+    "code": null
+  }
+}

@@ -1,0 +1,1 @@
+- Normalize reported cache and reasoning tokens across generation adapters and conservatively estimate missing text usage without adding a tokenizer dependency.

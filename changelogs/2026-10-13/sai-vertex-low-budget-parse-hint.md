@@ -1,0 +1,1 @@
+- When Vertex cannot parse a chat response with a very small output budget, the error preserves the parse detail and notes that a thinking model may have used some of the budget for internal reasoning.

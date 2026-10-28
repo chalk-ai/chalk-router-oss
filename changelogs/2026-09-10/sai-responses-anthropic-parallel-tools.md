@@ -1,0 +1,1 @@
+- Allow OpenAI Responses requests with explicit parallel-tool settings to use Anthropic models, and identify unsupported fields in compatibility errors.

@@ -1,0 +1,1 @@
+- Include tool definitions and accepted request options in captured Chat Completions input JSON.

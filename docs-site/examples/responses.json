@@ -1,0 +1,5 @@
+{
+  "model": "chalk/example-chat",
+  "input": "Explain a cache in one sentence.",
+  "store": false
+}

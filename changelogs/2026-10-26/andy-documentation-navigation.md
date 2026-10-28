@@ -1,0 +1,1 @@
+- Router documentation now separates API, provider, development, and operations guides, corrects stale setup instructions, and distinguishes pending authentication requirements from current behavior.

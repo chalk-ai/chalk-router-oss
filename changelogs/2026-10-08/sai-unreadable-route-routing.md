@@ -1,0 +1,1 @@
+- A model route whose saved routing this server version cannot read now fails on its own instead of making every route unavailable, and can still be edited to repair it.

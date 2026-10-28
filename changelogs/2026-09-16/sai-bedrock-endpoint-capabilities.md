@@ -1,0 +1,1 @@
+- Route Bedrock Responses and Messages requests through each provider dialect's compatible generation endpoint.

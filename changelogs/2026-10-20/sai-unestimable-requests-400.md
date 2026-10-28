@@ -1,0 +1,1 @@
+- Requests a token budget or token rate limit cannot estimate (stored conversation references, unrecognized tool types, or no output limit) now fail with a 400 explaining what to change, instead of a 429 that SDKs retried.

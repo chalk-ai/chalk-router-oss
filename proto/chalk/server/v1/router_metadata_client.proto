@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+// The two chalk-private metadata API calls a cluster router makes, as a
+// wire-compatible subset of chalk/server/v1/auth.proto, team.proto and
+// environment.proto. Package, service, RPC and message names and every field
+// number must match chalk-private; fields the router does not read are left
+// out and skipped when decoding.
+package chalk.server.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/timestamp.proto";
+
+message Environment {
+  string id = 3;
+  string team_id = 4;
+  optional google.protobuf.Timestamp archived_at = 43;
+  optional string kube_cluster_id = 55;
+  optional google.protobuf.Timestamp suspended_at = 58;
+}
+
+// The environment is selected by the `x-chalk-env-id` request header.
+message GetEnvIncludingArchivedRequest {}
+
+message GetEnvIncludingArchivedResponse {
+  Environment environment = 1;
+}
+
+message GetInternalWorkingTokenRequest {
+  repeated chalk.auth.v1.Permission requested_permissions = 1;
+}
+
+message GetInternalWorkingTokenResponse {
+  string access_token = 1;
+  google.protobuf.Timestamp expires_at = 2;
+}
+
+service AuthService {
+  // Trades the bearer exchange token for a short-lived working token.
+  rpc GetInternalWorkingToken(GetInternalWorkingTokenRequest) returns (GetInternalWorkingTokenResponse);
+}
+
+service TeamService {
+  rpc GetEnvIncludingArchived(GetEnvIncludingArchivedRequest) returns (GetEnvIncludingArchivedResponse);
+}

@@ -1,0 +1,1 @@
+- Add typed model and protocol capability profiles with conservative built-in provider defaults.

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+message Usage {
+  uint32 prompt_tokens = 1;
+  uint32 completion_tokens = 2;
+  uint32 total_tokens = 3;
+}
+
+message DebugCompletionEntry {
+  google.protobuf.Timestamp timestamp = 1;
+  string model = 2;
+  uint32 message_count = 3;
+  bool streaming = 4;
+  string status = 5;
+  google.protobuf.Duration duration = 6;
+  optional Usage usage = 7;
+  optional string error = 8;
+}
+
+message RecentCompletionsRequest {}
+
+message RecentCompletionsResponse {
+  uint32 count = 1;
+  repeated DebugCompletionEntry entries = 2;
+}
+
+service DebugService {
+  rpc RecentCompletions(RecentCompletionsRequest) returns (RecentCompletionsResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_LOGS_LIST;
+  }
+}

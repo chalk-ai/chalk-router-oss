@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/timestamp.proto";
+
+enum UsageDimension {
+  USAGE_DIMENSION_UNSPECIFIED = 0;
+  USAGE_DIMENSION_CONNECTION = 1;
+  USAGE_DIMENSION_MODEL = 2;
+  USAGE_DIMENSION_API_KEY = 3;
+  USAGE_DIMENSION_USAGE_POOL = 4;
+}
+
+message UsageFilters {
+  repeated string api_key_hashes = 1;
+  repeated string usage_pool_ids = 2;
+  repeated string connection_ids = 3;
+  repeated string models = 4;
+  map<string, string> api_key_labels = 5;
+}
+
+message QueryUsageRequest {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+  string bucket_size = 3;
+
+  oneof grouping {
+    bool global = 4;
+    UsageDimension dimension = 5;
+    string api_key_label = 6;
+  }
+
+  UsageFilters filters = 7;
+}
+
+message UsageAggregateRow {
+  google.protobuf.Timestamp bucket = 1;
+  string dimension_value = 2;
+  int64 prompt_tokens = 3;
+  int64 completion_tokens = 4;
+  int64 cached_tokens = 5;
+  int64 cache_write_tokens = 6;
+  int64 reasoning_tokens = 7;
+  int64 total_tokens = 8;
+  int64 request_count = 9;
+
+  // Public list-price estimate in USD for this row's metered tokens, priced by
+  // the router per upstream model before aggregation, so it stays exact under
+  // every grouping. Unset by routers that do not price usage; zero means the
+  // row was priced and cost nothing.
+  optional double estimated_cost_usd = 10;
+
+  // Requests in this row whose model is absent from the router's price
+  // catalog, and whose tokens are therefore missing from estimated_cost_usd.
+  // Unset alongside it.
+  optional int64 unpriced_request_count = 11;
+}
+
+message QueryUsageResponse {
+  repeated UsageAggregateRow rows = 1;
+}
+
+service UsageService {
+  rpc QueryUsage(QueryUsageRequest) returns (QueryUsageResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_MONITORING_READ;
+  }
+}

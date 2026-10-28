@@ -1,0 +1,1 @@
+- Gemini image embedding cost estimates now use separate text and image rates; requests without a reliable token breakdown appear as unpriced instead of understating their cost.

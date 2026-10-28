@@ -1,0 +1,1 @@
+- The chalk-router frontend now supports custom routes with fallback policy and judge policy customizability.

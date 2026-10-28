@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/timestamp.proto";
+
+message BackgroundResponseJob {
+  string event_id = 1;
+  string phase = 2;
+  optional string connection_id = 3;
+  optional string upstream_response_id = 4;
+  string requested_model = 5;
+  string served_model = 6;
+  optional string upstream_status = 7;
+  google.protobuf.Timestamp submitted_at = 8;
+  google.protobuf.Timestamp terminal_at = 9;
+  google.protobuf.Timestamp settled_at = 10;
+  google.protobuf.Timestamp next_poll_at = 11;
+  google.protobuf.Timestamp claim_until = 12;
+  uint64 poll_attempts = 13;
+  optional string last_error_code = 14;
+}
+
+message ListBackgroundResponsesRequest {
+  optional int32 limit = 1;
+  optional string cursor = 2;
+  optional string phase = 3;
+}
+
+message ListBackgroundResponsesResponse {
+  repeated BackgroundResponseJob jobs = 1;
+  optional string next_cursor = 2;
+}
+
+service BackgroundResponseService {
+  rpc ListBackgroundResponses(ListBackgroundResponsesRequest) returns (ListBackgroundResponsesResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_LOGS_LIST;
+  }
+}

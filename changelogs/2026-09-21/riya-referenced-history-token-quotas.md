@@ -1,0 +1,1 @@
+- Requests referencing stored conversation history or cached content are rejected when token budgets or token-per-minute limits apply; clients can supply the history inline instead.

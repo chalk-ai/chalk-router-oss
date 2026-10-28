@@ -1,0 +1,20 @@
+# chalk-router feature backlog
+
+## (1) Synthetic API Keys [DONE]
+Issue API keys with configurable access:
+  - (a) entire provider  (b) specific models  (c) all models
+  - arbitrary label key/values for later analysis
+  - admin CRUD endpoints to create/list/revoke keys
+  - middleware validates key + model permission on every request
+
+## (2) Quota-per-API-key [DONE]
+Track token consumption per API key:
+  - prompt_tokens, completion_tokens, total_tokens
+  - thread-safe, updated after each successful request
+  - endpoint to query quota usage per key
+
+## (3) Fallback Policy [DONE]
+Define model-level fallback chains:
+  - config: map from model_id -> [fallback_model_ids, ...]
+  - router tries fallbacks in order on any backend error
+  - loaded from FALLBACK_POLICY env var (JSON) or config file

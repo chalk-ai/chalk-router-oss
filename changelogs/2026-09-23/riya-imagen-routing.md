@@ -1,0 +1,1 @@
+- Imagen models now use the Images playground's image-generation endpoint and reject unsupported native Gemini Interactions requests.

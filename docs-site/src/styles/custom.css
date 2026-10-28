@@ -1,0 +1,20 @@
+:root { --sl-color-accent-low: #113e35; --sl-color-accent: #21b890; --sl-color-accent-high: #a7efda; --sl-content-width: 55rem; }
+:root[data-theme='light'] { --sl-color-accent-low: #dcf8ef; --sl-color-accent: #08765c; --sl-color-accent-high: #104e3e; }
+.sl-markdown-content table { font-size: .9rem; }
+.sl-markdown-content td { vertical-align: top; }
+.sl-markdown-content pre { max-height: 36rem; }
+/* Long RPC paths and Rust generic types should wrap within the reading column. */
+.sl-markdown-content table { display: table; width: 100%; table-layout: fixed; }
+.sl-markdown-content :is(th, td) { overflow-wrap: anywhere; }
+.sl-markdown-content :is(th, td) code { white-space: normal; }
+
+.sl-markdown-content table:has(th:nth-child(3):last-child) th:first-child { width: 34%; }
+.sl-markdown-content table:has(th:nth-child(3):last-child) th:nth-child(2) { width: 21%; }
+.sl-markdown-content table:has(th:nth-child(5):last-child) th:first-child { width: 25%; }
+.sl-markdown-content table:has(th:nth-child(5):last-child) th:nth-child(2) { width: 7%; }
+.sl-markdown-content table:has(th:nth-child(5):last-child) th:nth-child(3) { width: 21%; }
+.sl-markdown-content table:has(th:nth-child(5):last-child) th:nth-child(4) { width: 18%; }
+@media (max-width: 50rem) {
+  .sl-markdown-content table { display: block; overflow-x: auto; table-layout: auto; }
+  .sl-markdown-content th, .sl-markdown-content td { min-width: 5rem; }
+}

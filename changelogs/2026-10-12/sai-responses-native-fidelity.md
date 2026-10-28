@@ -1,0 +1,1 @@
+- Native Responses replies retain upstream success statuses, content types, and exact JSON and streaming content while preserving router response IDs and usage accounting.

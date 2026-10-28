@@ -1,0 +1,1 @@
+- Creating or updating an API key with a wildcard in its model allowlist (for example `openai/*`) is now rejected with an explanation, instead of saving a key that can call no models; allow a whole provider or connection with the provider or connection scope. The same applies to a per-connection rate limit whose model list contains a wildcard.

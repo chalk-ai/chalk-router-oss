@@ -1,0 +1,1 @@
+- Long non-streaming generations are no longer cut off after five minutes; the routing deadline now only stops further fallback attempts from starting.

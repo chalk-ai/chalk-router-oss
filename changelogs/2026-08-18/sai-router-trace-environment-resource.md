@@ -1,0 +1,1 @@
+- stamp `chalk.environment_id` from `CHALK_ENVIRONMENT_ID` on the router's OpenTelemetry resource so OpenAI and Anthropic spans are attributed to the deployment's Chalk environment.

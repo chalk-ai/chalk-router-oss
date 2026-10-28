@@ -1,0 +1,1 @@
+- Clarify control-plane authentication errors when a router API key is used.

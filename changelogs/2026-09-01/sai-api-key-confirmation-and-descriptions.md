@@ -1,0 +1,1 @@
+- Require API-key descriptions and confirm destructive admin actions before applying them.

@@ -1,0 +1,1 @@
+- Return a JSON 404 error for unknown router API paths.

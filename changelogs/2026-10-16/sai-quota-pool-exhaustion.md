@@ -1,0 +1,1 @@
+- Requests are admitted promptly when the quota database connection pool is exhausted, instead of waiting behind additional quota checks.

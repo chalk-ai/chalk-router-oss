@@ -1,0 +1,407 @@
+syntax = "proto3";
+
+package chalk.auth.v1;
+
+import "chalk/utils/v1/encoding.proto";
+import "google/protobuf/descriptor.proto";
+
+option go_package = "auth/v1;authv1";
+
+extend google.protobuf.EnumValueOptions {
+  string description = 1001;
+  string slug = 1002;
+  repeated PermissionPrincipal assignable_to = 1003;
+}
+
+// Principal types that a permission may be assigned to directly. User-role
+// assignment is managed separately; this metadata controls non-user principals.
+enum PermissionPrincipal {
+  PERMISSION_PRINCIPAL_UNSPECIFIED = 0;
+  PERMISSION_PRINCIPAL_SERVICE_TOKEN = 1;
+}
+
+enum Permission {
+  PERMISSION_UNSPECIFIED = 0 [
+    (slug) = "unspecified",
+    (description) = "Default value -- should never be set."
+  ];
+  PERMISSION_INSECURE_UNAUTHENTICATED = 1 [
+    (slug) = "insecure",
+    (description) = "Unauthenticated endpoint"
+  ];
+  // This permissions should be used sparingly
+  // (e.g. for ping checks that shouldn't be exposed to the public)
+  PERMISSION_AUTHENTICATED = 2 [
+    (slug) = "authenticated",
+    (description) = "User is authenticated, but no permissions are checked"
+  ];
+  PERMISSION_QUERY_ONLINE = 3 [
+    (slug) = "query.online",
+    (description) = "Query online features.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_QUERY_OFFLINE = 4 [
+    (slug) = "query.offline",
+    (description) = "Query offline features.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_MONITORING_CREATE = 5 [
+    (slug) = "monitoring.create",
+    (description) = "Create a new chart or alert",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_MONITORING_READ = 6 [
+    (slug) = "monitoring.read",
+    (description) = "See charts and alerts",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_TEAM_ADD = 7 [
+    (slug) = "team.add",
+    (description) = "Add team members to your organization",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_TEAM_DELETE = 8 [
+    (slug) = "team.delete",
+    (description) = "Remove a team member",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_TEAM_LIST = 9 [
+    (slug) = "team.list",
+    (description) = "See the team members in your organization",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_TEAM_ADMIN = 10 [
+    (slug) = "team.admin",
+    (description) = "Configure authentication options for your organization",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_DEPLOY_READ = 11 [
+    (slug) = "deploy.read",
+    (description) = "Read information about deployments.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_DEPLOY_CREATE = 12 [
+    (slug) = "deploy.create",
+    (description) = "Create a new deployment.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_DEPLOY_PREVIEW = 13 [
+    (slug) = "deploy.preview",
+    (description) = "Create a new branch deployment.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_DEPLOY_REDEPLOY = 14 [
+    (slug) = "deploy.redeploy",
+    (description) = "Redeploy an existing deployment.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_LOGS_LIST = 15 [
+    (slug) = "logs.list",
+    (description) = "Read logs from resolvers.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_CRON_READ = 16 [
+    (slug) = "cron.read",
+    (description) = "Read the scheduled runs.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_CRON_CREATE = 17 [
+    (slug) = "cron.create",
+    (description) = "Trigger a new scheduled run.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_SECRETS_WRITE = 18 [
+    (slug) = "secrets.write",
+    (description) = "Create, modify, or delete secret values.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_SECRETS_DECRYPT = 19 [
+    (slug) = "secrets.decrypt",
+    (description) = "Decrypt secret values.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_SECRETS_LIST = 20 [
+    (slug) = "secrets.list",
+    (description) = "See the list of available secrets. Reading secrets is not allowed with this permission.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_TOKENS_WRITE = 21 [
+    (slug) = "tokens.write",
+    (description) = "Create, modify, or delete service tokens.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_TOKENS_LIST = 22 [
+    (slug) = "tokens.list",
+    (description) = "List the service tokens and see client ids, but not client secrets.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_MIGRATE_READ = 23 [
+    (slug) = "migrate.read",
+    (description) = "View information about migrations.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_MIGRATE_PLAN = 24 [
+    (slug) = "migrate.plan",
+    (description) = "Create a migration plan.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_MIGRATE_EXECUTE = 25 [
+    (slug) = "migrate.execute",
+    (description) = "Execute a migration plan.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_PROJECT_CREATE = 26 [
+    (slug) = "project.create",
+    (description) = "Create a new project",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_CHALK_ADMIN = 27 [
+    (slug) = "chalk.admin",
+    (description) = "Administer Chalk"
+  ];
+  PERMISSION_BILLING_READ = 28 [
+    (slug) = "billing.read",
+    (description) = "Read billing information",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_AUTH_SERVICE_MANAGER = 29 [
+    (slug) = "auth_service.manager",
+    (description) = "Manage Auth Service"
+  ];
+  PERMISSION_INFRASTRUCTURE_READ = 30 [
+    (slug) = "infrastructure.read",
+    (description) = "Read infrastructure workflows",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_INFRASTRUCTURE_WRITE = 31 [
+    (slug) = "infrastructure.write",
+    (description) = "Approve or cancel infrastructure workflows",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_ENVIRONMENT_CREATE = 32 [
+    (slug) = "environment.create",
+    (description) = "Create and manage environments",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_INTERNAL_DATAPLANE_STATUS_UPDATE = 33 [
+    (slug) = "internal.dataplane_status_update",
+    (description) = "Update container and scaling group status from the dataplane controller"
+  ];
+  PERMISSION_INTERNAL_WORKING_TOKEN_EXCHANGE = 34 [
+    (slug) = "internal.working_token_exchange",
+    (description) = "Use an exchange token to obtain a short-lived working token"
+  ];
+  PERMISSION_BILLING_WRITE = 35 [
+    (slug) = "billing.write",
+    (description) = "Manage billing settings, payment methods, and credit purchases"
+  ];
+  PERMISSION_QUERY_OFFLINE_READ = 36 [
+    (slug) = "query.offline_read",
+    (description) = "Read offline queries and datasets.",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_INTERNAL_RESOURCE_SHARE_VIEW = 37 [
+    (slug) = "internal.resource_share_view",
+    (description) = "Read a single shared resource through a share link. Held only by share-link tokens, never granted to a user or service token."
+  ];
+  PERMISSION_INTERNAL_EXCHANGE_TOKEN_RENEW = 38 [
+    (slug) = "internal.exchange_token_renew",
+    (description) = "Renew exchange tokens"
+  ];
+  PERMISSION_AGENTS_WRITE = 39 [
+    (slug) = "agents.write",
+    (description) = "Create, modify, delete ai provider connections",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_AGENTS_READ = 40 [
+    (slug) = "agents.read",
+    (description) = "Use Chalk AI assistant",
+    (assignable_to) = PERMISSION_PRINCIPAL_SERVICE_TOKEN
+  ];
+  PERMISSION_BILLING_PUBLISH_ANALYTICS = 41 [
+    (slug) = "billing.publish_analytics",
+    (description) = "Publish product analytics events from a self-hosted deployment"
+  ];
+
+  option (chalk.utils.v1.encoding) = {
+    mapping: [
+      {
+        key: 1
+        value: "insecure_unauthenticated"
+      },
+      {
+        key: 2
+        value: "authenticated"
+      },
+      {
+        key: 3
+        value: "query.online"
+      },
+      {
+        key: 4
+        value: "query.offline"
+      },
+      {
+        key: 5
+        value: "monitoring.create"
+      },
+      {
+        key: 6
+        value: "monitoring.read"
+      },
+      {
+        key: 7
+        value: "team.add"
+      },
+      {
+        key: 8
+        value: "team.delete"
+      },
+      {
+        key: 9
+        value: "team.list"
+      },
+      {
+        key: 10
+        value: "team.admin"
+      },
+      {
+        key: 11
+        value: "deploy.read"
+      },
+      {
+        key: 12
+        value: "deploy.create"
+      },
+      {
+        key: 13
+        value: "deploy.preview"
+      },
+      {
+        key: 14
+        value: "deploy.redeploy"
+      },
+      {
+        key: 15
+        value: "logs.list"
+      },
+      {
+        key: 16
+        value: "cron.read"
+      },
+      {
+        key: 17
+        value: "cron.create"
+      },
+      {
+        key: 18
+        value: "secrets.write"
+      },
+      {
+        key: 19
+        value: "secrets.decrypt"
+      },
+      {
+        key: 20
+        value: "secrets.list"
+      },
+      {
+        key: 21
+        value: "tokens.write"
+      },
+      {
+        key: 22
+        value: "tokens.list"
+      },
+      {
+        key: 23
+        value: "migrate.read"
+      },
+      {
+        key: 24
+        value: "migrate.plan"
+      },
+      {
+        key: 25
+        value: "migrate.execute"
+      },
+      {
+        key: 26
+        value: "project.create"
+      },
+      {
+        key: 27
+        value: "chalk.admin"
+      },
+      {
+        key: 28
+        value: "billing.read"
+      },
+      {
+        key: 29
+        value: "auth_service.manager"
+      },
+      {
+        key: 30
+        value: "infrastructure.read"
+      },
+      {
+        key: 31
+        value: "infrastructure.write"
+      },
+      {
+        key: 32
+        value: "environment.create"
+      },
+      {
+        key: 33
+        value: "internal.dataplane_status_update"
+      },
+      {
+        key: 34
+        value: "internal.working_token_exchange"
+      },
+      {
+        key: 35
+        value: "billing.write"
+      },
+      {
+        key: 36
+        value: "query.offline_read"
+      },
+      {
+        key: 37
+        value: "internal.resource_share_view"
+      },
+      {
+        key: 38
+        value: "internal.exchange_token_renew"
+      },
+      {
+        key: 39
+        value: "agents.write"
+      },
+      {
+        key: 40
+        value: "agents.read"
+      },
+      {
+        key: 41
+        value: "billing.publish_analytics"
+      }
+    ]
+  };
+}
+
+extend google.protobuf.MethodOptions {
+  chalk.auth.v1.Permission permission = 2000;
+  chalk.auth.v1.Permission team_permission = 2001;
+  // Additional permissions accepted in place of `permission` (OR semantics).
+  // The effective set of acceptable permissions for an endpoint is the union
+  // of `permission` and `additional_permissions_list`: a user holding any
+  // single permission in that union may access the endpoint. Use this to
+  // expose read-only access to a narrower role without disturbing the
+  // existing primary permission (e.g. permission = PERMISSION_QUERY_OFFLINE,
+  // additional_permissions_list = [PERMISSION_QUERY_OFFLINE_READ]).
+  repeated chalk.auth.v1.Permission additional_permissions_list = 2002;
+}

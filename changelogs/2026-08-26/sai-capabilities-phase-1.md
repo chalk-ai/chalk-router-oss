@@ -1,0 +1,1 @@
+- Persist optional provider-connection capability declarations and resolve advisory profiles with provenance.

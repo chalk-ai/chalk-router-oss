@@ -1,0 +1,1 @@
+- Playground model choices show their provider, making models with similar IDs easier to distinguish.

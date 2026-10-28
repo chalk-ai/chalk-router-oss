@@ -1,0 +1,20 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "embedding",
+      "index": 0,
+      "embedding": [
+        0.1,
+        0.2,
+        0.3
+      ]
+    }
+  ],
+  "model": "example-connection/example-embedding",
+  "usage": {
+    "prompt_tokens": 4,
+    "completion_tokens": 0,
+    "total_tokens": 4
+  }
+}

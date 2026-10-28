@@ -1,0 +1,1 @@
+- Requests for an unpublished chalk route receive a temporary unavailable response with a retry delay, while unknown chalk route IDs return not found.

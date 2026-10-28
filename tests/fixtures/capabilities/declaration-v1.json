@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "model_defaults": {
+    "modalities": {
+      "input": { "text": "supported" }
+    }
+  },
+  "models": {
+    "gpt-image-2": {
+      "surfaces": { "image_generation": "supported" },
+      "modalities": {
+        "output": { "image": "supported" }
+      }
+    }
+  },
+  "endpoint": {
+    "interfaces": {
+      "openai_images": {
+        "operations": {
+          "generate": {
+            "support": "supported",
+            "parameters": {
+              "size": {
+                "support": "supported",
+                "constraint": {
+                  "type": "string_enum",
+                  "values": ["1024x1024", "1536x1024", "1024x1536"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

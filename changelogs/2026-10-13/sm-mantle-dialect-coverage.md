@@ -1,0 +1,1 @@
+- Bedrock now serves dated GPT snapshots (such as `openai.gpt-5.5-2026-04-23`), Gemma 4 and Grok models instead of rejecting them with "isn't supported on this route", and the model list no longer shows Bedrock models that the account cannot use, such as a model unavailable under its data-retention mode. Looking such a model up by id returns 404 with the provider's reason.

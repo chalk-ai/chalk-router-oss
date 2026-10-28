@@ -1,0 +1,1 @@
+- API keys can now grant model routes using either an internal route ID or the same public model ID used for inference; API clients must migrate route grants to explicit route references, and deleting and recreating a route still requires a new grant.

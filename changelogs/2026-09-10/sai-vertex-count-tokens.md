@@ -1,0 +1,1 @@
+- Vertex AI count-tokens requests now carry the same `anthropic_version` and bare model name as messages requests, so routes configured with a publisher-prefixed model count tokens correctly.

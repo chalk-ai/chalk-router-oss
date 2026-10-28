@@ -1,0 +1,1 @@
+- An API key allowed to use a `chalk/*` route can now be served by that route's judge-selected models and configured fallbacks; the key's connection and provider scope still applies to each of them.

@@ -1,0 +1,1 @@
+- Fix: graceful shutdown now also triggers on `SIGTERM` (not just Ctrl-C/`SIGINT`), matching MCP Gateway. Kubernetes sends `SIGTERM` on pod termination, so the router previously never cleared gRPC readiness or drained in-flight requests before being killed.

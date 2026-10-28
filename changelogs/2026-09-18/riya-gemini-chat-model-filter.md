@@ -1,0 +1,1 @@
+- The playground Chat tab excludes Gemini 3.8 Live models, which require the Live API, and Deep Research agents, whose agent workflow is not yet supported.

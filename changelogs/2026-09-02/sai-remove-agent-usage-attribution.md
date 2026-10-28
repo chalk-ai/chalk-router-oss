@@ -1,0 +1,1 @@
+- Remove agent-level usage attribution while recording verified federated user subjects as OpenInference `user.id` on inference spans.

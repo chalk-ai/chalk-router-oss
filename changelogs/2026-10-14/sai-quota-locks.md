@@ -1,0 +1,1 @@
+- Quota initialization and expired-reservation cleanup follow the same lock order as settlement, preventing deadlocks between concurrent accounting operations.

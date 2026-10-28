@@ -1,0 +1,1 @@
+- Allow Responses requests with documented `include` selectors to use Anthropic models; supplemental included fields that Anthropic cannot provide are omitted from translated responses.

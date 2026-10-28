@@ -1,0 +1,1 @@
+- Bound OpenAI, Anthropic, embedding, and client-ingested span attributes; preserve stable source indices and tool capacity; and hydrate bounded object-backed content for Braintrust.

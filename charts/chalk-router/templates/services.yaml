@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chalk-router-ui
+  labels:
+    {{- include "chalk-router.commonLabels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  selector:
+    app: chalk-router-ui
+  ports:
+    - port: 8443
+      targetPort: 8443
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chalk-router-api
+  labels:
+    {{- include "chalk-router.commonLabels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  selector:
+    app: chalk-router
+  ports:
+    - port: 4001
+      targetPort: 4001

@@ -1,0 +1,1 @@
+- New provider connections are automatically tested before they are created, with failures shown in the form so you can fix them and retry.

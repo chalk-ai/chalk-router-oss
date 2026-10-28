@@ -1,0 +1,1 @@
+- Route Responses operations from capability profiles and add integrity-protected continuation, retrieve, and delete routing.

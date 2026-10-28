@@ -1,0 +1,1 @@
+- **BREAKING:** Resolve, publish, and enforce capabilities per model, endpoint, and adapter, with capability-aware Playground model and parameter filtering.

@@ -1,0 +1,1 @@
+- Security reports are directed to security@chalk.ai; publication awaits delivery verification and the support and triage policy.

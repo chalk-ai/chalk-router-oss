@@ -1,0 +1,1 @@
+- Add routing, live model discovery, runtime credentials, and provider UI support for Fireworks AI, Together AI, Groq, and Mistral AI.

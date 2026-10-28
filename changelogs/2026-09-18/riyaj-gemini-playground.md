@@ -1,0 +1,1 @@
+- The playground now uses native Gemini chat when available, streams replies and token usage, and preserves signed conversation history for follow-up messages.

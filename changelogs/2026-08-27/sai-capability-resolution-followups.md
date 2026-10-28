@@ -1,0 +1,1 @@
+- Keep advertised model capabilities aligned with dispatch and preserve valid parameter constraints across capability layers.

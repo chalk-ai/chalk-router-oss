@@ -1,0 +1,34 @@
+# Git
+.git
+.gitignore
+.github
+
+# Rust build artifacts
+target/
+
+# Environment and config
+.env
+*.log
+
+# Documentation
+README.md
+*.md
+
+# Test files
+tests/
+frontend_test/
+
+# Scripts
+*.sh
+
+# IDE
+.vscode/
+.idea/
+.claude/
+
+# Other
+openapi.yaml
+
+# Standalone vendored dependency test build artifacts are never image inputs.
+vendor/**/target/
+vendor/**/Cargo.lock

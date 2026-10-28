@@ -1,0 +1,1 @@
+- Background Responses now record final token usage and estimated cost independently of client disconnects, with configurable polling and replay-safe accounting.

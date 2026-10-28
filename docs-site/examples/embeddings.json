@@ -1,0 +1,7 @@
+{
+  "model": "example-connection/example-embedding",
+  "input": [
+    "A short document."
+  ],
+  "encoding_format": "float"
+}

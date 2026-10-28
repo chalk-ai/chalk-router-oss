@@ -1,0 +1,1 @@
+- accept federated JWTs whose `environment_id` names a different environment when `ROUTER_ACCEPT_CROSS_ENVIRONMENT_TOKENS` is set, so the shared go-api-server proxy can forward caller tokens without rewriting the claim

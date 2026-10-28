@@ -1,0 +1,1 @@
+- Allow users to test edited provider connections with their saved API key and unsaved settings, without saving changes or re-entering credentials.

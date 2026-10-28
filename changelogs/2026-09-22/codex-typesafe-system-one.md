@@ -1,0 +1,1 @@
+- Router clients can submit discovered TypeSafe models and aliases through the new Decisions and TypeSafe-compatible System One endpoints, routing across TypeSafe and OpenRouter with fallback, quota, usage, and cost tracking.

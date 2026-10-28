@@ -1,0 +1,1 @@
+- Remote image downloads now stop at 20 MiB or 30 seconds, with at most eight active downloads per router process; excess concurrent downloads fail immediately.

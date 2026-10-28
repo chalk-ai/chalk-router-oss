@@ -1,0 +1,1 @@
+- File uploads now return an explicit unavailable response instead of accepting data without file permissions, quotas, or a retrieval/deletion lifecycle.

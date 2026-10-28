@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/struct.proto";
+
+// Matches one request attribute. First match wins.
+message SamplingRule {
+  oneof applies_to {
+    // Exact x-chalk-request-tag match.
+    string request_tag = 1;
+    // Exact API token prefix or JWT identity match.
+    string key_id = 2;
+    // Exact usage-pool match.
+    string usage_pool_id = 3;
+  }
+  // Keep rate, from 0.0 to 1.0.
+  double rate = 4;
+  // Records prompt and completion content.
+  bool log_content = 5;
+}
+
+// Compares scalar response values.
+enum OutcomeComparator {
+  OUTCOME_COMPARATOR_UNSPECIFIED = 0;
+  OUTCOME_COMPARATOR_EQ = 1;
+  OUTCOME_COMPARATOR_NE = 2;
+  OUTCOME_COMPARATOR_GT = 3;
+  OUTCOME_COMPARATOR_LT = 4;
+  OUTCOME_COMPARATOR_GTE = 5;
+  OUTCOME_COMPARATOR_LTE = 6;
+}
+
+// Matches a scalar response value. First match wins.
+message OutcomeRule {
+  // Dotted response path, for example choices.0.message.content.
+  string path = 1;
+  OutcomeComparator op = 2;
+  google.protobuf.Value value = 3;
+  // Keep rate, from 0.0 to 1.0.
+  double rate = 4;
+}
+
+message SamplingPolicy {
+  // Enables sampling rules. Disabled keeps all traces.
+  bool enabled = 1;
+  // Applied to requests no rule matched.
+  double default_rate = 2;
+  double min_conversation_rate = 3;
+  // First matching request rule wins.
+  repeated SamplingRule rules = 4;
+  // Content logging for requests no rule matched.
+  bool default_log_content = 5;
+  // First matching outcome rule wins.
+  repeated OutcomeRule outcome_rules = 6;
+}
+
+message GetSamplingPolicyRequest {}
+
+message GetSamplingPolicyResponse {
+  SamplingPolicy policy = 1;
+}
+
+message UpdateSamplingPolicyOperation {
+  optional bool enabled = 1;
+  optional double default_rate = 2;
+  optional double min_conversation_rate = 3;
+  // Replaces the full list when in the update mask.
+  repeated SamplingRule rules = 4;
+  optional bool default_log_content = 5;
+  // Replaces the full list when in the update mask.
+  repeated OutcomeRule outcome_rules = 6;
+}
+
+message UpdateSamplingPolicyRequest {
+  UpdateSamplingPolicyOperation update = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message UpdateSamplingPolicyResponse {
+  SamplingPolicy policy = 1;
+}
+
+service SamplingPolicyService {
+  rpc GetSamplingPolicy(GetSamplingPolicyRequest) returns (GetSamplingPolicyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_MONITORING_READ;
+  }
+  rpc UpdateSamplingPolicy(UpdateSamplingPolicyRequest) returns (UpdateSamplingPolicyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_MONITORING_CREATE;
+  }
+}

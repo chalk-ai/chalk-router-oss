@@ -1,0 +1,1 @@
+- Decisions requests can include images as `assets` and ask `box` questions that locate something in an image; box questions are routed only to models that answer them, such as Jev 1.14.

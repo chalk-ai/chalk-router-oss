@@ -1,0 +1,4 @@
+- Allow multiple connections for every provider kind while keeping connection names and non-null prefixes unique per environment.
+- Preserve implicit OpenAI and Anthropic compatibility by selecting the canonical-prefix owner, or the sole eligible connection when no canonical owner exists; reject ambiguous configurations and keep explicit connections route-only.
+- Suggest distinct prefixes in the Providers UI and add first-class `us-central1` and `global` Vertex location choices.
+- Attribute usage to immutable provider connection IDs across PostgreSQL, ClickHouse, gRPC, and the usage chart. PostgreSQL preserves its existing ledger, conservatively backfills unambiguous built-in-provider events, and displays rows that cannot be attributed as legacy usage.

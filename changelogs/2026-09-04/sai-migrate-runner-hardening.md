@@ -1,0 +1,1 @@
+- `openai-server migrate` now requires `CHALK_ENVIRONMENT_ID`, reports applied vs. already-present migrations, logs each history row adopted from `public._sqlx_migrations`, and creates its SQLx history table through SQLx itself instead of hand-written DDL.

@@ -1,0 +1,1 @@
+- Export the LLM frontends' spans to Braintrust when `BRAINTRUST_API_KEY` is set: the per-request span of an inbound LLM route (now labelled with the API dialect it arrived on) and every OpenInference span go to a Braintrust project alongside the existing OTLP collector, while admin, health, and internal spans stay out of it.

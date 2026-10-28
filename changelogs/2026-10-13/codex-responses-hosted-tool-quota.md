@@ -1,0 +1,1 @@
+- Responses requests using provider-hosted tools now require no matching token budget or token-per-minute limit and provider-reported usage; request-rate and concurrency limits still apply, and caller-run tools remain supported with token limits.

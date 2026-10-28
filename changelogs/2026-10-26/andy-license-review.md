@@ -1,0 +1,1 @@
+- Chalk Router uses Apache-2.0 licensing; dependency redistribution review remains required before public release.

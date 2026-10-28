@@ -1,0 +1,1 @@
+- Requests using a provider's bare model ID obey the same model-scoped rate limits as its canonical prefixed ID, including limits configured with either spelling.

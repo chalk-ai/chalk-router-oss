@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "chalk/router/v1/rate_limit.proto";
+import "chalk/router/v1/usage_budget.proto";
+
+message UsagePool {
+  string id = 1;
+  string name = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message CreateUsagePoolRequest {
+  string name = 1;
+  repeated ApiKeyRateLimit rate_limits = 2;
+  repeated UsageBudgetSpec usage_budgets = 3;
+}
+
+message CreateUsagePoolResponse {
+  UsagePool pool = 1;
+}
+
+message UpdateUsagePoolOperation {
+  optional string name = 1;
+  repeated ApiKeyRateLimit rate_limits = 2;
+  repeated UsageBudgetSpec usage_budgets = 3;
+}
+
+message UpdateUsagePoolRequest {
+  string id = 1;
+  UpdateUsagePoolOperation update = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateUsagePoolResponse {
+  UsagePool pool = 1;
+}
+
+message ListUsagePoolsRequest {
+  optional int32 limit = 1;
+  optional string cursor = 2;
+}
+
+message ListUsagePoolsResponse {
+  repeated UsagePool pools = 1;
+  optional string next_cursor = 2;
+}
+
+message GetUsagePoolRequest {
+  // Select a pool in the request environment. A nonempty lookup is required.
+  oneof lookup {
+    string id = 1;
+    // Case-sensitive; surrounding whitespace is trimmed by the application.
+    string name = 2;
+  }
+}
+
+message GetUsagePoolResponse {
+  UsagePool pool = 1;
+}
+
+message DeleteUsagePoolRequest {
+  string id = 1;
+}
+
+message DeleteUsagePoolResponse {
+  string id = 1;
+}
+
+service UsagePoolService {
+  rpc CreateUsagePool(CreateUsagePoolRequest) returns (CreateUsagePoolResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc UpdateUsagePool(UpdateUsagePoolRequest) returns (UpdateUsagePoolResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc ListUsagePools(ListUsagePoolsRequest) returns (ListUsagePoolsResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc GetUsagePool(GetUsagePoolRequest) returns (GetUsagePoolResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc DeleteUsagePool(DeleteUsagePoolRequest) returns (DeleteUsagePoolResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+}

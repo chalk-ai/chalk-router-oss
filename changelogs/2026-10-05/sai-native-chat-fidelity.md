@@ -1,0 +1,1 @@
+- OpenAI-compatible chat preserves native request controls, refusals, usage details, response metadata, diagnostic headers, and provider errors, and avoids cache replays that would lose those details.

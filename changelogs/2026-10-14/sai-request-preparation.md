@@ -1,0 +1,1 @@
+- Chat requests with large prompts or tool histories use less temporary memory while preserving fallback behavior and usage accounting.

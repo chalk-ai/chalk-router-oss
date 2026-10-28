@@ -1,0 +1,14 @@
+[package]
+license = "Apache-2.0"
+name = "router-docs-source"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+syn = { version = "2", features = ["full", "visit"] }
+quote = "1"
+proc-macro2 = { version = "1", features = ["span-locations"] }
+serde_json = "1"
+prost-reflect = { version = "0.14", features = ["serde"] }
+protoc-bin-vendored = "3"

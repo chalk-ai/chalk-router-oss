@@ -1,0 +1,19 @@
+/target/
+**/*.rs.bk
+*.pdb
+.DS_Store
+.venv/
+__pycache__/
+openapi.yaml
+.env
+# Plaintext decrypted secrets — only the sops-encrypted *.enc forms are tracked.
+.env.seed
+.idea/
+# Worktrees created by `just worktree`, each with its own target/.
+.worktrees/
+# Agent-tool state is local. Skills are shared: the canonical copy is
+# .agents/skills/, and .claude/skills / .opencode/skills are symlinks to it.
+.claude/*
+!.claude/skills
+.opencode/*
+!.opencode/skills

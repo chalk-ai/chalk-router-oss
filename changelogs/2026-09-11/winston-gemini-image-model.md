@@ -1,0 +1,1 @@
+- Gemini image models selected from the Playground catalog no longer fail because of their `models/` prefix.

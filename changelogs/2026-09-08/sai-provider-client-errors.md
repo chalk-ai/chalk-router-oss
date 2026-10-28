@@ -1,0 +1,4 @@
+- Bedrock error responses now report the upstream `message`/`Message` field instead of the full raw JSON body, and rate-limit/retry headers are now forwarded on Bedrock's non-streaming error path.
+- Testing a connection with a missing/blank `base_url` on the `openai-compatible` kind now reports "Configuration error: provider 'openai-compatible' requires a base URL" instead of "base_url is required for openai-compatible connections".
+- Testing a connection of an unrecognized provider kind now reports "Configuration error: provider '{kind}' is not supported" instead of "unknown provider kind '{kind}'".
+- Unsupported-operation errors on Vertex connections now return HTTP 400 instead of 500, matching other providers.

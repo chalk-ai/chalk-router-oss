@@ -1,0 +1,1 @@
+- Sampling policies, trace decisions, and session hashing are isolated by environment on cluster routers.

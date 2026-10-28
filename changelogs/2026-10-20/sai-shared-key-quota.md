@@ -1,0 +1,1 @@
+- Requests sharing an API key or usage pool wait less on quota checks. When a single quota is too contended to check within a second, the router now answers 429 with `x-chalk-error-code: quota_contended` and `Retry-After: 1` instead of waiting indefinitely or letting the request through unchecked.

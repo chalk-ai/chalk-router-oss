@@ -1,0 +1,1 @@
+- Allow localhost and numeric loopback Anthropic connections without an extra environment variable; provide a shared mock-anthropic command and a local connection seed.

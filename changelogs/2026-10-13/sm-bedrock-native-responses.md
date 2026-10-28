@@ -1,0 +1,1 @@
+- Responses requests for OpenAI's GPT models on Bedrock (GPT-5.4 through GPT-6.1) are now served natively, so `reasoning`, `store`, `previous_response_id`, function tools and image input work instead of being rejected; background Responses and retrieving, cancelling or deleting a stored Bedrock response remain unsupported.

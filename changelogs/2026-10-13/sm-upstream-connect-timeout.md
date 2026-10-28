@@ -1,0 +1,1 @@
+- Upstream connections now time out after 10 seconds (`ROUTER_UPSTREAM_CONNECT_TIMEOUT_MS`) instead of the operating system's roughly two-minute connect timeout, so a provider that stops accepting connections fails over promptly.

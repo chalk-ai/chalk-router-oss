@@ -1,0 +1,1 @@
+- Usage-pool names must be unique within each environment; names are case-sensitive, and conflicting creates or renames show a clear error.

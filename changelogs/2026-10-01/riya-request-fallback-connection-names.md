@@ -1,0 +1,1 @@
+- Chat Completions fallback overrides now accept connection names or IDs, with ID entries taking precedence when both target the same model.

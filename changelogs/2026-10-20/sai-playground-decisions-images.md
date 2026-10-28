@@ -1,0 +1,1 @@
+- The playground's Decisions tab can attach images, ask box questions, and draw the returned boxes over the image.

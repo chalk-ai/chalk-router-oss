@@ -1,0 +1,19 @@
+name: Source export isolation
+on:
+  pull_request:
+    paths: ['scripts/export-source-snapshot.py', 'scripts/test_export_source_snapshot.py', 'scripts/scan-release-image.py', 'scripts/reviewed-image-findings.json', 'scripts/test_release_image_scan.py', 'scripts/install-release-scanner.sh', '.github/workflows/source-export.yml']
+  push:
+    branches: [main]
+    paths: ['scripts/export-source-snapshot.py', 'scripts/test_export_source_snapshot.py', 'scripts/scan-release-image.py', 'scripts/reviewed-image-findings.json', 'scripts/test_release_image_scan.py', 'scripts/install-release-scanner.sh', '.github/workflows/source-export.yml']
+permissions:
+  contents: read
+jobs:
+  synthetic-history:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s scripts -p test_export_source_snapshot.py -v
+      - run: python3 scripts/test_release_image_scan.py

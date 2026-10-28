@@ -1,0 +1,9 @@
+{
+  "model": "chalk/example-chat",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Explain a cache in one sentence."
+    }
+  ]
+}

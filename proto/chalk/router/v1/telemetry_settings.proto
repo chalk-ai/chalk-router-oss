@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+message TelemetryExporter {
+  string id = 1;
+  string name = 2;
+  string exporter_type = 3;
+  string config_json = 4;
+  bool enabled = 5;
+  bool api_key_set = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  bool read_only = 9;
+}
+
+message ListTelemetryExportersRequest {}
+
+message ListTelemetryExportersResponse {
+  repeated TelemetryExporter exporters = 1;
+}
+
+message UpsertTelemetryExporterOperation {
+  string id = 1;
+  string name = 2;
+  string exporter_type = 3;
+  string config_json = 4;
+  bool enabled = 5;
+  optional string api_key = 6;
+}
+
+message UpsertTelemetryExporterRequest {
+  UpsertTelemetryExporterOperation exporter = 1;
+}
+
+message UpsertTelemetryExporterResponse {
+  TelemetryExporter exporter = 1;
+}
+
+message DeleteTelemetryExporterRequest {
+  string id = 1;
+}
+
+message DeleteTelemetryExporterResponse {
+  string id = 1;
+}
+
+message TestTelemetryExporterRequest {
+  UpsertTelemetryExporterOperation exporter = 1;
+}
+
+message TestTelemetryExporterResponse {
+  bool ok = 1;
+  optional string error = 2;
+  optional google.protobuf.Duration latency = 3;
+}
+
+service TelemetrySettingsService {
+  rpc ListTelemetryExporters(ListTelemetryExportersRequest) returns (ListTelemetryExportersResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_LIST;
+  }
+  rpc UpsertTelemetryExporter(UpsertTelemetryExporterRequest) returns (UpsertTelemetryExporterResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_WRITE;
+  }
+  rpc DeleteTelemetryExporter(DeleteTelemetryExporterRequest) returns (DeleteTelemetryExporterResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_WRITE;
+  }
+  rpc TestTelemetryExporter(TestTelemetryExporterRequest) returns (TestTelemetryExporterResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_SECRETS_WRITE;
+  }
+}

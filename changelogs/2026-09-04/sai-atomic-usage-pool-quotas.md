@@ -1,0 +1,1 @@
+- Usage pools now support atomic creation and updates with shared token budgets and rate limits, preventing partially configured pools after failed writes.

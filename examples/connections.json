@@ -1,0 +1,13 @@
+{
+  "connections": [
+    {
+      "name": "local-mock",
+      "kind": "openai-compatible",
+      "base_url": "http://127.0.0.1:18000/v1",
+      "api_key": "local-test-placeholder",
+      "exposure": "unlisted",
+      "prefix": "mock/"
+    }
+  ],
+  "routes": []
+}

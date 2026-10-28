@@ -1,0 +1,1 @@
+- Cluster routers (`ROUTER_TENANCY_MODE=cluster`) serve any environment the Chalk metadata API confirms, loading it on its first request without a rollout, resume queued work for environments with pending jobs after restart, and drain usage accounting for every environment on shutdown while retaining existing Argo credentials. Single-environment routers are unchanged.

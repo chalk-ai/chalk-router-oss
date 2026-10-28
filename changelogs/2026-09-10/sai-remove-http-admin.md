@@ -1,0 +1,1 @@
+- Removed the HTTP JSON admin endpoints under `/v1/admin` and the HTTP debug endpoints; manage keys, usage pools, rate limits, and policies through the gRPC admin API, the `chalk router` CLI, or the admin UI.

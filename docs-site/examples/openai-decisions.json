@@ -1,0 +1,11 @@
+{
+  "model": "example-connection/example-decision",
+  "input": "The request asks to summarize an article.",
+  "questions": [
+    {
+      "type": "predicate",
+      "name": "summary",
+      "instructions": "Does the request ask for a summary?"
+    }
+  ]
+}

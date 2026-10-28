@@ -1,0 +1,1 @@
+- Define usage attribution and token accounting with immutable API-key labels, one agent dimension, durable per-call events, and bounded aggregate queries.

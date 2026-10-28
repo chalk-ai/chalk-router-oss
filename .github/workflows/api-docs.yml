@@ -1,0 +1,44 @@
+name: API documentation
+
+on:
+  pull_request:
+    paths:
+      - 'docs-site/**'
+      - 'src/**'
+      - 'proto/**'
+      - 'tests/**'
+      - 'Justfile'
+      - '.github/workflows/api-docs.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs-site/**'
+      - 'src/**'
+      - 'proto/**'
+      - 'tests/**'
+      - 'Justfile'
+      - '.github/workflows/api-docs.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: docs-site/package-lock.json
+      - uses: dtolnay/rust-toolchain@1.98.0
+      - name: Install locked documentation dependencies
+        run: npm ci --prefix docs-site
+      - name: Verify source references and ProtoJSON examples, build, check links
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+        run: npm --prefix docs-site run check
+      # Actual router-codec fixtures run in the normal Rust test gate. This job
+      # intentionally builds only the isolated documentation extractor.

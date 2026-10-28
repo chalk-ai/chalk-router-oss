@@ -1,0 +1,1 @@
+- Preserve LLM token and output trace metadata for requests with many tools.

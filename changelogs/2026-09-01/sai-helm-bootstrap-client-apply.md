@@ -1,0 +1,1 @@
+- Bootstrap the router Helm release with client-side apply so it can adopt existing Kubernetes-managed fields safely.

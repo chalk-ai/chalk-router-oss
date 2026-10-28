@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+enum UsageBudgetPeriod {
+  USAGE_BUDGET_PERIOD_UNSPECIFIED = 0;
+  USAGE_BUDGET_PERIOD_DAILY = 1;
+  USAGE_BUDGET_PERIOD_WEEKLY = 2;
+  USAGE_BUDGET_PERIOD_MONTHLY = 3;
+}
+
+message UsageBudgetSpec {
+  uint64 token_limit = 1;
+  UsageBudgetPeriod period = 2;
+  optional bool enabled = 3;
+}
+
+message UsageBudget {
+  string id = 1;
+  string scope = 2;
+  string scope_id = 3;
+  // Legacy daily-only projection. Populated only for DAILY budgets.
+  uint64 daily_token_budget = 4 [deprecated = true];
+  bool enabled = 5;
+  google.protobuf.Timestamp created_at = 6;
+  uint64 token_limit = 7;
+  UsageBudgetPeriod period = 8;
+  // Current fixed-window enforcement state. This is an admission counter,
+  // not an exact historical usage ledger, and is absent when enforcement is
+  // disabled or unavailable.
+  optional uint64 current_usage = 9;
+  google.protobuf.Timestamp next_reset_at = 10;
+}
+
+message CreateUsageBudgetRequest {
+  string scope = 1;
+  string scope_id = 2;
+  // Legacy: creates a DAILY budget. Cannot be combined with token_limit.
+  uint64 daily_token_budget = 3 [deprecated = true];
+  optional bool enabled = 4;
+  uint64 token_limit = 5;
+  UsageBudgetPeriod period = 6;
+}
+
+message CreateUsageBudgetResponse {
+  UsageBudget budget = 1;
+}
+
+message ListUsageBudgetsRequest {
+  optional string scope = 1;
+  optional string scope_id = 2;
+}
+
+message ListUsageBudgetsResponse {
+  repeated UsageBudget budgets = 1;
+}
+
+message UpdateUsageBudgetOperation {
+  // Legacy: valid only for DAILY budgets.
+  optional uint64 daily_token_budget = 1 [deprecated = true];
+  optional bool enabled = 2;
+  optional uint64 token_limit = 3;
+}
+
+message UpdateUsageBudgetRequest {
+  string id = 1;
+  UpdateUsageBudgetOperation update = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateUsageBudgetResponse {
+  UsageBudget budget = 1;
+}
+
+message GetUsageBudgetRequest {
+  string id = 1;
+}
+
+message GetUsageBudgetResponse {
+  UsageBudget budget = 1;
+}
+
+message DeleteUsageBudgetRequest {
+  string id = 1;
+}
+
+message DeleteUsageBudgetResponse {
+  string id = 1;
+}
+
+service UsageBudgetService {
+  rpc CreateUsageBudget(CreateUsageBudgetRequest) returns (CreateUsageBudgetResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc ListUsageBudgets(ListUsageBudgetsRequest) returns (ListUsageBudgetsResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc UpdateUsageBudget(UpdateUsageBudgetRequest) returns (UpdateUsageBudgetResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc GetUsageBudget(GetUsageBudgetRequest) returns (GetUsageBudgetResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc DeleteUsageBudget(DeleteUsageBudgetRequest) returns (DeleteUsageBudgetResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+}

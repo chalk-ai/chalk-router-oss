@@ -1,0 +1,1 @@
+- Router requests can retain an authenticated environment throughout HTTP and admin RPC execution.

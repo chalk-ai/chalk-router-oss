@@ -1,0 +1,1 @@
+- Enforce API-key and usage-pool token budgets plus global or connection/model request, token, and concurrency limits through one memory/Postgres quota runtime with atomic reservations, reconciliation, and fallback-aware leases.

@@ -1,0 +1,16 @@
+{
+  "name": "chalk-router-test-client",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "tsx test-client.ts"
+  },
+  "dependencies": {
+    "openai": "^4.73.1",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "@types/node": "^22.10.2"
+  }
+}

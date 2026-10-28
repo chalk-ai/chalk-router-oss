@@ -1,0 +1,1 @@
+- Gemini embeddings no longer fail when optional request fields are absent or response indexes and token usage are omitted; missing token usage is estimated for accounting.

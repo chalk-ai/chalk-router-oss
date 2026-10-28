@@ -1,0 +1,6 @@
+- Removed the placeholder Exports page from the router admin UI; it had no backend.
+- Rate limit and model route forms now reject invalid input (bad limit types, oversized values, missing connection for model-scoped limits) with a clear message instead of a generic server error.
+- Playground API routes now return a clean 502 instead of a raw error page when the router is unreachable, and no longer send an empty API key header that could block anonymous access when `ROUTER_ALLOW_UNAUTHENTICATED` is set.
+- The "New connection" form no longer blocks saving an AWS Bedrock runtime connection (`https://bedrock-runtime.<region>.amazonaws.com`) without an API key; it now matches the server, which authenticates those via the AWS credential chain.
+- Playground chat: a failed or stopped reply no longer leaves a stray empty assistant bubble, finished replies now show their prompt/completion token usage when the router reports it, and the transcript scrolls smoothly instead of stuttering on every streamed chunk.
+- The Usage and Tokens pages no longer silently drop API keys, usage pools, connections, or rate limit policies past the first 1000 when building their filter dropdowns and quota summaries; those lists are now fetched in full.

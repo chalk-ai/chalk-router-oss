@@ -1,0 +1,14 @@
+{
+  "model": "example-connection/example-decision",
+  "state": "The request asks to summarize an article.",
+  "questions": {
+    "category": {
+      "type": "choice",
+      "instructions": "Classify the requested task.",
+      "criteria": {
+        "summary": "Summarizing existing material",
+        "other": "Any other task"
+      }
+    }
+  }
+}

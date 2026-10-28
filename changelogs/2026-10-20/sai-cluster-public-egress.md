@@ -1,0 +1,1 @@
+- Cluster routers refuse custom provider endpoints, Vertex token URLs (including base64-encoded keys), Braintrust exporter URLs and request image URLs that point at private, loopback, metadata or other non-public addresses, and only follow redirects to public addresses, outside the legacy environment; public custom endpoints still work.

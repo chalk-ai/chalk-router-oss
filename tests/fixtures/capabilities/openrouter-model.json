@@ -1,0 +1,9 @@
+{
+  "id": "google/gemini-image",
+  "context_length": 1000000,
+  "architecture": {
+    "input_modalities": ["text", "image"],
+    "output_modalities": ["image"]
+  },
+  "supported_parameters": ["tools", "max_tokens"]
+}

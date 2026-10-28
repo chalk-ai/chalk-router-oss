@@ -1,0 +1,1 @@
+- Add resilient DB-backed telemetry exporter settings with encrypted API keys, environment-default merging, validated multi-destination Braintrust reloads, a read-only environment-managed OTLP pipeline entry, and admin UI configuration.

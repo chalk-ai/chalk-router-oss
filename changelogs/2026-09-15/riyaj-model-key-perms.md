@@ -1,0 +1,2 @@
+- Calling GET /v1/models (and VS Code configurations) now check access permissions against the API key's provider, connection, and model permissions
+- Direct model lookups also reject models the key cannot access.

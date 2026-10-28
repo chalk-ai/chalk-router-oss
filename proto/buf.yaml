@@ -1,0 +1,15 @@
+version: v2
+modules:
+  - path: .
+lint:
+  use:
+    - STANDARD
+  except:
+    - PACKAGE_VERSION_SUFFIX
+  # Byte-for-byte copies from chalk-private (scripts/sync-chalk-protos.sh); lint them there.
+  ignore:
+    - chalk/auth
+    - chalk/utils
+breaking:
+  use:
+    - FILE

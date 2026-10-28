@@ -1,0 +1,1 @@
+- Clarify how callers authenticate to control-plane RPCs.

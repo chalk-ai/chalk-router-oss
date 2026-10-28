@@ -1,0 +1,2 @@
+- Record `llm.cost.total`, `llm.cost.prompt` and `llm.cost.completion` on LLM spans, priced from a checked-in rate card. Consumers of `llm_cost` — the evaluation score summary and chalkcompute scorers — previously had no producer at all and reported every cost as zero.
+- Add `prices/rate_cards.json`, an append-only history of dated rate cards, and `scripts/fetch_rate_cards.py` to refresh it. Re-running when prices are unchanged bumps `last_verified_at` rather than appending, so a new card always means prices moved; `--check` fails if the file is stale.

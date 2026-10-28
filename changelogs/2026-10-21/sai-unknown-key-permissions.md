@@ -1,0 +1,1 @@
+- API keys with unknown fields in their stored permissions or connection scopes now deny all traffic until their permissions are replaced.

@@ -1,0 +1,1 @@
+- `POST /v1/decisions` accepts OpenAI Decisions requests and answers them in OpenAI's format from any configured decision model, including TypeSafe Jev, Perplexity Decider, and OpenRouter's decision models.

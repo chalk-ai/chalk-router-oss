@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chalk-router
+  labels:
+    app: chalk-router
+    {{- include "chalk-router.commonLabels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.backend.replicaCount }}
+  minReadySeconds: {{ .Values.backend.rollout.minReadySeconds }}
+  progressDeadlineSeconds: {{ .Values.backend.rollout.progressDeadlineSeconds }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: {{ .Values.backend.rollout.maxSurge }}
+      maxUnavailable: {{ .Values.backend.rollout.maxUnavailable }}
+  selector:
+    matchLabels:
+      app: chalk-router
+  template:
+    metadata:
+      labels:
+        app: chalk-router
+        {{- /* Keep the initial Helm adoption pod-template-equivalent. */}}
+        {{- /* Resource ownership labels above are sufficient for Helm itself. */}}
+        {{- /* New image tags or an explicit rolloutNonce trigger later rollouts. */}}
+        {{- if .Values.rolloutNonce }}
+      annotations:
+        chalk.ai/rollout-nonce: {{ .Values.rolloutNonce | quote }}
+        {{- end }}
+    spec:
+      automountServiceAccountToken: {{ .Values.backend.automountServiceAccountToken }}
+      securityContext:
+        {{- include "chalk-router.podSecurity" . | nindent 8 }}
+      terminationGracePeriodSeconds: {{ .Values.backend.rollout.terminationGracePeriodSeconds }}
+      containers:
+        - name: chalk-router
+          securityContext:
+            {{- include "chalk-router.containerSecurity" . | nindent 12 }}
+          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+          ports:
+            - containerPort: 4001
+          env:
+            # Pod networking is an explicit opt-in; local binaries bind loopback.
+            - name: ROUTER_BIND_ADDRESS
+              value: "0.0.0.0"
+            {{- include "chalk-router.backendEnv" . | nindent 12 }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.servingSecretName }}
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - sleep {{ .Values.backend.rollout.preStopDelaySeconds }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4001
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            failureThreshold: 3
+          startupProbe:
+            grpc:
+              port: 4001
+              service: startup
+            periodSeconds: 1
+            failureThreshold: 60
+          readinessProbe:
+            grpc:
+              port: 4001
+              service: readiness
+            periodSeconds: 10
+            failureThreshold: 3
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          resources:
+            {{- toYaml .Values.backend.resources | nindent 12 }}
+      volumes:
+        - name: tmp
+          emptyDir:
+            medium: Memory
+            sizeLimit: 64Mi

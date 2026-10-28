@@ -1,0 +1,1 @@
+- Requests to model providers now carry a `User-Agent` (`chalk-router/<version>`), so providers that require one, such as Snowflake Cortex's OpenAI-compatible API, accept them.

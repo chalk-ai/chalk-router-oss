@@ -1,0 +1,1 @@
+- Judge routing traces now include a human-readable connection name and model for the model selected by the judge.

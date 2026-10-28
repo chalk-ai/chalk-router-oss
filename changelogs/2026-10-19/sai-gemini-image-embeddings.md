@@ -1,0 +1,1 @@
+- Gemini Embedding 2 now supports image and combined text/image embeddings, with configurable vector dimensions and float or base64 output.

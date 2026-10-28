@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/field_mask.proto";
+
+message JudgeLadder {
+  repeated string targets = 1;
+  repeated float boundaries = 2;
+}
+
+message JudgePolicy {
+  bool enabled = 1;
+  bool shadow = 2;
+  float shadow_sample_rate = 3;
+  string judge_model = 4;
+  map<string, JudgeLadder> ladders = 5;
+  bool default_opt_in = 6;
+  optional string default_floor = 7;
+}
+
+message GetJudgePolicyRequest {}
+
+message GetJudgePolicyResponse {
+  JudgePolicy policy = 1;
+}
+
+message UpdateJudgePolicyOperation {
+  optional bool enabled = 1;
+  optional bool shadow = 2;
+  optional float shadow_sample_rate = 3;
+  optional string judge_model = 4;
+  map<string, JudgeLadder> ladders = 5;
+  optional bool default_opt_in = 6;
+  optional string default_floor = 7;
+}
+
+message UpdateJudgePolicyRequest {
+  UpdateJudgePolicyOperation update = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message UpdateJudgePolicyResponse {
+  JudgePolicy policy = 1;
+}
+
+// Admin-editable half of model-as-judge routing. Deployment wiring (backend
+// kind, sidecar URL, timeout, concurrency, kill switch) lives in env, not here.
+// All model fields are public model ids (the `chalk/*` alias namespace),
+// resolved through the routing snapshot at decision time.
+service JudgePolicyService {
+  rpc GetJudgePolicy(GetJudgePolicyRequest) returns (GetJudgePolicyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_READ;
+  }
+  rpc UpdateJudgePolicy(UpdateJudgePolicyRequest) returns (UpdateJudgePolicyResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_DEPLOY_CREATE;
+  }
+}

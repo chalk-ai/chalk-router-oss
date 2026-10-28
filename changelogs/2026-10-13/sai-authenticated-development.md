@@ -1,0 +1,1 @@
+- Local development can send proxy requests without provisioning API keys; admin routes remain authenticated and deployed routers require credentials by default.

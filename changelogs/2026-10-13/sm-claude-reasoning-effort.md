@@ -1,0 +1,1 @@
+- Chat `reasoning_effort` and Responses `reasoning.effort` now work on direct Claude and Bedrock Mantle routes, with configured fallback for recognized rejections of reasoning controls.

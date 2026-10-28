@@ -1,0 +1,1 @@
+- Simplify routine Helm deployments after adopting the router release.

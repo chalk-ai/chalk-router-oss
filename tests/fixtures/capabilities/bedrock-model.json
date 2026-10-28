@@ -1,0 +1,6 @@
+{
+  "modelId": "anthropic.claude-example",
+  "inputModalities": ["TEXT", "IMAGE"],
+  "outputModalities": ["TEXT"],
+  "responseStreamingSupported": true
+}

@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package chalk.router.v1;
+
+import "chalk/auth/v1/permissions.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+// Creation-time convenience for API-key- and usage-pool-scoped limits. The
+// server expands every populated dimension into the same independently
+// manageable policy rows exposed by RateLimitService. Models are public ids and
+// share one bucket; empty means every model on the connection. Omitting
+// connection_id creates a global request-level limit; global limits cannot
+// specify models. The historical name is retained for wire compatibility.
+message ApiKeyRateLimit {
+  optional string connection_id = 1;
+  repeated string models = 2;
+  optional uint64 requests_per_minute = 3;
+  optional uint64 request_burst = 4;
+  optional uint64 tokens_per_minute = 5;
+  optional uint64 token_burst = 6;
+  optional uint64 concurrent_requests = 7;
+  // Omitted by older clients means enabled.
+  optional bool enabled = 8;
+}
+
+message RateLimitPolicy {
+  string id = 1;
+  string scope = 2;
+  string scope_id = 3;
+  string limit_type = 4;
+  uint64 limit_value = 5;
+  optional uint64 burst_value = 6;
+  optional string connection_id = 7;
+  repeated string models = 8;
+  bool enabled = 9;
+  google.protobuf.Timestamp created_at = 10;
+}
+
+message CreateRateLimitRequest {
+  string scope = 1;
+  string scope_id = 2;
+  string limit_type = 3;
+  uint64 limit_value = 4;
+  optional uint64 burst_value = 5;
+  optional string connection_id = 6;
+  repeated string models = 7;
+  optional bool enabled = 8;
+}
+
+message CreateRateLimitResponse {
+  RateLimitPolicy policy = 1;
+}
+
+message ListRateLimitsRequest {
+  optional int32 limit = 1;
+  optional string cursor = 2;
+}
+
+message ListRateLimitsResponse {
+  repeated RateLimitPolicy policies = 1;
+  optional string next_cursor = 2;
+}
+
+message UpdateRateLimitOperation {
+  optional string limit_type = 1;
+  optional uint64 limit_value = 2;
+  optional uint64 burst_value = 3;
+  optional string connection_id = 4;
+  repeated string models = 5;
+  optional bool enabled = 6;
+}
+
+message UpdateRateLimitRequest {
+  string id = 1;
+  UpdateRateLimitOperation update = 2;
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateRateLimitResponse {
+  RateLimitPolicy policy = 1;
+}
+
+message GetRateLimitRequest {
+  string id = 1;
+}
+
+message GetRateLimitResponse {
+  RateLimitPolicy policy = 1;
+}
+
+message DeleteRateLimitRequest {
+  string id = 1;
+}
+
+message DeleteRateLimitResponse {
+  string id = 1;
+}
+
+service RateLimitService {
+  rpc CreateRateLimit(CreateRateLimitRequest) returns (CreateRateLimitResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc ListRateLimits(ListRateLimitsRequest) returns (ListRateLimitsResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc UpdateRateLimit(UpdateRateLimitRequest) returns (UpdateRateLimitResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+  rpc GetRateLimit(GetRateLimitRequest) returns (GetRateLimitResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_LIST;
+  }
+  rpc DeleteRateLimit(DeleteRateLimitRequest) returns (DeleteRateLimitResponse) {
+    option (chalk.auth.v1.permission) = PERMISSION_TOKENS_WRITE;
+  }
+}

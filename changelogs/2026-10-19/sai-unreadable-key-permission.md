@@ -1,0 +1,1 @@
+- An API key whose stored access scope cannot be read is now refused every model with a 403, instead of being treated as unrestricted, and saving it from the admin UI requires choosing an explicit access scope.

@@ -1,0 +1,26 @@
+{
+  "name": "chalk-router-api-docs",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "generate": "node scripts/generate.mjs",
+    "check:generated": "node scripts/generate.mjs --check",
+    "check:links": "node scripts/check-links.mjs",
+    "check": "npm run check:generated && npm run build && npm run check:links"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.42.7",
+    "astro": "7.4.2"
+  },
+  "devDependencies": {
+    "cheerio": "1.1.2"
+  },
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,1 @@
+- HTTP model deletion now returns 501; delete router aliases through the authorized model-route admin RPC instead.

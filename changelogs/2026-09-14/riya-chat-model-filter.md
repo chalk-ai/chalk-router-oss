@@ -1,0 +1,3 @@
+- Added extra filtering + config to remove errors caused various modoels on the "chat tab" of playground. The playground omits models past their provider-reported shutdown date, filters out chat models requiring audio, computer-use tools, or Live (bidirectional streaming) connections. 
+- Adds logic to select the supported chat API (Responses vs. Chat Completions), and omits unsupported sampling settings in the query
+- Unknown models remain listed as unverified.

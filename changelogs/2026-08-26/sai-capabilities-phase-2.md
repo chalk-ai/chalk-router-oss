@@ -1,0 +1,1 @@
+- Publish resolved model capabilities, drive Playground protocol selection from them, and export conservative VS Code model configuration.

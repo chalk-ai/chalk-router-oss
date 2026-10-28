@@ -1,0 +1,1 @@
+- Release validation now combines the hardened defaults with current API documentation and external anonymous-access checks.

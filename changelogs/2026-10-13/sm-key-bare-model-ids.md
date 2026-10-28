@@ -1,0 +1,1 @@
+- An API key whose model allowlist names `openai/gpt-6-luna` now also accepts a request for the bare id `gpt-6-luna` when it resolves to the connection that owns `openai/`, where both spellings reach the same model; the same shorthand applies to connection scopes and to any provider's canonical prefix. Custom prefixes and `chalk/` routes still match exactly.

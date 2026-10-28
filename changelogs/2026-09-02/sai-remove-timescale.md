@@ -1,0 +1,1 @@
+- Remove unused alternate usage-ledger configuration, migrations, schema snapshots, and schema-check tooling; PostgreSQL remains the supported usage backend.
