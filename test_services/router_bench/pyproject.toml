@@ -3,10 +3,10 @@ name = "chalk-router-chat-bench"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
-    "fastapi==0.115.14",
+    "fastapi>=0.135",
     "uvicorn[standard]==0.32.1",
     "httpx==0.28.1",
-    "aiohttp==3.13.1",
+    "aiohttp>=3.14.4",
     "grpcio==1.76.0",
     "grpcio-tools==1.76.0",
     "opentelemetry-proto==1.38.0",

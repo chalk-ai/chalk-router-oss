@@ -2833,8 +2833,8 @@
     }
   ],
   "input_sha256": {
-    "Cargo.lock": "08fa85594c02e490be3bb62dbf3a3e076d7d617cab63216bba6442e11c2bd0af",
-    "Cargo.toml": "20695f093e8d9efc296e4c07e765adb4f67499d34abb44675d04b4f0d8927a7b",
+    "Cargo.lock": "740ea00be6ba4e06857f28010c562b45774b00d3de959b4055da10545bdbf3c2",
+    "Cargo.toml": "3c223daaf8a9847a4c02c42c86be68bca0e45e672d36c1fde1c1032b7fe7662a",
     "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
     "docs-site/package-lock.json": "b33ac667de019353f48f1bfa53664f940473a62ddbe3c3a6150fa0841e002bc0",
     "docs-site/package.json": "2c19c04d3f3e5215ee703900b946fdcf1559debb4cc549f973430496d6768c7e",
@@ -2846,9 +2846,9 @@
     "proto/chalk/utils/PROVENANCE.md": "e01e5224d7bd54e971595ac82e38033a1510d94304c0b34b8bca89eb7b0d5b19",
     "ui/package-lock.json": "6fbe66238ae172cd8555bce3fcb20352b25e47eeb60f80ff841fa0232f2ee20c",
     "ui/package.json": "4e468bfe4108b5a647c1bbe8f4d1280fe2f0225d5fd597efd5c3e099639e3f50",
-    "vendor/chalk-federated-auth/Cargo.toml": "7fc1f7bfd02826eaf4b602dc82d32ffc150b93de9c095809c9e925dd81649f46",
+    "vendor/chalk-federated-auth/Cargo.toml": "c583e7591d87c0b5f4ea48a61fcf2e6644d495b9a0353162c23097d591c9ce9e",
     "vendor/chalk-federated-auth/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-    "vendor/chalk-federated-auth/PROVENANCE.md": "044d784996277a67f82dd6ca63778cac60e59859f9656189beee93c4ffe01518",
+    "vendor/chalk-federated-auth/PROVENANCE.md": "c6ae9534cb765b48905a4f3aff96729bde514c7a7b8f7c959346cbc0960ea8b0",
     "vendor/reqsign-google/Cargo.toml": "8ef682153301672f3c7598bc64e5bd68f3f432eb8b60857bcaa3f10ed48034ac",
     "vendor/reqsign-google/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
     "vendor/reqsign-google/NOTICE": "6fe746731a614db2871541a226d3fccf26219b697a5d43b5538d756ac8e9ad9b"
@@ -4140,6 +4140,13 @@
       "license_file": null,
       "name": "jsonwebtoken",
       "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "10.4.0"
+    },
+    {
+      "declared_license": "MIT",
+      "license_file": null,
+      "name": "jsonwebtoken",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
       "version": "9.3.1"
     },
     {
@@ -4420,7 +4427,7 @@
       "license_file": null,
       "name": "openssl",
       "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "version": "0.10.74"
+      "version": "0.10.81"
     },
     {
       "declared_license": "MIT/Apache-2.0",
@@ -4448,7 +4455,7 @@
       "license_file": null,
       "name": "openssl-sys",
       "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "version": "0.9.110"
+      "version": "0.9.117"
     },
     {
       "declared_license": "Apache-2.0",
@@ -5188,6 +5195,13 @@
     {
       "declared_license": "Apache-2.0 OR MIT",
       "license_file": null,
+      "name": "signature",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "2.2.0"
+    },
+    {
+      "declared_license": "Apache-2.0 OR MIT",
+      "license_file": null,
       "name": "simd_cesu8",
       "source": "registry+https://github.com/rust-lang/crates.io-index",
       "version": "1.2.0"
@@ -5708,6 +5722,13 @@
       "license_file": null,
       "name": "untrusted",
       "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "0.7.1"
+    },
+    {
+      "declared_license": "ISC",
+      "license_file": null,
+      "name": "untrusted",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
       "version": "0.9.0"
     },
     {
@@ -6136,6 +6157,13 @@
       "name": "zeroize",
       "source": "registry+https://github.com/rust-lang/crates.io-index",
       "version": "1.8.2"
+    },
+    {
+      "declared_license": "Apache-2.0 OR MIT",
+      "license_file": null,
+      "name": "zeroize_derive",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "version": "1.5.0"
     },
     {
       "declared_license": "Unicode-3.0",

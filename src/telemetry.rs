@@ -1,7 +1,10 @@
 use opentelemetry::{
     baggage::BaggageExt,
     global,
-    propagation::TextMapCompositePropagator,
+    propagation::{
+        text_map_propagator::FieldIter, Extractor, Injector, TextMapCompositePropagator,
+        TextMapPropagator,
+    },
     trace::{TraceResult, TracerProvider as _},
     Context, KeyValue,
 };
@@ -376,8 +379,31 @@ pub fn frontend_for_path(path: &str) -> Option<Frontend> {
 pub fn text_map_propagator() -> TextMapCompositePropagator {
     TextMapCompositePropagator::new(vec![
         Box::new(TraceContextPropagator::new()),
-        Box::new(BaggagePropagator::new()),
+        Box::new(BoundedBaggagePropagator(BaggagePropagator::new())),
     ])
+}
+
+/// Bound attacker-controlled input before SDK parsing (GHSA-w9wp-h8wv-79jx).
+#[derive(Debug)]
+struct BoundedBaggagePropagator(BaggagePropagator);
+
+impl TextMapPropagator for BoundedBaggagePropagator {
+    fn inject_context(&self, cx: &Context, injector: &mut dyn Injector) {
+        self.0.inject_context(cx, injector);
+    }
+
+    fn extract_with_context(&self, cx: &Context, extractor: &dyn Extractor) -> Context {
+        if let Some(value) = extractor.get("baggage") {
+            if value.len() > 8192 || value.split(',').take(65).count() > 64 {
+                return cx.clone();
+            }
+        }
+        self.0.extract_with_context(cx, extractor)
+    }
+
+    fn fields(&self) -> FieldIter<'_> {
+        self.0.fields()
+    }
 }
 
 /// Copies the caller's session id from baggage onto every span the router starts.
@@ -1127,6 +1153,26 @@ mod tests {
     use super::*;
     use opentelemetry::propagation::TextMapPropagator;
     use opentelemetry::trace::TraceContextExt;
+
+    #[test]
+    fn inbound_baggage_is_bounded_before_sdk_parsing() {
+        let propagator = text_map_propagator();
+        let extract = |value: String| {
+            let carrier = HashMap::from([("baggage".to_string(), value)]);
+            propagator.extract_with_context(&Context::new(), &carrier)
+        };
+        assert_eq!(extract("session.id=example".into()).baggage().len(), 1);
+        assert_eq!(
+            extract(format!("a={}", "x".repeat(8191))).baggage().len(),
+            0
+        );
+        let entries = (0..64)
+            .map(|i| format!("k{i}=v"))
+            .collect::<Vec<_>>()
+            .join(",");
+        assert_eq!(extract(entries.clone()).baggage().len(), 64);
+        assert_eq!(extract(format!("{entries},extra=v")).baggage().len(), 0);
+    }
 
     const TID: &str = "0af7651916cd43dd8448eb211c80319c";
     const SID: &str = "b7ad6b7169203331";

@@ -6,6 +6,9 @@ was changed from UNLICENSED to Apache-2.0 under the project owner’s explicit
 redistribution authorization on 2026-10-28. The included LICENSE records those
 terms for this copy; this does not change the upstream repository.
 
+The dependency declaration now requires patched jsonwebtoken 10.3 or later with
+the AWS-LC backend (avoiding the RustCrypto RSA runtime dependency).
+
 Original file SHA-256 values:
 
 - `Cargo.toml`: `39053166ab1a4ff50d748869f865e1768af4eb1c2ddc196c90afc651343899ae`

@@ -1,0 +1,1 @@
+- Hardened JWT validation and inbound tracing metadata, and updated runtime and test-service security dependencies.
