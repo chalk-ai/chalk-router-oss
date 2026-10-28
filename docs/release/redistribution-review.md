@@ -10,8 +10,8 @@ for bundled and linked code still require the separate review below.
 | Component | Evidence at the reviewed dependency revision | Required decision |
 | --- | --- | --- |
 | Router source | Owner selected Apache-2.0; root LICENSE and package metadata added | License choice resolved; retain applicable copyright and third-party notices |
-| chalk-federated-auth | Cargo.lock pins `4f12f0b8e768a7206b2fa6cd7efea54372164f15`; package declares `UNLICENSED`; no license/notice file in that checkout | Obtain explicit redistribution permission/license or replace the dependency before release |
-| Copied Chalk protobufs | Repository instructions identify `proto/chalk/auth` and `proto/chalk/utils` as copies from another repository | Confirm rights for the copied definitions, imports, and generated bindings; do not silently alter provenance |
+| chalk-federated-auth | Vendored from `4f12f0b8e768a7206b2fa6cd7efea54372164f15`; owner authorized Apache-2.0 redistribution on 2026-10-28; LICENSE and provenance retained | Resolved for this vendored copy |
+| Copied Chalk protobufs | Owner authorized Apache-2.0 redistribution of `proto/chalk/auth` and `proto/chalk/utils` on 2026-10-28; LICENSE and per-file provenance hashes added without modifying definitions | Resolved for these definitions; review other assets and notices separately |
 | Other first-party source and generated assets | Source ownership is not established by package metadata | Owner review of release contents and contributor rights |
 
 Public repository visibility is not recorded as evidence of permission. The auth

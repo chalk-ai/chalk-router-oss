@@ -554,7 +554,6 @@ dependencies = [
 [[package]]
 name = "chalk-federated-auth"
 version = "0.1.0"
-source = "git+https://github.com/chalk-ai/chalk-federated-auth?branch=main#4f12f0b8e768a7206b2fa6cd7efea54372164f15"
 dependencies = [
  "base64 0.22.1",
  "jsonwebtoken",

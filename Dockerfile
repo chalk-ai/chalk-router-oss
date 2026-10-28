@@ -18,6 +18,7 @@ COPY Cargo.toml Cargo.lock build.rs ./
 COPY proto ./proto
 # Cargo.toml patches Google signing to the audited local source.
 COPY vendor/reqsign-google ./vendor/reqsign-google
+COPY vendor/chalk-federated-auth ./vendor/chalk-federated-auth
 
 # Pre-build dependencies first (better layer caching). Stub the bin and the
 # declared `[[test]] integration_test` target: tests/ is excluded by

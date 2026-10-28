@@ -2833,15 +2833,22 @@
     }
   ],
   "input_sha256": {
-    "Cargo.lock": "84c38ab7dccd29081742ab57497b29650ec2bd2a151542ec3f289932e74cb4c1",
-    "Cargo.toml": "ece6e4f662745d46517d34003b9f3d4c95605dadfecb30c8ef174402f3e3291e",
+    "Cargo.lock": "08fa85594c02e490be3bb62dbf3a3e076d7d617cab63216bba6442e11c2bd0af",
+    "Cargo.toml": "20695f093e8d9efc296e4c07e765adb4f67499d34abb44675d04b4f0d8927a7b",
     "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
     "docs-site/package-lock.json": "b33ac667de019353f48f1bfa53664f940473a62ddbe3c3a6150fa0841e002bc0",
     "docs-site/package.json": "2c19c04d3f3e5215ee703900b946fdcf1559debb4cc549f973430496d6768c7e",
     "docs-site/tools/schema-source/Cargo.lock": "633008fbdb99a91bdf51448ff33a9df405eca3db06b943943b8af110e9aeb167",
     "docs-site/tools/schema-source/Cargo.toml": "6abcc56778d7ea036a452afb1f14b57c1c964fcd5bcb4f08afdea37ab6d17521",
+    "proto/chalk/auth/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "proto/chalk/auth/PROVENANCE.md": "6932a365d741efd92471f72322e531a730a0bbd3af1fa7b5acc4de234b3630ae",
+    "proto/chalk/utils/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "proto/chalk/utils/PROVENANCE.md": "e01e5224d7bd54e971595ac82e38033a1510d94304c0b34b8bca89eb7b0d5b19",
     "ui/package-lock.json": "6fbe66238ae172cd8555bce3fcb20352b25e47eeb60f80ff841fa0232f2ee20c",
     "ui/package.json": "4e468bfe4108b5a647c1bbe8f4d1280fe2f0225d5fd597efd5c3e099639e3f50",
+    "vendor/chalk-federated-auth/Cargo.toml": "7fc1f7bfd02826eaf4b602dc82d32ffc150b93de9c095809c9e925dd81649f46",
+    "vendor/chalk-federated-auth/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "vendor/chalk-federated-auth/PROVENANCE.md": "044d784996277a67f82dd6ca63778cac60e59859f9656189beee93c4ffe01518",
     "vendor/reqsign-google/Cargo.toml": "8ef682153301672f3c7598bc64e5bd68f3f432eb8b60857bcaa3f10ed48034ac",
     "vendor/reqsign-google/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
     "vendor/reqsign-google/NOTICE": "6fe746731a614db2871541a226d3fccf26219b697a5d43b5538d756ac8e9ad9b"
@@ -3191,10 +3198,10 @@
       "version": "0.10.2"
     },
     {
-      "declared_license": "UNLICENSED",
+      "declared_license": "Apache-2.0",
       "license_file": null,
       "name": "chalk-federated-auth",
-      "source": "git+https://github.com/chalk-ai/chalk-federated-auth?branch=main#4f12f0b8e768a7206b2fa6cd7efea54372164f15",
+      "source": "path:vendor/chalk-federated-auth",
       "version": "0.1.0"
     },
     {
