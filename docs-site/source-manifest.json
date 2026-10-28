@@ -1,4 +1,6 @@
 {
+  "proto/chalk/auth/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+  "proto/chalk/auth/PROVENANCE.md": "6932a365d741efd92471f72322e531a730a0bbd3af1fa7b5acc4de234b3630ae",
   "proto/chalk/auth/v1/permissions.proto": "59ad1358f7c68d7d3910dfbaaf720320971a850f72d422170be67fb0b3a4a5dc",
   "proto/chalk/router/v1/api_key.proto": "5158e575c1657096c472e6c23642b1100473bff12fd365b8b31d8c5592daa653",
   "proto/chalk/router/v1/background_response.proto": "fd4992ee2fdc63497a4e3a2e56ab68d05b9b4d13495535644ad7010f179f2c95",
@@ -13,6 +15,8 @@
   "proto/chalk/router/v1/usage.proto": "3d4bc72b95faed562b3551fa110e85e3cc49fe3a86279a9fdb8e13567cb67435",
   "proto/chalk/router/v1/usage_budget.proto": "1f759a7d5ae3ae9d80cbb0e4f87d4f36f79fa3afb79c288658ef3444064ccb06",
   "proto/chalk/router/v1/usage_pool.proto": "9e1ef252a8c7e13ce038c181cce3e71021b48c96813bd5b124f99010c9710e78",
+  "proto/chalk/utils/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+  "proto/chalk/utils/PROVENANCE.md": "e01e5224d7bd54e971595ac82e38033a1510d94304c0b34b8bca89eb7b0d5b19",
   "proto/chalk/utils/v1/encoding.proto": "af4ec5e15e610c76f864eaf4f135adf0216870c8e618c309b4ad293542275ef2",
   "proto/grpc/health/v1/health.proto": "b5609f08ae9bfd0cfdc5aa25732685b8d2b031b6d612c19b466700ffeff05811",
   "src/capabilities.rs": "3949b5c23f6b25be384271b6ac24fa937b16d2917af86a3ad8bbc50e45443564",

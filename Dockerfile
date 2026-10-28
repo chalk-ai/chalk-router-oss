@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
+# Ship executable code without compiler symbol/debug tables. Scan every runtime
+# image layer below; stripping is not a secret-scan exemption.
+ENV CARGO_PROFILE_RELEASE_STRIP=symbols
+
 # Copy manifests, the build script, and the protos. `build = "build.rs"` runs
 # tonic-build over proto/, so both build.rs and proto/ must be present even for
 # the dependency-only pre-build below.

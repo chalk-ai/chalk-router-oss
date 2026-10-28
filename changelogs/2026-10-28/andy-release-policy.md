@@ -1,0 +1,1 @@
+- Security reports go to the Chalk security team at security@chalk.ai; the policy documents pre-release support and coordinated disclosure.

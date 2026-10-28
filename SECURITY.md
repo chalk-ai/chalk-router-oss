@@ -1,38 +1,34 @@
 # Security policy
 
-> Draft — not ready for publication. The owner must resolve the release blockers
-> below and verify private report delivery before this policy is published.
+## Reporting a vulnerability
+
+Report suspected vulnerabilities privately to [security@chalk.ai](mailto:security@chalk.ai).
+The Chalk security team receives reports at this address and coordinates triage
+with the Chalk Router maintainers. Do not post exploit details, credentials,
+customer data, or private logs in public issues, pull requests, or discussions.
+
+Include the affected version or commit, deployment configuration, a minimal
+reproduction using synthetic data, expected and observed behavior, and potential
+impact. Redact tokens, personal data, customer names, and signed URLs. Test only
+systems you own or are explicitly authorized to test.
 
 ## Supported versions
 
-RELEASE-BLOCKER: The owner must name the supported release series or commits and
-state the update/backport policy. This draft does not promise support for any
-version or establish a response-time commitment.
+This repository has not published a supported release series yet. During this
+pre-release period, report findings against the latest `main` commit and include
+the exact commit identifier. Security fixes are developed on `main`.
 
-## Reporting a vulnerability
-
-Do not post exploit details, credentials, customer data, or private logs in public
-issues, pull requests, discussions, or comments.
-
-Report vulnerabilities privately to [security@chalk.ai](mailto:security@chalk.ai),
-the reporting address selected by the owner.
-
-RELEASE-BLOCKER: Verify that this mailbox accepts external reports and delivers
-them privately to the designated triage owners before publishing this policy.
-
-Include the affected version or commit, deployment configuration, a minimal
-reproduction using synthetic data, expected and observed behavior, and the
-potential impact. Redact tokens, personal data, customer names, and signed URLs.
-Test only systems you own or are explicitly authorized to test.
+When a release is published, its release notes must identify the supported
+version and upgrade instructions. No older-version backport or response-time
+commitment is established by this policy.
 
 ## Triage and disclosure
 
-RELEASE-BLOCKER: Name the responsible triage team and its backup/escalation route.
-Confirm that both can receive the private report and coordinate a fix and
-advisory. Publish acknowledgment/update expectations only after the owner agrees
-to them; no service-level commitment is established by this draft.
+The Chalk security team coordinates assessment, remediation, and disclosure
+with the reporter and maintainers. Reports should stay in the private reporting
+channel during triage. Advisories should identify affected versions and provide
+upgrade or mitigation instructions when a fix is available.
 
-The finalized process should coordinate disclosure with the reporter, assess
-which versions are affected, and provide upgrade or mitigation instructions when
-a fix is available. Reports should remain in the verified private channel during
-triage.
+If you need to follow up, reply to the original private email thread so the
+team retains the report context. Do not publish sensitive details merely to
+request a status update.
