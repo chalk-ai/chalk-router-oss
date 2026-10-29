@@ -257,62 +257,62 @@ export default function RateLimitsPage({ embedded = false }: { embedded?: boolea
     return `${scopeLabel(policy)} · ${LIMIT_TYPE_LABELS[policy.limit_type]} · ${selectorLabel(policy)}`;
   }
 
-  if (loading) return <p className="text-sm" style={{ color: "#6b7280" }}>Loading...</p>;
+  if (loading) return <p className="text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>Loading...</p>;
 
   return (
     <div>
-      <div className="mb-6"><PageHeader title="Rate limits" description="Limit an API key or usage pool globally or by connection and model." action={<button onClick={() => setAdding(true)} className="rounded-lg px-4 py-2 text-sm font-medium" style={{ background: "#218E61", color: "white" }}>Create rate limit</button>} /></div>
+      <div className="mb-6"><PageHeader title="Rate limits" description="Limit an API key or usage pool globally or by connection and model." action={<button onClick={() => setAdding(true)} className="btn btn-primary btn-md">Create rate limit</button>} /></div>
 
       {error && (
-        <div className="mb-4 px-4 py-3 rounded-lg text-sm" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>
+        <div className="mb-4 px-4 py-3 rounded-lg text-sm" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>
           <span className="font-medium">Error:</span> {error}
         </div>
       )}
 
       {policies.length > 0 && (
-        <div className="rounded-lg overflow-hidden mb-6" style={{ border: "1px solid #1f2937" }}>
+        <div className="rounded-lg overflow-hidden mb-6" style={{ border: "1px solid var(--color-cds-border)" }}>
           <table className="w-full text-sm">
             <thead>
-              <tr style={{ background: "#111827", borderBottom: "1px solid #1f2937" }}>
-                <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Applies to</th>
-                <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Target</th>
-                <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Type</th>
-                <th className="text-right px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Limit</th>
-                <th className="text-right px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Burst</th>
-                <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Status</th>
-                <th className="sticky right-0 bg-slate-900 px-5 py-3 text-right font-medium" style={{ color: "#9ca3af" }}>Actions</th>
+              <tr style={{ background: "var(--color-cds-raised)", borderBottom: "1px solid var(--color-cds-border)" }}>
+                <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Applies to</th>
+                <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Target</th>
+                <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Type</th>
+                <th className="text-right px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Limit</th>
+                <th className="text-right px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Burst</th>
+                <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Status</th>
+                <th className="sticky right-0 bg-cds-raised px-5 py-3 text-right font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {policies.map((p, i) => (
-                <tr key={p.id} style={{ background: i % 2 === 0 ? "#0f172a" : "#111827", borderBottom: i < policies.length - 1 ? "1px solid #1f2937" : undefined, opacity: p.enabled ? 1 : 0.5, transition: "opacity 0.15s" }}>
+                <tr key={p.id} style={{ background: i % 2 === 0 ? "var(--color-cds-elevated)" : "var(--color-cds-raised)", borderBottom: i < policies.length - 1 ? "1px solid var(--color-cds-border)" : undefined, opacity: p.enabled ? 1 : 0.5, transition: "opacity 0.15s" }}>
                   <td className="px-5 py-3">
-                    <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: p.scope === "usage_pool" ? "#3b1a0a" : "#052e16", color: p.scope === "usage_pool" ? "#fdba74" : "#70CD96" }}>{SCOPE_LABELS[p.scope]}</span>
+                    <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: p.scope === "usage_pool" ? "var(--color-cds-status-orange-fill)" : "var(--color-cds-status-green-fill)", color: p.scope === "usage_pool" ? "var(--color-cds-status-orange-text)" : "var(--color-cds-status-green-text)" }}>{SCOPE_LABELS[p.scope]}</span>
                   </td>
                   <td className="px-5 py-3">
                     <div className="font-medium text-white">{scopeLabel(p)}</div>
-                    <div className="mt-1 text-xs" style={{ color: "#6b7280" }}>{selectorLabel(p)}</div>
+                    <div className="mt-1 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>{selectorLabel(p)}</div>
                   </td>
                   <td className="px-5 py-3">
-                    <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#1f2937", color: "#9ca3af" }}>{LIMIT_TYPE_LABELS[p.limit_type]}</span>
+                    <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-secondary)" }}>{LIMIT_TYPE_LABELS[p.limit_type]}</span>
                   </td>
-                  <td className="px-5 py-3 text-right tabular-nums font-medium" style={{ color: "#e5e7eb" }}>
+                  <td className="px-5 py-3 text-right tabular-nums font-medium" style={{ color: "var(--color-cds-ink)" }}>
                     {formatNumber(p.limit_value)}
                   </td>
-                  <td className="px-5 py-3 text-right tabular-nums" style={{ color: "#d1d5db" }}>{p.limit_type === "concurrent_requests" ? "—" : formatNumber(p.burst_value ?? p.limit_value)}</td>
+                  <td className="px-5 py-3 text-right tabular-nums" style={{ color: "var(--color-cds-ink-medium)" }}>{p.limit_type === "concurrent_requests" ? "—" : formatNumber(p.burst_value ?? p.limit_value)}</td>
                   <td className="px-5 py-3">
                     {p.enabled ? (
-                      <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#052e16", color: "#4ade80" }}>Enabled</span>
+                      <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-green-fill)", color: "var(--color-cds-status-green-text)" }}>Enabled</span>
                     ) : (
-                      <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#1f2937", color: "#6b7280" }}>Disabled</span>
+                      <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-subtle)" }}>Disabled</span>
                     )}
                   </td>
                   <td className="sticky right-0 bg-inherit px-5 py-3 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button onClick={() => beginEdit(p)} className="text-xs px-2.5 py-1 rounded transition-colors" style={{ background: "#172554", color: "#93c5fd", border: "1px solid #1d4ed8" }}>
+                      <button onClick={() => beginEdit(p)} className="text-xs px-2.5 py-1 rounded transition-colors" style={{ background: "var(--color-cds-status-blue-fill)", color: "var(--color-cds-status-blue-text)", border: "1px solid var(--color-cds-status-blue-border)" }}>
                         Edit
                       </button>
-                      <button onClick={() => setPolicyPendingRemoval(p)} disabled={removingPolicyId === p.id} className="text-xs px-2.5 py-1 rounded transition-colors disabled:opacity-50" style={{ background: "#1c0a0a", color: "#ef4444", border: "1px solid #7f1d1d" }}>
+                      <button onClick={() => setPolicyPendingRemoval(p)} disabled={removingPolicyId === p.id} className="text-xs px-2.5 py-1 rounded transition-colors disabled:opacity-50" style={{ background: "var(--color-cds-status-red-fill)", color: "var(--color-cds-status-red-text)", border: "1px solid var(--color-cds-status-red-border)" }}>
                         Remove
                       </button>
                     </div>
@@ -325,8 +325,8 @@ export default function RateLimitsPage({ embedded = false }: { embedded?: boolea
       )}
 
       {policies.length === 0 && !adding && (
-        <div className="px-6 py-12 rounded-lg text-center mb-6" style={{ background: "#111827", border: "1px solid #1f2937" }}>
-          <p className="text-sm" style={{ color: "#6b7280" }}>No rate limit policies configured.</p>
+        <div className="px-6 py-12 rounded-lg text-center mb-6" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
+          <p className="text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>No rate limit policies configured.</p>
         </div>
       )}
 
@@ -334,38 +334,38 @@ export default function RateLimitsPage({ embedded = false }: { embedded?: boolea
 
       {editing && <Modal open onClose={() => setEditing(null)} title="Edit rate limit" size="xl">
         <div>
-          <div className="flex items-center justify-between mb-4"><h3 className="text-sm font-semibold text-white">Edit rate limit</h3><button onClick={() => setEditing(null)} disabled={savingEdit} className="text-xs disabled:opacity-50" style={{ color: "#6b7280" }}>Cancel</button></div>
+          <div className="flex items-center justify-between mb-4"><h3 className="text-cds-md font-medium text-cds-ink-strong">Edit rate limit</h3><button onClick={() => setEditing(null)} disabled={savingEdit} className="text-xs disabled:opacity-50" style={{ color: "var(--color-cds-ink-subtle)" }}>Cancel</button></div>
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4"><div><span className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Applies to</span><div className="flex h-10 items-center rounded-md px-3 text-sm" style={{ ...inputStyle, color: "#9ca3af" }}>{SCOPE_LABELS[editing.scope]}</div></div><div><span className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Target</span><div className="flex h-10 items-center rounded-md px-3 text-sm" style={{ ...inputStyle, color: "#9ca3af" }}>{scopeLabel(editing)}</div></div></div>
+            <div className="grid grid-cols-2 gap-4"><div><span className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Applies to</span><div className="flex h-10 items-center rounded-md px-3 text-sm" style={{ ...inputStyle, color: "var(--color-cds-ink-secondary)" }}>{SCOPE_LABELS[editing.scope]}</div></div><div><span className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Target</span><div className="flex h-10 items-center rounded-md px-3 text-sm" style={{ ...inputStyle, color: "var(--color-cds-ink-secondary)" }}>{scopeLabel(editing)}</div></div></div>
             <ConnectionModelPicker connectionId={editForm.connection_id} modelAccess={editForm.model_access} models={editForm.models} connections={connections} onChange={({ connectionId, modelAccess, models }) => setEditForm((current) => ({ ...current, connection_id: connectionId, model_access: modelAccess, models }))} />
-            <div className="grid grid-cols-3 gap-4"><div><label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Rate limit type</label><select value={editForm.limit_type} onChange={(e) => setEditForm((current) => ({ ...current, limit_type: e.target.value as LimitType, burst_value: e.target.value === "concurrent_requests" ? "" : current.burst_value }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle}><option value="tokens_per_minute">Tokens / min</option><option value="requests_per_minute">Requests / min</option><option value="concurrent_requests">Concurrent requests</option></select></div><div><label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Limit</label><input type="text" value={editForm.limit_value} onChange={(e) => setEditForm((current) => ({ ...current, limit_value: e.target.value }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle} /></div><div><label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Burst capacity <span style={{ color: "#4b5563" }}>(optional)</span></label><input type="text" value={editForm.burst_value} onChange={(e) => setEditForm((current) => ({ ...current, burst_value: e.target.value }))} disabled={editForm.limit_type === "concurrent_requests"} placeholder={editForm.limit_type === "concurrent_requests" ? "not applicable" : "defaults to limit"} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none disabled:opacity-50" style={inputStyle} /></div></div>
-            <label className="flex items-center gap-2 text-xs" style={{ color: "#d1d5db" }}><input type="checkbox" checked={editForm.enabled} onChange={(e) => setEditForm((current) => ({ ...current, enabled: e.target.checked }))} /> Enabled</label>
-            <div className="flex justify-end"><button onClick={handleEdit} disabled={savingEdit || !editForm.limit_value.trim()} className="px-5 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50" style={{ background: "#218E61", color: "white" }}>{savingEdit ? "Saving…" : "Save changes"}</button></div>
+            <div className="grid grid-cols-3 gap-4"><div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Rate limit type</label><select value={editForm.limit_type} onChange={(e) => setEditForm((current) => ({ ...current, limit_type: e.target.value as LimitType, burst_value: e.target.value === "concurrent_requests" ? "" : current.burst_value }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle}><option value="tokens_per_minute">Tokens / min</option><option value="requests_per_minute">Requests / min</option><option value="concurrent_requests">Concurrent requests</option></select></div><div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Limit</label><input type="text" value={editForm.limit_value} onChange={(e) => setEditForm((current) => ({ ...current, limit_value: e.target.value }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle} /></div><div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Burst capacity <span style={{ color: "var(--color-cds-ink-muted)" }}>(optional)</span></label><input type="text" value={editForm.burst_value} onChange={(e) => setEditForm((current) => ({ ...current, burst_value: e.target.value }))} disabled={editForm.limit_type === "concurrent_requests"} placeholder={editForm.limit_type === "concurrent_requests" ? "not applicable" : "defaults to limit"} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none disabled:opacity-50" style={inputStyle} /></div></div>
+            <label className="flex items-center gap-2 text-xs" style={{ color: "var(--color-cds-ink-medium)" }}><input type="checkbox" checked={editForm.enabled} onChange={(e) => setEditForm((current) => ({ ...current, enabled: e.target.checked }))} /> Enabled</label>
+            <div className="flex justify-end"><button onClick={handleEdit} disabled={savingEdit || !editForm.limit_value.trim()} className="btn btn-primary btn-md">{savingEdit ? "Saving…" : "Save changes"}</button></div>
           </div>
         </div>
       </Modal>}
       {adding && <Modal open onClose={() => setAdding(false)} title="Create rate limit" size="xl">
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-semibold text-white">Create rate limit</h3>
-            <button onClick={() => setAdding(false)} className="text-xs" style={{ color: "#6b7280" }}>Cancel</button>
+            <h3 className="text-cds-md font-medium text-cds-ink-strong">Create rate limit</h3>
+            <button onClick={() => setAdding(false)} className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>Cancel</button>
           </div>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Applies to</label>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Applies to</label>
                 <select value={form.scope} onChange={(e) => setForm((f) => ({ ...f, scope: e.target.value as ScopeType, scope_id: "" }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle}><option value="usage_pool">Usage pool</option><option value="api_key">API token</option></select>
               </div>
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Target</label>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Target</label>
                 <select value={form.scope_id} onChange={(e) => setForm((f) => ({ ...f, scope_id: e.target.value }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle}><option value="">Choose…</option>{form.scope === "usage_pool" ? teams.map((team) => <option key={team.id} value={team.id}>{team.name}</option>) : tokens.map((token) => <option key={token.key} value={token.key}>{token.description || truncateKey(token.key)}</option>)}</select>
               </div>
             </div>
             <ConnectionModelPicker connectionId={form.connection_id} modelAccess={form.model_access} models={form.models} connections={connections} onChange={({ connectionId, modelAccess, models }) => setForm((current) => ({ ...current, connection_id: connectionId, model_access: modelAccess, models }))} />
-            <div className="grid grid-cols-3 gap-4"><div><label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Rate limit type</label><select value={form.limit_type} onChange={(e) => setForm((f) => ({ ...f, limit_type: e.target.value as LimitType }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle}><option value="tokens_per_minute">Tokens / min</option><option value="requests_per_minute">Requests / min</option><option value="concurrent_requests">Concurrent requests</option></select></div><div><label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Limit</label><input type="text" value={form.limit_value} onChange={(e) => setForm((f) => ({ ...f, limit_value: e.target.value }))} placeholder="e.g. 100000" className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle} /></div><div><label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Burst capacity <span style={{ color: "#4b5563" }}>(optional)</span></label><input type="text" value={form.burst_value} onChange={(e) => setForm((f) => ({ ...f, burst_value: e.target.value }))} disabled={form.limit_type === "concurrent_requests"} placeholder={form.limit_type === "concurrent_requests" ? "not applicable" : "defaults to limit"} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none disabled:opacity-50" style={inputStyle} /></div></div>
-            <label className="flex items-center gap-2 text-xs" style={{ color: "#d1d5db" }}><input type="checkbox" checked={form.enabled} onChange={(e) => setForm((current) => ({ ...current, enabled: e.target.checked }))} /> Enabled</label>
+            <div className="grid grid-cols-3 gap-4"><div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Rate limit type</label><select value={form.limit_type} onChange={(e) => setForm((f) => ({ ...f, limit_type: e.target.value as LimitType }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle}><option value="tokens_per_minute">Tokens / min</option><option value="requests_per_minute">Requests / min</option><option value="concurrent_requests">Concurrent requests</option></select></div><div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Limit</label><input type="text" value={form.limit_value} onChange={(e) => setForm((f) => ({ ...f, limit_value: e.target.value }))} placeholder="e.g. 100000" className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle} /></div><div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Burst capacity <span style={{ color: "var(--color-cds-ink-muted)" }}>(optional)</span></label><input type="text" value={form.burst_value} onChange={(e) => setForm((f) => ({ ...f, burst_value: e.target.value }))} disabled={form.limit_type === "concurrent_requests"} placeholder={form.limit_type === "concurrent_requests" ? "not applicable" : "defaults to limit"} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none disabled:opacity-50" style={inputStyle} /></div></div>
+            <label className="flex items-center gap-2 text-xs" style={{ color: "var(--color-cds-ink-medium)" }}><input type="checkbox" checked={form.enabled} onChange={(e) => setForm((current) => ({ ...current, enabled: e.target.checked }))} /> Enabled</label>
             <div className="flex justify-end">
-              <button onClick={handleAdd} disabled={!form.scope_id || !form.limit_value.trim()} className="px-5 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50" style={{ background: "#218E61", color: "white" }}>
+              <button onClick={handleAdd} disabled={!form.scope_id || !form.limit_value.trim()} className="btn btn-primary btn-md">
                 Create rate limit
               </button>
             </div>

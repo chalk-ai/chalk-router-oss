@@ -18,9 +18,9 @@ export function PaginationControls({
   const buttonClass =
     "text-xs px-3 py-1.5 rounded transition-colors disabled:opacity-40";
   const buttonStyle = {
-    background: "#1f2937",
-    color: "#d1d5db",
-    border: "1px solid #374151",
+    background: "var(--color-cds-status-neutral-fill)",
+    color: "var(--color-cds-ink-medium)",
+    border: "1px solid var(--color-cds-border-strong)",
   };
 
   return (

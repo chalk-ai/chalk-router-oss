@@ -153,8 +153,8 @@ export default async function TokensPage({ searchParams, embedded = false }: { s
   return (
     <div>
       {!embedded && <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-white tracking-tight">API Tokens</h1>
-        <p className="mt-1 text-sm" style={{ color: "#6b7280" }}>
+        <h1 className="page-title">API Tokens</h1>
+        <p className="mt-1 text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>
           Issue and manage API keys for accessing this router.
         </p>
       </div>}
@@ -162,7 +162,7 @@ export default async function TokensPage({ searchParams, embedded = false }: { s
       {error && (
         <div
           className="mb-6 px-4 py-3 rounded-lg text-sm"
-          style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}
+          style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}
         >
           <span className="font-medium">Error loading tokens:</span> {error}
         </div>

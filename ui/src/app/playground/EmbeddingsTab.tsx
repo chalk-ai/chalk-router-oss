@@ -21,8 +21,8 @@ interface Result extends ReturnType<typeof readEmbeddingResult> {
   imageCount: number;
 }
 const message = (error: unknown) => error instanceof Error ? error.message : String(error);
-const controlStyle = { background: "#1f2937", border: "1px solid #374151", color: "#e5e7eb" };
-const mutedStyle = { color: "#9ca3af" };
+const controlStyle = { background: "var(--color-cds-status-neutral-fill)", border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink)" };
+const mutedStyle = { color: "var(--color-cds-ink-secondary)" };
 const sizes = (items: Attachment[]) => items.map(({ file, mimeType }) => ({
   size: file.size,
   // JPEG has the longer data URL prefix, so this bounds pending files too.
@@ -182,7 +182,7 @@ export default function EmbeddingsTab({ models }: { models: Model[] }) {
         )}
       </div>
       {model && eligibility.unverified && !eligibility.reason && (
-        <p className="text-xs" style={{ color: "#fcd34d" }}>Support for this input is unverified. You can attempt the request; the provider may reject it.</p>
+        <p className="text-xs" style={{ color: "var(--color-cds-status-yellow-text)" }}>Support for this input is unverified. You can attempt the request; the provider may reject it.</p>
       )}
       {limits && (limits.max_input_tokens !== undefined || limits.embedding_input) && (
         <p className="text-xs" style={mutedStyle}>
@@ -199,7 +199,7 @@ export default function EmbeddingsTab({ models }: { models: Model[] }) {
           className="text-sm rounded-md px-4 py-3 outline-none resize-y" style={controlStyle} />
       </label>
       <div role="group" aria-label="Image attachments" className="rounded-lg p-4 flex flex-col gap-3"
-        style={{ ...controlStyle, borderColor: dragging ? "#70CD96" : "#374151" }}
+        style={{ ...controlStyle, borderColor: dragging ? "var(--color-cds-primary)" : "var(--color-cds-border-strong)" }}
         onDragOver={(event) => { event.preventDefault(); setDragging(true); }}
         onDragLeave={(event) => {
           // Moving onto a child element also fires dragleave on this group.
@@ -219,11 +219,11 @@ export default function EmbeddingsTab({ models }: { models: Model[] }) {
         {attachments.length > 0 && (
           <ul className="flex flex-wrap gap-3">
             {attachments.map((image) => (
-              <li key={image.id} className="rounded-md p-3 flex flex-col gap-2 max-w-60" style={{ background: "#111827", border: "1px solid #374151" }}>
+              <li key={image.id} className="rounded-md p-3 flex flex-col gap-2 max-w-60" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)" }}>
                 {image.preview && <img src={image.preview} alt={`Preview of ${image.file.name}`} className="h-24 w-32 object-contain rounded" />}
                 <span className="text-xs break-all">{image.file.name}</span>
                 <span className="text-xs" style={mutedStyle}>{image.file.size.toLocaleString()} bytes{!image.mimeType && !image.error ? " · Checking…" : ""}</span>
-                {image.error && <span role="alert" className="text-xs" style={{ color: "#fca5a5" }}>{image.error}</span>}
+                {image.error && <span role="alert" className="text-xs" style={{ color: "var(--color-cds-status-red-text)" }}>{image.error}</span>}
                 <button type="button" onClick={() => remove(image.id)} aria-label={`Remove ${image.file.name}`} className="text-xs self-start underline">Remove</button>
               </li>
             ))}
@@ -233,15 +233,15 @@ export default function EmbeddingsTab({ models }: { models: Model[] }) {
       <div className="flex items-center gap-3 flex-wrap">
         <button type="button" onClick={embed} disabled={Boolean(disabledReason) || loading} aria-describedby={disabledReason ? "embedding-disabled-reason" : undefined}
           className="px-5 py-2 text-sm font-medium rounded-md transition-colors"
-          style={{ background: !disabledReason && !loading ? "#065f46" : "#1f2937", color: !disabledReason && !loading ? "#70CD96" : "#6b7280" }}>
+          style={{ background: !disabledReason && !loading ? "var(--color-cds-primary)" : "var(--color-cds-status-neutral-fill)", color: !disabledReason && !loading ? "white" : "var(--color-cds-ink-subtle)" }}>
           {loading ? "Computing…" : "Generate Embedding"}
         </button>
         <button type="button" onClick={clear} className="px-4 py-2 text-sm rounded-md" style={controlStyle}>Clear</button>
         {disabledReason && <p id="embedding-disabled-reason" className="text-xs" style={mutedStyle}>{disabledReason}</p>}
       </div>
-      {error && <div role="alert" className="px-4 py-2 rounded-lg text-sm whitespace-pre-wrap break-words" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>{error}</div>}
+      {error && <div role="alert" className="px-4 py-2 rounded-lg text-sm whitespace-pre-wrap break-words" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>{error}</div>}
       {result && (
-        <div aria-label="Embedding result" className="rounded-lg p-4 overflow-auto flex-1" style={{ background: "#0f172a", border: "1px solid #1f2937" }}>
+        <div aria-label="Embedding result" className="rounded-lg p-4 overflow-auto flex-1" style={{ background: "var(--color-cds-elevated)", border: "1px solid var(--color-cds-border)" }}>
           <div className="mb-3 text-xs break-words" style={mutedStyle}>
             Submitted model: {result.model} · {result.imageCount} images · {result.vector.length} dimensions · {result.promptTokens !== undefined ? `${result.promptTokens} reported prompt tokens` : "Reported prompt tokens unavailable"}
             {result.totalTokens !== undefined && ` · ${result.totalTokens} reported total tokens`}

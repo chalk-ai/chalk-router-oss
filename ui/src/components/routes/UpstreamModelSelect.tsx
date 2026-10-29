@@ -88,7 +88,7 @@ function ConnectionModelSelect({ label, connectionId, value, onChange }: Props) 
   return <div className="relative min-w-0" onBlur={event => {
     if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
   }}>
-    <span id={`${id}-label`} className="mb-1.5 block text-xs text-slate-400">{label}</span>
+    <span id={`${id}-label`} className="mb-1.5 block text-xs text-cds-ink-secondary">{label}</span>
     <button ref={trigger} type="button" disabled={!connectionId} aria-labelledby={`${id}-label ${id}-value`}
       aria-haspopup="dialog" aria-expanded={open} aria-controls={open ? `${id}-picker` : undefined}
       className="flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm disabled:opacity-50"
@@ -96,7 +96,7 @@ function ConnectionModelSelect({ label, connectionId, value, onChange }: Props) 
       <span id={`${id}-value`} className="truncate">{value || (connectionId ? "Select a model…" : "Select a connection first")}</span>
     </button>
     {open && <div ref={picker} id={`${id}-picker`} role="dialog" aria-label={`${label} picker`} style={placement}
-      className="fixed z-[60] overflow-y-auto rounded-md border border-slate-600 bg-slate-900 p-2 shadow-xl"
+      className="fixed z-[60] overflow-y-auto rounded-md border border-cds-border-hover bg-cds-raised p-2 shadow-xl"
       onKeyDown={event => { if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); setOpen(false); trigger.current?.focus(); } }}>
       <input autoFocus role="combobox" aria-label={`Search ${label.toLowerCase()}`} aria-expanded="true"
         aria-controls={`${id}-options`} aria-autocomplete="list"
@@ -113,13 +113,13 @@ function ConnectionModelSelect({ label, connectionId, value, onChange }: Props) 
             if (activeIndex >= 0) choose(choices[activeIndex]);
           }
         }} />
-      {loading && <p role="status" className="px-2 py-2 text-xs text-slate-400">Loading models…</p>}
+      {loading && <p role="status" className="px-2 py-2 text-xs text-cds-ink-secondary">Loading models…</p>}
       {error && <div role="status" className="px-2 py-2 text-xs text-amber-200">{error} <button type="button" className="underline" onClick={() => setRevision(revision + 1)}>Retry</button></div>}
-      {!loading && !error && !filtered.length && <p className="px-2 py-2 text-xs text-slate-400">{models.length ? "No matching models." : "No models were discovered. You can enter a custom ID."}</p>}
+      {!loading && !error && !filtered.length && <p className="px-2 py-2 text-xs text-cds-ink-secondary">{models.length ? "No matching models." : "No models were discovered. You can enter a custom ID."}</p>}
       <div id={`${id}-options`} role="listbox" aria-label={`${label} models`} className="max-h-48 overflow-y-auto">
         {choices.map((model, index) => <button key={model} id={`${id}-option-${index}`} ref={index === activeIndex ? activeOption : undefined}
           type="button" role="option" tabIndex={-1} aria-selected={model === value}
-          className={`block w-full break-all rounded px-2 py-2 text-left text-sm ${index === activeIndex ? "bg-slate-700 text-white" : "text-slate-200 hover:bg-slate-800"}`}
+          className={`block w-full break-all rounded px-2 py-2 text-left text-sm ${index === activeIndex ? "bg-cds-selected text-white" : "text-cds-ink hover:bg-cds-hover"}`}
           onMouseDown={event => event.preventDefault()} onClick={() => choose(model)}>
           {custom === model ? <>Use custom model: <span className="font-mono">{model}</span></> : model}
         </button>)}

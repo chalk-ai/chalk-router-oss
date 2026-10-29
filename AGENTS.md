@@ -25,6 +25,12 @@ Prefer `just` over raw cargo/npm (`just --list`). Common gotchas:
 - Paid live tests: `just test-live` with `ROUTER_LIVE_API_TESTS=1`.
 - After `proto/` edits: `just gen-proto`. After migrations: `just schema-write`, then `just schema-check`.
 - UI: `cd ui && npm test` (vitest), `npx tsc --noEmit -p .`, `npm run build`.
+- UI styling follows the Chalk dashboard's design system (chalk-private
+  `frontend`, dark theme only). `ui/src/app/globals.css` holds its tokens and
+  recipes: use `bg-cds-*`/`text-cds-ink-*`/`border-cds-*` classes, or
+  `var(--color-cds-*)` in inline styles, and `.btn`/`.field`/`.badge`/`.card`/
+  `.table-cds`; not raw gray/slate stops or hex. `AppShell` is the rail and
+  breadcrumb shell; a new top-level page belongs to one of its categories.
 
 `just` is the local development interface. No company deployment pipeline or
 secret bundle is included. Deployment and provider seeding use explicit operator

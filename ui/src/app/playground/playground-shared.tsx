@@ -390,9 +390,9 @@ export function ModelSelect({
         onChange={(e) => onChange(e.target.value)}
         className="text-sm rounded-md px-3 py-2 outline-none"
         style={{
-          background: "#1f2937",
-          border: "1px solid #374151",
-          color: "#e5e7eb",
+          background: "var(--color-cds-field)",
+          border: "1px solid var(--color-cds-border)",
+          color: "var(--color-cds-ink)",
           minWidth: "220px",
         }}
       >
@@ -424,9 +424,9 @@ export function ModelSelect({
         aria-label="Manual model ID"
         className="text-sm rounded-md px-3 py-2 outline-none"
         style={{
-          background: "#1f2937",
-          border: "1px solid #374151",
-          color: "#e5e7eb",
+          background: "var(--color-cds-field)",
+          border: "1px solid var(--color-cds-border)",
+          color: "var(--color-cds-ink)",
           minWidth: "220px",
         }}
       />

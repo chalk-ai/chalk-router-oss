@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sidebar } from "@/components/Sidebar";
+import { AppShell } from "@/components/AppShell";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,17 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-950 text-gray-100 min-h-screen antialiased">
-        <Sidebar />
-        <main
-          style={{
-            marginLeft: "240px",
-            minHeight: "100vh",
-            padding: "32px 40px",
-          }}
-        >
-          {children}
-        </main>
+      <body className="bg-cds-inset text-cds-ink antialiased">
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

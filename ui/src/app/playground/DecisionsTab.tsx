@@ -27,9 +27,9 @@ interface DecisionsResponse {
 }
 
 const fieldStyle = {
-  background: "#111827",
-  border: "1px solid #374151",
-  color: "#e5e7eb",
+  background: "var(--color-cds-raised)",
+  border: "1px solid var(--color-cds-border-strong)",
+  color: "var(--color-cds-ink)",
 };
 
 function question(
@@ -209,7 +209,7 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <ModelSelect groups={modelGroups} value={model} onChange={setModel} />
         <div className="flex items-center gap-2">
-          <span className="text-xs" style={{ color: "#6b7280" }}>Presets</span>
+          <span className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>Presets</span>
           {(Object.keys(presets) as PresetName[]).map((name) => (
             <button key={name} onClick={() => loadPreset(name)} className="rounded-md px-3 py-2 text-xs" style={fieldStyle}>
               {name}
@@ -219,23 +219,23 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
       </div>
 
       {models.length > 0 && modelGroups.supported.length === 0 && (
-        <div className="text-xs" style={{ color: "#6b7280" }}>
+        <div className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
           No listed models advertise verified Decisions support. Enter a model ID to try one directly.
         </div>
       )}
 
       <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 xl:grid-cols-2">
-        <div className="min-h-0 space-y-4 overflow-auto rounded-lg p-4" style={{ background: "#0f172a", border: "1px solid #1f2937" }}>
+        <div className="min-h-0 space-y-4 overflow-auto rounded-lg p-4" style={{ background: "var(--color-cds-elevated)", border: "1px solid var(--color-cds-border)" }}>
           <section>
             <div className="mb-2 flex items-center justify-between">
-              <label className="text-sm font-medium" style={{ color: "#d1d5db" }}>State</label>
-              <div className="flex rounded-md p-0.5" style={{ background: "#111827" }}>
+              <label className="text-sm font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>State</label>
+              <div className="flex rounded-md p-0.5" style={{ background: "var(--color-cds-raised)" }}>
                 {(["text", "json"] as const).map((mode) => (
                   <button
                     key={mode}
                     onClick={() => setStateMode(mode)}
                     className="rounded px-2.5 py-1 text-xs uppercase"
-                    style={{ color: stateMode === mode ? "#70CD96" : "#6b7280", background: stateMode === mode ? "#064e3b" : "transparent" }}
+                    style={{ color: stateMode === mode ? "var(--color-cds-status-green-text)" : "var(--color-cds-ink-subtle)", background: stateMode === mode ? "var(--color-cds-status-green-fill)" : "transparent" }}
                   >
                     {mode}
                   </button>
@@ -255,7 +255,7 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
 
           <section>
             <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-              <label className="text-sm font-medium" style={{ color: "#d1d5db" }}>Images</label>
+              <label className="text-sm font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>Images</label>
               <button onClick={() => fileInput.current?.click()} className="rounded px-2.5 py-1.5 text-xs" style={fieldStyle}>
                 + Add images
               </button>
@@ -270,18 +270,18 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
               />
             </div>
             {images.length === 0 ? (
-              <div className="text-xs" style={{ color: "#6b7280" }}>
+              <div className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
                 Optional. PNG, JPEG, or WebP; each image is sent as an asset and referenced from the state by its placeholder.
               </div>
             ) : (
               <div className="space-y-2">
                 {images.map((image) => (
-                  <div key={image.placeholder} className="flex items-center gap-3 rounded-lg p-2" style={{ background: "#111827", border: "1px solid #273244" }}>
+                  <div key={image.placeholder} className="flex items-center gap-3 rounded-lg p-2" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element -- local data URL preview */}
-                    <img src={imageSrc(image)} alt={image.name ?? "Uploaded image"} className="h-14 w-14 shrink-0 rounded object-cover" style={{ border: "1px solid #374151" }} />
+                    <img src={imageSrc(image)} alt={image.name ?? "Uploaded image"} className="h-14 w-14 shrink-0 rounded object-cover" style={{ border: "1px solid var(--color-cds-border-strong)" }} />
                     <div className="min-w-0 flex-1">
-                      <div className="truncate text-xs" style={{ color: "#d1d5db" }} title={image.name}>{image.name ?? "Image"} · {image.format}</div>
-                      <div className="mt-1 truncate font-mono text-xs" style={{ color: "#9ca3af" }} title={image.placeholder}>{image.placeholder}</div>
+                      <div className="truncate text-xs" style={{ color: "var(--color-cds-ink-medium)" }} title={image.name}>{image.name ?? "Image"} · {image.format}</div>
+                      <div className="mt-1 truncate font-mono text-xs" style={{ color: "var(--color-cds-ink-secondary)" }} title={image.placeholder}>{image.placeholder}</div>
                     </div>
                     <button onClick={() => insertImage(image)} className="shrink-0 rounded px-2.5 py-1.5 text-xs" style={fieldStyle}>
                       Insert into state
@@ -290,7 +290,7 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
                       aria-label={`Remove image ${image.name ?? image.placeholder}`}
                       onClick={() => setImages((current) => current.filter((item) => item.placeholder !== image.placeholder))}
                       className="shrink-0 rounded-md px-2.5 py-1.5 text-xs"
-                      style={{ color: "#fca5a5", border: "1px solid #4c1d1d" }}
+                      style={{ color: "var(--color-cds-status-red-text)", border: "1px solid var(--color-cds-status-red-border)" }}
                     >
                       Remove
                     </button>
@@ -298,12 +298,12 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
                 ))}
               </div>
             )}
-            {imageError && <div className="mt-2 rounded-lg px-3 py-2 text-xs" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>{imageError}</div>}
+            {imageError && <div className="mt-2 rounded-lg px-3 py-2 text-xs" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>{imageError}</div>}
           </section>
 
           <section>
             <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-              <label className="text-sm font-medium" style={{ color: "#d1d5db" }}>Questions</label>
+              <label className="text-sm font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>Questions</label>
               <div className="flex gap-1.5">
                 {QUESTION_TYPES.map((type) => (
                   <button key={type} onClick={() => addQuestion(type)} className="rounded px-2.5 py-1.5 text-xs capitalize" style={fieldStyle}>
@@ -315,7 +315,7 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
 
             <div className="space-y-3">
               {questions.map((item, index) => (
-                <div key={index} className="rounded-lg p-3" style={{ background: "#111827", border: "1px solid #273244" }}>
+                <div key={index} className="rounded-lg p-3" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
                   <div className="mb-2 grid grid-cols-[1fr_130px_auto] gap-2">
                     <input
                       aria-label={`Question ${index + 1} ID`}
@@ -341,7 +341,7 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
                       aria-label={`Remove question ${index + 1}`}
                       onClick={() => setQuestions((current) => current.filter((_, itemIndex) => itemIndex !== index))}
                       className="rounded-md px-2 text-sm"
-                      style={{ color: "#fca5a5", border: "1px solid #4c1d1d" }}
+                      style={{ color: "var(--color-cds-status-red-text)", border: "1px solid var(--color-cds-status-red-border)" }}
                     >
                       ×
                     </button>
@@ -356,7 +356,7 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
                     placeholder="Instructions"
                   />
                   {item.type === "box" ? (
-                    <div className="text-xs" style={{ color: "#6b7280" }}>
+                    <div className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
                       Answers with a bounding box. Needs at least one image; only TypeSafe Jev 1.14+ answers box questions.
                     </div>
                   ) : item.type === "noul" ? (
@@ -383,16 +383,16 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
             onClick={decide}
             disabled={!model || loading}
             className="w-full rounded-md px-5 py-2.5 text-sm font-medium transition-colors"
-            style={{ background: model && !loading ? "#065f46" : "#1f2937", color: model && !loading ? "#70CD96" : "#4b5563" }}
+            style={{ background: model && !loading ? "var(--color-cds-primary)" : "var(--color-cds-status-neutral-fill)", color: model && !loading ? "white" : "var(--color-cds-ink-muted)" }}
           >
             {loading ? "Deciding…" : "Run Decisions"}
           </button>
-          {error && <div className="rounded-lg px-4 py-2 text-sm" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>{error}</div>}
+          {error && <div className="rounded-lg px-4 py-2 text-sm" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>{error}</div>}
         </div>
 
-        <div className="min-h-[320px] overflow-auto rounded-lg p-4" style={{ background: "#0f172a", border: "1px solid #1f2937" }}>
+        <div className="min-h-[320px] overflow-auto rounded-lg p-4" style={{ background: "var(--color-cds-elevated)", border: "1px solid var(--color-cds-border)" }}>
           {!result ? (
-            <div className="flex h-full min-h-[280px] items-center justify-center text-sm" style={{ color: "#4b5563" }}>
+            <div className="flex h-full min-h-[280px] items-center justify-center text-sm" style={{ color: "var(--color-cds-ink-muted)" }}>
               Decision answers will appear here.
             </div>
           ) : (
@@ -407,23 +407,23 @@ export default function DecisionsTab({ models }: { models: Model[] }) {
               </div>
               <BoxResults answers={result.answers} sent={sent} />
               <section>
-                <h3 className="mb-2 text-sm font-medium" style={{ color: "#d1d5db" }}>Answers</h3>
+                <h3 className="mb-2 text-sm font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>Answers</h3>
                 <div className="space-y-2">
                   {Object.entries(result.answers ?? {}).map(([id, answer]) => {
                     const summary = summarizeDecisionAnswer(answer);
                     return (
-                      <div key={id} className="rounded-lg p-3" style={{ background: "#111827", border: "1px solid #273244" }}>
-                        <div className="font-mono text-xs" style={{ color: "#6b7280" }}>{id}</div>
-                        <div className="mt-1 text-lg font-medium" style={{ color: "#e5e7eb" }}>{summary.value}</div>
-                        {summary.detail && <div className="mt-1 text-xs" style={{ color: "#70CD96" }}>{summary.detail}</div>}
+                      <div key={id} className="rounded-lg p-3" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
+                        <div className="font-mono text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>{id}</div>
+                        <div className="mt-1 text-lg font-medium" style={{ color: "var(--color-cds-ink)" }}>{summary.value}</div>
+                        {summary.detail && <div className="mt-1 text-xs" style={{ color: "var(--color-cds-status-green-text)" }}>{summary.detail}</div>}
                       </div>
                     );
                   })}
                 </div>
               </section>
               <details>
-                <summary className="cursor-pointer text-xs" style={{ color: "#9ca3af" }}>Raw JSON</summary>
-                <pre className="mt-2 overflow-auto rounded-md p-3 text-xs" style={{ background: "#020617", color: "#9ca3af" }}>{JSON.stringify(result, null, 2)}</pre>
+                <summary className="cursor-pointer text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>Raw JSON</summary>
+                <pre className="mt-2 overflow-auto rounded-md p-3 text-xs" style={{ background: "var(--color-cds-inset)", color: "var(--color-cds-ink-secondary)" }}>{JSON.stringify(result, null, 2)}</pre>
               </details>
             </div>
           )}
@@ -448,11 +448,11 @@ function BoxResults({
   const image = sent ? imageForBoxOverlay(sent.images, sent.stateText) : undefined;
   return (
     <section>
-      <h3 className="mb-2 text-sm font-medium" style={{ color: "#d1d5db" }}>Boxes</h3>
+      <h3 className="mb-2 text-sm font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>Boxes</h3>
       {image ? (
         <BoxOverlay image={image} boxes={boxes} />
       ) : (
-        <div className="text-xs" style={{ color: "#6b7280" }}>
+        <div className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
           The request did not name a single image, so the boxes are listed below without a preview.
         </div>
       )}
@@ -518,9 +518,9 @@ function BoxOverlay({ image, boxes }: { image: DecisionImage; boxes: Array<{ id:
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="min-w-0 rounded-md p-2.5" style={{ background: "#111827", border: "1px solid #273244" }}>
-      <div style={{ color: "#6b7280" }}>{label}</div>
-      <div className="mt-1 truncate font-mono" title={value} style={{ color: "#d1d5db" }}>{value}</div>
+    <div className="min-w-0 rounded-md p-2.5" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
+      <div style={{ color: "var(--color-cds-ink-subtle)" }}>{label}</div>
+      <div className="mt-1 truncate font-mono" title={value} style={{ color: "var(--color-cds-ink-medium)" }}>{value}</div>
     </div>
   );
 }

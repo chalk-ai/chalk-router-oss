@@ -219,14 +219,14 @@ const PROVIDER_LOGOS: Record<string, React.ReactNode> = {
 };
 
 const PROVIDER_COLORS: Record<string, { accent: string; bg: string }> = {
-  openai: { accent: "#10a37f", bg: "#052e16" },
+  openai: { accent: "#10a37f", bg: "var(--color-cds-status-green-fill)" },
   anthropic: { accent: "#d4a27f", bg: "#2a1a0e" },
   voyage: { accent: "#3ab0d4", bg: "#08222b" },
   typesafe: { accent: "#a3e635", bg: "#17220a" },
   vllm: { accent: "#a78bfa", bg: "#1e1538" },
   gemini: { accent: "#4285f4", bg: "#0f1d3a" },
   vertex: { accent: "#34a853", bg: "#0c2416" },
-  bedrock: { accent: "#ff9900", bg: "#2a1a00" },
+  bedrock: { accent: "#ff9900", bg: "var(--color-cds-status-yellow-fill)" },
   openrouter: { accent: "#6366f1", bg: "#15153a" },
   xai: { accent: "#e5e7eb", bg: "#1a1a1a" },
   cohere: { accent: "#39594d", bg: "#0d1f18" },
@@ -236,7 +236,7 @@ const PROVIDER_COLORS: Record<string, { accent: string; bg: string }> = {
   groq: { accent: "#f55036", bg: "#2b0e09" },
   mistral: { accent: "#ff7000", bg: "#2a1300" },
   perplexity: { accent: "#20b8cd", bg: "#062328" },
-  "openai-compatible": { accent: "#9ca3af", bg: "#1f2937" },
+  "openai-compatible": { accent: "#9ca3af", bg: "var(--color-cds-status-neutral-fill)" },
 };
 
 // Built-in kinds settable through this UI, plus the catch-all
@@ -320,10 +320,10 @@ function isBedrockRuntimeConnection(baseUrl: string): boolean {
 }
 
 const EXPOSURE_COLORS: Record<Exposure, { bg: string; color: string }> = {
-  dynamic: { bg: "#0f2a4a", color: "#93c5fd" },
-  unlisted: { bg: "#1f2937", color: "#9ca3af" },
-  explicit: { bg: "#2a1440", color: "#c4b5fd" },
-  unspecified: { bg: "#1f2937", color: "#6b7280" },
+  dynamic: { bg: "var(--color-cds-status-blue-fill)", color: "var(--color-cds-status-blue-text)" },
+  unlisted: { bg: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-secondary)" },
+  explicit: { bg: "var(--color-cds-status-purple-fill)", color: "var(--color-cds-status-purple-text)" },
+  unspecified: { bg: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-subtle)" },
 };
 
 interface FormState {
@@ -634,44 +634,44 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
 
   return (
     <div>
-      <div className="mb-6"><PageHeader title="Connections" description="Provider credentials, endpoints, and routing configuration." action={<button onClick={openCreate} className="rounded-lg px-4 py-2 text-sm font-medium" style={{ background: "#218E61", color: "white" }}>New connection</button>} /></div>
+      <div className="mb-6"><PageHeader title="Connections" description="Provider credentials, endpoints, and routing configuration." action={<button onClick={openCreate} className="btn btn-primary btn-md">New connection</button>} /></div>
 
       {error && (
-        <div className="mb-6 px-4 py-3 rounded-lg text-sm" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>
+        <div className="mb-6 px-4 py-3 rounded-lg text-sm" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>
           <span className="font-medium">Error:</span> {error}
         </div>
       )}
 
       {ambiguityWarnings.map((kind) => (
-        <div key={kind} className="mb-4 px-4 py-3 rounded-lg text-sm" style={{ background: "#2a1a00", border: "1px solid #92400e", color: "#fbbf24" }}>
+        <div key={kind} className="mb-4 px-4 py-3 rounded-lg text-sm" style={{ background: "var(--color-cds-status-yellow-fill)", border: "1px solid var(--color-cds-status-yellow-border)", color: "var(--color-cds-status-yellow-text)" }}>
           Multiple {kind} connections are configured without a <code>{kind}/</code> owner. Implicit {kind} requests are ambiguous; assign the canonical prefix or route explicitly.
         </div>
       ))}
 
       {loading ? (
-        <p className="text-sm" style={{ color: "#6b7280" }}>Loading...</p>
+        <p className="text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>Loading...</p>
       ) : (
         <>
           {connections.length > 0 ? (
-            <div className="rounded-lg overflow-hidden mb-6" style={{ border: "1px solid #1f2937" }}>
+            <div className="rounded-lg overflow-hidden mb-6" style={{ border: "1px solid var(--color-cds-border)" }}>
               <table className="w-full text-sm">
                 <thead>
-                  <tr style={{ background: "#111827", borderBottom: "1px solid #1f2937" }}>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Connection</th>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Prefix</th>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Exposure</th>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Routing</th>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Status</th>
-                    <th className="sticky right-0 bg-slate-900 px-5 py-3 text-right font-medium" style={{ color: "#9ca3af" }}>Actions</th>
+                  <tr style={{ background: "var(--color-cds-raised)", borderBottom: "1px solid var(--color-cds-border)" }}>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Connection</th>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Prefix</th>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Exposure</th>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Routing</th>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Status</th>
+                    <th className="sticky right-0 bg-cds-raised px-5 py-3 text-right font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {connections.map((c, i) => {
-                    const colors = PROVIDER_COLORS[c.provider_kind] ?? { accent: "#9ca3af", bg: "#1f2937" };
+                    const colors = PROVIDER_COLORS[c.provider_kind] ?? { accent: "#9ca3af", bg: "var(--color-cds-status-neutral-fill)" };
                     const logo = PROVIDER_LOGOS[c.provider_kind] ?? <CompatibleLogo />;
                     const rt = rowTest[c.id];
                     return (
-                      <tr key={c.id} role="link" tabIndex={0} onClick={(event) => { if (!(event.target as HTMLElement).closest("a,button,input")) window.location.assign(`/connections/${encodeURIComponent(c.id)}`); }} onKeyDown={(event) => { if (event.key === "Enter") window.location.assign(`/connections/${encodeURIComponent(c.id)}`); }} className="cursor-pointer hover:bg-slate-800/70" style={{ background: i % 2 === 0 ? "#0f172a" : "#111827", borderBottom: i < connections.length - 1 ? "1px solid #1f2937" : undefined }}>
+                      <tr key={c.id} role="link" tabIndex={0} onClick={(event) => { if (!(event.target as HTMLElement).closest("a,button,input")) window.location.assign(`/connections/${encodeURIComponent(c.id)}`); }} onKeyDown={(event) => { if (event.key === "Enter") window.location.assign(`/connections/${encodeURIComponent(c.id)}`); }} className="cursor-pointer hover:bg-cds-hover" style={{ background: i % 2 === 0 ? "var(--color-cds-elevated)" : "var(--color-cds-raised)", borderBottom: i < connections.length - 1 ? "1px solid var(--color-cds-border)" : undefined }}>
                         <td className="px-5 py-3">
                           <div className="flex items-center gap-3">
                             <div
@@ -682,12 +682,12 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                             </div>
                             <div>
                               <Link href={`/connections/${encodeURIComponent(c.id)}`} className="font-medium text-white hover:underline">{c.name}</Link>
-                              <div className="text-xs mt-0.5" style={{ color: "#6b7280" }}>
+                              <div className="text-xs mt-0.5" style={{ color: "var(--color-cds-ink-subtle)" }}>
                                 {c.provider_kind}
                                 {c.base_url ? ` · ${c.base_url}` : ""}
                               </div>
                               {rt?.result && (
-                                <div className="text-xs mt-1" style={{ color: rt.result.ok ? "#4ade80" : "#fca5a5" }}>
+                                <div className="text-xs mt-1" style={{ color: rt.result.ok ? "var(--color-cds-status-green-text)" : "var(--color-cds-status-red-text)" }}>
                                   {rt.result.ok
                                     ? `OK${rt.result.latency_ms != null ? ` · ${rt.result.latency_ms}ms` : ""}${rt.result.discovered_models != null ? ` · ${rt.result.discovered_models} models` : ""}`
                                     : `Failed: ${rt.result.error ?? "unknown error"}`}
@@ -698,9 +698,9 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                         </td>
                         <td className="px-5 py-3">
                           {c.prefix ? (
-                            <code className="text-xs px-1.5 py-0.5 rounded font-mono" style={{ background: "#052e16", color: "#70CD96" }}>{c.prefix}</code>
+                            <code className="text-xs px-1.5 py-0.5 rounded font-mono" style={{ background: "var(--color-cds-status-green-fill)", color: "var(--color-cds-status-green-text)" }}>{c.prefix}</code>
                           ) : (
-                            <span className="text-xs" style={{ color: "#4b5563" }}>—</span>
+                            <span className="text-xs" style={{ color: "var(--color-cds-ink-muted)" }}>—</span>
                           )}
                         </td>
                         <td className="px-5 py-3">
@@ -708,26 +708,26 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                         </td>
                         <td className="px-5 py-3">
                           {c.routing_enabled ? (
-                            <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#052e16", color: "#4ade80" }}>on</span>
+                            <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-green-fill)", color: "var(--color-cds-status-green-text)" }}>on</span>
                           ) : (
-                            <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#1f2937", color: "#6b7280" }}>off</span>
+                            <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-subtle)" }}>off</span>
                           )}
                         </td>
                         <td className="px-5 py-3">
                           <div className="flex flex-wrap gap-1.5">
                             {c.state.configured ? (
-                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#052e16", color: "#4ade80" }}>configured</span>
+                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-green-fill)", color: "var(--color-cds-status-green-text)" }}>configured</span>
                             ) : (
-                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#1f2937", color: "#6b7280" }}>not configured</span>
+                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-subtle)" }}>not configured</span>
                             )}
                             {c.state.unreadable && (
-                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#1c0a0a", color: "#fca5a5" }}>unreadable</span>
+                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-red-fill)", color: "var(--color-cds-status-red-text)" }}>unreadable</span>
                             )}
                             {c.state.healthy === true && (
-                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#052e16", color: "#70CD96" }}>healthy</span>
+                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-green-fill)", color: "var(--color-cds-status-green-text)" }}>healthy</span>
                             )}
                             {c.state.healthy === false && (
-                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#1c0a0a", color: "#ef4444" }}>unhealthy</span>
+                              <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-red-fill)", color: "var(--color-cds-status-red-text)" }}>unhealthy</span>
                             )}
                           </div>
                         </td>
@@ -746,8 +746,8 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
             </div>
           ) : (
             !showForm && (
-              <div className="px-6 py-12 rounded-lg text-center mb-6" style={{ background: "#111827", border: "1px solid #1f2937" }}>
-                <p className="text-sm" style={{ color: "#6b7280" }}>No provider connections yet.</p>
+              <div className="px-6 py-12 rounded-lg text-center mb-6" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
+                <p className="text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>No provider connections yet.</p>
               </div>
             )
           )}
@@ -758,7 +758,7 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
             <div>
 
               {saveError && (
-                <div className="mb-4 px-3 py-2 rounded-lg text-xs" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>
+                <div className="mb-4 px-3 py-2 rounded-lg text-xs" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>
                   {saveError}
                 </div>
               )}
@@ -766,7 +766,7 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
               <fieldset disabled={saving || testing} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Name</label>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Name</label>
                     <input type="text" value={form.name} onChange={(e) => {
                       const name = e.target.value;
                       setForm((f) => ({
@@ -777,7 +777,7 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                     }} placeholder="e.g. OpenAI (prod)" className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle} />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Provider kind</label>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Provider kind</label>
                     <select
                       value={form.provider_kind}
                       disabled={editingId != null}
@@ -801,7 +801,7 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
 
                 {isVertex && (
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Vertex location</label>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Vertex location</label>
                     <select
                       value={form.base_url === VERTEX_GLOBAL_URL ? "global" : (!form.base_url || form.base_url === VERTEX_US_CENTRAL_URL ? "us-central1" : "custom")}
                       onChange={(e) => setForm((f) => ({
@@ -820,9 +820,9 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
 
                 {showsBaseUrl(form.provider_kind) && (
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>
                       Base URL{" "}
-                      <span style={{ color: "#4b5563" }}>({requiresBaseUrl(form.provider_kind) ? "required" : "optional"})</span>
+                      <span style={{ color: "var(--color-cds-ink-muted)" }}>({requiresBaseUrl(form.provider_kind) ? "required" : "optional"})</span>
                     </label>
                     <input type="text" value={form.base_url} onChange={(e) => setForm((f) => ({ ...f, base_url: e.target.value }))} placeholder="https://..." className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle} />
                   </div>
@@ -830,7 +830,7 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Exposure</label>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Exposure</label>
                     <select value={form.exposure} onChange={(e) => setForm((f) => ({ ...f, exposure: e.target.value as Exposure }))} className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle}>
                       <option value="dynamic">Dynamic (prefix routing + listed)</option>
                       <option value="unlisted">Unlisted (prefix routing, hidden)</option>
@@ -838,16 +838,16 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>
                       Prefix{" "}
-                      <span style={{ color: "#4b5563" }}>({form.exposure === "explicit" ? "optional" : "required"})</span>
+                      <span style={{ color: "var(--color-cds-ink-muted)" }}>({form.exposure === "explicit" ? "optional" : "required"})</span>
                     </label>
                     <input type="text" value={form.prefix} onChange={(e) => {
                       setPrefixEdited(true);
                       setForm((f) => ({ ...f, prefix: e.target.value }));
                     }} placeholder="e.g. openai/" className="w-full rounded-md px-3 py-2 text-sm focus:outline-none" style={inputStyle} />
                     {form.exposure === "explicit" && (
-                      <p className="mt-1.5 text-xs" style={{ color: "#6b7280" }}>
+                      <p className="mt-1.5 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
                         Explicit connections ignore prefix routing and are reachable only through <code>chalk/*</code> model routes.
                       </p>
                     )}
@@ -855,9 +855,9 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>
+                  <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>
                     {isVertex ? "Service account key" : "API key"}{" "}
-                    <span style={{ color: "#4b5563" }}>
+                    <span style={{ color: "var(--color-cds-ink-muted)" }}>
                       ({editingId
                         ? "leave blank to keep current"
                         : form.provider_kind === "vllm" ||
@@ -878,7 +878,7 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                         className="w-full rounded-md px-3 py-2 text-xs font-mono focus:outline-none"
                         style={inputStyle}
                       />
-                      <p className="mt-1.5 text-xs" style={{ color: "#6b7280" }}>
+                      <p className="mt-1.5 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
                         Vertex AI takes no API key. Paste the GCP service account key JSON — the router
                         mints short-lived OAuth tokens from it and refreshes them automatically. The
                         project comes from the key; add <code>&quot;location&quot;</code> to it, or set the
@@ -891,11 +891,11 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                   )}
                 </div>
 
-                <details className="rounded-lg p-4" style={{ background: "#0f172a", border: "1px solid #374151" }}>
-                  <summary className="cursor-pointer text-sm font-medium" style={{ color: "#d1d5db" }}>
+                <details className="rounded-lg p-4" style={{ background: "var(--color-cds-elevated)", border: "1px solid var(--color-cds-border-strong)" }}>
+                  <summary className="cursor-pointer text-sm font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>
                     Advanced capability declaration
                   </summary>
-                  <p className="mt-2 text-xs" style={{ color: "#6b7280" }}>
+                  <p className="mt-2 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
                     Leave blank to inherit built-in and discovered facts. Use <code>model_defaults</code>, canonical upstream ids under <code>models</code>, and <code>endpoint.interfaces</code>; <code>unknown</code> is an explicit value.
                   </p>
                   <textarea
@@ -909,7 +909,7 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                   />
                 </details>
 
-                <label className="flex items-center gap-2 text-sm" style={{ color: "#9ca3af" }}>
+                <label className="flex items-center gap-2 text-sm" style={{ color: "var(--color-cds-ink-secondary)" }}>
                   <input type="checkbox" checked={form.routing_enabled} onChange={(e) => setForm((f) => ({ ...f, routing_enabled: e.target.checked }))} />
                   Routing enabled
                 </label>
@@ -918,9 +918,9 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                   <div
                     className="px-3 py-2 rounded-lg text-xs"
                     style={{
-                      background: testResult.ok ? "#052e16" : "#1c0a0a",
-                      border: `1px solid ${testResult.ok ? "#166534" : "#7f1d1d"}`,
-                      color: testResult.ok ? "#70CD96" : "#fca5a5",
+                      background: testResult.ok ? "var(--color-cds-status-green-fill)" : "var(--color-cds-status-red-fill)",
+                      border: `1px solid ${testResult.ok ? "var(--color-cds-status-green-border)" : "var(--color-cds-status-red-border)"}`,
+                      color: testResult.ok ? "var(--color-cds-status-green-text)" : "var(--color-cds-status-red-text)",
                     }}
                   >
                     {testResult.ok
@@ -933,16 +933,14 @@ export default function ProvidersClient({ embedded = false }: { embedded?: boole
                   <button
                     onClick={() => void testDraft()}
                     disabled={saving || testing}
-                    className="px-4 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
-                    style={{ background: "#1f2937", color: "#e5e7eb", border: "1px solid #374151" }}
+                    className="btn btn-secondary btn-md"
                   >
                     {testing ? "Testing..." : "Test connection"}
                   </button>
                   <button
                     onClick={handleSave}
                     disabled={saveDisabled}
-                    className="px-5 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
-                    style={{ background: "#218E61", color: "white" }}
+                    className="btn btn-primary btn-md"
                   >
                     {saving ? testing ? "Testing..." : "Saving..." : editingId ? "Save changes" : "Create connection"}
                   </button>
