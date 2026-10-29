@@ -37,12 +37,12 @@ interface Connection {
 }
 
 const DIAGNOSTIC_LABELS: Record<Diagnostic, { label: string; bg: string; color: string }> = {
-  ready: { label: "ready", bg: "#052e16", color: "#4ade80" },
-  unconfigured: { label: "unconfigured", bg: "#3b1a0a", color: "#fdba74" },
-  disabled: { label: "disabled", bg: "#1f2937", color: "#9ca3af" },
-  unreadable: { label: "unreadable", bg: "#1c0a0a", color: "#fca5a5" },
-  missing_connection: { label: "missing connection", bg: "#1c0a0a", color: "#ef4444" },
-  unspecified: { label: "unknown", bg: "#1f2937", color: "#6b7280" },
+  ready: { label: "ready", bg: "var(--color-cds-status-green-fill)", color: "var(--color-cds-status-green-text)" },
+  unconfigured: { label: "unconfigured", bg: "var(--color-cds-status-orange-fill)", color: "var(--color-cds-status-orange-text)" },
+  disabled: { label: "disabled", bg: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-secondary)" },
+  unreadable: { label: "unreadable", bg: "var(--color-cds-status-red-fill)", color: "var(--color-cds-status-red-text)" },
+  missing_connection: { label: "missing connection", bg: "var(--color-cds-status-red-fill)", color: "var(--color-cds-status-red-text)" },
+  unspecified: { label: "unknown", bg: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-subtle)" },
 };
 
 interface FormState {
@@ -226,48 +226,48 @@ export default function RoutesClient({ embedded = false }: { embedded?: boolean 
 
   return (
     <div>
-      <div className="mb-6"><PageHeader title="Routes" description={<>Map public <code>chalk/*</code> aliases to models, judge outcomes and fallback chains.</>} action={<button onClick={openCreate} className="rounded-lg px-4 py-2 text-sm font-medium" style={{ background: "#218E61", color: "white" }}>New route</button>} /></div>
+      <div className="mb-6"><PageHeader title="Routes" description={<>Map public <code>chalk/*</code> aliases to models, judge outcomes and fallback chains.</>} action={<button onClick={openCreate} className="btn btn-primary btn-md">New route</button>} /></div>
 
       {error && (
-        <div className="mb-6 px-4 py-3 rounded-lg text-sm" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>
+        <div className="mb-6 px-4 py-3 rounded-lg text-sm" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>
           <span className="font-medium">Error:</span> {error}
         </div>
       )}
 
       {loading ? (
-        <p className="text-sm" style={{ color: "#6b7280" }}>Loading...</p>
+        <p className="text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>Loading...</p>
       ) : (
         <>
           {routes.length > 0 ? (
-            <div className="rounded-lg overflow-hidden mb-6" style={{ border: "1px solid #1f2937" }}>
+            <div className="rounded-lg overflow-hidden mb-6" style={{ border: "1px solid var(--color-cds-border)" }}>
               <table className="w-full text-sm">
                 <thead>
-                  <tr style={{ background: "#111827", borderBottom: "1px solid #1f2937" }}>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Public model</th>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Connection</th>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Upstream model</th>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Published</th>
-                    <th className="text-left px-5 py-3 font-medium" style={{ color: "#9ca3af" }}>Diagnostic</th>
-                    <th className="sticky right-0 bg-slate-900 px-5 py-3 text-right font-medium" style={{ color: "#9ca3af" }}>Actions</th>
+                  <tr style={{ background: "var(--color-cds-raised)", borderBottom: "1px solid var(--color-cds-border)" }}>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Public model</th>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Connection</th>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Upstream model</th>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Published</th>
+                    <th className="text-left px-5 py-3 font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Diagnostic</th>
+                    <th className="sticky right-0 bg-cds-raised px-5 py-3 text-right font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {routes.map((r, i) => {
                     const diag = DIAGNOSTIC_LABELS[r.diagnostic] ?? DIAGNOSTIC_LABELS.unspecified;
                     return (
-                      <tr key={r.id} role="link" tabIndex={0} onClick={(event) => { if (!(event.target as HTMLElement).closest("a,button,input")) window.location.assign(`/routes/${encodeURIComponent(r.id)}`); }} onKeyDown={(event) => { if (event.key === "Enter") window.location.assign(`/routes/${encodeURIComponent(r.id)}`); }} className="cursor-pointer hover:bg-slate-800/70" style={{ background: i % 2 === 0 ? "#0f172a" : "#111827", borderBottom: i < routes.length - 1 ? "1px solid #1f2937" : undefined }}>
+                      <tr key={r.id} role="link" tabIndex={0} onClick={(event) => { if (!(event.target as HTMLElement).closest("a,button,input")) window.location.assign(`/routes/${encodeURIComponent(r.id)}`); }} onKeyDown={(event) => { if (event.key === "Enter") window.location.assign(`/routes/${encodeURIComponent(r.id)}`); }} className="cursor-pointer hover:bg-cds-hover" style={{ background: i % 2 === 0 ? "var(--color-cds-elevated)" : "var(--color-cds-raised)", borderBottom: i < routes.length - 1 ? "1px solid var(--color-cds-border)" : undefined }}>
                         <td className="px-5 py-3">
-                          <Link href={`/routes/${encodeURIComponent(r.id)}`} className="inline-block font-mono text-xs px-2 py-0.5 rounded hover:underline" style={{ background: "#052e16", color: "#70CD96" }}>{r.public_model_id}</Link>
+                          <Link href={`/routes/${encodeURIComponent(r.id)}`} className="inline-block font-mono text-xs px-2 py-0.5 rounded hover:underline" style={{ background: "var(--color-cds-status-green-fill)", color: "var(--color-cds-status-green-text)" }}>{r.public_model_id}</Link>
                         </td>
-                        <td className="px-5 py-3" style={{ color: "#d1d5db" }}>{connectionLabel(effectiveTarget(r).connection_id)}</td>
+                        <td className="px-5 py-3" style={{ color: "var(--color-cds-ink-medium)" }}>{connectionLabel(effectiveTarget(r).connection_id)}</td>
                         <td className="px-5 py-3">
-                          <code className="font-mono text-xs px-2 py-0.5 rounded" style={{ background: "#0f172a", color: "#93c5fd" }}>{effectiveTarget(r).upstream_model_id}</code>{r.routing && <span className="ml-2 text-xs text-slate-400">Custom routing</span>}
+                          <code className="font-mono text-xs px-2 py-0.5 rounded" style={{ background: "var(--color-cds-elevated)", color: "var(--color-cds-status-blue-text)" }}>{effectiveTarget(r).upstream_model_id}</code>{r.routing && <span className="ml-2 text-xs text-cds-ink-secondary">Custom routing</span>}
                         </td>
                         <td className="px-5 py-3">
                           {r.published ? (
-                            <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#052e16", color: "#4ade80" }}>published</span>
+                            <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-green-fill)", color: "var(--color-cds-status-green-text)" }}>published</span>
                           ) : (
-                            <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#1f2937", color: "#6b7280" }}>draft</span>
+                            <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-subtle)" }}>draft</span>
                           )}
                         </td>
                         <td className="px-5 py-3">
@@ -287,8 +287,8 @@ export default function RoutesClient({ embedded = false }: { embedded?: boolean 
             </div>
           ) : (
             !showForm && (
-              <div className="px-6 py-12 rounded-lg text-center mb-6" style={{ background: "#111827", border: "1px solid #1f2937" }}>
-                <p className="text-sm" style={{ color: "#6b7280" }}>No model routes yet.</p>
+              <div className="px-6 py-12 rounded-lg text-center mb-6" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
+                <p className="text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>No model routes yet.</p>
               </div>
             )
           )}
@@ -299,20 +299,20 @@ export default function RoutesClient({ embedded = false }: { embedded?: boolean 
             <div>
 
               {saveError && (
-                <div className="mb-4 px-3 py-2 rounded-lg text-xs" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>
+                <div className="mb-4 px-3 py-2 rounded-lg text-xs" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>
                   {saveError}
                 </div>
               )}
 
               {connections.length === 0 && (
-                <div className="mb-4 px-3 py-2 rounded-lg text-xs" style={{ background: "#3b1a0a", border: "1px solid #7c4a12", color: "#fdba74" }}>
+                <div className="mb-4 px-3 py-2 rounded-lg text-xs" style={{ background: "var(--color-cds-status-orange-fill)", border: "1px solid var(--color-cds-status-orange-border)", color: "var(--color-cds-status-orange-text)" }}>
                   No provider connections exist yet. Create one on the Providers page first.
                 </div>
               )}
 
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="route-public-model" className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>Public model id (must start with chalk/)</label>
+                  <label htmlFor="route-public-model" className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>Public model id (must start with chalk/)</label>
                   <input
                     id="route-public-model"
                     type="text"
@@ -325,12 +325,12 @@ export default function RoutesClient({ embedded = false }: { embedded?: boolean 
                   />
                 </div>
                 <RouteConfigurationEditor judgeValidation={judgeValidation} value={form} connections={connections} onChange={configuration => setForm(f => ({ ...f, ...configuration, routing: configuration.routing ?? null }))} />
-                <label className="flex items-center gap-2 text-sm" style={{ color: "#9ca3af" }}>
+                <label className="flex items-center gap-2 text-sm" style={{ color: "var(--color-cds-ink-secondary)" }}>
                   <input type="checkbox" checked={form.published} onChange={(e) => setForm((f) => ({ ...f, published: e.target.checked }))} />
                   Published (listed in /v1/models)
                 </label>
                 <div className="flex justify-end">
-                  <button onClick={handleSave} disabled={saveDisabled} className="px-5 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50" style={{ background: "#218E61", color: "white" }}>
+                  <button onClick={handleSave} disabled={saveDisabled} className="btn btn-primary btn-md">
                     {saving ? "Saving..." : editingId ? "Save changes" : "Create route"}
                   </button>
                 </div>

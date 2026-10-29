@@ -16,13 +16,13 @@ function ParameterSelect({
   onChange: (value: string) => void;
 }) {
   return (
-    <label className="flex items-center gap-2 text-xs" style={{ color: "#6b7280" }}>
+    <label className="flex items-center gap-2 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
       {label}
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
         className="text-sm rounded-md px-3 py-2 outline-none"
-        style={{ background: "#1f2937", border: "1px solid #374151", color: "#e5e7eb" }}
+        style={{ background: "var(--color-cds-field)", border: "1px solid var(--color-cds-border)", color: "var(--color-cds-ink)" }}
       >
         {values.map((candidate) => (
           <option key={candidate} value={candidate}>
@@ -150,7 +150,7 @@ export default function ImagesTab({ models }: { models: Model[] }) {
           onChange={setModel}
         />
         {models.length > 0 && modelGroups.supported.length === 0 && (
-          <span className="text-xs" style={{ color: "#6b7280" }}>
+          <span className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
             No models advertise verified image-generation support. You can try
             an unverified candidate or enter a model ID.
           </span>
@@ -184,7 +184,7 @@ export default function ImagesTab({ models }: { models: Model[] }) {
         )}
         {countConstraint && n !== null && (
           <div className="flex items-center gap-2">
-            <label className="text-xs" style={{ color: "#6b7280" }}>Count</label>
+            <label className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>Count</label>
             <input
               type="number"
               min={countConstraint.min}
@@ -200,7 +200,7 @@ export default function ImagesTab({ models }: { models: Model[] }) {
                 );
               }}
               className="text-sm rounded-md px-2 py-1.5 w-14 outline-none"
-              style={{ background: "#1f2937", border: "1px solid #374151", color: "#e5e7eb" }}
+              style={{ background: "var(--color-cds-field)", border: "1px solid var(--color-cds-border)", color: "var(--color-cds-ink)" }}
             />
           </div>
         )}
@@ -214,9 +214,9 @@ export default function ImagesTab({ models }: { models: Model[] }) {
         rows={3}
         className="text-sm rounded-md px-4 py-3 outline-none resize-y"
         style={{
-          background: "#1f2937",
-          border: "1px solid #374151",
-          color: "#e5e7eb",
+          background: "var(--color-cds-field)",
+          border: "1px solid var(--color-cds-border)",
+          color: "var(--color-cds-ink)",
           opacity: model ? 1 : 0.5,
         }}
       />
@@ -226,8 +226,8 @@ export default function ImagesTab({ models }: { models: Model[] }) {
         disabled={!prompt.trim() || !model || loading}
         className="self-start px-5 py-2 text-sm font-medium rounded-md transition-colors"
         style={{
-          background: prompt.trim() && model && !loading ? "#065f46" : "#1f2937",
-          color: prompt.trim() && model && !loading ? "#70CD96" : "#4b5563",
+          background: prompt.trim() && model && !loading ? "var(--color-cds-primary)" : "var(--color-cds-status-neutral-fill)",
+          color: prompt.trim() && model && !loading ? "white" : "var(--color-cds-ink-muted)",
         }}
       >
         {loading ? "Generating..." : "Generate Image"}
@@ -236,14 +236,14 @@ export default function ImagesTab({ models }: { models: Model[] }) {
       {error && (
         <div
           className="px-4 py-2 rounded-lg text-sm"
-          style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}
+          style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}
         >
           {error}
         </div>
       )}
 
       {responseText && (
-        <div className="text-sm whitespace-pre-wrap" style={{ color: "#d1d5db" }}>
+        <div className="text-sm whitespace-pre-wrap" style={{ color: "var(--color-cds-ink-medium)" }}>
           {responseText}
         </div>
       )}
@@ -254,7 +254,7 @@ export default function ImagesTab({ models }: { models: Model[] }) {
             <div
               key={i}
               className="rounded-lg overflow-hidden"
-              style={{ border: "1px solid #1f2937" }}
+              style={{ border: "1px solid var(--color-cds-border)" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import type { TelemetryExporterJson } from "@/lib/serialize";
 import { ConfirmationModal } from "@/components/ConfirmationModal";
 
-const CARD = { background: "#111827", border: "1px solid #1f2937" } as const;
+const CARD = { background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" } as const;
 const INPUT = {
-  background: "#0f172a",
-  border: "1px solid #374151",
-  color: "#e5e7eb",
+  background: "var(--color-cds-elevated)",
+  border: "1px solid var(--color-cds-border-strong)",
+  color: "var(--color-cds-ink)",
   outline: "none",
 } as const;
 
@@ -94,7 +94,7 @@ function Switch({ checked, onChange }: { checked: boolean; onChange: (value: boo
       aria-checked={checked}
       onClick={() => onChange(!checked)}
       className="flex-shrink-0 rounded-full transition-colors"
-      style={{ width: "40px", height: "22px", padding: "2px", background: checked ? "#218E61" : "#374151" }}
+      style={{ width: "40px", height: "22px", padding: "2px", background: checked ? "var(--color-cds-primary)" : "var(--color-cds-status-neutral-border)" }}
     >
       <span
         className="block rounded-full transition-transform"
@@ -224,17 +224,17 @@ export default function TelemetryPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-white tracking-tight">Telemetry Export</h1>
-        <p className="mt-1 text-sm" style={{ color: "#6b7280" }}>
+        <h1 className="page-title">Telemetry Export</h1>
+        <p className="mt-1 text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>
           Send router traces to external observability platforms. The primary OTLP pipeline is managed by environment variables.
         </p>
       </div>
 
-      {error && <div className="mb-5 rounded-lg px-4 py-3 text-sm" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>{error}</div>}
-      {notice && <div className="mb-5 rounded-lg px-4 py-3 text-sm" style={{ background: "#052e16", border: "1px solid #166534", color: "#86efac" }}>{notice}</div>}
+      {error && <div className="mb-5 rounded-lg px-4 py-3 text-sm" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>{error}</div>}
+      {notice && <div className="mb-5 rounded-lg px-4 py-3 text-sm" style={{ background: "var(--color-cds-status-green-fill)", border: "1px solid var(--color-cds-status-green-border)", color: "var(--color-cds-status-green-text)" }}>{notice}</div>}
 
       {loading ? (
-        <div className="text-sm" style={{ color: "#6b7280" }}>Loading telemetry exporters…</div>
+        <div className="text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>Loading telemetry exporters…</div>
       ) : (
         <div className="space-y-4">
           {exporters.map((exporter) => (
@@ -242,19 +242,19 @@ export default function TelemetryPage() {
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs px-2 py-0.5 rounded font-medium" style={{ background: "#172554", color: "#93c5fd" }}>{exporter.exporter_type}</span>
+                    <span className="text-xs px-2 py-0.5 rounded font-medium" style={{ background: "var(--color-cds-status-blue-fill)", color: "var(--color-cds-status-blue-text)" }}>{exporter.exporter_type}</span>
                     <span className="text-sm font-medium text-white">{exporter.name}</span>
-                    <span className="text-xs" style={{ color: exporter.enabled ? "#4ade80" : "#6b7280" }}>{exporter.enabled ? "active" : "paused"}</span>
-                    {exporter.read_only && <span className="text-xs" style={{ color: "#6b7280" }}>environment managed</span>}
+                    <span className="text-xs" style={{ color: exporter.enabled ? "var(--color-cds-status-green-text)" : "var(--color-cds-ink-subtle)" }}>{exporter.enabled ? "active" : "paused"}</span>
+                    {exporter.read_only && <span className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>environment managed</span>}
                   </div>
-                  <div className="text-xs mt-2" style={{ color: "#6b7280" }}>
+                  <div className="text-xs mt-2" style={{ color: "var(--color-cds-ink-subtle)" }}>
                     {exporterDetails(exporter)}
                   </div>
                 </div>
                 {!exporter.read_only && (
                   <div className="flex items-center gap-2">
-                    <button className="text-xs px-2.5 py-1 rounded" style={{ background: "#1f2937", color: "#d1d5db", border: "1px solid #374151" }} onClick={() => updateForm(formFromExporter(exporter))}>Edit</button>
-                    <button className="text-xs px-2.5 py-1 rounded disabled:opacity-50" disabled={removingExporterId === exporter.id} style={{ background: "#1c0a0a", color: "#ef4444", border: "1px solid #7f1d1d" }} onClick={() => setExporterPendingRemoval(exporter)}>Remove</button>
+                    <button className="btn btn-secondary btn-xs" onClick={() => updateForm(formFromExporter(exporter))}>Edit</button>
+                    <button className="text-xs px-2.5 py-1 rounded disabled:opacity-50" disabled={removingExporterId === exporter.id} style={{ background: "var(--color-cds-status-red-fill)", color: "var(--color-cds-status-red-text)", border: "1px solid var(--color-cds-status-red-border)" }} onClick={() => setExporterPendingRemoval(exporter)}>Remove</button>
                   </div>
                 )}
               </div>
@@ -262,37 +262,37 @@ export default function TelemetryPage() {
           ))}
 
           {form ? (
-            <div className="rounded-lg p-5 space-y-5" style={{ ...CARD, border: "1px solid #166534" }}>
+            <div className="rounded-lg p-5 space-y-5" style={{ ...CARD, border: "1px solid var(--color-cds-status-green-border)" }}>
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-white">{form.id ? "Edit exporter" : "Add exporter"}</h2>
-                <button className="text-xs" style={{ color: "#6b7280" }} onClick={() => { setForm(null); setTestResult(null); }}>Cancel</button>
+                <h2 className="text-cds-md font-medium text-cds-ink-strong">{form.id ? "Edit exporter" : "Add exporter"}</h2>
+                <button className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }} onClick={() => { setForm(null); setTestResult(null); }}>Cancel</button>
               </div>
               <div className="flex items-start justify-between gap-4">
-                <div><div className="text-sm font-medium text-white">Enabled</div><div className="text-xs mt-0.5" style={{ color: "#6b7280" }}>Pause export without deleting the saved credentials.</div></div>
+                <div><div className="text-sm font-medium text-white">Enabled</div><div className="text-xs mt-0.5" style={{ color: "var(--color-cds-ink-subtle)" }}>Pause export without deleting the saved credentials.</div></div>
                 <Switch checked={form.enabled} onChange={(enabled) => updateForm({ ...form, enabled })} />
               </div>
-              <label className="block text-xs" style={{ color: "#9ca3af" }}>Display name<input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.name} placeholder="e.g. Production Braintrust" onChange={(event) => updateForm({ ...form, name: event.target.value })} /></label>
-              <label className="block text-xs" style={{ color: "#9ca3af" }}>API key{form.id && <span style={{ color: "#6b7280" }}> · leave blank to keep the existing key</span>}<input type="password" className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.apiKey} placeholder={form.id ? "••••••••••••••••" : "br-…"} onChange={(event) => updateForm({ ...form, apiKey: event.target.value })} /></label>
-              <label className="block text-xs" style={{ color: "#9ca3af" }}>Parent <span style={{ color: "#6b7280" }}>· optional advanced Braintrust parent</span><input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.parent} onChange={(event) => updateForm({ ...form, parent: event.target.value, project: "", projectId: "" })} placeholder="experiment_id:…" /></label>
+              <label className="block text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>Display name<input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.name} placeholder="e.g. Production Braintrust" onChange={(event) => updateForm({ ...form, name: event.target.value })} /></label>
+              <label className="block text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>API key{form.id && <span style={{ color: "var(--color-cds-ink-subtle)" }}> · leave blank to keep the existing key</span>}<input type="password" className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.apiKey} placeholder={form.id ? "••••••••••••••••" : "br-…"} onChange={(event) => updateForm({ ...form, apiKey: event.target.value })} /></label>
+              <label className="block text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>Parent <span style={{ color: "var(--color-cds-ink-subtle)" }}>· optional advanced Braintrust parent</span><input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.parent} onChange={(event) => updateForm({ ...form, parent: event.target.value, project: "", projectId: "" })} placeholder="experiment_id:…" /></label>
               <div className="grid grid-cols-2 gap-4">
-                <label className="block text-xs" style={{ color: "#9ca3af" }}>Project name<input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.project} onChange={(event) => updateForm({ ...form, parent: "", project: event.target.value, projectId: "" })} placeholder="chalk-router (default)" /></label>
-                <label className="block text-xs" style={{ color: "#9ca3af" }}>Project ID<input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.projectId} onChange={(event) => updateForm({ ...form, parent: "", projectId: event.target.value, project: "" })} placeholder="optional" /></label>
+                <label className="block text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>Project name<input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.project} onChange={(event) => updateForm({ ...form, parent: "", project: event.target.value, projectId: "" })} placeholder="chalk-router (default)" /></label>
+                <label className="block text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>Project ID<input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.projectId} onChange={(event) => updateForm({ ...form, parent: "", projectId: event.target.value, project: "" })} placeholder="optional" /></label>
               </div>
-              <label className="block text-xs" style={{ color: "#9ca3af" }}>Endpoint <span style={{ color: "#6b7280" }}>· optional for self-hosted Braintrust</span><input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.apiUrl} onChange={(event) => updateForm({ ...form, apiUrl: event.target.value })} placeholder="https://api.braintrust.dev" /></label>
+              <label className="block text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>Endpoint <span style={{ color: "var(--color-cds-ink-subtle)" }}>· optional for self-hosted Braintrust</span><input className="mt-1 w-full rounded px-3 py-2 text-sm" style={INPUT} value={form.apiUrl} onChange={(event) => updateForm({ ...form, apiUrl: event.target.value })} placeholder="https://api.braintrust.dev" /></label>
               {testResult && (
-                <div className="px-3 py-2 rounded-lg text-xs" style={{ background: testResult.ok ? "#052e16" : "#1c0a0a", border: `1px solid ${testResult.ok ? "#166534" : "#7f1d1d"}`, color: testResult.ok ? "#70CD96" : "#fca5a5" }}>
+                <div className="px-3 py-2 rounded-lg text-xs" style={{ background: testResult.ok ? "var(--color-cds-status-green-fill)" : "var(--color-cds-status-red-fill)", border: `1px solid ${testResult.ok ? "var(--color-cds-status-green-border)" : "var(--color-cds-status-red-border)"}`, color: testResult.ok ? "var(--color-cds-status-green-text)" : "var(--color-cds-status-red-text)" }}>
                   {testResult.ok
                     ? `Configuration OK${testResult.latency_ms != null ? ` · ${testResult.latency_ms}ms` : ""}`
                     : `Test failed: ${testResult.error ?? "unknown error"}`}
                 </div>
               )}
               <div className="flex justify-between">
-                <button disabled={testing || saving} className="px-4 py-2 rounded-lg text-sm disabled:opacity-50" style={{ background: "#1f2937", color: "#e5e7eb", border: "1px solid #374151" }} onClick={() => void testConfiguration()}>{testing ? "Testing…" : "Test configuration"}</button>
-                <button disabled={saving || testing || !form.name.trim()} className="px-5 py-2 rounded-lg text-sm font-medium disabled:opacity-50" style={{ background: "#218E61", color: "white" }} onClick={() => void save()}>{saving ? "Saving…" : "Save exporter"}</button>
+                <button disabled={testing || saving} className="btn btn-secondary btn-md" onClick={() => void testConfiguration()}>{testing ? "Testing…" : "Test configuration"}</button>
+                <button disabled={saving || testing || !form.name.trim()} className="btn btn-primary btn-md" onClick={() => void save()}>{saving ? "Saving…" : "Save exporter"}</button>
               </div>
             </div>
           ) : (
-            <button className="px-4 py-2 rounded-lg text-sm font-medium" style={{ background: "#218E61", color: "white" }} onClick={() => updateForm({ ...EMPTY_FORM })}>Add Braintrust exporter</button>
+            <button className="btn btn-primary btn-md" onClick={() => updateForm({ ...EMPTY_FORM })}>Add Braintrust exporter</button>
           )}
         </div>
       )}

@@ -27,10 +27,10 @@ function PlaygroundContent() {
       .catch(() => {});
   }, []);
 
-  return <div className="flex min-h-0 flex-col" style={{ height: "calc(100vh - 64px)" }}>
+  return <div className="flex min-h-0 flex-1 flex-col">
     <div className="mb-5"><PageHeader title="Playground" description="Test chat, structured decisions, embeddings, and image generation." /></div>
     <UnderlineTabs items={PLAYGROUND_TABS} active={tab} basePath="/playground" />
-    <div className="mt-5 min-h-0 flex-1">
+    <div className="mt-5 flex min-h-0 flex-1 flex-col">
       {tab === "chat" && <ChatTab models={models} />}
       {tab === "decisions" && <DecisionsTab models={models} />}
       {tab === "embeddings" && <EmbeddingsTab models={models} />}

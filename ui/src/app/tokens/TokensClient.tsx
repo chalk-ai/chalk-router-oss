@@ -204,22 +204,21 @@ function EditTokenForm({
     <Modal open onClose={onCancel} title={`Edit ${token.description || token.key_prefix}`} size="xl">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium" style={{ color: "#9ca3af" }}>
+            <span className="text-xs font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>
               Editing {token.key_prefix}
             </span>
             <div className="flex items-center gap-2">
               <button
                 onClick={onCancel}
                 className="text-xs px-3 py-1.5 rounded"
-                style={{ color: "#9ca3af" }}
+                style={{ color: "var(--color-cds-ink-secondary)" }}
               >
                 Cancel
               </button>
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="text-xs px-3 py-1.5 rounded font-medium disabled:opacity-50"
-                style={{ background: "#218E61", color: "white" }}
+                className="btn btn-primary"
               >
                 {saving ? "Saving..." : "Save"}
               </button>
@@ -229,9 +228,9 @@ function EditTokenForm({
           <div>
             <label
               className="block text-xs font-medium mb-1"
-              style={{ color: "#9ca3af" }}
+              style={{ color: "var(--color-cds-ink-secondary)" }}
             >
-              Description <span style={{ color: "#4b5563" }}>(required, 120 characters max)</span>
+              Description <span style={{ color: "var(--color-cds-ink-muted)" }}>(required, 120 characters max)</span>
             </label>
             <input
               type="text"
@@ -246,7 +245,7 @@ function EditTokenForm({
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <label className="block text-xs" style={{ color: "#9ca3af" }}>
+            <label className="block text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>
               Usage pool
               <select value={state.usagePoolId} onChange={(event) => setState((current) => ({ ...current, usagePoolId: event.target.value }))} className="mt-1 w-full rounded-md px-3 py-2 text-sm" style={inputStyle}>
                 <option value="">No usage pool</option>
@@ -269,7 +268,7 @@ function EditTokenForm({
           {error && (
             <p
               className="text-xs px-3 py-2 rounded"
-              style={{ color: "#fca5a5", background: "#1c0a0a" }}
+              style={{ color: "var(--color-cds-status-red-text)", background: "var(--color-cds-status-red-fill)" }}
             >
               {error}
             </p>
@@ -380,9 +379,9 @@ export function TokensClient({
         <div
           className="mb-4 px-4 py-3 rounded-lg text-sm"
           style={{
-            background: "#1c0a0a",
-            border: "1px solid #7f1d1d",
-            color: "#fca5a5",
+            background: "var(--color-cds-status-red-fill)",
+            border: "1px solid var(--color-cds-status-red-border)",
+            color: "var(--color-cds-status-red-text)",
           }}
         >
           <span className="font-medium">Error:</span> {error}
@@ -394,7 +393,7 @@ export function TokensClient({
       {newKey && (
         <div
           className="mb-6 px-5 py-4 rounded-lg"
-          style={{ background: "#052e16", border: "1px solid #166534" }}
+          style={{ background: "var(--color-cds-status-green-fill)", border: "1px solid var(--color-cds-status-green-border)" }}
         >
           <div className="flex items-center gap-2 mb-2">
             <svg
@@ -402,7 +401,7 @@ export function TokensClient({
               height="14"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#4ade80"
+              stroke="#6ee7b7"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -411,7 +410,7 @@ export function TokensClient({
             </svg>
             <span
               className="text-sm font-medium"
-              style={{ color: "#4ade80" }}
+              style={{ color: "var(--color-cds-status-green-text)" }}
             >
               Token issued — copy it now, it cannot be recovered
             </span>
@@ -420,8 +419,8 @@ export function TokensClient({
             <code
               className="flex-1 text-sm rounded px-3 py-2 select-all"
               style={{
-                background: "#03160b",
-                color: "#86efac",
+                background: "var(--color-cds-status-green-fill)",
+                color: "var(--color-cds-status-green-text)",
                 fontFamily: "'Everett Mono', monospace",
                 wordBreak: "break-all",
               }}
@@ -433,7 +432,7 @@ export function TokensClient({
                 if (newKey.raw_key) navigator.clipboard.writeText(newKey.raw_key);
               }}
               className="text-xs px-3 py-2 rounded transition-colors"
-              style={{ background: "#166534", color: "#86efac" }}
+              style={{ background: "var(--color-cds-status-green-border)", color: "var(--color-cds-status-green-text)" }}
             >
               Copy
             </button>
@@ -441,7 +440,7 @@ export function TokensClient({
           <button
             onClick={() => setNewKey(null)}
             className="mt-2 text-xs"
-            style={{ color: "#4b5563" }}
+            style={{ color: "var(--color-cds-ink-muted)" }}
           >
             Dismiss
           </button>
@@ -451,64 +450,64 @@ export function TokensClient({
       {keys.length === 0 ? (
         <div
           className="mt-4 px-6 py-12 rounded-lg text-center"
-          style={{ background: "#111827", border: "1px solid #1f2937" }}
+          style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}
         >
-          <p className="text-sm" style={{ color: "#6b7280" }}>
+          <p className="text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>
             No API tokens yet. Issue one above.
           </p>
         </div>
       ) : (
         <div
           className="mt-4 rounded-lg overflow-hidden"
-          style={{ border: "1px solid #1f2937" }}
+          style={{ border: "1px solid var(--color-cds-border)" }}
         >
           <table className="w-full text-sm">
             <thead>
               <tr
                 style={{
-                  background: "#111827",
-                  borderBottom: "1px solid #1f2937",
+                  background: "var(--color-cds-raised)",
+                  borderBottom: "1px solid var(--color-cds-border)",
                 }}
               >
                 <th
                   className="text-left px-5 py-3 font-medium"
-                  style={{ color: "#9ca3af" }}
+                  style={{ color: "var(--color-cds-ink-secondary)" }}
                 >
                   Description
                 </th>
                 <th
                   className="text-left px-5 py-3 font-medium"
-                  style={{ color: "#9ca3af" }}
+                  style={{ color: "var(--color-cds-ink-secondary)" }}
                 >
                   Usage Pool
                 </th>
                 <th
                   className="text-left px-5 py-3 font-medium"
-                  style={{ color: "#9ca3af" }}
+                  style={{ color: "var(--color-cds-ink-secondary)" }}
                 >
                   Access scope
                 </th>
                 <th
                   className="text-left px-5 py-3 font-medium"
-                  style={{ color: "#9ca3af" }}
+                  style={{ color: "var(--color-cds-ink-secondary)" }}
                 >
                   Quota limits
                 </th>
                 <th
                   className="text-left px-5 py-3 font-medium"
-                  style={{ color: "#9ca3af" }}
+                  style={{ color: "var(--color-cds-ink-secondary)" }}
                 >
                   Labels
                 </th>
                 <th
                   className="text-left px-5 py-3 font-medium"
-                  style={{ color: "#9ca3af" }}
+                  style={{ color: "var(--color-cds-ink-secondary)" }}
                 >
                   Created
                 </th>
                 <th
-                  className="sticky right-0 bg-slate-900 px-5 py-3 text-right font-medium"
-                  style={{ color: "#9ca3af" }}
+                  className="sticky right-0 bg-cds-raised px-5 py-3 text-right font-medium"
+                  style={{ color: "var(--color-cds-ink-secondary)" }}
                 >
                   Actions
                 </th>
@@ -522,12 +521,12 @@ export function TokensClient({
                     tabIndex={0}
                     onClick={(event) => { if (!(event.target as HTMLElement).closest("a,button,input")) window.location.assign(`/keys/${encodeURIComponent(k.key_hash)}`); }}
                     onKeyDown={(event) => { if (event.key === "Enter") window.location.assign(`/keys/${encodeURIComponent(k.key_hash)}`); }}
-                    className="cursor-pointer hover:bg-slate-800/70"
+                    className="cursor-pointer hover:bg-cds-hover"
                     style={{
-                      background: i % 2 === 0 ? "#0f172a" : "#111827",
+                      background: i % 2 === 0 ? "var(--color-cds-elevated)" : "var(--color-cds-raised)",
                       borderBottom:
                         i < keys.length - 1
-                          ? "1px solid #1f2937"
+                          ? "1px solid var(--color-cds-border)"
                           : undefined,
                       opacity: revoking.has(k.key_hash) ? 0.5 : 1,
                       transition: "opacity 0.15s",
@@ -539,7 +538,7 @@ export function TokensClient({
                         className="text-sm"
                         title={k.key_prefix}
                         style={{
-                          color: k.description ? "#e5e7eb" : "#6b7280",
+                          color: k.description ? "var(--color-cds-ink)" : "var(--color-cds-ink-subtle)",
                         }}
                       >
                         {k.description || (
@@ -551,18 +550,18 @@ export function TokensClient({
                     </td>
                     <td className="px-5 py-3">
                       {k.usage_pool_id ? (
-                        <Link href={`/usage-pools/${encodeURIComponent(k.usage_pool_id)}`} className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#3b1a0a", color: "#fdba74" }}>
+                        <Link href={`/usage-pools/${encodeURIComponent(k.usage_pool_id)}`} className="text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--color-cds-status-orange-fill)", color: "var(--color-cds-status-orange-text)" }}>
                           {poolsById.get(k.usage_pool_id)?.name ?? k.usage_pool_id}
                         </Link>
                       ) : (
-                        <span className="text-xs" style={{ color: "#4b5563" }}>—</span>
+                        <span className="text-xs" style={{ color: "var(--color-cds-ink-muted)" }}>—</span>
                       )}
                     </td>
-                    <td className="px-5 py-3" style={{ color: "#d1d5db" }}>
+                    <td className="px-5 py-3" style={{ color: "var(--color-cds-ink-medium)" }}>
                       {keyAccessKind(k.permission) === "all" ? (
-                        <span className="text-xs" style={{ color: "#fbbf24" }}>All models</span>
+                        <span className="text-xs" style={{ color: "var(--color-cds-status-yellow-text)" }}>All models</span>
                       ) : keyAccessKind(k.permission) === "none" ? (
-                        <span className="text-xs" style={{ color: "#fca5a5" }} title="Restricted with no model routes or connection scopes: this key cannot call any model">No access</span>
+                        <span className="text-xs" style={{ color: "var(--color-cds-status-red-text)" }} title="Restricted with no model routes or connection scopes: this key cannot call any model">No access</span>
                       ) : (
                         <div className="flex flex-col gap-1">
                           {grantedRouteIds(k.permission).length > 0 && (
@@ -572,7 +571,7 @@ export function TokensClient({
                                   key={route.id}
                                   href={`/routes/${encodeURIComponent(route.id)}`}
                                   className="text-xs px-1.5 py-0.5 rounded font-mono"
-                                  style={route.publicModelId ? { background: "#172554", color: "#93c5fd" } : { background: "#1c0a0a", color: "#fca5a5" }}
+                                  style={route.publicModelId ? { background: "var(--color-cds-status-blue-fill)", color: "var(--color-cds-status-blue-text)" } : { background: "var(--color-cds-status-red-fill)", color: "var(--color-cds-status-red-text)" }}
                                   title={route.id}
                                 >
                                   {route.publicModelId ?? "deleted route"}
@@ -584,12 +583,12 @@ export function TokensClient({
                             <div key={`${scope.connection_id}-${scopeIndex}`} className="flex flex-wrap items-center gap-1">
                               <span
                                 className="text-xs px-1.5 py-0.5 rounded"
-                                style={{ background: "#2a1440", color: "#c4b5fd" }}
+                                style={{ background: "var(--color-cds-status-purple-fill)", color: "var(--color-cds-status-purple-text)" }}
                                 title={scope.connection_id}
                               >
                                 conn: {connectionName(scope.connection_id)}
                               </span>
-                              <span className="text-xs" style={{ color: "#9ca3af" }}>
+                              <span className="text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>
                                 {scope.models?.length ? scope.models.join(", ") : "all direct models"}
                               </span>
                             </div>
@@ -604,7 +603,7 @@ export function TokensClient({
                         const inheritedSummary = inherited
                           ? quotaSummary(inherited.budgets, inherited.rateLimits.filter((limit) => limit.enabled).length)
                           : null;
-                        return <div className="flex flex-col gap-1 text-xs"><Link href={`/access?v=usage-budgets&scope=api_key&scope_id=${encodeURIComponent(k.key_hash)}`} style={{ color: direct ? "#70CD96" : "#6b7280" }}>{direct ? `Key-specific: ${direct}` : "No key-specific limits"}</Link>{k.usage_pool_id && (inheritedSummary ? <Link href={`/usage-pools/${encodeURIComponent(k.usage_pool_id)}`} style={{ color: "#fdba74" }}>Inherited: {inheritedSummary}</Link> : <Link href={`/usage-pools/${encodeURIComponent(k.usage_pool_id)}`} style={{ color: "#4b5563" }}>Inherited: no shared limits</Link>)}</div>;
+                        return <div className="flex flex-col gap-1 text-xs"><Link href={`/access?v=usage-budgets&scope=api_key&scope_id=${encodeURIComponent(k.key_hash)}`} style={{ color: direct ? "var(--color-cds-status-green-text)" : "var(--color-cds-ink-subtle)" }}>{direct ? `Key-specific: ${direct}` : "No key-specific limits"}</Link>{k.usage_pool_id && (inheritedSummary ? <Link href={`/usage-pools/${encodeURIComponent(k.usage_pool_id)}`} style={{ color: "var(--color-cds-status-orange-text)" }}>Inherited: {inheritedSummary}</Link> : <Link href={`/usage-pools/${encodeURIComponent(k.usage_pool_id)}`} style={{ color: "var(--color-cds-ink-muted)" }}>Inherited: no shared limits</Link>)}</div>;
                       })()}
                     </td>
                     <td className="px-5 py-3">
@@ -615,8 +614,8 @@ export function TokensClient({
                               key={lk}
                               className="text-xs px-1.5 py-0.5 rounded"
                               style={{
-                                background: "#052e16",
-                                color: "#70CD96",
+                                background: "var(--color-cds-status-green-fill)",
+                                color: "var(--color-cds-status-green-text)",
                               }}
                             >
                               {lk}={lv}
@@ -624,12 +623,12 @@ export function TokensClient({
                           ))}
                         </div>
                       ) : (
-                        <span style={{ color: "#4b5563" }}>—</span>
+                        <span style={{ color: "var(--color-cds-ink-muted)" }}>—</span>
                       )}
                     </td>
                     <td
                       className="px-5 py-3 text-xs"
-                      style={{ color: "#6b7280" }}
+                      style={{ color: "var(--color-cds-ink-subtle)" }}
                     >
                       {formatDateTime(k.created_at)}
                     </td>
@@ -648,7 +647,7 @@ export function TokensClient({
 
       <InfiniteScroll hasMore={Boolean(nextCursor)} loading={pageLoading} onLoadMore={() => void handleNextPage()} />
 
-      <p className="mt-4 text-xs" style={{ color: "#4b5563" }}>
+      <p className="mt-4 text-xs" style={{ color: "var(--color-cds-ink-muted)" }}>
         {keys.length} token{keys.length !== 1 ? "s" : ""} loaded
       </p>
 

@@ -28,7 +28,7 @@ export async function SamplingContent({ embedded = false }: { embedded?: boolean
       {error && (
         <div
           className="mb-6 px-4 py-3 rounded-lg text-sm"
-          style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}
+          style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}
         >
           <span className="font-medium">Error:</span> {error}
         </div>

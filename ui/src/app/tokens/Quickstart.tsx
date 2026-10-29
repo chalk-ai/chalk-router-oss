@@ -52,11 +52,11 @@ function CodeBlock({ language, code }: CodeBlockProps) {
       <div
         className="flex items-center justify-between px-3 py-1.5 rounded-t-md text-xs"
         style={{
-          background: "#0b1220",
-          borderTop: "1px solid #1f2937",
-          borderLeft: "1px solid #1f2937",
-          borderRight: "1px solid #1f2937",
-          color: "#6b7280",
+          background: "var(--color-cds-inset)",
+          borderTop: "1px solid var(--color-cds-border)",
+          borderLeft: "1px solid var(--color-cds-border)",
+          borderRight: "1px solid var(--color-cds-border)",
+          color: "var(--color-cds-ink-subtle)",
         }}
       >
         <span style={{ fontFamily: "'Everett Mono', monospace" }}>{language}</span>
@@ -64,8 +64,8 @@ function CodeBlock({ language, code }: CodeBlockProps) {
           onClick={copy}
           className="px-2 py-0.5 rounded transition-colors"
           style={{
-            background: copied ? "#052e16" : "#172554",
-            color: copied ? "#86efac" : "#93c5fd",
+            background: copied ? "var(--color-cds-status-green-fill)" : "var(--color-cds-status-blue-fill)",
+            color: copied ? "var(--color-cds-status-green-text)" : "var(--color-cds-status-blue-text)",
           }}
         >
           {copied ? "Copied" : "Copy"}
@@ -74,10 +74,10 @@ function CodeBlock({ language, code }: CodeBlockProps) {
       <pre
         className="overflow-x-auto rounded-b-md px-4 py-3 text-xs leading-relaxed"
         style={{
-          background: "#03070d",
-          border: "1px solid #1f2937",
+          background: "var(--color-cds-inset)",
+          border: "1px solid var(--color-cds-border)",
           borderTop: "none",
-          color: "#d1d5db",
+          color: "var(--color-cds-ink-medium)",
           fontFamily: "'Everett Mono', monospace",
         }}
       >
@@ -142,14 +142,14 @@ print(response.choices[0].message.content)`,
   return (
     <div
       className="mb-6 rounded-lg overflow-hidden"
-      style={{ background: "#111827", border: "1px solid #1f2937" }}
+      style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}
     >
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-full flex items-center justify-between px-5 py-3.5"
         style={{
           background: "transparent",
-          borderBottom: open ? "1px solid #1f2937" : "none",
+          borderBottom: open ? "1px solid var(--color-cds-border)" : "none",
         }}
       >
         <div className="flex items-center gap-3">
@@ -158,8 +158,8 @@ print(response.choices[0].message.content)`,
             style={{
               width: "28px",
               height: "28px",
-              background: "#052e16",
-              color: "#70CD96",
+              background: "var(--color-cds-status-green-fill)",
+              color: "var(--color-cds-status-green-text)",
             }}
           >
             <svg
@@ -177,7 +177,7 @@ print(response.choices[0].message.content)`,
           </span>
           <div className="text-left">
             <div className="text-sm font-semibold text-white">Quickstart</div>
-            <div className="text-xs" style={{ color: "#6b7280" }}>
+            <div className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
               Send OpenAI-compatible requests through this router.
             </div>
           </div>
@@ -187,7 +187,7 @@ print(response.choices[0].message.content)`,
           height="14"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#6b7280"
+          stroke="#71717a"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -205,15 +205,15 @@ print(response.choices[0].message.content)`,
           <div className="grid grid-cols-2 gap-3 text-xs">
             <div
               className="rounded-md px-3 py-2"
-              style={{ background: "#0f172a", border: "1px solid #1f2937" }}
+              style={{ background: "var(--color-cds-elevated)", border: "1px solid var(--color-cds-border)" }}
             >
-              <div className="mb-1" style={{ color: "#6b7280" }}>
+              <div className="mb-1" style={{ color: "var(--color-cds-ink-subtle)" }}>
                 Base URL
               </div>
               <code
                 className="block break-all"
                 style={{
-                  color: "#70CD96",
+                  color: "var(--color-cds-status-green-text)",
                   fontFamily: "'Everett Mono', monospace",
                 }}
               >
@@ -222,15 +222,15 @@ print(response.choices[0].message.content)`,
             </div>
             <div
               className="rounded-md px-3 py-2"
-              style={{ background: "#0f172a", border: "1px solid #1f2937" }}
+              style={{ background: "var(--color-cds-elevated)", border: "1px solid var(--color-cds-border)" }}
             >
-              <div className="mb-1" style={{ color: "#6b7280" }}>
+              <div className="mb-1" style={{ color: "var(--color-cds-ink-subtle)" }}>
                 Auth header
               </div>
               <code
                 className="block break-all"
                 style={{
-                  color: "#93c5fd",
+                  color: "var(--color-cds-status-blue-text)",
                   fontFamily: "'Everett Mono', monospace",
                 }}
               >
@@ -248,9 +248,9 @@ print(response.choices[0].message.content)`,
                   onClick={() => setTool(t.id)}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors"
                   style={{
-                    background: active ? "#052e16" : "#0f172a",
-                    color: active ? "#70CD96" : "#9ca3af",
-                    border: active ? "1px solid #166534" : "1px solid #1f2937",
+                    background: active ? "var(--color-cds-status-green-fill)" : "var(--color-cds-elevated)",
+                    color: active ? "var(--color-cds-status-green-text)" : "var(--color-cds-ink-secondary)",
+                    border: active ? "1px solid var(--color-cds-status-green-border)" : "1px solid var(--color-cds-border)",
                   }}
                 >
                   {t.icon}
@@ -263,7 +263,7 @@ print(response.choices[0].message.content)`,
           <CodeBlock language={language} code={code} />
 
           {!sampleToken && (
-            <p className="text-xs" style={{ color: "#6b7280" }}>
+            <p className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
               Issue a token below — the snippet will pre-fill with the new key,
               and it&rsquo;s the only time it will be shown.
             </p>

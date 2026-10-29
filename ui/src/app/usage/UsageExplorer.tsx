@@ -105,15 +105,15 @@ function SelectFilter({ label, values, options, onChange }: {
 
   return (
     <details className="relative">
-      <summary className="list-none cursor-pointer select-none rounded-lg px-3 py-2 text-sm" style={{ background: "#111827", border: "1px solid #374151", color: "#e5e7eb" }}>
-        <span style={{ color: "#9ca3af" }}>{label}</span> {summary} <span style={{ color: "#6b7280" }}>⌄</span>
+      <summary className="list-none cursor-pointer select-none rounded-lg px-3 py-2 text-sm" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink)" }}>
+        <span style={{ color: "var(--color-cds-ink-secondary)" }}>{label}</span> {summary} <span style={{ color: "var(--color-cds-ink-subtle)" }}>⌄</span>
       </summary>
-      <div className="absolute z-20 mt-2 max-h-72 w-72 overflow-auto rounded-lg p-2 shadow-xl" style={{ background: "#1b1d24", border: "1px solid #374151" }}>
-        <button type="button" onClick={() => onChange([])} className="w-full rounded px-2 py-1.5 text-left text-xs hover:bg-white/5" style={{ color: values.length === 0 ? "#70CD96" : "#9ca3af" }}>
+      <div className="absolute z-20 mt-2 max-h-72 w-72 overflow-auto rounded-lg p-2 shadow-xl" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)" }}>
+        <button type="button" onClick={() => onChange([])} className="w-full rounded px-2 py-1.5 text-left text-xs hover:bg-white/5" style={{ color: values.length === 0 ? "var(--color-cds-status-green-text)" : "var(--color-cds-ink-secondary)" }}>
           All {label.toLowerCase()}s
         </button>
         {options.length === 0 ? (
-          <p className="px-2 py-2 text-xs" style={{ color: "#9ca3af" }}>No configured {label.toLowerCase()} values yet.</p>
+          <p className="px-2 py-2 text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>No configured {label.toLowerCase()} values yet.</p>
         ) : options.map((option) => {
           const checked = values.includes(option.value);
           return (
@@ -125,9 +125,9 @@ function SelectFilter({ label, values, options, onChange }: {
                 className="mt-0.5 accent-emerald-400"
               />
               <span className="min-w-0 flex-1">
-                <span className="block truncate" style={{ color: "#d1d5db" }}>{option.label}</span>
+                <span className="block truncate" style={{ color: "var(--color-cds-ink-medium)" }}>{option.label}</span>
                 {option.secondaryLabel && (
-                  <span className="mt-0.5 block truncate text-[11px] leading-4" style={{ color: "#7c8798" }}>
+                  <span className="mt-0.5 block truncate text-[11px] leading-4" style={{ color: "var(--color-cds-ink-subtle)" }}>
                     {option.secondaryLabel}
                   </span>
                 )}
@@ -147,21 +147,21 @@ function LabelFilter({ values, labelKeys, onChange }: {
 }) {
   return (
     <details className="relative">
-      <summary className="list-none cursor-pointer select-none rounded-lg px-3 py-2 text-sm" style={{ background: values.length ? "#163323" : "#111827", border: "1px solid #3f7655", color: "#d1fae5" }}>
-        + {values.length === 0 ? "API-key label filter" : `${values.length} label filter${values.length === 1 ? "" : "s"}`} <span style={{ color: "#70CD96" }}>⌄</span>
+      <summary className="list-none cursor-pointer select-none rounded-lg px-3 py-2 text-sm" style={{ background: values.length ? "var(--color-cds-status-green-fill)" : "var(--color-cds-raised)", border: "1px solid var(--color-cds-status-green-border)", color: "var(--color-cds-status-green-text)" }}>
+        + {values.length === 0 ? "API-key label filter" : `${values.length} label filter${values.length === 1 ? "" : "s"}`} <span style={{ color: "var(--color-cds-status-green-text)" }}>⌄</span>
       </summary>
-      <div className="absolute z-20 mt-2 w-96 rounded-lg p-3 shadow-xl" style={{ background: "#1b1d24", border: "1px solid #374151" }}>
-        <p className="mb-3 text-xs" style={{ color: "#9ca3af" }}>Every label filter narrows the result set.</p>
+      <div className="absolute z-20 mt-2 w-96 rounded-lg p-3 shadow-xl" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)" }}>
+        <p className="mb-3 text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>Every label filter narrows the result set.</p>
         {values.map(([key, value], index) => (
           <div key={index} className="mb-2 flex items-center gap-2">
-            <input value={key} list="usage-label-keys" placeholder="Label key" onChange={(event) => onChange(values.map((item, itemIndex) => itemIndex === index ? [event.target.value, item[1]] : item))} className="min-w-0 flex-1 rounded px-2 py-1.5 text-xs outline-none" style={{ background: "#111827", border: "1px solid #4b5563", color: "#e5e7eb" }} />
-            <span style={{ color: "#6b7280" }}>=</span>
-            <input value={value} placeholder="Label value" onChange={(event) => onChange(values.map((item, itemIndex) => itemIndex === index ? [item[0], event.target.value] : item))} className="min-w-0 flex-1 rounded px-2 py-1.5 text-xs outline-none" style={{ background: "#111827", border: "1px solid #4b5563", color: "#e5e7eb" }} />
-            <button type="button" onClick={() => onChange(values.filter((_, itemIndex) => itemIndex !== index))} aria-label="Remove label filter" style={{ color: "#9ca3af" }}>×</button>
+            <input value={key} list="usage-label-keys" placeholder="Label key" onChange={(event) => onChange(values.map((item, itemIndex) => itemIndex === index ? [event.target.value, item[1]] : item))} className="min-w-0 flex-1 rounded px-2 py-1.5 text-xs outline-none" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-hover)", color: "var(--color-cds-ink)" }} />
+            <span style={{ color: "var(--color-cds-ink-subtle)" }}>=</span>
+            <input value={value} placeholder="Label value" onChange={(event) => onChange(values.map((item, itemIndex) => itemIndex === index ? [item[0], event.target.value] : item))} className="min-w-0 flex-1 rounded px-2 py-1.5 text-xs outline-none" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-hover)", color: "var(--color-cds-ink)" }} />
+            <button type="button" onClick={() => onChange(values.filter((_, itemIndex) => itemIndex !== index))} aria-label="Remove label filter" style={{ color: "var(--color-cds-ink-secondary)" }}>×</button>
           </div>
         ))}
         <datalist id="usage-label-keys">{labelKeys.map((key) => <option key={key} value={key} />)}</datalist>
-        <button type="button" onClick={() => onChange([...values, ["", ""]])} className="mt-1 text-xs" style={{ color: "#70CD96" }}>+ Add label filter</button>
+        <button type="button" onClick={() => onChange([...values, ["", ""]])} className="mt-1 text-xs" style={{ color: "var(--color-cds-status-green-text)" }}>+ Add label filter</button>
       </div>
     </details>
   );
@@ -174,10 +174,10 @@ function SummaryCard({ label, value, detail, loading }: {
   loading: boolean;
 }) {
   return (
-    <div className="rounded-xl px-5 py-4" style={{ background: "#111827", border: "1px solid #29303a" }}>
-      <div className="text-sm" style={{ color: "#9ca3af" }}>{label}</div>
+    <div className="rounded-xl px-5 py-4" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
+      <div className="text-sm" style={{ color: "var(--color-cds-ink-secondary)" }}>{label}</div>
       <div className="mt-2 text-3xl font-semibold tabular-nums text-white">{loading ? "—" : formatExactCount(value)}</div>
-      {detail && !loading && <div className="mt-1 text-xs tabular-nums" style={{ color: "#6b7280" }}>{detail}</div>}
+      {detail && !loading && <div className="mt-1 text-xs tabular-nums" style={{ color: "var(--color-cds-ink-subtle)" }}>{detail}</div>}
     </div>
   );
 }
@@ -213,7 +213,7 @@ function UsageChart({ rows, metric, groupBy, rangeHours, labels }: {
     };
   }, [groupBy, metric, rows]);
 
-  if (rows.length === 0) return <div className="flex justify-center py-24 text-sm" style={{ color: "#6b7280" }}>No usage in this range.</div>;
+  if (rows.length === 0) return <div className="flex justify-center py-24 text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>No usage in this range.</div>;
 
   const label = (series: string) => {
     if (series === "__global__") return "All usage";
@@ -236,15 +236,15 @@ function UsageChart({ rows, metric, groupBy, rangeHours, labels }: {
     <>
       <div className="mb-4">
         <div>
-          <h2 className="text-base font-medium text-white">{metricInfo.label} by {GROUPS.find((item) => item.value === groupBy)?.label.toLowerCase()}</h2>
-          <p className="mt-1 text-sm" style={{ color: "#9ca3af" }}>{groupBy === "global" ? "Aggregated across all dimensions." : "Each bar is stacked by the selected group."}</p>
+          <h2 className="section-title">{metricInfo.label} by {GROUPS.find((item) => item.value === groupBy)?.label.toLowerCase()}</h2>
+          <p className="mt-1 text-sm" style={{ color: "var(--color-cds-ink-secondary)" }}>{groupBy === "global" ? "Aggregated across all dimensions." : "Each bar is stacked by the selected group."}</p>
         </div>
       </div>
       <svg viewBox={`0 0 ${width} ${height}`} className="w-full" style={{ minHeight: 270, maxHeight: 380 }} role="img" aria-label={`${metricInfo.label} usage chart`}>
         {Array.from({ length: 5 }, (_, index) => {
           const value = max * BigInt(index) / 4n;
           const y = margin.top + plotHeight - scale(value);
-          return <g key={index}><line x1={margin.left} x2={width - margin.right} y1={y} y2={y} stroke="#29303a" /><text x={margin.left - 10} y={y + 4} textAnchor="end" fill="#8490a0" fontSize="11">{formatCompactCount(value)}</text></g>;
+          return <g key={index}><line x1={margin.left} x2={width - margin.right} y1={y} y2={y} stroke="#27272a" /><text x={margin.left - 10} y={y + 4} textAnchor="end" fill="#71717a" fontSize="11">{formatCompactCount(value)}</text></g>;
         })}
         {data.names.map((bucket, bucketIndex) => {
           const values = data.buckets.get(bucket)!;
@@ -258,11 +258,11 @@ function UsageChart({ rows, metric, groupBy, rangeHours, labels }: {
               offset += barHeight;
               return value > 0n ? <rect key={series} x={x} y={y} width={barWidth} height={Math.max(1, barHeight)} rx="2" fill={COLORS[seriesIndex % COLORS.length]}><title>{`${bucketLabel(bucket, rangeHours)} · ${label(series)}: ${formatExactCount(value)} ${metricInfo.unit}`}</title></rect> : null;
             })}
-            {(bucketIndex % Math.max(1, Math.ceil(data.names.length / 8)) === 0) && <text x={x + barWidth / 2} y={margin.top + plotHeight + 23} textAnchor="middle" fill="#8490a0" fontSize="11">{bucketLabel(bucket, rangeHours)}</text>}
+            {(bucketIndex % Math.max(1, Math.ceil(data.names.length / 8)) === 0) && <text x={x + barWidth / 2} y={margin.top + plotHeight + 23} textAnchor="middle" fill="#71717a" fontSize="11">{bucketLabel(bucket, rangeHours)}</text>}
           </g>;
         })}
       </svg>
-      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">{data.visible.map((series, index) => <div key={series} className="flex items-center gap-2 text-xs" style={{ color: "#c5cbd4" }}><span className="h-2.5 w-2.5 rounded-sm" style={{ background: COLORS[index % COLORS.length] }} />{label(series)}</div>)}</div>
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">{data.visible.map((series, index) => <div key={series} className="flex items-center gap-2 text-xs" style={{ color: "var(--color-cds-ink-medium)" }}><span className="h-2.5 w-2.5 rounded-sm" style={{ background: COLORS[index % COLORS.length] }} />{label(series)}</div>)}</div>
     </>
   );
 }
@@ -392,8 +392,8 @@ export default function UsageExplorer({ options = EMPTY_OPTIONS, fixedApiKey }: 
         <SummaryCard label="Cache-write tokens" value={summary.cacheWrite} loading={loading} />
       </div>
       <div className="mb-3 flex flex-wrap gap-3">
-        <label className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm" style={{ background: "#111827", border: "1px solid #374151", color: "#e5e7eb" }}><span style={{ color: "#9ca3af" }}>Range</span><select value={rangeHours} onChange={(event) => { setRangeHours(Number(event.target.value)); setBucketSize(""); }} className="bg-transparent outline-none">{RANGES.map((range) => <option key={range.value} value={range.value} style={{ background: "#111827" }}>{range.label}</option>)}</select></label>
-        <label className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm" style={{ background: "#111827", border: "1px solid #374151", color: "#e5e7eb" }}><span style={{ color: "#9ca3af" }}>View by</span><select value={bucketSize} onChange={(event) => setBucketSize(event.target.value)} className="bg-transparent outline-none"><option value="" style={{ background: "#111827" }}>Auto ({BUCKETS.find((bucket) => bucket.value === defaultBucket(rangeHours))?.label})</option>{validBuckets.map((bucket) => <option key={bucket.value} value={bucket.value} style={{ background: "#111827" }}>{bucket.label}</option>)}</select></label>
+        <label className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink)" }}><span style={{ color: "var(--color-cds-ink-secondary)" }}>Range</span><select value={rangeHours} onChange={(event) => { setRangeHours(Number(event.target.value)); setBucketSize(""); }} className="bg-transparent outline-none">{RANGES.map((range) => <option key={range.value} value={range.value} style={{ background: "var(--color-cds-raised)" }}>{range.label}</option>)}</select></label>
+        <label className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink)" }}><span style={{ color: "var(--color-cds-ink-secondary)" }}>View by</span><select value={bucketSize} onChange={(event) => setBucketSize(event.target.value)} className="bg-transparent outline-none"><option value="" style={{ background: "var(--color-cds-raised)" }}>Auto ({BUCKETS.find((bucket) => bucket.value === defaultBucket(rangeHours))?.label})</option>{validBuckets.map((bucket) => <option key={bucket.value} value={bucket.value} style={{ background: "var(--color-cds-raised)" }}>{bucket.label}</option>)}</select></label>
       </div>
       <div className="mb-6 flex flex-wrap items-center gap-3">
         {!fixedApiKey && <SelectFilter label="API key" values={apiKeys} options={options.apiKeys} onChange={setApiKeys} />}
@@ -401,19 +401,19 @@ export default function UsageExplorer({ options = EMPTY_OPTIONS, fixedApiKey }: 
         <SelectFilter label="Connection" values={connections} options={options.connections} onChange={setConnections} />
         <SelectFilter label="Model" values={models} options={options.models} onChange={setModels} />
         <LabelFilter values={apiKeyLabels} labelKeys={labelKeys} onChange={setApiKeyLabels} />
-        <span className="h-7 w-px" style={{ background: "#374151" }} />
-        <label className="rounded-lg px-3 py-2 text-sm" style={{ background: "#111827", border: "1px solid #374151", color: "#e5e7eb" }}><span className="mr-2" style={{ color: "#9ca3af" }}>Group by</span><select value={groupBy} onChange={(event) => setGroupBy(event.target.value as GroupBy)} className="bg-transparent outline-none">{GROUPS.map((group) => <option key={group.value} value={group.value} style={{ background: "#111827" }}>{group.label}</option>)}</select></label>
-        <label className="rounded-lg px-3 py-2 text-sm" style={{ background: "#111827", border: "1px solid #374151", color: "#e5e7eb" }}><span className="mr-2" style={{ color: "#9ca3af" }}>Y-axis</span><select value={metric} onChange={(event) => setMetric(event.target.value as Metric)} className="bg-transparent outline-none">{METRICS.map((item) => <option key={item.value} value={item.value} style={{ background: "#111827" }}>{item.label}</option>)}</select></label>
-        {groupBy === "api_key_label" && <label className="rounded-lg px-3 py-2 text-sm" style={{ background: "#111827", border: "1px solid #4b5563", color: "#e5e7eb" }}><span className="mr-2" style={{ color: "#9ca3af" }}>Label</span><input value={groupByLabel} list="usage-group-label-keys" placeholder="team" onChange={(event) => setGroupByLabel(event.target.value)} className="w-28 bg-transparent outline-none" /><datalist id="usage-group-label-keys">{labelKeys.map((key) => <option key={key} value={key} />)}</datalist></label>}
+        <span className="h-7 w-px" style={{ background: "var(--color-cds-status-neutral-border)" }} />
+        <label className="rounded-lg px-3 py-2 text-sm" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink)" }}><span className="mr-2" style={{ color: "var(--color-cds-ink-secondary)" }}>Group by</span><select value={groupBy} onChange={(event) => setGroupBy(event.target.value as GroupBy)} className="bg-transparent outline-none">{GROUPS.map((group) => <option key={group.value} value={group.value} style={{ background: "var(--color-cds-raised)" }}>{group.label}</option>)}</select></label>
+        <label className="rounded-lg px-3 py-2 text-sm" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink)" }}><span className="mr-2" style={{ color: "var(--color-cds-ink-secondary)" }}>Y-axis</span><select value={metric} onChange={(event) => setMetric(event.target.value as Metric)} className="bg-transparent outline-none">{METRICS.map((item) => <option key={item.value} value={item.value} style={{ background: "var(--color-cds-raised)" }}>{item.label}</option>)}</select></label>
+        {groupBy === "api_key_label" && <label className="rounded-lg px-3 py-2 text-sm" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-hover)", color: "var(--color-cds-ink)" }}><span className="mr-2" style={{ color: "var(--color-cds-ink-secondary)" }}>Label</span><input value={groupByLabel} list="usage-group-label-keys" placeholder="team" onChange={(event) => setGroupByLabel(event.target.value)} className="w-28 bg-transparent outline-none" /><datalist id="usage-group-label-keys">{labelKeys.map((key) => <option key={key} value={key} />)}</datalist></label>}
         <span className="group relative ml-auto">
-          <button type="button" onClick={downloadCsv} disabled={!canExport || exporting} aria-label="Export CSV" className="grid h-9 w-9 place-items-center rounded-lg disabled:cursor-not-allowed disabled:opacity-50" style={{ background: "#1f2937", color: "#d1d5db", border: "1px solid #374151" }}>
+          <button type="button" onClick={downloadCsv} disabled={!canExport || exporting} aria-label="Export CSV" className="btn btn-secondary btn-md grid h-9 w-9 place-items-center disabled:cursor-not-allowed">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15 7.5 10.5M4 15.5V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3.5" /></svg>
           </button>
-          <span role="tooltip" className="pointer-events-none absolute right-0 top-full z-20 mt-2 whitespace-nowrap rounded px-2 py-1 text-xs opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" style={{ background: "#1b1d24", border: "1px solid #374151", color: "#e5e7eb" }}>Export CSV</span>
+          <span role="tooltip" className="pointer-events-none absolute right-0 top-full z-20 mt-2 whitespace-nowrap rounded px-2 py-1 text-xs opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink)" }}>Export CSV</span>
         </span>
       </div>
-      <div className="rounded-xl px-5 py-5" style={{ background: "#111827", border: "1px solid #29303a" }}>
-        {loading ? <div className="flex justify-center py-24 text-sm" style={{ color: "#6b7280" }}>Loading usage…</div> : error ? <div className="rounded-lg px-4 py-3 text-sm" style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}>{error}</div> : <UsageChart rows={rows} metric={metric} groupBy={groupBy} rangeHours={rangeHours} labels={displayLabels} />}
+      <div className="rounded-xl px-5 py-5" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border)" }}>
+        {loading ? <div className="flex justify-center py-24 text-sm" style={{ color: "var(--color-cds-ink-subtle)" }}>Loading usage…</div> : error ? <div className="rounded-lg px-4 py-3 text-sm" style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}>{error}</div> : <UsageChart rows={rows} metric={metric} groupBy={groupBy} rangeHours={rangeHours} labels={displayLabels} />}
       </div>
       {!loading && !error && <div className="mt-6"><DataTable rows={breakdown} rowKey={([name]) => name} empty="No usage in this range." columns={[
         { id: "name", header: GROUPS.find((item) => item.value === groupBy)?.label ?? "Breakdown", cell: ([name]) => <span className="text-white">{displayLabels.get(name) ?? name}</span> },
@@ -423,7 +423,7 @@ export default function UsageExplorer({ options = EMPTY_OPTIONS, fixedApiKey }: 
         { id: "cacheRead", header: "Cache read", align: "right", className: "font-mono text-xs", cell: ([, totals]) => formatExactCount(totals.cacheRead) },
         { id: "cacheWrite", header: "Cache write", align: "right", className: "font-mono text-xs", cell: ([, totals]) => formatExactCount(totals.cacheWrite) },
       ]} /></div>}
-      <p className="mt-3 text-xs" style={{ color: "#6b7280" }}>Values inside a filter are combined with “any”; separate filter types, including API-key labels, are combined with “and”.</p>
+      <p className="mt-3 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>Values inside a filter are combined with “any”; separate filter types, including API-key labels, are combined with “and”.</p>
     </section>
   );
 }

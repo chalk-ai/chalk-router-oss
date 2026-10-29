@@ -1,79 +1,423 @@
 @import "tailwindcss";
 
-/* Everett (sans) */
+/*
+ * Chalk design system, ported from chalk-private/frontend (tailwind.config.js `cds`,
+ * styles/design-system-typography.css, components/interactive/*V2.tsx).
+ *
+ * The admin UI renders only the dashboard's dark theme, so each token holds the dark value the
+ * dashboard pairs with it (`dark:` variant or `-dark` suffix there). Prefer these tokens, in classes
+ * or as `var(--color-cds-*)` in inline styles, over raw palette stops so the UI stays in step with
+ * the dashboard.
+ */
+
 @font-face {
-  font-family: "Everett";
+  font-family: "Chalk Dashboard Inter";
   font-style: normal;
-  font-weight: 300;
+  font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/TWKEverett-Light-web.woff2") format("woff2");
+  src: url("/fonts/InterVariable.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Everett";
+  font-family: "Chalk Dashboard JetBrains Mono";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 800;
   font-display: swap;
-  src: url("/fonts/TWKEverett-Regular-web.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Everett";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/TWKEverett-Medium-web.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Everett";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/TWKEverett-Bold-web.woff2") format("woff2");
+  src: url("/fonts/JetBrainsMonoVariable.ttf") format("truetype");
 }
 
-/* Everett Mono */
-@font-face {
-  font-family: "Everett Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/TWKEverettMono-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Everett Mono";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/TWKEverettMono-Medium.ttf") format("truetype");
+@theme {
+  --font-sans: "Chalk Dashboard Inter", "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Chalk Dashboard JetBrains Mono", "JetBrains Mono Variable", "JetBrains Mono",
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  /* Type scale: --design-system-text-* */
+  --text-cds-2xs: 0.625rem;
+  --text-cds-2xs--line-height: 0.75rem;
+  --text-cds-2xs--letter-spacing: 0.02rem;
+  --text-cds-xs: 0.6875rem;
+  --text-cds-xs--line-height: 1rem;
+  --text-cds-xs--letter-spacing: 0.02rem;
+  --text-cds-sm: 0.75rem;
+  --text-cds-sm--line-height: 1rem;
+  --text-cds-sm--letter-spacing: 0.01rem;
+  --text-cds-md: 0.8125rem;
+  --text-cds-md--line-height: 1.25rem;
+  --text-cds-lg: 0.9375rem;
+  --text-cds-lg--line-height: 1.25rem;
+  --text-cds-xl: 1.125rem;
+  --text-cds-xl--line-height: 1.5rem;
+  --text-cds-xl--letter-spacing: -0.01rem;
+  --text-cds-h3: 1.25rem;
+  --text-cds-h3--line-height: 1.5rem;
+  --text-cds-h3--letter-spacing: -0.015rem;
+
+  --radius-cds-3: 3px;
+  --radius-cds-6: 6px;
+
+  /* Tailwind's own steps, moved onto the dashboard's scale: body copy is 13px and section titles
+     15px, and nothing in the dashboard is rounded past 6px. */
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 0.9375rem;
+  --text-base--line-height: 1.25rem;
+  --radius-lg: 6px;
+  --radius-xl: 6px;
+
+  /* Surfaces, darkest first: the shell (rail and top rail), the content pane and its sidebars,
+     then cards and controls raised on the pane. */
+  --color-cds-inset: #0f0f12;
+  --color-cds-elevated: #15151a;
+  --color-cds-raised: #1b1b22;
+  --color-cds-field: rgb(255 255 255 / 0.04);
+  --color-cds-hover: rgb(255 255 255 / 0.06);
+  --color-cds-selected: rgb(255 255 255 / 0.12);
+
+  --color-cds-border: rgb(255 255 255 / 0.08);
+  --color-cds-border-subtle: rgb(255 255 255 / 0.06);
+  --color-cds-border-strong: rgb(255 255 255 / 0.1);
+  --color-cds-border-hover: rgb(255 255 255 / 0.16);
+  --color-cds-focus: rgb(59 176 137 / 0.5);
+
+  /* Ink (zinc 50 → 600) */
+  --color-cds-ink-strong: #fafafa;
+  --color-cds-ink: #e4e4e7;
+  --color-cds-ink-medium: #d4d4d8;
+  --color-cds-ink-secondary: #a1a1aa;
+  --color-cds-ink-subtle: #71717a;
+  --color-cds-ink-muted: #52525b;
+
+  --color-cds-primary: #177f65;
+  --color-cds-primary-stroke: #12654f;
+  --color-cds-link: #2aa853;
+  --color-cds-link-hover: #4fb56c;
+  --color-cds-error: #fda4af;
+
+  /* Status tones: emerald / amber / orange / rose / zinc / sky / purple, 950 fill · 800 border ·
+     300 text, as StatusBadgeV2 renders them in dark mode. */
+  --color-cds-status-green-fill: #022c22;
+  --color-cds-status-green-border: #065f46;
+  --color-cds-status-green-text: #6ee7b7;
+  --color-cds-status-yellow-fill: #451a03;
+  --color-cds-status-yellow-border: #92400e;
+  --color-cds-status-yellow-text: #fcd34d;
+  --color-cds-status-orange-fill: #431407;
+  --color-cds-status-orange-border: #9a3412;
+  --color-cds-status-orange-text: #fdba74;
+  --color-cds-status-red-fill: #4c0519;
+  --color-cds-status-red-border: #9f1239;
+  --color-cds-status-red-text: #fda4af;
+  --color-cds-status-neutral-fill: #27272a;
+  --color-cds-status-neutral-border: #3f3f46;
+  --color-cds-status-neutral-text: #d4d4d8;
+  --color-cds-status-blue-fill: #082f49;
+  --color-cds-status-blue-border: #075985;
+  --color-cds-status-blue-text: #7dd3fc;
+  --color-cds-status-purple-fill: #3b0764;
+  --color-cds-status-purple-border: #6b21a8;
+  --color-cds-status-purple-text: #d8b4fe;
+
+  --shadow-cds-focus: 0 0 0 1px rgb(59 176 137 / 0.5);
+  --shadow-cds-m: 0 2px 8px 0 rgb(0 0 0 / 0.4);
 }
 
-* {
-  box-sizing: border-box;
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-cds-md);
+    line-height: var(--text-cds-md--line-height);
+  }
+  /* The dashboard's headings are light: titles are 18px/500, not bold display type. */
+  h1,
+  h2,
+  h3 {
+    font-weight: 500;
+  }
+  /* Controls styled inline (`inputStyle`) still take InputV2's focus ring; box-shadow, because an
+     inline border wins over any stylesheet border-color. */
+  :is(input, select, textarea):focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-cds-focus);
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-cds-border-strong);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-cds-border-hover);
+  }
 }
 
-body {
-  background-color: #030712; /* gray-950 */
-  color: #f3f4f6; /* gray-100 */
-  font-family: "Everett", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/*
+ * Component recipes. They sit in the components layer so a utility on the same element (`w-full`,
+ * `justify-start`) still wins.
+ */
+@layer components {
+  /* ButtonV2: xs 24px · sm 28px · md 32px, 6px radius. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-cds-6);
+    font-size: var(--text-cds-sm);
+    line-height: var(--text-cds-sm--line-height);
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color 75ms,
+      border-color 75ms,
+      color 75ms;
+  }
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-cds-focus);
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .btn-xs {
+    height: 24px;
+    padding: 0 6px;
+    font-size: var(--text-cds-xs);
+  }
+  .btn-md {
+    height: 32px;
+    padding: 0 10px;
+  }
+  .btn-icon {
+    width: 28px;
+    padding: 0;
+  }
+  .btn-xs.btn-icon {
+    width: 24px;
+  }
+  .btn-md.btn-icon {
+    width: 32px;
+  }
+  .btn-primary {
+    color: white;
+    background-image: linear-gradient(180deg, #177f65 0%, #15775f 100%);
+    border-color: var(--color-cds-primary-stroke);
+  }
+  .btn-primary:not(:disabled):hover {
+    background-image: linear-gradient(180deg, #15775f 0%, #146e57 100%);
+    border-color: #105c48;
+  }
+  .btn-primary:not(:disabled):active {
+    background-image: linear-gradient(180deg, #12654f 0%, #12654f 100%);
+  }
+  .btn-secondary {
+    color: #f4f4f5;
+    background-color: var(--color-cds-raised);
+    border-color: var(--color-cds-border-strong);
+  }
+  .btn-secondary:not(:disabled):hover {
+    background-color: #27272a;
+    border-color: var(--color-cds-border-hover);
+  }
+  .btn-tertiary {
+    color: var(--color-cds-ink-secondary);
+    background-color: transparent;
+  }
+  .btn-tertiary:not(:disabled):hover {
+    color: var(--color-cds-ink-strong);
+    background-color: rgb(255 255 255 / 0.04);
+  }
+  .btn-tertiary:not(:disabled):active {
+    background-color: rgb(255 255 255 / 0.08);
+  }
+  .btn-destructive {
+    color: white;
+    background-color: #ef4444;
+  }
+  .btn-destructive:not(:disabled):hover {
+    background-color: #dc2626;
+  }
 
-code, pre, .font-mono {
-  font-family: "Everett Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
+  /* InputV2 / TextAreaV2 / SelectV2 field box. */
+  .field {
+    display: block;
+    width: 100%;
+    min-height: 28px;
+    padding: 4px 8px;
+    color: var(--color-cds-ink);
+    background-color: var(--color-cds-field);
+    border: 1px solid var(--color-cds-border);
+    border-radius: var(--radius-cds-6);
+    font-size: var(--text-cds-md);
+    line-height: var(--text-cds-md--line-height);
+    transition:
+      border-color 75ms,
+      box-shadow 75ms;
+  }
+  .field::placeholder {
+    color: var(--color-cds-ink-subtle);
+  }
+  .field:focus,
+  .field:focus-within {
+    outline: none;
+    border-color: var(--color-cds-focus);
+    box-shadow: var(--shadow-cds-focus);
+  }
+  .field:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  /* Inputs and textareas inside a `.field` wrapper draw no box of their own. */
+  .field :is(input, textarea, select) {
+    background: transparent;
+    outline: none;
+  }
+  select.field {
+    padding-right: 24px;
+  }
+  /* Label above a field. */
+  .field-label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--color-cds-ink-secondary);
+    font-size: var(--text-cds-sm);
+    line-height: var(--text-cds-sm--line-height);
+    font-weight: 500;
+  }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #374151;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #4b5563;
+  /* StatusBadgeV2 (md): a pale chip with an inset ring. */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: var(--radius-cds-3);
+    font-size: var(--text-cds-xs);
+    line-height: var(--text-cds-xs--line-height);
+    letter-spacing: var(--text-cds-xs--letter-spacing);
+    font-weight: 400;
+    white-space: nowrap;
+    color: var(--badge-text);
+    background-color: var(--badge-fill);
+    box-shadow: inset 0 0 0 1px var(--badge-border);
+  }
+  .badge-green {
+    --badge-fill: var(--color-cds-status-green-fill);
+    --badge-border: var(--color-cds-status-green-border);
+    --badge-text: var(--color-cds-status-green-text);
+  }
+  .badge-yellow {
+    --badge-fill: var(--color-cds-status-yellow-fill);
+    --badge-border: var(--color-cds-status-yellow-border);
+    --badge-text: var(--color-cds-status-yellow-text);
+  }
+  .badge-orange {
+    --badge-fill: var(--color-cds-status-orange-fill);
+    --badge-border: var(--color-cds-status-orange-border);
+    --badge-text: var(--color-cds-status-orange-text);
+  }
+  .badge-red {
+    --badge-fill: var(--color-cds-status-red-fill);
+    --badge-border: var(--color-cds-status-red-border);
+    --badge-text: var(--color-cds-status-red-text);
+  }
+  .badge-neutral {
+    --badge-fill: var(--color-cds-status-neutral-fill);
+    --badge-border: var(--color-cds-status-neutral-border);
+    --badge-text: var(--color-cds-status-neutral-text);
+  }
+  .badge-blue {
+    --badge-fill: var(--color-cds-status-blue-fill);
+    --badge-border: var(--color-cds-status-blue-border);
+    --badge-text: var(--color-cds-status-blue-text);
+  }
+  .badge-purple {
+    --badge-fill: var(--color-cds-status-purple-fill);
+    --badge-border: var(--color-cds-status-purple-border);
+    --badge-text: var(--color-cds-status-purple-text);
+  }
+
+  /* Cards sit one step above the pane and separate by hairline, not shadow. */
+  .card {
+    background-color: var(--color-cds-raised);
+    border: 1px solid var(--color-cds-border);
+    border-radius: var(--radius-cds-6);
+  }
+
+  /* Page title, as LayoutV2 renders a page's h1. */
+  .page-title {
+    color: var(--color-cds-ink-strong);
+    font-size: var(--text-cds-xl);
+    line-height: var(--text-cds-xl--line-height);
+    letter-spacing: var(--text-cds-xl--letter-spacing);
+    font-weight: 500;
+  }
+  /* Card or section title: 15px / 500. */
+  .section-title {
+    color: var(--color-cds-ink-medium);
+    font-size: var(--text-cds-lg);
+    line-height: var(--text-cds-lg--line-height);
+    font-weight: 500;
+  }
+  /* Small uppercase label over a group, like a table header. */
+  .eyebrow {
+    color: var(--color-cds-ink-subtle);
+    font-size: var(--text-cds-2xs);
+    line-height: var(--text-cds-2xs--line-height);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ChalkLink */
+  .link {
+    color: var(--color-cds-link);
+    text-decoration: none;
+  }
+  .link:hover {
+    color: var(--color-cds-link-hover);
+    text-decoration: underline;
+  }
+
+  /* BasicTableV3: 12px body, 10px uppercase header, hairline rows. */
+  .table-cds {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-cds-sm);
+    line-height: var(--text-cds-sm--line-height);
+  }
+  .table-cds th {
+    padding: 8px 10px;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--color-cds-ink-subtle);
+    font-size: var(--text-cds-2xs);
+    line-height: var(--text-cds-2xs--line-height);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-cds-border-strong);
+  }
+  .table-cds td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--color-cds-border-subtle);
+  }
+  .table-cds tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .table-cds tbody tr:hover {
+    background-color: var(--color-cds-hover);
+  }
 }

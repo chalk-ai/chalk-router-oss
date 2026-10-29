@@ -98,15 +98,15 @@ export function KeyAccessEditor({
   const grantsNothing = keyAccessDraftGrantsNothing(value);
 
   return (
-    <section className="rounded-lg p-4" style={{ background: "#0f172a", border: "1px solid #334155" }}>
+    <section className="rounded-lg p-4" style={{ background: "var(--color-cds-elevated)", border: "1px solid var(--color-cds-border-strong)" }}>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h4 className="text-xs font-medium" style={{ color: "#d1d5db" }}>Access</h4>
-          <p className="mt-1 text-xs" style={{ color: "#6b7280" }}>
+          <h4 className="text-xs font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>Access</h4>
+          <p className="mt-1 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
             Restrict a key to model routes, to direct models on specific connections, or both.
           </p>
         </div>
-        <div className="grid grid-cols-2 overflow-hidden rounded-md" role="radiogroup" aria-label="Access" style={{ border: "1px solid #374151" }}>
+        <div className="grid grid-cols-2 overflow-hidden rounded-md" role="radiogroup" aria-label="Access" style={{ border: "1px solid var(--color-cds-border-strong)" }}>
           {(["all", "restricted"] as const).map((mode) => (
             <button
               key={mode}
@@ -115,7 +115,7 @@ export function KeyAccessEditor({
               aria-checked={value.mode === mode}
               onClick={() => onChange({ ...value, mode })}
               className="px-3 py-1.5 text-xs font-medium"
-              style={value.mode === mode ? { background: "#218E61", color: "white" } : { color: "#a1a1aa" }}
+              style={value.mode === mode ? { background: "var(--color-cds-primary)", color: "white" } : { color: "var(--color-cds-ink-secondary)" }}
             >
               {mode === "all" ? "All models" : "Restricted"}
             </button>
@@ -124,14 +124,14 @@ export function KeyAccessEditor({
       </div>
 
       {value.mode === "all" ? (
-        <p className="rounded-md px-4 py-3 text-xs" style={{ background: "#111827", border: "1px solid #334155", color: "#9ca3af" }}>
+        <p className="rounded-md px-4 py-3 text-xs" style={{ background: "var(--color-cds-raised)", border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink-secondary)" }}>
           <span className="mr-2" aria-hidden="true">⚠</span>
           This key can call <span className="font-medium text-white">every model route and every model on every connection</span>. Choose Restricted to limit it.
         </p>
       ) : (
         <div className="space-y-4">
           {grantsNothing && (
-            <p role="status" className="rounded-md px-4 py-3 text-xs" style={{ background: "#3b2305", color: "#fbbf24" }}>
+            <p role="status" className="rounded-md px-4 py-3 text-xs" style={{ background: "var(--color-cds-status-yellow-fill)", color: "var(--color-cds-status-yellow-text)" }}>
               Nothing is selected. This key will not be able to call any model until you grant a model route or a connection scope.
             </p>
           )}
@@ -139,10 +139,10 @@ export function KeyAccessEditor({
           <div>
             <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
               <div>
-                <h5 className="text-xs font-medium" style={{ color: "#d1d5db" }}>
-                  Model routes <span style={{ color: "#6b7280" }}>({value.routeIds.length} selected)</span>
+                <h5 className="text-xs font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>
+                  Model routes <span style={{ color: "var(--color-cds-ink-subtle)" }}>({value.routeIds.length} selected)</span>
                 </h5>
-                <p className="mt-0.5 text-xs" style={{ color: "#6b7280" }}>
+                <p className="mt-0.5 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
                   A route grant covers everything the route dispatches to: its default target, judge selections and fallbacks, on any connection.
                 </p>
               </div>
@@ -158,41 +158,41 @@ export function KeyAccessEditor({
                 />
               )}
             </div>
-            <div className="max-h-48 overflow-y-auto rounded-md p-2" style={{ background: "#1f2937", border: "1px solid #374151" }}>
+            <div className="max-h-48 overflow-y-auto rounded-md p-2" style={{ background: "var(--color-cds-status-neutral-fill)", border: "1px solid var(--color-cds-border-strong)" }}>
               {deletedRouteIds.map((id) => (
-                <label key={id} className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-white/5" style={{ color: "#fca5a5" }} title={id}>
+                <label key={id} className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-white/5" style={{ color: "var(--color-cds-status-red-text)" }} title={id}>
                   <input type="checkbox" checked onChange={() => setRouteGranted(id, false)} />
-                  Deleted route <span className="font-mono text-xs" style={{ color: "#9ca3af" }}>{id}</span>
-                  <span className="text-xs" style={{ color: "#9ca3af" }}>· uncheck to remove</span>
+                  Deleted route <span className="font-mono text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>{id}</span>
+                  <span className="text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>· uncheck to remove</span>
                 </label>
               ))}
               {visibleRoutes.map((route) => (
-                <label key={route.id} className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-white/5" style={{ color: "#e5e7eb" }} title={route.id}>
+                <label key={route.id} className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-white/5" style={{ color: "var(--color-cds-ink)" }} title={route.id}>
                   <input
                     type="checkbox"
                     checked={value.routeIds.includes(route.id)}
                     onChange={(event) => setRouteGranted(route.id, event.target.checked)}
                   />
                   <span className="font-mono text-xs">{route.public_model_id}</span>
-                  {route.published === false && <span className="text-xs" style={{ color: "#9ca3af" }}>hidden</span>}
+                  {route.published === false && <span className="text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>hidden</span>}
                 </label>
               ))}
               {routes.length === 0 && deletedRouteIds.length === 0 && (
-                <p className="px-2 py-1 text-xs" style={{ color: "#a1a1aa" }}>No model routes exist yet.</p>
+                <p className="px-2 py-1 text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>No model routes exist yet.</p>
               )}
               {routes.length > 0 && visibleRoutes.length === 0 && (
-                <p className="px-2 py-1 text-xs" style={{ color: "#a1a1aa" }}>No routes match “{routeFilter}”.</p>
+                <p className="px-2 py-1 text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>No routes match “{routeFilter}”.</p>
               )}
             </div>
           </div>
 
           <div>
-            <h5 className="text-xs font-medium" style={{ color: "#d1d5db" }}>Connection scopes</h5>
-            <p className="mt-0.5 mb-2 text-xs" style={{ color: "#6b7280" }}>
+            <h5 className="text-xs font-medium" style={{ color: "var(--color-cds-ink-medium)" }}>Connection scopes</h5>
+            <p className="mt-0.5 mb-2 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
               Grants direct model ids on a connection. Model routes are granted above, never here.
             </p>
             {value.scopes.length > 0 && (
-              <div className="divide-y" style={{ borderColor: "#334155" }}>
+              <div className="divide-y" style={{ borderColor: "var(--color-cds-border-strong)" }}>
                 {value.scopes.map((scope) => {
                   const available = directModelIds(modelsByConnection[scope.connectionId] ?? []);
                   // Keep stored selections visible (and removable) even when
@@ -220,7 +220,7 @@ export function KeyAccessEditor({
                         )}
                       </select>
                       <div>
-                        <div className="grid grid-cols-2 overflow-hidden rounded-md" style={{ border: "1px solid #374151" }}>
+                        <div className="grid grid-cols-2 overflow-hidden rounded-md" style={{ border: "1px solid var(--color-cds-border-strong)" }}>
                           {([false, true] as const).map((restrictModels) => (
                             <button
                               key={String(restrictModels)}
@@ -230,18 +230,18 @@ export function KeyAccessEditor({
                                 if (restrictModels) void loadModels(scope.connectionId);
                               }}
                               className="px-3 py-2 text-sm font-medium"
-                              style={scope.restrictModels === restrictModels ? { background: "#218E61", color: "white" } : { color: "#a1a1aa" }}
+                              style={scope.restrictModels === restrictModels ? { background: "var(--color-cds-primary)", color: "white" } : { color: "var(--color-cds-ink-secondary)" }}
                             >
                               {restrictModels ? "Specific models" : "All direct models"}
                             </button>
                           ))}
                         </div>
                         {scope.restrictModels && (
-                          <div className="mt-2 max-h-44 overflow-y-auto rounded-md p-2" style={{ background: "#1f2937", border: "1px solid #374151" }}>
+                          <div className="mt-2 max-h-44 overflow-y-auto rounded-md p-2" style={{ background: "var(--color-cds-status-neutral-fill)", border: "1px solid var(--color-cds-border-strong)" }}>
                             {choices.map((model) => {
                               const invalid = connectionScopeModelError(model);
                               return (
-                                <label key={model} className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-white/5" style={{ color: invalid ? "#fca5a5" : "#e5e7eb" }} title={invalid ?? undefined}>
+                                <label key={model} className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-white/5" style={{ color: invalid ? "var(--color-cds-status-red-text)" : "var(--color-cds-ink)" }} title={invalid ?? undefined}>
                                   <input
                                     type="checkbox"
                                     checked={scope.models.includes(model)}
@@ -252,12 +252,12 @@ export function KeyAccessEditor({
                                     })}
                                   />
                                   {model}
-                                  {invalid && <span className="text-xs" style={{ color: "#9ca3af" }}>· not allowed here, uncheck to remove</span>}
+                                  {invalid && <span className="text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>· not allowed here, uncheck to remove</span>}
                                 </label>
                               );
                             })}
                             {choices.length === 0 && (
-                              <p className="px-2 py-1 text-xs" style={{ color: "#a1a1aa" }}>
+                              <p className="px-2 py-1 text-xs" style={{ color: "var(--color-cds-ink-secondary)" }}>
                                 {modelsLoading[scope.connectionId]
                                   ? "Loading models for this connection…"
                                   : "No direct models are available for this connection. Allow all direct models, or grant a model route instead."}
@@ -271,7 +271,7 @@ export function KeyAccessEditor({
                         onClick={() => onChange({ ...value, scopes: value.scopes.filter((item) => item.id !== scope.id) })}
                         className="self-start rounded p-2 text-sm"
                         aria-label="Remove connection scope"
-                        style={{ color: "#d1d5db" }}
+                        style={{ color: "var(--color-cds-ink-medium)" }}
                       >
                         🗑
                       </button>
@@ -285,12 +285,12 @@ export function KeyAccessEditor({
               onClick={addScope}
               disabled={connections.length === 0}
               className="mt-2 rounded-lg px-3 py-2 text-xs font-medium disabled:opacity-50"
-              style={{ border: "1px solid #374151", color: "#f3f4f6" }}
+              style={{ border: "1px solid var(--color-cds-border-strong)", color: "var(--color-cds-ink-strong)" }}
             >
               + Add a connection scope
             </button>
             {connections.length === 0 && (
-              <p className="mt-2 text-xs" style={{ color: "#6b7280" }}>No connections exist yet.</p>
+              <p className="mt-2 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>No connections exist yet.</p>
             )}
           </div>
         </div>

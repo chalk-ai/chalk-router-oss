@@ -197,7 +197,7 @@ export function IssueTokenForm({ onIssued, pools, connections, routes, poolQuota
         onClick={() => setOpen(true)}
         className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         style={{
-          background: "#218E61",
+          background: "var(--color-cds-primary)",
           color: "white",
         }}
       >
@@ -214,8 +214,8 @@ export function IssueTokenForm({ onIssued, pools, connections, routes, poolQuota
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-3 gap-4">
           <div className="col-span-2">
-            <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>
-              Description <span style={{ color: "#4b5563" }}>(required, 120 characters max)</span>
+            <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>
+              Description <span style={{ color: "var(--color-cds-ink-muted)" }}>(required, 120 characters max)</span>
             </label>
             <input
               type="text"
@@ -226,24 +226,24 @@ export function IssueTokenForm({ onIssued, pools, connections, routes, poolQuota
               maxLength={MAX_API_KEY_DESCRIPTION_LENGTH}
               className="w-full rounded-md px-3 py-2 text-sm focus:outline-none"
               style={{
-                background: "#1f2937",
-                border: "1px solid #374151",
-                color: "#e5e7eb",
+                background: "var(--color-cds-field)",
+                border: "1px solid var(--color-cds-border)",
+                color: "var(--color-cds-ink)",
               }}
             />
           </div>
           <div>
-            <label className="block text-xs font-medium mb-1.5" style={{ color: "#9ca3af" }}>
-              Usage Pool <span style={{ color: "#4b5563" }}>(optional)</span>
+            <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--color-cds-ink-secondary)" }}>
+              Usage Pool <span style={{ color: "var(--color-cds-ink-muted)" }}>(optional)</span>
             </label>
             <select
               value={usagePoolId}
               onChange={(e) => setUsagePoolId(e.target.value)}
               className="w-full rounded-md px-3 py-2 text-sm focus:outline-none"
               style={{
-                background: "#1f2937",
-                border: "1px solid #374151",
-                color: "#e5e7eb",
+                background: "var(--color-cds-field)",
+                border: "1px solid var(--color-cds-border)",
+                color: "var(--color-cds-ink)",
               }}
             >
               <option value="">No usage pool</option>
@@ -267,14 +267,14 @@ export function IssueTokenForm({ onIssued, pools, connections, routes, poolQuota
 
         <div>
           <div className="flex items-center justify-between mb-2">
-            <label className="text-xs font-medium" style={{ color: "#9ca3af" }}>
-              Labels <span style={{ color: "#4b5563" }}>(optional, immutable)</span>
+            <label className="text-xs font-medium" style={{ color: "var(--color-cds-ink-secondary)" }}>
+              Labels <span style={{ color: "var(--color-cds-ink-muted)" }}>(optional, immutable)</span>
             </label>
             <button
               type="button"
               onClick={addLabel}
               className="text-xs px-2 py-1 rounded transition-colors"
-              style={{ color: "#70CD96", background: "#052e16" }}
+              style={{ color: "var(--color-cds-status-green-text)", background: "var(--color-cds-status-green-fill)" }}
             >
               + Add label
             </button>
@@ -290,12 +290,12 @@ export function IssueTokenForm({ onIssued, pools, connections, routes, poolQuota
                     placeholder="key"
                     className="flex-1 rounded-md px-3 py-1.5 text-sm focus:outline-none"
                     style={{
-                      background: "#1f2937",
-                      border: "1px solid #374151",
-                      color: "#e5e7eb",
+                      background: "var(--color-cds-field)",
+                      border: "1px solid var(--color-cds-border)",
+                      color: "var(--color-cds-ink)",
                     }}
                   />
-                  <span style={{ color: "#4b5563" }}>:</span>
+                  <span style={{ color: "var(--color-cds-ink-muted)" }}>:</span>
                   <input
                     type="text"
                     value={l.value}
@@ -303,16 +303,16 @@ export function IssueTokenForm({ onIssued, pools, connections, routes, poolQuota
                     placeholder="value"
                     className="flex-1 rounded-md px-3 py-1.5 text-sm focus:outline-none"
                     style={{
-                      background: "#1f2937",
-                      border: "1px solid #374151",
-                      color: "#e5e7eb",
+                      background: "var(--color-cds-field)",
+                      border: "1px solid var(--color-cds-border)",
+                      color: "var(--color-cds-ink)",
                     }}
                   />
                   <button
                     type="button"
                     onClick={() => removeLabel(l.id)}
                     className="px-2 py-1.5 rounded text-xs transition-colors"
-                    style={{ color: "#ef4444", background: "#1c0a0a" }}
+                    style={{ color: "var(--color-cds-status-red-text)", background: "var(--color-cds-status-red-fill)" }}
                   >
                     ×
                   </button>
@@ -320,13 +320,13 @@ export function IssueTokenForm({ onIssued, pools, connections, routes, poolQuota
               ))}
             </div>
           )}
-          <p className="mt-2 text-xs" style={{ color: "#6b7280" }}>
+          <p className="mt-2 text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>
             Labels are fixed when the token is issued. Create a replacement token to change them.
           </p>
         </div>
 
         {error && (
-          <p className="text-xs px-3 py-2 rounded" style={{ color: "#fca5a5", background: "#1c0a0a" }}>
+          <p className="text-xs px-3 py-2 rounded" style={{ color: "var(--color-cds-status-red-text)", background: "var(--color-cds-status-red-fill)" }}>
             {error}
           </p>
         )}
@@ -335,8 +335,7 @@ export function IssueTokenForm({ onIssued, pools, connections, routes, poolQuota
           <button
             type="submit"
             disabled={submitting}
-            className="px-5 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
-            style={{ background: "#218E61", color: "white" }}
+            className="btn btn-primary btn-md"
           >
             {submitting ? "Issuing..." : "Issue Token"}
           </button>

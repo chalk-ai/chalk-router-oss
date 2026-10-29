@@ -53,23 +53,21 @@ export function ConfirmationModal({
         onKeyDown={(event) => {
           if (event.key === "Escape" && !confirming) onCancel();
         }}
-        className="w-full max-w-md rounded-lg p-6 shadow-2xl"
-        style={{ background: "#111827", border: "1px solid #7f1d1d" }}
+        className="w-full max-w-md rounded-cds-6 border border-cds-border-strong bg-cds-raised p-4 shadow-cds-m"
       >
-        <h2 id={titleId} className="text-base font-semibold text-white">
+        <h2 id={titleId} className="section-title !text-cds-ink-strong">
           {title}
         </h2>
-        <p id={descriptionId} className="mt-2 text-sm" style={{ color: "#d1d5db" }}>
+        <p id={descriptionId} className="mt-2 text-cds-md text-cds-ink-secondary">
           {description}
         </p>
-        <div className="mt-6 flex justify-end gap-3">
+        <div className="mt-4 flex justify-end gap-2">
           <button
             ref={cancelRef}
             type="button"
             disabled={confirming}
             onClick={onCancel}
-            className="rounded-md px-3 py-2 text-sm disabled:opacity-50"
-            style={{ background: "#1f2937", border: "1px solid #374151", color: "#e5e7eb" }}
+            className="btn btn-secondary btn-md"
           >
             Cancel
           </button>
@@ -77,8 +75,7 @@ export function ConfirmationModal({
             type="button"
             disabled={confirming}
             onClick={() => void onConfirm()}
-            className="rounded-md px-3 py-2 text-sm font-medium disabled:opacity-50"
-            style={{ background: "#b91c1c", color: "white" }}
+            className="btn btn-destructive btn-md"
           >
             {confirming ? "Working..." : confirmLabel}
           </button>

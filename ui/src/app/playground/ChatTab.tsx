@@ -24,27 +24,27 @@ function ChatBubble({
         style={{
           width: "28px",
           height: "28px",
-          background: role === "user" ? "#1e3a5f" : "#1a2e1a",
-          color: role === "user" ? "#93c5fd" : "#70CD96",
+          background: role === "user" ? "var(--color-cds-selected)" : "var(--color-cds-status-green-fill)",
+          color: role === "user" ? "var(--color-cds-ink-strong)" : "var(--color-cds-status-green-text)",
         }}
       >
         {role === "user" ? "U" : "A"}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-xs font-medium mb-1" style={{ color: "#6b7280" }}>
+        <div className="text-xs font-medium mb-1" style={{ color: "var(--color-cds-ink-subtle)" }}>
           {role === "user" ? "You" : "Assistant"}
         </div>
-        <div className="text-sm whitespace-pre-wrap break-words" style={{ color: "#d1d5db" }}>
+        <div className="text-sm whitespace-pre-wrap break-words" style={{ color: "var(--color-cds-ink-medium)" }}>
           {content}
           {streaming && (
             <span
               className="inline-block w-2 h-4 ml-0.5 animate-pulse"
-              style={{ background: "#70CD96" }}
+              style={{ background: "var(--color-cds-status-green-text)" }}
             />
           )}
         </div>
         {usage && (
-          <div className="mt-1 text-[11px]" style={{ color: "#4b5563" }}>
+          <div className="mt-1 text-[11px]" style={{ color: "var(--color-cds-ink-muted)" }}>
             {usage.promptTokens} prompt
             {usage.completionTokens !== undefined ? ` + ${usage.completionTokens} completion` : ""} ={" "}
             {usage.totalTokens} tokens
@@ -297,7 +297,7 @@ export default function ChatTab({
       <div className="flex items-center gap-3 mb-4 flex-wrap">
         <ModelSelect groups={modelGroups} value={model} onChange={setModel} />
         <div className="flex items-center gap-2">
-          <label className="text-xs" style={{ color: "#6b7280" }}>Temp</label>
+          <label className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>Temp</label>
           <input
             type="number"
             min={0}
@@ -308,11 +308,11 @@ export default function ChatTab({
             title={temperatureSupported ? undefined : "This model does not support temperature"}
             onChange={(e) => setTemperature(parseFloat(e.target.value) || 0)}
             className="text-sm rounded-md px-2 py-1.5 w-16 outline-none"
-            style={{ background: "#1f2937", border: "1px solid #374151", color: "#e5e7eb" }}
+            style={{ background: "var(--color-cds-field)", border: "1px solid var(--color-cds-border)", color: "var(--color-cds-ink)" }}
           />
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-xs" style={{ color: "#6b7280" }}>Max tokens</label>
+          <label className="text-xs" style={{ color: "var(--color-cds-ink-subtle)" }}>Max tokens</label>
           <input
             type="number"
             min={1}
@@ -321,13 +321,13 @@ export default function ChatTab({
             value={maxTokens}
             onChange={(e) => setMaxTokens(parseInt(e.target.value) || 2048)}
             className="text-sm rounded-md px-2 py-1.5 w-24 outline-none"
-            style={{ background: "#1f2937", border: "1px solid #374151", color: "#e5e7eb" }}
+            style={{ background: "var(--color-cds-field)", border: "1px solid var(--color-cds-border)", color: "var(--color-cds-ink)" }}
           />
         </div>
         <button
           onClick={clear}
           className="text-xs px-3 py-1.5 rounded-md transition-colors"
-          style={{ background: "#1f2937", color: "#9ca3af", border: "1px solid #374151" }}
+          style={{ background: "var(--color-cds-status-neutral-fill)", color: "var(--color-cds-ink-secondary)", border: "1px solid var(--color-cds-border-strong)" }}
         >
           Clear
         </button>
@@ -344,18 +344,18 @@ export default function ChatTab({
           }}
           placeholder="System prompt (optional)"
           className="w-full text-sm rounded-md px-3 py-2 outline-none"
-          style={{ background: "#1f2937", border: "1px solid #374151", color: "#e5e7eb" }}
+          style={{ background: "var(--color-cds-field)", border: "1px solid var(--color-cds-border)", color: "var(--color-cds-ink)" }}
         />
       </div>
 
       {/* Messages */}
       <div
         className="flex-1 min-h-0 overflow-y-auto rounded-lg mb-4 p-4 space-y-4"
-        style={{ background: "#0f172a", border: "1px solid #1f2937" }}
+        style={{ background: "var(--color-cds-elevated)", border: "1px solid var(--color-cds-border)" }}
       >
         {messages.length === 0 && (
           <div className="flex items-center justify-center h-full">
-            <p className="text-sm" style={{ color: "#4b5563" }}>
+            <p className="text-sm" style={{ color: "var(--color-cds-ink-muted)" }}>
               Send a message to start a conversation.
             </p>
           </div>
@@ -372,7 +372,7 @@ export default function ChatTab({
       {error && (
         <div
           className="mb-3 px-4 py-2 rounded-lg text-sm"
-          style={{ background: "#1c0a0a", border: "1px solid #7f1d1d", color: "#fca5a5" }}
+          style={{ background: "var(--color-cds-status-red-fill)", border: "1px solid var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}
         >
           {error}
         </div>
@@ -394,9 +394,9 @@ export default function ChatTab({
           disabled={!model || needsClear}
           className="flex-1 text-sm rounded-md px-4 py-2.5 outline-none"
           style={{
-            background: "#1f2937",
-            border: "1px solid #374151",
-            color: "#e5e7eb",
+            background: "var(--color-cds-field)",
+            border: "1px solid var(--color-cds-border)",
+            color: "var(--color-cds-ink)",
             opacity: model ? 1 : 0.5,
           }}
         />
@@ -404,7 +404,7 @@ export default function ChatTab({
           <button
             onClick={stop}
             className="px-5 py-2.5 text-sm font-medium rounded-md transition-colors"
-            style={{ background: "#7f1d1d", color: "#fca5a5" }}
+            style={{ background: "var(--color-cds-status-red-border)", color: "var(--color-cds-status-red-text)" }}
           >
             Stop
           </button>
@@ -414,8 +414,8 @@ export default function ChatTab({
             disabled={!input.trim() || !model || needsClear}
             className="px-5 py-2.5 text-sm font-medium rounded-md transition-colors"
             style={{
-              background: input.trim() && model ? "#065f46" : "#1f2937",
-              color: input.trim() && model ? "#70CD96" : "#4b5563",
+              background: input.trim() && model ? "var(--color-cds-primary)" : "var(--color-cds-status-neutral-fill)",
+              color: input.trim() && model ? "white" : "var(--color-cds-ink-muted)",
             }}
           >
             Send

@@ -1,0 +1,2 @@
+- The admin UI now matches the Chalk dashboard: an icon rail with breadcrumbs in place of the sidebar, Inter and JetBrains Mono type, and the dashboard's colors, buttons, inputs, badges, and tables.
+- The sign-in page and the Sign out control follow the same design.
