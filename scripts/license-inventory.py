@@ -44,7 +44,10 @@ def inventory():
     ui = npm_inventory('ui/package-lock.json')
     docs_npm = npm_inventory('docs-site/package-lock.json')
     docs_rust = rust_inventory('docs-site/tools/schema-source/Cargo.toml')
-    inputs = ['LICENSE', 'Cargo.toml', 'Cargo.lock', 'ui/package.json', 'ui/package-lock.json',
+    inputs = ['vendor/chalk-federated-auth/Cargo.toml', 'vendor/chalk-federated-auth/LICENSE',
+              'vendor/chalk-federated-auth/PROVENANCE.md', 'proto/chalk/auth/LICENSE',
+              'proto/chalk/auth/PROVENANCE.md', 'proto/chalk/utils/LICENSE',
+              'proto/chalk/utils/PROVENANCE.md', 'LICENSE', 'Cargo.toml', 'Cargo.lock', 'ui/package.json', 'ui/package-lock.json',
               'vendor/reqsign-google/Cargo.toml', 'vendor/reqsign-google/LICENSE',
               'vendor/reqsign-google/NOTICE', 'docs-site/package.json',
               'docs-site/package-lock.json', 'docs-site/tools/schema-source/Cargo.toml',

@@ -17,7 +17,7 @@ for (const [path,$] of pages) {
     if (!value || /^(mailto:|tel:|data:|javascript:)/.test(value)) continue;
     let target;
     try { target = new URL(value,url); } catch { problems.add(`${relative(dist,path)}: invalid URL ${value}`); continue; }
-    if (target.hostname === 'github.com' && target.pathname.startsWith('/chalk-ai/chalk-router/blob/main/')) {
+    if (target.hostname === 'github.com' && target.pathname.startsWith('/chalk-ai/chalk-router-oss/blob/main/')) {
       const sourcePath = resolve(repo,decodeURIComponent(target.pathname.split('/blob/main/')[1]));
       if (!sourcePath.startsWith(repo+'/') || !existsSync(sourcePath)) problems.add(`Missing repository source: ${value}`);
       else if (/^#L\d+$/.test(target.hash) && Number(target.hash.slice(2)) > readFileSync(sourcePath,'utf8').split('\n').length) problems.add(`Source line out of range: ${value}`);

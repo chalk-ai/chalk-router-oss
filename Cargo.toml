@@ -66,10 +66,10 @@ sha2 = "0.10"
 hmac = "0.12"
 base64 = "0.22.1"
 # RS256 signing for the GCP service-account JWT-bearer grant (backend::gcp_auth).
-jsonwebtoken = "9"
+jsonwebtoken = { version = "10.3", features = ["aws_lc_rs"] }
 aes-gcm = "0.10"
 rand = "0.8"
-chalk-federated-auth = { git = "https://github.com/chalk-ai/chalk-federated-auth", branch = "main" }
+chalk-federated-auth = { path = "vendor/chalk-federated-auth" }
 fieldmask = { version = "0.2", features = ["prost"] }
 
 [build-dependencies]
@@ -100,7 +100,7 @@ test = false
 
 [dev-dependencies]
 opentelemetry-proto = { version = "0.27", default-features = false, features = ["gen-tonic", "trace"] }
-jsonwebtoken = "9"
+jsonwebtoken = { version = "10.3", features = ["aws_lc_rs"] }
 tokio = { version = "1", features = ["test-util"] }
 tokio-test = "0.4"
 http-body-util = "0.1"

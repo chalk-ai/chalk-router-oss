@@ -1,0 +1,1 @@
+- Builds include the authorized Apache-2.0 authentication library and Chalk protobuf definitions without fetching private authentication source.
