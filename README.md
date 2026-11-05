@@ -66,6 +66,14 @@ VS Code, and Cursor setup and verification.
 See [tracing and telemetry](docs/tracing.md) for OpenInference spans, content
 logging, storage limits, client span ingestion, OTLP, and Braintrust.
 
+## Public model prices
+
+The current-price catalog is published as
+[`prices/rate_cards.json`](https://raw.githubusercontent.com/chalk-ai/chalk-router-oss/main/prices/rate_cards.json)
+for routers that support schema-v4 startup and periodic refresh. See
+[the catalog guide](prices/README.md) for units, unknown-rate semantics, and
+reviewed updates from LiteLLM.
+
 ## Building & running
 
 ### Prerequisites

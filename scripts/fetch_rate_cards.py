@@ -4,41 +4,18 @@
 # requires-python = ">=3.12"
 # dependencies = ["httpx"]
 # ///
-"""Refresh prices/rate_cards/ from the upstream price database.
+"""Refresh prices/rate_cards.json from LiteLLM's public price map.
 
-The router prices every request it proxies and records the result as
-`llm.cost.*`. Those prices have to come from somewhere auditable, and they
-change: a model gets cheaper, a cache tier is introduced, a model is retired.
-The catalog is sharded by provider and keeps a sparse history per model: a new
-revision is written only when that model's prices change, and a `null` revision
-records its removal. Each model and its complete history occupy one line so a
-reviewer can scan or diff a provider without walking a single generated file.
-
-Why history rather than one table:
-
-  * A span from June has to be priceable at June's rates. Overwriting a table
-    silently re-prices the past every time a vendor changes a number, and any
-    cost trend computed across the change becomes meaningless.
-  * Looking up historical prices is still direct: find the model, then binary
-    search its usually tiny revision list. No global update log is replayed.
-
-Re-running when nothing has changed is a true no-op: it does not append a
-version or rewrite a verification timestamp. `--check` compares the materialized
-current catalog and also requires the latest schema.
-
-Usage:
-
-    scripts/fetch_rate_cards.py            # refresh in place
-    scripts/fetch_rate_cards.py --check    # exit 1 if a refresh would change
-                                           # anything; for CI staleness checks
+Writes a complete current-price catalog for review, embedding, and public hosting.
+Unchanged content is a no-op. --check reports changes without writing.
 """
 
 from __future__ import annotations
 
 import argparse
-import datetime as dt
-import hashlib
 import json
+import math
+import os
 import pathlib
 import sys
 import tempfile
@@ -48,7 +25,7 @@ import httpx
 
 # LiteLLM's database is the only machine-readable, broadly-maintained source for
 # this; the providers publish prices as HTML marketing pages. Pinned to a raw URL
-# and hashed on every fetch so a card always records exactly what it came from.
+# and transformed deterministically into the router's current-price schema.
 SOURCE_URL = (
     "https://raw.githubusercontent.com/BerriAI/litellm/main/"
     "model_prices_and_context_window.json"
@@ -123,10 +100,13 @@ PER_MTOK = 1_000_000
 DECIMALS = 6
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
-RATE_CARDS_DIR = REPO_ROOT / "prices" / "rate_cards"
-MANIFEST = RATE_CARDS_DIR / "manifest.json"
-LEGACY_RATE_CARDS = REPO_ROOT / "prices" / "rate_cards.json"
-SCHEMA_VERSION = 3
+RATE_CARDS = REPO_ROOT / "prices" / "rate_cards.json"
+SCHEMA_VERSION = 4
+RATE_FIELDS = {
+    "input_per_mtok", "output_per_mtok", "cache_read_per_mtok", "cache_write_per_mtok",
+    "input_per_image_usd", "output_per_image_usd", "input_per_mpixel", "output_per_mpixel",
+    "input_image_per_mtok", "output_image_per_mtok",
+}
 
 
 def _per_mtok(per_token: float | int | None) -> float | None:
@@ -233,261 +213,59 @@ def normalize(raw: dict[str, Any]) -> dict[str, dict[str, float]]:
     return dict(sorted(models.items()))
 
 
-def sparse_history(full_snapshots: dict[str, Any]) -> dict[str, Any]:
-    """Convert schema v1 full snapshots into model-centric sparse histories."""
-    versions: list[dict[str, Any]] = []
-    histories: dict[str, list[list[Any]]] = {}
-    previous: dict[str, dict[str, float]] = {}
-    missing = object()
 
-    for version_index, card in enumerate(full_snapshots.get("cards", [])):
-        effective_from = card["effective_from"]
-        versions.append(
-            {
-                "effective_from": effective_from,
-                "last_verified_at": card["last_verified_at"],
-                "source": card["source"],
-            }
-        )
-        current = card["models"]
-        for model in sorted(set(previous) | set(current)):
-            old_prices = previous.get(model, missing)
-            new_prices = current.get(model, missing)
-            if old_prices == new_prices:
-                continue
-            histories.setdefault(model, []).append(
-                [version_index, None if new_prices is missing else new_prices]
-            )
-        previous = current
-
-    return {
-        "schema_version": SCHEMA_VERSION,
-        "versions": versions,
-        "models": dict(sorted(histories.items())),
-    }
-
-
-def load_existing() -> tuple[dict[str, Any], bool]:
-    """Load the sharded catalog, migrating either legacy monolithic schema."""
-    if MANIFEST.exists():
-        manifest = json.loads(MANIFEST.read_text())
-        schema_version = manifest.get("schema_version")
-        if schema_version != SCHEMA_VERSION:
-            raise SystemExit(
-                f"{MANIFEST} is schema_version {schema_version}, "
-                f"this script writes {SCHEMA_VERSION}"
-            )
-
-        providers = manifest.get("providers", [])
-        if providers != sorted(set(providers)):
-            raise SystemExit("provider shards in manifest must be unique and sorted")
-
-        models: dict[str, list[list[Any]]] = {}
-        for provider in providers:
-            if provider not in PROVIDERS:
-                raise SystemExit(f"unsupported provider shard in manifest: {provider}")
-            shard_path = RATE_CARDS_DIR / f"{provider}.json"
-            shard = json.loads(shard_path.read_text())
-            if shard.get("provider") != provider:
-                raise SystemExit(
-                    f"{shard_path} declares provider {shard.get('provider')!r}"
-                )
-            for model, revisions in shard.get("models", {}).items():
-                models[f"{provider}/{model}"] = revisions
-
-        return {
-            "schema_version": SCHEMA_VERSION,
-            "versions": manifest["versions"],
-            "models": dict(sorted(models.items())),
-        }, False
-
-    if LEGACY_RATE_CARDS.exists():
-        document = json.loads(LEGACY_RATE_CARDS.read_text())
-        schema_version = document.get("schema_version")
-        if schema_version == 1:
-            return sparse_history(document), True
-        if schema_version == 2:
-            document["schema_version"] = SCHEMA_VERSION
-            return document, True
-        raise SystemExit(
-            f"{LEGACY_RATE_CARDS} is schema_version {schema_version}, "
-            f"this script writes {SCHEMA_VERSION}"
-        )
-
-    return {"schema_version": SCHEMA_VERSION, "versions": [], "models": {}}, False
-
-
-def models_by_provider(
-    models: dict[str, list[list[Any]]],
-) -> dict[str, dict[str, list[list[Any]]]]:
-    shards: dict[str, dict[str, list[list[Any]]]] = {}
-    for key, revisions in models.items():
+def render_catalog(models: dict[str, dict[str, float]]) -> str:
+    if not models:
+        raise ValueError("catalog must contain priced models")
+    lines = ["{", f'  "schema_version": {SCHEMA_VERSION},', '  "models": {']
+    items = sorted(models.items())
+    for index, (key, prices) in enumerate(items):
         provider, separator, model = key.partition("/")
-        if not separator or provider not in PROVIDERS:
+        if not separator or not provider or not model or any(c.isspace() for c in key):
             raise ValueError(f"invalid rate-card model key: {key}")
-        shards.setdefault(provider, {})[model] = revisions
-    return {
-        provider: dict(sorted(provider_models.items()))
-        for provider, provider_models in sorted(shards.items())
-    }
+        if not prices or not set(prices).issubset(RATE_FIELDS):
+            raise ValueError(f"invalid rate fields for {key}")
+        if any(isinstance(rate, bool) or not isinstance(rate, (int, float)) or
+               not math.isfinite(rate) or rate < 0 for rate in prices.values()):
+            raise ValueError(f"invalid rate for {key}")
+        comma = "," if index + 1 < len(items) else ""
+        lines.append(f"    {json.dumps(key)}: {json.dumps(prices, sort_keys=True)}{comma}")
+    return "\n".join([*lines, "  }", "}", ""])
 
 
-def render_manifest(document: dict[str, Any], providers: list[str]) -> str:
-    manifest = {
-        "schema_version": SCHEMA_VERSION,
-        "versions": document["versions"],
-        "providers": providers,
-    }
-    return json.dumps(manifest, indent=2, sort_keys=False) + "\n"
-
-
-def render_provider_shard(
-    provider: str, models: dict[str, list[list[Any]]]
-) -> str:
-    """Render one complete model history per physical line."""
-    lines = ["{", f'  "provider": {json.dumps(provider)},', '  "models": {']
-    entries = list(models.items())
-    for index, (model, revisions) in enumerate(entries):
-        comma = "," if index + 1 < len(entries) else ""
-        lines.append(
-            f"    {json.dumps(model)}: "
-            f"{json.dumps(revisions, separators=(', ', ': '))}{comma}"
-        )
-    lines.extend(["  }", "}"])
-    return "\n".join(lines) + "\n"
-
-
-def write_document(document: dict[str, Any]) -> None:
-    shards = models_by_provider(document["models"])
-    providers = list(shards)
-    rendered = {
-        "manifest.json": render_manifest(document, providers),
-        **{
-            f"{provider}.json": render_provider_shard(provider, models)
-            for provider, models in shards.items()
-        },
-    }
-
-    # The first schema-v3 write replaces the old file with a directory. Build
-    # every shard before removing the legacy file so a rendering failure leaves
-    # the checked-in catalog untouched.
-    if LEGACY_RATE_CARDS.exists():
-        temporary = pathlib.Path(
-            tempfile.mkdtemp(prefix=".rate-cards-", dir=RATE_CARDS_DIR.parent)
-        )
-        for filename, contents in rendered.items():
-            (temporary / filename).write_text(contents)
-        LEGACY_RATE_CARDS.unlink()
-        temporary.rename(RATE_CARDS_DIR)
-        return
-
-    RATE_CARDS_DIR.mkdir(parents=True, exist_ok=True)
-    for filename, contents in rendered.items():
-        path = RATE_CARDS_DIR / filename
-        if not path.exists() or path.read_text() != contents:
-            path.write_text(contents)
-
-    expected = set(rendered)
-    for provider in PROVIDERS:
-        filename = f"{provider}.json"
-        path = RATE_CARDS_DIR / filename
-        if filename not in expected and path.exists():
-            path.unlink()
-
-
-def catalog_is_current(document: dict[str, Any], models: dict[str, Any]) -> bool:
-    return current_models(document) == models
-
-
-def current_models(document: dict[str, Any]) -> dict[str, dict[str, float]]:
-    return {
-        model: revisions[-1][1]
-        for model, revisions in document.get("models", {}).items()
-        if revisions and revisions[-1][1] is not None
-    }
-
-
-def append_version(
-    document: dict[str, Any],
-    models: dict[str, dict[str, float]],
-    effective_from: str,
-    digest: str,
-) -> tuple[int, int, int]:
-    previous = current_models(document)
-    added = sorted(set(models) - set(previous))
-    removed = sorted(set(previous) - set(models))
-    changed = sorted(
-        model
-        for model in set(models) & set(previous)
-        if models[model] != previous[model]
-    )
-
-    version_index = len(document["versions"])
-    document["versions"].append(
-        {
-            "effective_from": effective_from,
-            "last_verified_at": effective_from,
-            "source": {"url": SOURCE_URL, "sha256": digest},
-        }
-    )
-    histories = document["models"]
-    for model in added + changed:
-        histories.setdefault(model, []).append([version_index, models[model]])
-    for model in removed:
-        histories[model].append([version_index, None])
-    document["models"] = dict(sorted(histories.items()))
-    return len(changed), len(added), len(removed)
+def write_catalog(contents: str, check: bool = False) -> bool:
+    """Atomic complete replacement; return whether the file already matched."""
+    if RATE_CARDS.exists() and RATE_CARDS.read_text() == contents:
+        return True
+    if check:
+        return False
+    RATE_CARDS.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", dir=RATE_CARDS.parent,
+                                         prefix=".rate-cards-", delete=False) as target:
+            temporary = pathlib.Path(target.name)
+            target.write(contents)
+        os.replace(temporary, RATE_CARDS)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+    return False
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--check",
-        action="store_true",
-        help="exit 1 if refreshing would change the file, without writing",
-    )
+    parser.add_argument("--check", action="store_true", help="report changes without writing")
     args = parser.parse_args()
-
     response = httpx.get(SOURCE_URL, timeout=60.0, follow_redirects=True)
     response.raise_for_status()
-    payload = response.content
-    digest = hashlib.sha256(payload).hexdigest()
-    models = normalize(json.loads(payload))
-    if not models:
-        raise SystemExit("upstream yielded no priced models; refusing to write")
-
-    now = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
-    document, migrated = load_existing()
-
-    if args.check:
-        if not migrated and catalog_is_current(document, models):
-            print("rate card catalog is up to date")
-            return 0
+    models = normalize(response.json())
+    contents = render_catalog(models)
+    unchanged = write_catalog(contents, check=args.check)
+    if args.check and not unchanged:
         print("rate card catalog is stale", file=sys.stderr)
         return 1
-
-    if catalog_is_current(document, models):
-        if not migrated:
-            print(
-                f"{RATE_CARDS_DIR.relative_to(REPO_ROOT)}/: "
-                f"unchanged; {len(models)} models"
-            )
-            return 0
-        action = f"converted to provider shards; {len(models)} current models"
-    else:
-        changed, added, removed = append_version(
-            document, models, now, digest
-        )
-        if len(document["versions"]) == 1:
-            action = f"created sparse history with {added} models"
-        else:
-            action = (
-                f"appended version: {changed} changed, "
-                f"{added} added, {removed} removed"
-            )
-
-    write_document(document)
-    print(f"{RATE_CARDS_DIR.relative_to(REPO_ROOT)}/: {action}")
+    print(f"{RATE_CARDS.name}: {'unchanged' if unchanged else 'updated'}; {len(models)} models")
     return 0
 
 

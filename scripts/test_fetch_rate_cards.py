@@ -5,15 +5,7 @@ import unittest
 from unittest.mock import patch
 
 from scripts import fetch_rate_cards
-from scripts.fetch_rate_cards import (
-    append_version,
-    catalog_is_current,
-    current_models,
-    models_by_provider,
-    normalize,
-    render_provider_shard,
-    sparse_history,
-)
+from scripts.fetch_rate_cards import normalize, render_catalog, write_catalog
 
 
 def priced(provider: str, **extra: float) -> dict[str, object]:
@@ -200,176 +192,49 @@ class NormalizeTest(unittest.TestCase):
         self.assertNotIn("openai/image-test", models)
 
 
-class CheckModeTest(unittest.TestCase):
-    def test_catalog_check_materializes_the_latest_model_revisions(self) -> None:
-        models = {"openai/gpt-test": {"input_per_mtok": 1.0}}
-        document = {
-            "schema_version": 3,
-            "versions": [
-                {
-                    "effective_from": "2020-01-01T00:00:00+00:00",
-                    "last_verified_at": "2020-01-01T00:00:00+00:00",
-                }
-            ],
-            "models": {
-                "openai/gpt-test": [[0, {"input_per_mtok": 1.0}]]
-            },
-        }
+class CatalogTest(unittest.TestCase):
+    def test_checked_in_catalog_is_valid_and_deterministically_rendered(self):
+        contents = fetch_rate_cards.RATE_CARDS.read_text()
+        document = json.loads(contents)
+        self.assertEqual(document["schema_version"], 4)
+        self.assertEqual(render_catalog(document["models"]), contents)
 
-        self.assertTrue(catalog_is_current(document, models))
-        self.assertFalse(catalog_is_current(document, {"openai/other": {}}))
+    def test_render_current_prices_preserves_zero_missing_rates_and_paths(self):
+        models = {"openrouter/anthropic/claude": {"input_per_mtok": 0.0}}
+        document = json.loads(render_catalog(models))
+        self.assertEqual(document, {"schema_version": 4, "models": models})
+        self.assertNotIn("output_per_mtok", document["models"]["openrouter/anthropic/claude"])
 
-    def test_full_snapshots_convert_to_sparse_changes_and_tombstones(self) -> None:
-        document = sparse_history(
-            {
-                "schema_version": 1,
-                "cards": [
-                    {
-                        "effective_from": "2020-01-01T00:00:00+00:00",
-                        "last_verified_at": "2020-01-02T00:00:00+00:00",
-                        "source": {"url": "source", "sha256": "one"},
-                        "models": {
-                            "openai/changed": {"input_per_mtok": 1.0},
-                            "openai/removed": {"input_per_mtok": 2.0},
-                            "openai/unchanged": {"input_per_mtok": 3.0},
-                        },
-                    },
-                    {
-                        "effective_from": "2020-02-01T00:00:00+00:00",
-                        "last_verified_at": "2020-02-01T00:00:00+00:00",
-                        "source": {"url": "source", "sha256": "two"},
-                        "models": {
-                            "openai/added": {"input_per_mtok": 4.0},
-                            "openai/changed": {"input_per_mtok": 5.0},
-                            "openai/unchanged": {"input_per_mtok": 3.0},
-                        },
-                    },
-                ],
-            }
-        )
+    def test_rejects_invalid_catalog_before_publication(self):
+        for models in [{}, {"bare": {"input_per_mtok": 1}},
+                       {"/a": {"input_per_mtok": 1}}, {"a/": {"input_per_mtok": 1}},
+                       {"a/b": {}}, {"a/b": {"typo": 1}},
+                       *({"a/b": {"input_per_mtok": rate}} for rate in [-1, float("nan"), float("inf"), True])]:
+            with self.assertRaises(ValueError):
+                render_catalog(models)
 
-        self.assertEqual(document["schema_version"], 3)
-        self.assertEqual(len(document["versions"]), 2)
-        self.assertEqual(len(document["models"]["openai/unchanged"]), 1)
-        self.assertEqual(document["models"]["openai/removed"][-1], [1, None])
-        self.assertEqual(
-            current_models(document),
-            {
-                "openai/added": {"input_per_mtok": 4.0},
-                "openai/changed": {"input_per_mtok": 5.0},
-                "openai/unchanged": {"input_per_mtok": 3.0},
-            },
-        )
-
-    def test_new_version_appends_only_changed_models(self) -> None:
-        document = {
-            "schema_version": 3,
-            "versions": [
-                {
-                    "effective_from": "2020-01-01T00:00:00+00:00",
-                    "last_verified_at": "2020-01-01T00:00:00+00:00",
-                }
-            ],
-            "models": {
-                "openai/changed": [[0, {"input_per_mtok": 1.0}]],
-                "openai/unchanged": [[0, {"input_per_mtok": 2.0}]],
-            },
-        }
-
-        counts = append_version(
-            document,
-            {
-                "openai/added": {"input_per_mtok": 3.0},
-                "openai/changed": {"input_per_mtok": 4.0},
-                "openai/unchanged": {"input_per_mtok": 2.0},
-            },
-            "2020-02-01T00:00:00+00:00",
-            "digest",
-        )
-
-        self.assertEqual(counts, (1, 1, 0))
-        self.assertEqual(len(document["models"]["openai/unchanged"]), 1)
-        self.assertEqual(len(document["models"]["openai/changed"]), 2)
-        self.assertEqual(len(document["models"]["openai/added"]), 1)
-
-    def test_provider_shards_drop_only_the_provider_prefix(self) -> None:
-        shards = models_by_provider(
-            {
-                "gemini/models/gemini-test": [[0, {"input_per_mtok": 1.0}]],
-                "openrouter/anthropic/claude-test": [
-                    [0, {"input_per_mtok": 2.0}]
-                ],
-            }
-        )
-
-        self.assertEqual(
-            set(shards["gemini"]),
-            {"models/gemini-test"},
-        )
-        self.assertEqual(
-            set(shards["openrouter"]),
-            {"anthropic/claude-test"},
-        )
-
-    def test_provider_shard_renders_each_model_history_on_one_line(self) -> None:
-        rendered = render_provider_shard(
-            "openai",
-            {
-                "changed": [
-                    [0, {"input_per_mtok": 1.0}],
-                    [2, {"input_per_mtok": 2.0}],
-                ],
-                "removed": [[0, {"input_per_mtok": 3.0}], [1, None]],
-            },
-        )
-
-        model_lines = [line for line in rendered.splitlines() if line.startswith("    \"")]
-        self.assertEqual(len(model_lines), 2)
-        self.assertIn(
-            '"changed": [[0, {"input_per_mtok": 1.0}], '
-            '[2, {"input_per_mtok": 2.0}]]',
-            model_lines[0],
-        )
-        self.assertIn(
-            '"removed": [[0, {"input_per_mtok": 3.0}], [1, null]]',
-            model_lines[1],
-        )
-
-    def test_monolith_migrates_to_provider_shards_without_changing_history(self) -> None:
-        legacy_document = {
-            "schema_version": 2,
-            "versions": [
-                {"effective_from": "2020-01-01T00:00:00+00:00"},
-                {"effective_from": "2020-02-01T00:00:00+00:00"},
-            ],
-            "models": {
-                "gemini/models/gemini-test": [
-                    [0, {"input_per_mtok": 1.0}]
-                ],
-                "openai/removed": [[0, {"input_per_mtok": 2.0}], [1, None]],
-            },
-        }
+    def test_noop_check_mode_and_atomic_replacement(self):
         with tempfile.TemporaryDirectory() as temporary:
-            root = pathlib.Path(temporary)
-            legacy = root / "rate_cards.json"
-            directory = root / "rate_cards"
-            legacy.write_text(json.dumps(legacy_document))
-
-            with (
-                patch.object(fetch_rate_cards, "LEGACY_RATE_CARDS", legacy),
-                patch.object(fetch_rate_cards, "RATE_CARDS_DIR", directory),
-                patch.object(fetch_rate_cards, "MANIFEST", directory / "manifest.json"),
-            ):
-                document, migrated = fetch_rate_cards.load_existing()
-                self.assertTrue(migrated)
-                fetch_rate_cards.write_document(document)
-                loaded, migrated = fetch_rate_cards.load_existing()
-
-            self.assertFalse(migrated)
-            self.assertFalse(legacy.exists())
-            self.assertEqual(loaded, document)
-            self.assertTrue((directory / "gemini.json").exists())
-            self.assertTrue((directory / "openai.json").exists())
+            path = pathlib.Path(temporary) / "rate_cards.json"
+            with patch.object(fetch_rate_cards, "RATE_CARDS", path):
+                original = render_catalog({"openai/a": {"input_per_mtok": 1}})
+                updated = render_catalog({"openai/b": {"input_per_mtok": 0}})
+                self.assertFalse(write_catalog(original, check=True))
+                self.assertFalse(path.exists())
+                self.assertFalse(write_catalog(original))
+                mtime = path.stat().st_mtime_ns
+                self.assertTrue(write_catalog(original))
+                self.assertEqual(path.stat().st_mtime_ns, mtime)
+                self.assertFalse(write_catalog(updated, check=True))
+                self.assertEqual(path.read_text(), original)
+                with patch.object(fetch_rate_cards.os, "replace", side_effect=OSError("failed")):
+                    with self.assertRaises(OSError):
+                        write_catalog(updated)
+                self.assertEqual(path.read_text(), original)
+                self.assertEqual(list(path.parent.iterdir()), [path])
+                self.assertFalse(write_catalog(updated))
+                self.assertEqual(path.read_text(), updated)
+                self.assertTrue(write_catalog(updated, check=True))
 
 
 if __name__ == "__main__":
