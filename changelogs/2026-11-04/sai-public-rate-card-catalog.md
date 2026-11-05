@@ -1,0 +1,1 @@
+- A public current-price catalog is available for router startup and periodic pricing refreshes, with a reviewable update command.
