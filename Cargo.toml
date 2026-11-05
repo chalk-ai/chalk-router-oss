@@ -43,7 +43,7 @@ moka = { version = "0.12", features = ["future"] }
 redis = { version = "0.27", default-features = false, features = ["tokio-comp", "connection-manager"] }
 sqlx = { version = "0.9.0", features = ["runtime-tokio", "tls-rustls-ring-webpki", "postgres", "chrono", "uuid", "json", "migrate"] }
 opentelemetry = { version = "0.27", features = ["trace"] }
-opentelemetry_sdk = { version = "0.27", features = ["rt-tokio"] }
+opentelemetry_sdk = { version = "0.32", features = ["rt-tokio"] }
 opentelemetry-otlp = { version = "0.27", features = ["default", "grpc-tonic", "http-proto", "reqwest-client", "trace", "tls", "tls-roots"] }
 # OTLP protobuf encoding for the Braintrust span exporter, which posts the body
 # itself (see `telemetry::braintrust` for why it can't use opentelemetry-otlp's
@@ -104,7 +104,7 @@ jsonwebtoken = { version = "10.3", features = ["aws_lc_rs"] }
 tokio = { version = "1", features = ["test-util"] }
 tokio-test = "0.4"
 http-body-util = "0.1"
-opentelemetry_sdk = { version = "0.27", features = ["testing", "trace", "rt-tokio"] }
+opentelemetry_sdk = { version = "0.32", features = ["testing", "trace", "rt-tokio"] }
 opentelemetry = { version = "0.27", features = ["trace"] }
 tracing-opentelemetry = "0.28"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
