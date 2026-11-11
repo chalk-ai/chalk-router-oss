@@ -1,0 +1,37 @@
+name: Update rate cards
+
+on:
+  schedule:
+    - cron: '17 8 * * *' # Daily at 08:17 UTC.
+  workflow_dispatch:
+
+# The bot credential is provided only to the final PR step. Ordinary CI stays read-only.
+permissions:
+  contents: read
+
+concurrency:
+  group: rate-card-updates
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.repository == 'chalk-ai/chalk-router-oss' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install httpx==0.28.1
+      - name: Test catalog generation and PR updates
+        run: python -m unittest scripts.test_fetch_rate_cards scripts.test_update_rate_cards_pr -v
+      - name: Fetch current prices
+        run: python scripts/fetch_rate_cards.py
+      - name: Open or update the rate-card PR
+        env:
+          GH_TOKEN: ${{ secrets.RATE_CARD_GITHUB_TOKEN }}
+        run: python -m scripts.update_rate_cards_pr

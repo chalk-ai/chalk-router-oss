@@ -73,6 +73,8 @@ The current-price catalog is published as
 for routers that support schema-v4 startup and periodic refresh. See
 [the catalog guide](prices/README.md) for units, unknown-rate semantics, and
 reviewed updates from LiteLLM.
+See [scheduled rate-card updates](docs/rate-card-updates.md) to enable daily
+update PRs and configure the bot credential.
 
 ## Building & running
 

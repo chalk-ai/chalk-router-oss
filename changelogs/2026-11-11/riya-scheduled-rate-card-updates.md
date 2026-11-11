@@ -1,0 +1,1 @@
+- Model price changes can be proposed daily for review before updating the public rate-card catalog.

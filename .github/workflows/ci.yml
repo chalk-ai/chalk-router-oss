@@ -60,8 +60,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install httpx==0.28.1
-      - name: Validate current catalog and generator without fetching upstream prices
-        run: python -m unittest scripts.test_fetch_rate_cards -v
+      - name: Validate current catalog, generator, and PR updater without fetching upstream prices
+        run: python -m unittest scripts.test_fetch_rate_cards scripts.test_update_rate_cards_pr -v
 
   ui:
     runs-on: ubuntu-24.04
