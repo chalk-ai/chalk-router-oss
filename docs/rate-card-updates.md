@@ -1,9 +1,19 @@
 # Scheduled rate-card updates
 
 The `Update rate cards` GitHub Actions workflow checks LiteLLM daily at 08:17 UTC.
-It uses the existing `scripts/fetch_rate_cards.py` generator to produce the
-schema-v4 `prices/rate_cards.json` catalog used by the router. The generator and
-PR helper are tested before each fetch; malformed prices fail the run.
+It uses two jobs on separate GitHub-hosted runners:
+
+- **Generate:** run the offline tests, install the generator's fully pinned,
+  hash-checked dependencies, fetch LiteLLM prices, and upload only the schema-v4
+  `prices/rate_cards.json` as an artifact. This job has no bot credential.
+- **Publish:** check out trusted code at the same workflow commit, download the
+  JSON outside the checkout, validate it again, then open or update the PR. This
+  job installs no Python dependencies and runs with site-packages disabled
+  (`python -S`). Only this job receives the bot credential.
+
+The jobs share catalog data, not Python installations, generated code, or runner
+environment changes. The PR helper reuses the generator's standard-library
+validation; `httpx` is imported only when actually fetching prices.
 
 If prices changed, `scripts/update_rate_cards_pr.py` pushes only that JSON file
 to `automation/update-rate-cards` and opens a PR against `main`. Later runs update
@@ -32,8 +42,8 @@ separate synchronization step.
 
 The workflow's built-in `GITHUB_TOKEN` stays read-only. A separate bot credential
 allows PR creation and pushes to trigger the normal PR checks. It is passed only
-to the final PR step, after the generator and tests finish, and is never stored
-in a remote URL. If your organization uses a GitHub App instead, mint an
+to the final PR step on the separate publishing runner, and is never stored in a
+remote URL. If your organization uses a GitHub App instead, mint an
 installation token in the workflow and pass that token as `GH_TOKEN` to this step.
 See GitHub's [workflow trigger documentation](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow).
 
@@ -43,22 +53,27 @@ storage, and needs no Buildkite pipeline.
 
 ## Local validation
 
-With Python 3.12 and `httpx==0.28.1` installed, run:
+With Python 3.12, run the tests without third-party packages:
 
 ```sh
-python -m unittest scripts.test_fetch_rate_cards scripts.test_update_rate_cards_pr -v
+python -S -m unittest scripts.test_fetch_rate_cards scripts.test_update_rate_cards_pr -v
 ```
 
-The PR-helper tests use temporary local Git repositories and a fake `gh` command;
-they never contact GitHub or require credentials. They cover repeated runs,
-updates to an existing PR, recovery after a push, and concurrent branch edits.
+The PR-helper tests use temporary local Git repositories and a fake `gh` command.
+Global and system Git configs are disabled before setup, and network transports
+are blocked by default. Authentication tests explicitly permit HTTP to a local
+loopback server running Git's real HTTP backend, which challenges pushes and
+exercises the configured credential helper. No test contacts GitHub or requires
+real credentials. Tests also check PR filters, repeated runs, recovery after a
+push, concurrent branch edits, and catalog artifact validation.
 
 To inspect a real generated update locally without pushing or opening a PR:
 
 ```sh
 git fetch origin main
+python -m pip install --require-hashes --only-binary=:all: -r scripts/requirements-rate-cards.txt
 python scripts/fetch_rate_cards.py
-python -m scripts.update_rate_cards_pr --dry-run
+python -S -m scripts.update_rate_cards_pr --dry-run
 git diff -- prices/rate_cards.json
 ```
 
@@ -66,3 +81,11 @@ The generator writes the local catalog; `--dry-run` compares it with the local
 `origin/main` ref and makes no network requests or GitHub changes. Running the
 helper without `--dry-run` requires `GH_TOKEN` and publishes to the canonical
 repository, so use the workflow for normal operation.
+
+To update the generator's dependencies, edit `scripts/requirements-rate-cards.in`
+and regenerate the lock file for review:
+
+```sh
+uv pip compile --python-version 3.12 --generate-hashes --no-header --no-annotate \
+  scripts/requirements-rate-cards.in -o scripts/requirements-rate-cards.txt
+```

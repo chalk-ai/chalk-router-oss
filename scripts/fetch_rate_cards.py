@@ -21,8 +21,6 @@ import sys
 import tempfile
 from typing import Any
 
-import httpx
-
 # LiteLLM's database is the only machine-readable, broadly-maintained source for
 # this; the providers publish prices as HTML marketing pages. Pinned to a raw URL
 # and transformed deterministically into the router's current-price schema.
@@ -257,6 +255,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="report changes without writing")
     args = parser.parse_args()
+    # Catalog validation is also used by the dependency-free PR publishing job.
+    import httpx
+
     response = httpx.get(SOURCE_URL, timeout=60.0, follow_redirects=True)
     response.raise_for_status()
     models = normalize(response.json())

@@ -66,7 +66,7 @@ def pr_body(before: dict, after: dict) -> str:
     )
 
 
-def write_branch(root: Path, base: str, contents: str, expected_sha: str) -> None:
+def write_branch(root: Path, base: str, contents: str, expected_sha: str, remote_url: str) -> None:
     with tempfile.TemporaryDirectory(prefix="rate-card-update-") as directory:
         checkout = Path(directory) / "checkout"
         run(root, "git", "worktree", "add", "--detach", str(checkout), base)
@@ -84,14 +84,17 @@ def write_branch(root: Path, base: str, contents: str, expected_sha: str) -> Non
                 checkout, "git", "-c", "credential.helper=", "-c",
                 "credential.helper=!gh auth git-credential", "push",
                 f"--force-with-lease=refs/heads/{BOT_BRANCH}:{expected_sha}",
-                REMOTE_URL, f"HEAD:refs/heads/{BOT_BRANCH}",
+                remote_url, f"HEAD:refs/heads/{BOT_BRANCH}",
             )
         finally:
             run(root, "git", "worktree", "remove", "--force", str(checkout))
 
 
-def update(root: Path = ROOT, *, dry_run: bool = False) -> None:
-    contents = (root / CATALOG_PATH).read_text()
+def update(
+    root: Path = ROOT, *, dry_run: bool = False, catalog_path: Path | None = None,
+    remote_url: str = REMOTE_URL,
+) -> None:
+    contents = (catalog_path if catalog_path is not None else root / CATALOG_PATH).read_text()
     candidate = validate_catalog(contents)
     if dry_run:
         before = validate_catalog(read_card(root, "origin/main"))
@@ -101,7 +104,7 @@ def update(root: Path = ROOT, *, dry_run: bool = False) -> None:
     if not os.environ.get("GH_TOKEN"):
         raise ValueError("GH_TOKEN is required; configure the RATE_CARD_GITHUB_TOKEN workflow secret")
 
-    run(root, "git", "fetch", "--no-tags", REMOTE_URL, f"+refs/heads/{BASE_BRANCH}:{BASE_REF}")
+    run(root, "git", "fetch", "--no-tags", remote_url, f"+refs/heads/{BASE_BRANCH}:{BASE_REF}")
     base = run(root, "git", "rev-parse", BASE_REF)
     before = validate_catalog(read_card(root, base))
     prs = json.loads(run(
@@ -125,15 +128,15 @@ def update(root: Path = ROOT, *, dry_run: bool = False) -> None:
     expected_sha = ""
     current = None
     needs_rebase = False
-    if run(root, "git", "ls-remote", "--heads", REMOTE_URL, f"refs/heads/{BOT_BRANCH}"):
-        run(root, "git", "fetch", "--no-tags", REMOTE_URL, f"+refs/heads/{BOT_BRANCH}:{BOT_REF}")
+    if run(root, "git", "ls-remote", "--heads", remote_url, f"refs/heads/{BOT_BRANCH}"):
+        run(root, "git", "fetch", "--no-tags", remote_url, f"+refs/heads/{BOT_BRANCH}:{BOT_REF}")
         expected_sha = run(root, "git", "rev-parse", BOT_REF)
         current = validate_catalog(read_card(root, expected_sha))
         # If main's prices changed independently, rebuild the proposal on that
         # catalog so an otherwise identical upstream update can still merge.
         needs_rebase = validate_catalog(read_card(root, f"{expected_sha}^")) != before
     if current != candidate or needs_rebase:
-        write_branch(root, base, contents, expected_sha)
+        write_branch(root, base, contents, expected_sha, remote_url)
     elif existing:
         print(f"Existing PR already has these prices: {existing['url']}")
         return
@@ -157,9 +160,10 @@ def update(root: Path = ROOT, *, dry_run: bool = False) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="compare with local origin/main without network or writes")
+    parser.add_argument("--catalog", type=Path, help="read the generated JSON artifact from this path")
     args = parser.parse_args()
     try:
-        update(dry_run=args.dry_run)
+        update(dry_run=args.dry_run, catalog_path=args.catalog)
     except subprocess.CalledProcessError as error:
         print(f"Rate-card update failed: {error.stderr.strip()}", file=sys.stderr)
         return 1
