@@ -1,0 +1,125 @@
+{
+  "provider": "cohere",
+  "models": {
+    "c4ai-aya-expanse-32b": {
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "command-a-03-2025": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 256000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "command-a-plus-05-2026": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "command-r-08-2024": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "command-r-plus-08-2024": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "command-r7b-12-2024": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    }
+  }
+}

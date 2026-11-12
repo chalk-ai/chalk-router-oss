@@ -1,0 +1,6764 @@
+{
+  "provider": "bedrock",
+  "models": {
+    "*/1-month-commitment/cohere.command-light-text-v14": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "*/1-month-commitment/cohere.command-text-v14": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "*/6-month-commitment/cohere.command-light-text-v14": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "*/6-month-commitment/cohere.command-text-v14": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "1024-x-1024/50-steps/bedrock/amazon.nova-canvas-v1:0": {
+      "limits": {
+        "max_input_tokens": 2600
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "1024-x-1024/50-steps/stability.stable-diffusion-xl-v1": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "1024-x-1024/max-steps/stability.stable-diffusion-xl-v1": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "512-x-512/50-steps/stability.stable-diffusion-xl-v0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "512-x-512/max-steps/stability.stable-diffusion-xl-v0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "ai21.j2-mid-v1": {
+      "limits": {
+        "max_input_tokens": 8191,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ai21.j2-ultra-v1": {
+      "limits": {
+        "max_input_tokens": 8191,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ai21.jamba-1-5-large-v1:0": {
+      "limits": {
+        "max_input_tokens": 256000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ai21.jamba-1-5-mini-v1:0": {
+      "limits": {
+        "max_input_tokens": 256000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ai21.jamba-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 70000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "amazon.nova-2-5-sonic": {
+      "limits": {
+        "max_input_tokens": 256000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "amazon.nova-2-multimodal-embeddings-v1:0": {
+      "limits": {
+        "max_input_tokens": 8172
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "amazon.nova-2-sonic-v1:0": {
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "amazon.nova-canvas-v1:0": {
+      "limits": {
+        "max_input_tokens": 2600
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "amazon.rerank-v1:0": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 32000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "rerank": "supported"
+      }
+    },
+    "amazon.titan-embed-g1-text-02": {
+      "limits": {
+        "max_input_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "amazon.titan-embed-image-v1": {
+      "limits": {
+        "max_input_tokens": 128
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "amazon.titan-embed-text-v1": {
+      "limits": {
+        "max_input_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "amazon.titan-embed-text-v2:0": {
+      "limits": {
+        "max_input_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "amazon.titan-image-generator-v1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "amazon.titan-image-generator-v2": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "amazon.titan-image-generator-v2:0": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "amazon.titan-text-express-v1": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "amazon.titan-text-lite-v1": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 4000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "amazon.titan-text-premier-v1:0": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 32000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-3-5-haiku-20241022-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-3-5-sonnet-20240620-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-3-5-sonnet-20241022-v2:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-3-7-sonnet-20240620-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-3-opus-20240229-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-mythos-preview": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/1-month-commitment/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/1-month-commitment/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/1-month-commitment/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/6-month-commitment/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/6-month-commitment/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/6-month-commitment/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/deepseek.v3.2": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 156000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/mistral.voxtral-mini-3b-2507": {
+      "limits": {
+        "max_input_tokens": 32768,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/mistral.voxtral-small-24b-2507": {
+      "limits": {
+        "max_input_tokens": 32768,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/moonshotai.kimi-k2-thinking": {
+      "features": {
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/moonshotai.kimi-k2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-northeast-1/qwen.qwen3-next-80b-a3b": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/deepseek.v3.2": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 156000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/moonshotai.kimi-k2-thinking": {
+      "features": {
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/moonshotai.kimi-k2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-south-1/qwen.qwen3-next-80b-a3b": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-2/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-2/mistral.voxtral-mini-3b-2507": {
+      "limits": {
+        "max_input_tokens": 32768,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-2/mistral.voxtral-small-24b-2507": {
+      "limits": {
+        "max_input_tokens": 32768,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-2/qwen.qwen3-next-80b-a3b": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-3/deepseek.v3.2": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 156000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-3/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-3/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-3/moonshotai.kimi-k2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ap-southeast-3/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ca-central-1/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ca-central-1/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude-sonnet-4-5-20250929-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-fable-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-fable-5-1": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-fable-5-2": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-haiku-4-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-haiku-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-opus-4-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-opus-4-6": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-opus-4-7": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-opus-4-8": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-opus-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-opus-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-sonnet-4-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-sonnet-4-6": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-sonnet-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "claude_platform/claude-sonnet-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "cohere.command-light-text-v14": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "cohere.command-text-v14": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "cohere.embed-english-v3": {
+      "limits": {
+        "max_input_tokens": 512
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "cohere.embed-multilingual-v3": {
+      "limits": {
+        "max_input_tokens": 512
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "cohere.embed-v4:0": {
+      "limits": {
+        "max_input_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "cohere.rerank-v3-5:0": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "rerank": "supported"
+      }
+    },
+    "eu-central-1/1-month-commitment/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/1-month-commitment/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/1-month-commitment/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/6-month-commitment/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/6-month-commitment/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/6-month-commitment/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-central-1/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-north-1/deepseek.v3.2": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 156000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-north-1/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-north-1/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-north-1/moonshotai.kimi-k2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-south-1/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-south-1/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-south-1/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-1/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-1/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-1/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-1/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-1/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-1/qwen.qwen3-next-80b-a3b": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/mistral.voxtral-mini-3b-2507": {
+      "limits": {
+        "max_input_tokens": 32768,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/mistral.voxtral-small-24b-2507": {
+      "limits": {
+        "max_input_tokens": 32768,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/nvidia.nemotron-super-3-120b": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 256000,
+        "max_output_tokens": 32000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-2/qwen.qwen3-next-80b-a3b": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-3/mistral.mistral-7b-instruct-v0:2": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-3/mistral.mistral-large-2402-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu-west-3/mistral.mixtral-8x7b-instruct-v0:1": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu.anthropic.claude-3-5-haiku-20241022-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu.anthropic.claude-3-5-sonnet-20240620-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu.anthropic.claude-3-5-sonnet-20241022-v2:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu.anthropic.claude-3-7-sonnet-20250219-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu.anthropic.claude-3-opus-20240229-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu.meta.llama3-2-1b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu.meta.llama3-2-3b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "eu.twelvelabs.marengo-embed-2-7-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "eu.twelvelabs.marengo-embed-3-0-v1:0": {
+      "limits": {
+        "max_input_tokens": 500
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "eu.twelvelabs.pegasus-1-2-v1:0": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "global.cohere.embed-v4:0": {
+      "limits": {
+        "max_input_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "global.twelvelabs.pegasus-1-2-v1:0": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "global.twelvelabs.pegasus-1-5-v1:0": {
+      "limits": {
+        "max_input_tokens": 261120,
+        "max_output_tokens": 98304
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "invoke/anthropic.claude-3-5-sonnet-20240620-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "max-x-max/50-steps/stability.stable-diffusion-xl-v0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "max-x-max/max-steps/stability.stable-diffusion-xl-v0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "meta.llama2-13b-chat-v1": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama2-70b-chat-v1": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-1-405b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-1-70b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-1-8b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-2-11b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-2-1b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-2-3b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-2-90b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "mistral.mistral-7b-instruct-v0:2": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "mistral.mistral-large-2402-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "mistral.mistral-large-2407-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "mistral.mistral-small-2402-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "mistral.mixtral-8x7b-instruct-v0:1": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "moonshotai.kimi-k2-thinking": {
+      "features": {
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "moonshotai.kimi-k2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/deepseek.v3.2": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 156000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/moonshotai.kimi-k2-thinking": {
+      "features": {
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/moonshotai.kimi-k2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "sa-east-1/qwen.qwen3-next-80b-a3b": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "stability.sd3-5-large-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.sd3-large-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-conservative-upscale-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-creative-upscale-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-fast-upscale-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-control-sketch-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-control-structure-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-core-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-core-v1:1": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-erase-object-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-inpaint-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-remove-background-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-search-recolor-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-search-replace-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-style-guide-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-ultra-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-image-ultra-v1:1": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-outpaint-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "stability.stable-style-transfer-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "twelvelabs.marengo-embed-2-7-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "twelvelabs.marengo-embed-3-0-v1:0": {
+      "limits": {
+        "max_input_tokens": 500
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "twelvelabs.pegasus-1-2-v1:0": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "twelvelabs.pegasus-1-5-v1:0": {
+      "limits": {
+        "max_input_tokens": 261120,
+        "max_output_tokens": 98304
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/1-month-commitment/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/1-month-commitment/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/1-month-commitment/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/6-month-commitment/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/6-month-commitment/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/6-month-commitment/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/deepseek.v3.2": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 156000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/minimax.minimax-m2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/mistral.mistral-7b-instruct-v0:2": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/mistral.mistral-large-2402-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/mistral.mixtral-8x7b-instruct-v0:1": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/moonshotai.kimi-k2-thinking": {
+      "features": {
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/moonshotai.kimi-k2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-1/zai.glm-5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-2/deepseek.v3.2": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 156000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-2/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-2/minimax.minimax-m2.5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-2/moonshotai.kimi-k2-thinking": {
+      "features": {
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-2/moonshotai.kimi-k2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-east-2/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/amazon.nova-pro-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 300000,
+        "max_output_tokens": 10000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/amazon.titan-embed-text-v1": {
+      "limits": {
+        "max_input_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "us-gov-east-1/amazon.titan-embed-text-v2:0": {
+      "limits": {
+        "max_input_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "us-gov-east-1/amazon.titan-text-express-v1": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/amazon.titan-text-lite-v1": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 4000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/amazon.titan-text-premier-v1:0": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 32000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-3-5-sonnet-20240620-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-3-7-sonnet-20250219-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-3-haiku-20240307-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 195904,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-fable-5-1": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-fable-5-2": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-haiku-4-5-20251001-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-haiku-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-mythos-5-2": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-opus-4-8": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-opus-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-opus-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-sonnet-4-5-20250929-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-sonnet-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/anthropic.claude-sonnet-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/claude-sonnet-4-5-20250929-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8000,
+        "max_output_tokens": 2048
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8000,
+        "max_output_tokens": 2048
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/nvidia.nemotron-nano-12b-v2": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/nvidia.nemotron-nano-3-30b": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/nvidia.nemotron-nano-9b-v2": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/nvidia.nemotron-super-3-120b": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 256000,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/openai.gpt-oss-120b-1:0": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-east-1/openai.gpt-oss-20b-1:0": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.nova-2-multimodal-embeddings-v1:0": {
+      "limits": {
+        "max_input_tokens": 8172
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.nova-lite-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 300000,
+        "max_output_tokens": 10000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.nova-micro-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 10000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.nova-pro-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 300000,
+        "max_output_tokens": 10000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.titan-embed-text-v1": {
+      "limits": {
+        "max_input_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.titan-embed-text-v2:0": {
+      "limits": {
+        "max_input_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.titan-text-express-v1": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.titan-text-lite-v1": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 4000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/amazon.titan-text-premier-v1:0": {
+      "limits": {
+        "max_input_tokens": 42000,
+        "max_output_tokens": 32000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-3-5-sonnet-20240620-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-3-7-sonnet-20250219-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-3-haiku-20240307-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 195904,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-fable-5-1": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-fable-5-2": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-haiku-4-5-20251001-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-haiku-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-mythos-5-2": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-opus-4-8": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-opus-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-opus-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-sonnet-4-5-20250929-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-sonnet-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/anthropic.claude-sonnet-5-5": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/claude-sonnet-4-5-20250929-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 64000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/nvidia.nemotron-nano-12b-v2": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/nvidia.nemotron-nano-3-30b": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/nvidia.nemotron-nano-9b-v2": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/nvidia.nemotron-super-3-120b": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 256000,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/openai.gpt-oss-120b-1:0": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-gov-west-1/openai.gpt-oss-20b-1:0": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-1/meta.llama3-70b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-1/meta.llama3-8b-instruct-v1:0": {
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/1-month-commitment/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/1-month-commitment/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/1-month-commitment/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/6-month-commitment/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/6-month-commitment/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/6-month-commitment/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/anthropic.claude-instant-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/anthropic.claude-v1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/anthropic.claude-v2:1": {
+      "limits": {
+        "max_input_tokens": 100000,
+        "max_output_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/deepseek.v3.2": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 156000,
+        "max_output_tokens": 8000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/minimax.minimax-m2.1": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/minimax.minimax-m2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 196000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/mistral.mistral-7b-instruct-v0:2": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/mistral.mistral-large-2402-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/mistral.mixtral-8x7b-instruct-v0:1": {
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/moonshotai.kimi-k2-thinking": {
+      "features": {
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/moonshotai.kimi-k2.5": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/qwen.qwen3-coder-next": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 262144,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us-west-2/zai.glm-5": {
+      "features": {
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "audio": "unsupported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.amazon.nova-canvas-v1:0": {
+      "limits": {
+        "max_input_tokens": 2600
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.anthropic.claude-3-5-haiku-20241022-v1:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.anthropic.claude-3-5-sonnet-20240620-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.anthropic.claude-3-5-sonnet-20241022-v2:0": {
+      "features": {
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 8192
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.anthropic.claude-3-opus-20240229-v1:0": {
+      "features": {
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.cohere.embed-v4:0": {
+      "limits": {
+        "max_input_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "us.meta.llama3-1-405b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.meta.llama3-1-70b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.meta.llama3-1-8b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.meta.llama3-2-11b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.meta.llama3-2-1b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.meta.llama3-2-3b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.meta.llama3-2-90b-instruct-v1:0": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.stability.stable-conservative-upscale-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-creative-upscale-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-fast-upscale-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-image-control-sketch-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-image-control-structure-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-image-erase-object-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-image-inpaint-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-image-remove-background-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-image-search-recolor-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-image-search-replace-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-image-style-guide-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-outpaint-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.stability.stable-style-transfer-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "image": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "us.twelvelabs.marengo-embed-2-7-v1:0": {
+      "limits": {
+        "max_input_tokens": 77
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "us.twelvelabs.marengo-embed-3-0-v1:0": {
+      "limits": {
+        "max_input_tokens": 500
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "us.twelvelabs.pegasus-1-2-v1:0": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "us.twelvelabs.pegasus-1-5-v1:0": {
+      "limits": {
+        "max_input_tokens": 261120,
+        "max_output_tokens": 98304
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    }
+  }
+}

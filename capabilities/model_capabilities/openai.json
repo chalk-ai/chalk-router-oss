@@ -1,0 +1,4479 @@
+{
+  "provider": "openai",
+  "models": {
+    "1024-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "1024-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "1024-x-1536/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "1024-x-1536/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "1536-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "1536-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "chat-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 400000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "chatgpt-image-latest": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "computer-use-preview": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 1024
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "computer-use-preview-2025-03-11": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 1024
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "container": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "daybreak-blue-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "daybreak-red-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-3.5-turbo": {
+      "limits": {
+        "max_input_tokens": 16385,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-3.5-turbo-0125": {
+      "limits": {
+        "max_input_tokens": 16385,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-3.5-turbo-0613": {
+      "limits": {
+        "max_input_tokens": 4096,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-3.5-turbo-1106": {
+      "limits": {
+        "max_input_tokens": 16385,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-4-0613": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-4.1-2025-04-14": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-4.1-mini-2025-04-14": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-4.1-nano-2025-04-14": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-4o-2024-08-06": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-4o-2024-11-20": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:gpt-4o-mini-2024-07-18": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "ft:o4-mini-2025-04-16": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-3.5-turbo": {
+      "features": {
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 16385,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-3.5-turbo-0125": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 16385,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-3.5-turbo-1106": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 16385,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-3.5-turbo-16k": {
+      "features": {
+        "prompt_caching": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 16385,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4": {
+      "features": {
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4-0613": {
+      "features": {
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 8192,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4-1106-preview": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4-turbo": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4-turbo-2024-04-09": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4.1": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4.1-2025-04-14": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4.1-mini": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4.1-mini-2025-04-14": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4.1-nano": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4.1-nano-2025-04-14": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1047576,
+        "max_output_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-2024-05-13": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-2024-08-06": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-2024-11-20": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-audio-preview-2024-12-17": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-audio-preview-2025-06-03": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-mini": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-mini-2024-07-18": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-mini-audio-preview-2024-12-17": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-mini-realtime-preview-2024-12-17": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-4o-mini-search-preview": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-mini-search-preview-2025-03-11": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-mini-transcribe": {
+      "limits": {
+        "max_input_tokens": 16000,
+        "max_output_tokens": 2000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-4o-mini-transcribe-2025-03-20": {
+      "limits": {
+        "max_input_tokens": 16000,
+        "max_output_tokens": 2000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-4o-mini-transcribe-2025-12-15": {
+      "limits": {
+        "max_input_tokens": 16000,
+        "max_output_tokens": 2000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-4o-mini-tts": {
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_speech": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-4o-mini-tts-2025-03-20": {
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_speech": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-4o-mini-tts-2025-12-15": {
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_speech": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-4o-search-preview": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-search-preview-2025-03-11": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-4o-transcribe": {
+      "limits": {
+        "max_input_tokens": 16000,
+        "max_output_tokens": 2000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-4o-transcribe-diarize": {
+      "limits": {
+        "max_input_tokens": 16000,
+        "max_output_tokens": 2000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-5": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-2025-08-07": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-chat": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "unsupported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-chat-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-codex": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-mini": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-mini-2025-08-07": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-nano": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-nano-2025-08-07": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-pro": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 400000,
+        "max_output_tokens": 272000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-pro-2025-10-06": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 400000,
+        "max_output_tokens": 272000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-search-api": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5-search-api-2025-10-14": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.1": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.1-2025-11-13": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.1-chat-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.1-codex": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 400000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.1-codex-max": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 400000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.1-codex-mini": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 400000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.2": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.2-2025-12-11": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.2-chat-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.2-codex": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.2-pro": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.2-pro-2025-12-11": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.3-chat-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.3-codex": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.4": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1050000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.4-2026-03-05": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1050000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.4-mini": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.4-mini-2026-03-17": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.4-nano": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.4-nano-2026-03-17": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.4-pro": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1050000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.4-pro-2026-03-05": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1050000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.5": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1050000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.5-2026-04-23": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1050000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.5-cyber": {
+      "features": {
+        "reasoning": "supported"
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.5-cyber-preview": {
+      "features": {
+        "reasoning": "supported"
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.5-pro": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1050000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.5-pro-2026-04-23": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 1050000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.6": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.6-cyber": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.6-luna": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.6-sol": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-5.6-terra": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-6-astra": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-6-astra-law": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-6-cyber": {
+      "features": {
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-6-luna": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-6-rosalind": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-6-sol": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-6.1-sol": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-6.1-terra": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-audio": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "unsupported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-audio-1.5": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "unsupported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-audio-2025-08-28": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "unsupported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-audio-mini": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "unsupported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-audio-mini-2025-10-06": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "unsupported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-audio-mini-2025-12-15": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "unsupported",
+        "reasoning": "unsupported",
+        "structured_output": "unsupported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16384
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-daybreak-blue-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 922000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-daybreak-red-latest": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 272000,
+        "max_output_tokens": 128000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-1-mini": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-2": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-2-2026-04-21": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-2.5-flare": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-2.5-flare-2026-09-08": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-2.5-sunburst": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-2.5-sunburst-2026-09-08": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-2.6-flare": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-image-2.6-sunburst": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "gpt-live-1": {
+      "features": {
+        "tool_calling": "supported"
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-live-transcribe": {
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-realtime": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-1.5": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-2": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 32000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-2.1": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 32000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-2.1-mini": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 32000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-2025-08-28": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-mini": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 32000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-mini-2025-12-15": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 128000,
+        "max_output_tokens": 4096
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-translate": {
+      "limits": {
+        "max_input_tokens": 16000,
+        "max_output_tokens": 2000
+      },
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "audio": "supported",
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "realtime": "supported"
+      }
+    },
+    "gpt-realtime-whisper": {
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "gpt-rosalind-discovery": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-rosalind-research": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "gpt-transcribe": {
+      "modalities": {
+        "input": {
+          "audio": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "high/1024-x-1024/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "high/1024-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "high/1024-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "high/1024-x-1536/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "high/1024-x-1536/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "high/1024-x-1536/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "high/1536-x-1024/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "high/1536-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "high/1536-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1024-x-1024/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1024-x-1024/gpt-image-1-mini": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1024-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1024-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1024-x-1536/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1024-x-1536/gpt-image-1-mini": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1024-x-1536/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1024-x-1536/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1536-x-1024/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1536-x-1024/gpt-image-1-mini": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1536-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "low/1536-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1024-x-1024/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1024-x-1024/gpt-image-1-mini": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1024-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1024-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1024-x-1536/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1024-x-1536/gpt-image-1-mini": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1024-x-1536/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1024-x-1536/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1536-x-1024/gpt-image-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1536-x-1024/gpt-image-1-mini": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1536-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "medium/1536-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "o1": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o1-2024-12-17": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o1-pro": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o1-pro-2025-03-19": {
+      "features": {
+        "parallel_tool_calling": "supported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o3": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o3-2025-04-16": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o3-deep-research": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "unsupported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o3-deep-research-2025-06-26": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "unsupported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o3-mini": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o3-mini-2025-01-31": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "unsupported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o3-pro": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o3-pro-2025-06-10": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o4-mini": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o4-mini-2025-04-16": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "supported",
+        "tool_calling": "supported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o4-mini-deep-research": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "unsupported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "o4-mini-deep-research-2025-06-26": {
+      "features": {
+        "parallel_tool_calling": "unsupported",
+        "prompt_caching": "supported",
+        "reasoning": "supported",
+        "structured_output": "unsupported",
+        "tool_calling": "unsupported"
+      },
+      "limits": {
+        "max_input_tokens": 200000,
+        "max_output_tokens": 100000
+      },
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "supported"
+      }
+    },
+    "omni-moderation-2024-09-26": {
+      "limits": {
+        "max_input_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "moderation": "supported"
+      }
+    },
+    "omni-moderation-latest": {
+      "limits": {
+        "max_input_tokens": 32768
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "moderation": "supported"
+      }
+    },
+    "standard/1024-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "standard/1024-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "standard/1024-x-1536/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "standard/1024-x-1536/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "standard/1536-x-1024/gpt-image-1.5": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "standard/1536-x-1024/gpt-image-1.5-2025-12-16": {
+      "modalities": {
+        "input": {
+          "image": "supported",
+          "text": "supported"
+        },
+        "output": {
+          "image": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "image_generation": "supported"
+      }
+    },
+    "text-embedding-3-large": {
+      "limits": {
+        "max_input_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "text-embedding-3-small": {
+      "limits": {
+        "max_input_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "text-embedding-ada-002": {
+      "limits": {
+        "max_input_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "text-embedding-ada-002-v2": {
+      "limits": {
+        "max_input_tokens": 8191
+      },
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "embeddings": "supported"
+        }
+      },
+      "surfaces": {
+        "chat": "unsupported",
+        "embeddings": "supported"
+      }
+    },
+    "tts-1": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_speech": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "tts-1-1106": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_speech": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "tts-1-hd": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_speech": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "tts-1-hd-1106": {
+      "modalities": {
+        "input": {
+          "text": "supported"
+        },
+        "output": {
+          "audio": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_speech": "supported",
+        "chat": "unsupported"
+      }
+    },
+    "whisper-1": {
+      "modalities": {
+        "input": {
+          "audio": "supported"
+        },
+        "output": {
+          "text": "supported"
+        }
+      },
+      "surfaces": {
+        "audio_transcription": "supported",
+        "chat": "unsupported"
+      }
+    }
+  }
+}
