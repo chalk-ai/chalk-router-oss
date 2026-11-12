@@ -5,62 +5,13 @@ is the public current-model capability catalog for routers with capability
 refresh support. The router embeds the same combined file as its offline
 fallback.
 
-This directory follows the pricing catalog layout: an outer README, a combined
-download artifact, and a folder containing one JSON file per provider.
-
 ```text
 capabilities/
   README.md
   model_capabilities.json
-  model_capabilities/
-    anthropic.json
-    bedrock.json
-    ...
 ```
 
-## Provider files
-
-[`model_capabilities/`](model_capabilities/) contains the same facts split by
-router provider kind. Each file has a `provider` field and a `models` object
-keyed by the complete upstream model ID. Nested paths inside model IDs are
-preserved.
-
-| Provider | Models |
-| --- | ---: |
-| [`anthropic`](model_capabilities/anthropic.json) | 24 |
-| [`bedrock`](model_capabilities/bedrock.json) | 340 |
-| [`cohere`](model_capabilities/cohere.json) | 6 |
-| [`fireworks`](model_capabilities/fireworks.json) | 348 |
-| [`gemini`](model_capabilities/gemini.json) | 69 |
-| [`groq`](model_capabilities/groq.json) | 10 |
-| [`mistral`](model_capabilities/mistral.json) | 72 |
-| [`openai`](model_capabilities/openai.json) | 217 |
-| [`perplexity`](model_capabilities/perplexity.json) | 90 |
-| [`together`](model_capabilities/together.json) | 82 |
-| [`vertex`](model_capabilities/vertex.json) | 34 |
-| [`voyage`](model_capabilities/voyage.json) | 31 |
-| [`xai`](model_capabilities/xai.json) | 56 |
-
-The provider files contain 1,379 models across 13 providers. They are
-browsable slices of the combined catalog. Routers download the combined file
-to get one consistent snapshot.
-
-For example, a provider file has this shape:
-
-```json
-{
-  "provider": "openai",
-  "models": {
-    "example": {
-      "surfaces": {"chat": "supported"},
-      "features": {"tool_calling": "supported"},
-      "limits": {"max_input_tokens": 8192, "max_output_tokens": 1024}
-    }
-  }
-}
-```
-
-## Combined catalog
+## Catalog format
 
 Schema version 1 maps complete `<provider>/<model>` keys to sparse model facts:
 
@@ -97,14 +48,9 @@ effective capability resolution.
 ## Updates and runtime refresh
 
 Generate the next complete catalog through the collection workflow, then review
-additions, corrections, and removals in a normal PR. Publish the combined JSON
-and regenerate all provider files from that same snapshot in the same PR.
-Regeneration must also remove provider files for providers absent from the new
-snapshot.
-
-To verify the split, prefix every provider file's model keys with
-`<provider>/` and merge the resulting objects. The merged models must exactly
-equal the combined catalog's `models` object, with no duplicates or omissions.
+additions, corrections, and removals in a normal PR. Publish the same combined
+JSON used by the router's embedded fallback. The catalog is replaced as one
+complete snapshot.
 
 The default runtime URL is the combined file linked above.
 `ROUTER_MODEL_CAPABILITY_URL` overrides it,
