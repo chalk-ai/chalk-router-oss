@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@astrojs/starlight": "0.42.7",
-    "astro": "7.4.2"
+    "astro": "7.4.12"
   },
   "devDependencies": {
     "cheerio": "1.1.2"
